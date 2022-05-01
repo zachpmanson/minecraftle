@@ -1,0 +1,17 @@
+/* Global stylesheet */
+
+@font-face {
+    font-family: Minecraft-Regular;
+    src: url("../fonts/Minecraft-Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Minecraft-Title;
+    src: url("../fonts/Minecraft-Title.ttf") format("truetype");
+}
+
+:root {
+    --inv-background: #c6c6c6;
+    --slot-background: #8b8b8b;
+    --slot-shadow: rgba(55, 55, 55, 0.8);
+}
