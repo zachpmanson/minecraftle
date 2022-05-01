@@ -6,12 +6,90 @@
 }
 
 @font-face {
-    font-family: Minecraft-Title;
-    src: url("../fonts/Minecraft-Title.ttf") format("truetype");
+    font-family: Minecrafter;
+    src: url("../fonts/Minecrafter.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Minecrafter-Cracked;
+    src: url("../fonts/Minecrafter-Cracked.ttf") format("truetype");
 }
 
 :root {
     --inv-background: #c6c6c6;
     --slot-background: #8b8b8b;
     --slot-shadow: rgba(55, 55, 55, 0.8);
+    --slot-inset: #fefefe;
+}
+
+body {
+    background-image: url("../images/dirt-background.webp");
+}
+
+header {
+    color: var(--inv-background);
+    max-width: 40rem;
+    margin: auto;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 0;
+    font-size: 3em;
+    font-size: min(3em, 10vw);
+    font-family: Minecrafter-Cracked;
+}
+
+header p {
+    margin-top: 0;
+}
+
+p {
+    font-family: Minecraft-Regular;
+}
+
+.guesses {
+    max-width: 22rem;
+    margin: auto;
+}
+
+.crafting-row {
+    background: var(--inv-background);
+    border-radius: 3px;
+    box-shadow: 5px 5px 0px var(--slot-shadow), inset 4px 4px 0px var(--slot-inset) ;
+    padding: 1.5rem;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.slot {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    background: var(--slot-background);
+    box-shadow: inset 2px 2px 0px rgba(55, 55, 55, 0.7),
+      inset -2px -2px 0px white;
+}
+
+.crafting-table {
+    width: 9rem;
+    height: 9rem;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.crafting-output {
+    margin: 3rem 0;
+}
+
+.arrow {
+    color: var(--slot-background);
+    margin: auto;
+    font-size: 3rem;
+}
+
+.arrow p {
+    margin: 0;
 }

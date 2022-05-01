@@ -1,5 +1,8 @@
 Minecraft-Regular font:
 https://fonts2u.com/minecraft-regular.font
 
-Minecraft-Title font:
+Minecrafter font:
 https://www.dafont.com/minecrafter.font
+
+Dirt Background:
+https://minecraft.fandom.com/wiki/Background?file=Dirt_background_JE2.png
