@@ -8,6 +8,33 @@
         <link rel="stylesheet" href="{{ url_for('static', filename="styles/style.css") }}">
     </head>
     <body>
+        <header>
+            <h1>Minecrafdle</h1>
+            <div class="navigation">
+                <div class="left">
+                    <a href="/">
+                        <div class="mc-button">
+                            <div class="title">Home</div>
+                        </div>  
+                    </a>
+                </div>
+
+                <div class="left">
+                    <a href="/how-to-play">
+                        <div class="mc-button">
+                            <div class="title">How To Play</div>
+                        </div>  
+                    </a>
+                </div>
+                <div class="left">
+                    <a href="#">
+                        <div class="mc-button">
+                            <div class="title">Stats</div>
+                        </div>  
+                    </a>
+                </div>
+            </div>          
+        </header>
         <div id="content">{% block content %}{% endblock %}</div>
     </body>
 </html>

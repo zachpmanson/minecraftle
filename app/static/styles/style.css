@@ -18,49 +18,121 @@
 :root {
     --inv-background: #c6c6c6;
     --slot-background: #8b8b8b;
-    --slot-shadow: rgba(55, 55, 55, 0.8);
+    --slot-shadow: rgba(55, 55, 55, 0.7);
     --slot-inset: #fefefe;
+
+    --button-text: #DDD;
+    --button-text-shadow: #000A;
+    --button-text-hover: #FFFFA0;
+    --button-text-hover-shadow: #202013CC;
+    --button-background: #999;
+    --button-background-hover: rgba(100, 100, 255, .45);
+    --button-active-inset-dark: #0004;
+    --button-active-inset-light: #FFF7;
+    --button-text-inset-dark: #0006;
+    --button-active-text-inset-light: #FFF5;
 }
 
 body {
     background-image: url("../images/dirt-background.webp");
+    margin: 1rem;
+    font-family: Minecraft-Regular;
 }
 
 header {
     color: var(--inv-background);
     max-width: 40rem;
     margin: auto;
-    margin-top: 2rem;
     text-align: center;
 }
 
 h1 {
-    margin-bottom: 0;
+    margin: 0;
     font-size: 3em;
     font-size: min(3em, 10vw);
     font-family: Minecrafter-Cracked;
 }
 
-header p {
-    margin-top: 0;
+h2 {
+    text-align: center;
+    margin: auto;
 }
 
-p {
-    font-family: Minecraft-Regular;
+main {
+    max-width: 40rem;
+    margin: auto;
 }
+
+a, a:visited {
+    color: var(--inv-background);
+    text-decoration: none;
+}
+
+/* Utility */
+
+.center {
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.navigation {
+    display: flex;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.left, .right, .middle {
+    flex: 1;
+    margin: 0 .5rem;
+}
+
+/* Minecraft Style Button */
+.mc-button {
+	overflow: hidden;
+	white-space: nowrap;
+	user-select: none;
+
+	background: var(--button-background) url('../images/button-background.png') center / cover;
+	image-rendering: pixelated;
+	border: 2px solid black;
+}
+
+/* Mouseover */
+.mc-button:hover .title {
+    background-color: var(--button-background-hover);
+    text-shadow: 2px 2px var(--button-text-hover-shadow);
+    color: var(--button-text-hover);
+}
+.mc-button:active .title {
+    box-shadow: inset -2px -4px var(--button-active-inset-dark), inset 2px 2px var(--button-active-text-inset-light);
+}
+
+/* Button title */
+.mc-button .title {
+    width: 100%; height: 100%;
+    padding: .5rem 0;
+    
+    color: var(--button-text);
+    text-shadow: 2px 2px var(--button-text-shadow);
+    box-shadow: inset -2px -4px var(--button-text-inset-dark), inset 2px 2px var(--button-active-inset-light);
+}
+
 
 .guesses {
     max-width: 22rem;
     margin: auto;
 }
 
-.crafting-row {
+.inv-background {
     background: var(--inv-background);
+    color: var(--slot-shadow);
     border-radius: 3px;
     box-shadow: 5px 5px 0px var(--slot-shadow), inset 4px 4px 0px var(--slot-inset) ;
     padding: 1.5rem;
     margin-bottom: 10px;
-    display: flex;
 }
 
 .slot {
@@ -69,8 +141,8 @@ p {
     display: flex;
     justify-content: center;
     background: var(--slot-background);
-    box-shadow: inset 2px 2px 0px rgba(55, 55, 55, 0.7),
-      inset -2px -2px 0px white;
+    box-shadow: inset 2px 2px 0px var(--slot-shadow),
+      inset -2px -2px 0px var(--slot-inset);
 }
 
 .crafting-table {
