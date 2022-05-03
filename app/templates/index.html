@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <script src="{{ url_for('static', filename='js/processGuess.js') }}"></script> 
     <div class="guesses">
         <div class="inv-background flex">
             <div class="crafting-table">
@@ -60,4 +61,8 @@
             </div>      
         </div>
     </div>
+    <script>
+        var solution = {{ solution }};
+    </script>
+
 {% endblock %}
