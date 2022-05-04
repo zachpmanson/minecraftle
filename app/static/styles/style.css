@@ -64,8 +64,8 @@ main {
 }
 
 a, a:visited {
-    color: var(--inv-background);
     text-decoration: none;
+    color: blue;
 }
 
 /* Utility */
@@ -94,6 +94,9 @@ a, a:visited {
 	overflow: hidden;
 	white-space: nowrap;
 	user-select: none;
+
+    color: var(--inv-background);
+    text-decoration: none;
 
 	background: var(--button-background) url('../images/button-background.png') center / cover;
 	image-rendering: pixelated;
