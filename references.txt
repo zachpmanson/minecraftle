@@ -15,3 +15,6 @@ https://codepen.io/joexmdq/pen/EOMLzg
 
 UUID Generation:
 https://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid/66332305#66332305
+
+Minecraft 1.18 crafting recipes:
+Adapted from Minecraft games files (.minecraft/versions/1.18.1.jar/data/minecraft/recipes)

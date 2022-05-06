@@ -6,7 +6,7 @@ from app import app
 @app.route('/index')
 def index():
     render_args = {
-        "title":"Minecrafdle"
+        "title":"Craftle"
     }
     return render_template(
         'index.html',
