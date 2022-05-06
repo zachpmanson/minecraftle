@@ -2,67 +2,17 @@
 
 {% block content %}
     <script src="{{ url_for('static', filename='js/processGuess.js') }}"></script> 
-    <div class="guesses">
-        <div class="inv-background flex">
-            <div class="crafting-table">
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-            </div>    
-            <div class="arrow">
-                <p>&#8594;</p>
-            </div>
-            <div class="crafting-output">
-                <div class="slot"></div>
-            </div>      
-        </div>
-        <div class="inv-background flex">
-            <div class="crafting-table">
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-            </div>    
-            <div class="arrow">
-                <p>&#8594;</p>
-            </div>
-            <div class="crafting-output">
-                <div class="slot"></div>
-            </div>      
-        </div>
-        <div class="inv-background flex">
-            <div class="crafting-table">
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-            </div>    
-            <div class="arrow">
-                <p>&#8594;</p>
-            </div>
-            <div class="crafting-output">
-                <div class="slot"></div>
-            </div>      
-        </div>
+    <script src="{{ url_for('static', filename='js/init.js') }}"></script> 
+    <div class="guesses" id="guesses">
+
+    </div>
+    <div class="inv-background ingredients" id="ingredients">
+        <h2>Crafting Ingredients</h2>
+        <div class="flex wrap" id="ingredientsList"></div>
     </div>
     <script>
-        var solution = {{ solution }};
+        
+        //var solution = {{ solution }};
     </script>
 
 {% endblock %}

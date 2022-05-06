@@ -57,6 +57,7 @@ h1 {
 h2 {
     text-align: center;
     margin: auto;
+    margin-bottom: 1rem;
 }
 
 main {
@@ -77,6 +78,10 @@ a, a:visited {
 
 .flex {
     display: flex;
+}
+
+.wrap {
+    flex-wrap: wrap;
 }
 
 .navigation {
@@ -153,6 +158,14 @@ a, a:visited {
     background: var(--slot-background-hover);
 }
 
+.slot-image {
+    margin:auto;
+    width: 2.5rem;
+    height: 2.5rem;
+    image-rendering: pixelated;
+    background-size: cover;
+}
+
 .crafting-table {
     width: 9rem;
     height: 9rem;
@@ -172,4 +185,9 @@ a, a:visited {
 
 .arrow p {
     margin: 0;
+}
+
+.ingredients {
+    max-width: 27rem;
+    margin: auto;
 }
