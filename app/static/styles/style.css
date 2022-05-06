@@ -18,6 +18,7 @@
 :root {
     --inv-background: #c6c6c6;
     --slot-background: #8b8b8b;
+    --slot-background-hover: #9f9f9f;
     --slot-shadow: rgba(55, 55, 55, 0.7);
     --slot-inset: #fefefe;
 
@@ -146,6 +147,10 @@ a, a:visited {
     background: var(--slot-background);
     box-shadow: inset 2px 2px 0px var(--slot-shadow),
       inset -2px -2px 0px var(--slot-inset);
+}
+
+.slot:hover {
+    background: var(--slot-background-hover);
 }
 
 .crafting-table {
