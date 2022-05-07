@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <script src="{{ url_for('static', filename='js/processGuess.js') }}"></script> 
-    <script src="{{ url_for('static', filename='js/init.js') }}"></script> 
     <div class="guesses" id="guesses">
-
+        
     </div>
     <div class="inv-background ingredients" id="ingredients">
         <h2>Crafting Ingredients</h2>
         <div class="flex wrap" id="ingredientsList"></div>
     </div>
+    <div id="cursor"></div>
+    <script src="{{ url_for('static', filename='js/processGuess.js') }}"></script> 
+    <script src="{{ url_for('static', filename='js/init.js') }}"></script> 
     <script>
         
         //var solution = {{ solution }};
