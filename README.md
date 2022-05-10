@@ -16,5 +16,14 @@ Due date: May 23, 2022 12:00 (noon)
   + [ ] 3 page views
     + [ ] Instructions and description
     + [ ] Actual puzzle interface
+      + [x] General structure
+      + [x] Crafting tables/Inventory
+      + [x] Minecraft-esque appearance
+      + [x] Picking up and placing items
+      + [ ] Item follow mouse movement
+      + [ ] Freezing past guesses
+      + [ ] Setting slot colour hints on guess submission
+      + [ ] Valid crafting recipe check
+      + [ ] Success screen
     + [ ] aggregate results and stats
 + [ ] Add references to pictures/recipe json files/libraries/css to `references.txt` (do this as we go)
