@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:purpur_pillar",
+    "input": [
+        [
+            "minecraft:purpur_slab",
+            null,
+            null
+        ],
+        [
+            "minecraft:purpur_slab",
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:painting",
+    "input": [
+        [
+            "minecraft:stick",
+            "minecraft:stick",
+            "minecraft:stick"
+        ],
+        [
+            "minecraft:stick",
+            "minecraft:wool",
+            "minecraft:stick"
+        ],
+        [
+            "minecraft:stick",
+            "minecraft:stick",
+            "minecraft:stick"
+        ]
+    ]
+}

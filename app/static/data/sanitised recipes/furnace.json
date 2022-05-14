@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:furnace",
+    "input": [
+        [
+            "minecraft:stone_crafting_materials",
+            "minecraft:stone_crafting_materials",
+            "minecraft:stone_crafting_materials"
+        ],
+        [
+            "minecraft:stone_crafting_materials",
+            null,
+            "minecraft:stone_crafting_materials"
+        ],
+        [
+            "minecraft:stone_crafting_materials",
+            "minecraft:stone_crafting_materials",
+            "minecraft:stone_crafting_materials"
+        ]
+    ]
+}

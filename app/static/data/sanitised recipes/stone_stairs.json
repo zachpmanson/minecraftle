@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:stone_stairs",
+    "input": [
+        [
+            "minecraft:stone",
+            null,
+            null
+        ],
+        [
+            "minecraft:stone",
+            "minecraft:stone",
+            null
+        ],
+        [
+            "minecraft:stone",
+            "minecraft:stone",
+            "minecraft:stone"
+        ]
+    ]
+}

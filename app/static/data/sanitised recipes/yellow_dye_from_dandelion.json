@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "yellow_dye",
+    "output": "minecraft:yellow_dye",
+    "input": [
+        "minecraft:dandelion"
+    ]
+}

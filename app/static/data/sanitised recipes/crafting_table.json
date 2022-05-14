@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:crafting_table",
+    "input": [
+        [
+            "minecraft:planks",
+            "minecraft:planks",
+            null
+        ],
+        [
+            "minecraft:planks",
+            "minecraft:planks",
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

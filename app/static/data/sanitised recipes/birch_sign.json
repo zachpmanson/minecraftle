@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wooden_sign",
+    "output": "minecraft:birch_sign",
+    "input": [
+        [
+            "minecraft:birch_planks",
+            "minecraft:birch_planks",
+            "minecraft:birch_planks"
+        ],
+        [
+            "minecraft:birch_planks",
+            "minecraft:birch_planks",
+            "minecraft:birch_planks"
+        ],
+        [
+            null,
+            "minecraft:stick",
+            null
+        ]
+    ]
+}

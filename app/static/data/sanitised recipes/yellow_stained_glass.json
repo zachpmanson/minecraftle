@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "stained_glass",
+    "output": "minecraft:yellow_stained_glass",
+    "input": [
+        [
+            "minecraft:glass",
+            "minecraft:glass",
+            "minecraft:glass"
+        ],
+        [
+            "minecraft:glass",
+            "minecraft:yellow_dye",
+            "minecraft:glass"
+        ],
+        [
+            "minecraft:glass",
+            "minecraft:glass",
+            "minecraft:glass"
+        ]
+    ]
+}

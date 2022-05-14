@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:slime_block",
+    "input": [
+        [
+            "minecraft:slime_ball",
+            "minecraft:slime_ball",
+            "minecraft:slime_ball"
+        ],
+        [
+            "minecraft:slime_ball",
+            "minecraft:slime_ball",
+            "minecraft:slime_ball"
+        ],
+        [
+            "minecraft:slime_ball",
+            "minecraft:slime_ball",
+            "minecraft:slime_ball"
+        ]
+    ]
+}

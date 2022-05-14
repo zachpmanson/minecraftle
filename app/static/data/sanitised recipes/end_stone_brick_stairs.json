@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:end_stone_brick_stairs",
+    "input": [
+        [
+            "minecraft:end_stone_bricks",
+            null,
+            null
+        ],
+        [
+            "minecraft:end_stone_bricks",
+            "minecraft:end_stone_bricks",
+            null
+        ],
+        [
+            "minecraft:end_stone_bricks",
+            "minecraft:end_stone_bricks",
+            "minecraft:end_stone_bricks"
+        ]
+    ]
+}

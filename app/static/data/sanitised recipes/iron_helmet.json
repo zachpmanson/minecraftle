@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:iron_helmet",
+    "input": [
+        [
+            "minecraft:iron_ingot",
+            "minecraft:iron_ingot",
+            "minecraft:iron_ingot"
+        ],
+        [
+            "minecraft:iron_ingot",
+            null,
+            "minecraft:iron_ingot"
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

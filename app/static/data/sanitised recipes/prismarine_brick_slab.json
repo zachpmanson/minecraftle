@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:prismarine_brick_slab",
+    "input": [
+        [
+            "minecraft:prismarine_bricks",
+            "minecraft:prismarine_bricks",
+            "minecraft:prismarine_bricks"
+        ],
+        [
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

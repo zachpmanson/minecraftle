@@ -7,12 +7,21 @@ let maxGuesses = 5;
 let craftingTables = [];
 let cursor = document.getElementById("cursor");
 let cursorItem = null;
-
 /**
  * Sets background of given div to given item
  * @param {HTMLElement} div 
  * @param {String} item 
  */
+
+
+const onMouseMove = (e) => {
+    cursor.style.left = (e.pageX - 5) + 'px';
+    cursor.style.top = (e.pageY - 5) + 'px';
+
+}
+
+document.addEventListener("mousemove", onMouseMove);
+
 function setSlotBackground(div, item) {
     console.log("item: " + item)
     div.style.backgroundImage = (item === null) ? "none" : "url(" + items[item]["icon"] +")";
@@ -21,8 +30,8 @@ function setSlotBackground(div, item) {
 /**
  * Set cursor image to match cursorItem
  */
-function setCursor() {
-    // TODO will set the div image that follows the cursor    
+function setCursor(item) {
+    setSlotBackground(cursor, item);
 }
 
 /**
@@ -62,7 +71,9 @@ function initIngredients() {
         newSlot.addEventListener("mousedown",e=>{
             cursorItem = (e.target.parentElement["item"]);
             console.log("Picked up " + cursorItem);
+            setCursor(cursorItem);
         });
+
     });
 }
 
@@ -122,13 +133,14 @@ function addNewCraftingTable() {
                 console.log(craftingTables[tableNum])
                 console.log("Picked up " + cursorItem)
             }
+            setCursor(cursorItem);
             
-            setCursor()
             // TODO presumably this will then need to calculate if current craftingTable is a valid recipe
+            // processGuess(craftingTables[tableNum]);
             
         })
     }
-    
+
     newTable.appendChild(tableDiv)
     
     let arrowDiv = document.createElement("div");
@@ -180,8 +192,9 @@ console.log(ingredientsDiv)
 document.addEventListener("mousedown", e => {
     let isClickOutsideIngredients = ingredientsDiv.contains(e.target) || guessesDiv.contains(e.target);
     if (!isClickOutsideIngredients) {
-        console.log("dropping item " + cursorItem)
+        console.log("dropping item because outside ingredients " + cursorItem)
         cursorItem = null;
+        setCursor(cursorItem);
     }
 });
 

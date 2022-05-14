@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:iron_pickaxe",
+    "input": [
+        [
+            "minecraft:iron_ingot",
+            "minecraft:iron_ingot",
+            "minecraft:iron_ingot"
+        ],
+        [
+            null,
+            "minecraft:stick",
+            null
+        ],
+        [
+            null,
+            "minecraft:stick",
+            null
+        ]
+    ]
+}

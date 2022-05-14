@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:deepslate_tile_stairs",
+    "input": [
+        [
+            "minecraft:deepslate_tiles",
+            null,
+            null
+        ],
+        [
+            "minecraft:deepslate_tiles",
+            "minecraft:deepslate_tiles",
+            null
+        ],
+        [
+            "minecraft:deepslate_tiles",
+            "minecraft:deepslate_tiles",
+            "minecraft:deepslate_tiles"
+        ]
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:barrel",
+    "input": [
+        [
+            "minecraft:planks",
+            "minecraft:wooden_slabs",
+            "minecraft:planks"
+        ],
+        [
+            "minecraft:planks",
+            null,
+            "minecraft:planks"
+        ],
+        [
+            "minecraft:planks",
+            "minecraft:wooden_slabs",
+            "minecraft:planks"
+        ]
+    ]
+}

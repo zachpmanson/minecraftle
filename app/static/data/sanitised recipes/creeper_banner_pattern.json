@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "",
+    "output": "minecraft:creeper_banner_pattern",
+    "input": [
+        "minecraft:paper",
+        "minecraft:creeper_head"
+    ]
+}

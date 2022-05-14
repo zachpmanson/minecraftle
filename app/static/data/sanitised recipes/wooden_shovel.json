@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:wooden_shovel",
+    "input": [
+        [
+            "minecraft:planks",
+            null,
+            null
+        ],
+        [
+            "minecraft:stick",
+            null,
+            null
+        ],
+        [
+            "minecraft:stick",
+            null,
+            null
+        ]
+    ]
+}

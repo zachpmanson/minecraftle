@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:cake",
+    "input": [
+        [
+            "minecraft:milk_bucket",
+            "minecraft:milk_bucket",
+            "minecraft:milk_bucket"
+        ],
+        [
+            "minecraft:sugar",
+            "minecraft:egg",
+            "minecraft:sugar"
+        ],
+        [
+            "minecraft:wheat",
+            "minecraft:wheat",
+            "minecraft:wheat"
+        ]
+    ]
+}

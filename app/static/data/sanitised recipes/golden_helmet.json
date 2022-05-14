@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:golden_helmet",
+    "input": [
+        [
+            "minecraft:gold_ingot",
+            "minecraft:gold_ingot",
+            "minecraft:gold_ingot"
+        ],
+        [
+            "minecraft:gold_ingot",
+            null,
+            "minecraft:gold_ingot"
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

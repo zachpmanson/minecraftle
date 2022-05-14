@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:mossy_stone_brick_wall",
+    "input": [
+        [
+            "minecraft:mossy_stone_bricks",
+            "minecraft:mossy_stone_bricks",
+            "minecraft:mossy_stone_bricks"
+        ],
+        [
+            "minecraft:mossy_stone_bricks",
+            "minecraft:mossy_stone_bricks",
+            "minecraft:mossy_stone_bricks"
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

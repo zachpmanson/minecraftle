@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:shulker_box",
+    "input": [
+        [
+            "minecraft:shulker_shell",
+            null,
+            null
+        ],
+        [
+            "minecraft:chest",
+            null,
+            null
+        ],
+        [
+            "minecraft:shulker_shell",
+            null,
+            null
+        ]
+    ]
+}

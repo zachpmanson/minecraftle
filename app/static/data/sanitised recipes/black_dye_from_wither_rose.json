@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "black_dye",
+    "output": "minecraft:black_dye",
+    "input": [
+        "minecraft:wither_rose"
+    ]
+}

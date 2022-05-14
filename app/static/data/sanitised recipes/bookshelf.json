@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:bookshelf",
+    "input": [
+        [
+            "minecraft:planks",
+            "minecraft:planks",
+            "minecraft:planks"
+        ],
+        [
+            "minecraft:book",
+            "minecraft:book",
+            "minecraft:book"
+        ],
+        [
+            "minecraft:planks",
+            "minecraft:planks",
+            "minecraft:planks"
+        ]
+    ]
+}

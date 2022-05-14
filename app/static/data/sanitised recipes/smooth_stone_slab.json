@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:smooth_stone_slab",
+    "input": [
+        [
+            "minecraft:smooth_stone",
+            "minecraft:smooth_stone",
+            "minecraft:smooth_stone"
+        ],
+        [
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

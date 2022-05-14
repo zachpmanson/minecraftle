@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "",
+    "output": "minecraft:dried_kelp",
+    "input": [
+        "minecraft:dried_kelp_block"
+    ]
+}

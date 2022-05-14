@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:end_rod",
+    "input": [
+        [
+            "minecraft:blaze_rod",
+            null,
+            null
+        ],
+        [
+            "minecraft:popped_chorus_fruit",
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

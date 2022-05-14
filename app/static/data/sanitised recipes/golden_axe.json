@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:golden_axe",
+    "input": [
+        [
+            "minecraft:gold_ingot",
+            "minecraft:gold_ingot",
+            null
+        ],
+        [
+            "minecraft:gold_ingot",
+            "minecraft:stick",
+            null
+        ],
+        [
+            null,
+            "minecraft:stick",
+            null
+        ]
+    ]
+}

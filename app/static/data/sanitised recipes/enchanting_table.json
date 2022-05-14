@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:enchanting_table",
+    "input": [
+        [
+            null,
+            "minecraft:book",
+            null
+        ],
+        [
+            "minecraft:diamond",
+            "minecraft:obsidian",
+            "minecraft:diamond"
+        ],
+        [
+            "minecraft:obsidian",
+            "minecraft:obsidian",
+            "minecraft:obsidian"
+        ]
+    ]
+}

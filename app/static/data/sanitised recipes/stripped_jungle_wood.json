@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "bark",
+    "output": "minecraft:stripped_jungle_wood",
+    "input": [
+        [
+            "minecraft:stripped_jungle_log",
+            "minecraft:stripped_jungle_log",
+            null
+        ],
+        [
+            "minecraft:stripped_jungle_log",
+            "minecraft:stripped_jungle_log",
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

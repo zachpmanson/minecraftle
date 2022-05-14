@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "light_gray_dye",
+    "output": "minecraft:light_gray_dye",
+    "input": [
+        "minecraft:gray_dye",
+        "minecraft:white_dye"
+    ]
+}

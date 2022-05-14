@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "bark",
+    "output": "minecraft:warped_hyphae",
+    "input": [
+        [
+            "minecraft:warped_stem",
+            "minecraft:warped_stem",
+            null
+        ],
+        [
+            "minecraft:warped_stem",
+            "minecraft:warped_stem",
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

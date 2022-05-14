@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:blue_ice",
+    "input": [
+        [
+            "minecraft:packed_ice",
+            "minecraft:packed_ice",
+            "minecraft:packed_ice"
+        ],
+        [
+            "minecraft:packed_ice",
+            "minecraft:packed_ice",
+            "minecraft:packed_ice"
+        ],
+        [
+            "minecraft:packed_ice",
+            "minecraft:packed_ice",
+            "minecraft:packed_ice"
+        ]
+    ]
+}

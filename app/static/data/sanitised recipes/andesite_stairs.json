@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:andesite_stairs",
+    "input": [
+        [
+            "minecraft:andesite",
+            null,
+            null
+        ],
+        [
+            "minecraft:andesite",
+            "minecraft:andesite",
+            null
+        ],
+        [
+            "minecraft:andesite",
+            "minecraft:andesite",
+            "minecraft:andesite"
+        ]
+    ]
+}

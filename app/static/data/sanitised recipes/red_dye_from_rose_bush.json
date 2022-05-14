@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "red_dye",
+    "output": "minecraft:red_dye",
+    "input": [
+        "minecraft:rose_bush"
+    ]
+}

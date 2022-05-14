@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "planks",
+    "output": "minecraft:oak_planks",
+    "input": [
+        "minecraft:oak_logs"
+    ]
+}

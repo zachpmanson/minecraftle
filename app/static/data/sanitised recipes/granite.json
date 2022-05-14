@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "",
+    "output": "minecraft:granite",
+    "input": [
+        "minecraft:diorite",
+        "minecraft:quartz"
+    ]
+}

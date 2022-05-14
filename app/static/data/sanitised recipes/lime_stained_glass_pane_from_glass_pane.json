@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "stained_glass_pane",
+    "output": "minecraft:lime_stained_glass_pane",
+    "input": [
+        [
+            "minecraft:glass_pane",
+            "minecraft:glass_pane",
+            "minecraft:glass_pane"
+        ],
+        [
+            "minecraft:glass_pane",
+            "minecraft:lime_dye",
+            "minecraft:glass_pane"
+        ],
+        [
+            "minecraft:glass_pane",
+            "minecraft:glass_pane",
+            "minecraft:glass_pane"
+        ]
+    ]
+}

@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "",
+    "output": "minecraft:trapped_chest",
+    "input": [
+        "minecraft:chest",
+        "minecraft:tripwire_hook"
+    ]
+}

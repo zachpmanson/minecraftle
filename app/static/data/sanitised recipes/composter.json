@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:composter",
+    "input": [
+        [
+            "minecraft:wooden_slabs",
+            null,
+            "minecraft:wooden_slabs"
+        ],
+        [
+            "minecraft:wooden_slabs",
+            null,
+            "minecraft:wooden_slabs"
+        ],
+        [
+            "minecraft:wooden_slabs",
+            "minecraft:wooden_slabs",
+            "minecraft:wooden_slabs"
+        ]
+    ]
+}

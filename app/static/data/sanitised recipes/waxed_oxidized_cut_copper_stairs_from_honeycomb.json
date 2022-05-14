@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "waxed_oxidized_cut_copper_stairs",
+    "output": "minecraft:waxed_oxidized_cut_copper_stairs",
+    "input": [
+        "minecraft:oxidized_cut_copper_stairs",
+        "minecraft:honeycomb"
+    ]
+}

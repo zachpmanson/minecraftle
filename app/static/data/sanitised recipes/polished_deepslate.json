@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:polished_deepslate",
+    "input": [
+        [
+            "minecraft:cobbled_deepslate",
+            "minecraft:cobbled_deepslate",
+            null
+        ],
+        [
+            "minecraft:cobbled_deepslate",
+            "minecraft:cobbled_deepslate",
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

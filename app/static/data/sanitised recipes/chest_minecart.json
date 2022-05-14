@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:chest_minecart",
+    "input": [
+        [
+            "minecraft:chest",
+            null,
+            null
+        ],
+        [
+            "minecraft:minecart",
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

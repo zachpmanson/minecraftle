@@ -1,0 +1,14 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "",
+    "output": "minecraft:beetroot_soup",
+    "input": [
+        "minecraft:bowl",
+        "minecraft:beetroot",
+        "minecraft:beetroot",
+        "minecraft:beetroot",
+        "minecraft:beetroot",
+        "minecraft:beetroot",
+        "minecraft:beetroot"
+    ]
+}

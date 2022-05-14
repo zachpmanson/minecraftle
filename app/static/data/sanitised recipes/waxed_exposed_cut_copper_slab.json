@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "waxed_exposed_cut_copper_slab",
+    "output": "minecraft:waxed_exposed_cut_copper_slab",
+    "input": [
+        [
+            "minecraft:waxed_exposed_cut_copper",
+            "minecraft:waxed_exposed_cut_copper",
+            "minecraft:waxed_exposed_cut_copper"
+        ],
+        [
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:golden_sword",
+    "input": [
+        [
+            "minecraft:gold_ingot",
+            null,
+            null
+        ],
+        [
+            "minecraft:gold_ingot",
+            null,
+            null
+        ],
+        [
+            "minecraft:stick",
+            null,
+            null
+        ]
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:deepslate_brick_slab",
+    "input": [
+        [
+            "minecraft:deepslate_bricks",
+            "minecraft:deepslate_bricks",
+            "minecraft:deepslate_bricks"
+        ],
+        [
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

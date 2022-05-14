@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:raw_iron_block",
+    "input": [
+        [
+            "minecraft:raw_iron",
+            "minecraft:raw_iron",
+            "minecraft:raw_iron"
+        ],
+        [
+            "minecraft:raw_iron",
+            "minecraft:raw_iron",
+            "minecraft:raw_iron"
+        ],
+        [
+            "minecraft:raw_iron",
+            "minecraft:raw_iron",
+            "minecraft:raw_iron"
+        ]
+    ]
+}

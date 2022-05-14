@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "",
+    "output": "minecraft:slime_ball",
+    "input": [
+        "minecraft:slime_block"
+    ]
+}

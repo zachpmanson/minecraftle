@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:lodestone",
+    "input": [
+        [
+            "minecraft:chiseled_stone_bricks",
+            "minecraft:chiseled_stone_bricks",
+            "minecraft:chiseled_stone_bricks"
+        ],
+        [
+            "minecraft:chiseled_stone_bricks",
+            "minecraft:netherite_ingot",
+            "minecraft:chiseled_stone_bricks"
+        ],
+        [
+            "minecraft:chiseled_stone_bricks",
+            "minecraft:chiseled_stone_bricks",
+            "minecraft:chiseled_stone_bricks"
+        ]
+    ]
+}

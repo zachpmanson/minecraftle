@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "mossy_cobblestone",
+    "output": "minecraft:mossy_cobblestone",
+    "input": [
+        "minecraft:cobblestone",
+        "minecraft:vine"
+    ]
+}

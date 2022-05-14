@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:heavy_weighted_pressure_plate",
+    "input": [
+        [
+            "minecraft:iron_ingot",
+            "minecraft:iron_ingot",
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

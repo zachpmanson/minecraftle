@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:diorite_stairs",
+    "input": [
+        [
+            "minecraft:diorite",
+            null,
+            null
+        ],
+        [
+            "minecraft:diorite",
+            "minecraft:diorite",
+            null
+        ],
+        [
+            "minecraft:diorite",
+            "minecraft:diorite",
+            "minecraft:diorite"
+        ]
+    ]
+}

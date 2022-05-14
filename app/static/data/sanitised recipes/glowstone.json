@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:glowstone",
+    "input": [
+        [
+            "minecraft:glowstone_dust",
+            "minecraft:glowstone_dust",
+            null
+        ],
+        [
+            "minecraft:glowstone_dust",
+            "minecraft:glowstone_dust",
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

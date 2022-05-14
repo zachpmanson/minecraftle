@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "",
+    "output": "minecraft:glow_item_frame",
+    "input": [
+        "minecraft:item_frame",
+        "minecraft:glow_ink_sac"
+    ]
+}

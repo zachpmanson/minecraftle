@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:nether_wart_block",
+    "input": [
+        [
+            "minecraft:nether_wart",
+            "minecraft:nether_wart",
+            "minecraft:nether_wart"
+        ],
+        [
+            "minecraft:nether_wart",
+            "minecraft:nether_wart",
+            "minecraft:nether_wart"
+        ],
+        [
+            "minecraft:nether_wart",
+            "minecraft:nether_wart",
+            "minecraft:nether_wart"
+        ]
+    ]
+}

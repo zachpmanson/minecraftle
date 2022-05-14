@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "",
+    "output": "minecraft:fire_charge",
+    "input": [
+        "minecraft:gunpowder",
+        "minecraft:blaze_powder",
+        [
+            {
+                "item": "minecraft:coal"
+            },
+            {
+                "item": "minecraft:charcoal"
+            }
+        ]
+    ]
+}

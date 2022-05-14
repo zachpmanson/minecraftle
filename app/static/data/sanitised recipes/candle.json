@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:candle",
+    "input": [
+        [
+            "minecraft:string",
+            null,
+            null
+        ],
+        [
+            "minecraft:honeycomb",
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

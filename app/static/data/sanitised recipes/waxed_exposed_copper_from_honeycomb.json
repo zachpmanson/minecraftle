@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "waxed_exposed_copper",
+    "output": "minecraft:waxed_exposed_copper",
+    "input": [
+        "minecraft:exposed_copper",
+        "minecraft:honeycomb"
+    ]
+}

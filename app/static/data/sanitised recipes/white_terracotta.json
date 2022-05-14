@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "stained_terracotta",
+    "output": "minecraft:white_terracotta",
+    "input": [
+        [
+            "minecraft:terracotta",
+            "minecraft:terracotta",
+            "minecraft:terracotta"
+        ],
+        [
+            "minecraft:terracotta",
+            "minecraft:white_dye",
+            "minecraft:terracotta"
+        ],
+        [
+            "minecraft:terracotta",
+            "minecraft:terracotta",
+            "minecraft:terracotta"
+        ]
+    ]
+}
