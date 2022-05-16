@@ -158,6 +158,16 @@ a, a:visited {
     background: var(--slot-background-hover);
 }
 
+.lockedslot {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    background: var(--slot-background);
+    box-shadow: inset 2px 2px 0px var(--slot-shadow),
+      inset -2px -2px 0px var(--slot-inset);
+}
+
 .slot-image {
     margin:auto;
     width: 2.5rem;
@@ -220,17 +230,9 @@ a, a:visited {
     background: var(--slot-background);
     box-shadow: inset 2px 2px 0px var(--slot-shadow),
       inset -2px -2px 0px var(--slot-inset);
-    background-color: green;
+    background-color: hsla(92, 100%, 50%, 0.859);
 }
-.wrongguess {
-    width: 3rem;
-    height: 3rem;
-    display: flex;
-    justify-content: center;
-    background: var(--slot-background);
-    box-shadow: inset 2px 2px 0px var(--slot-shadow),
-      inset -2px -2px 0px var(--slot-inset);
-}
+
 .orangeguess {
     width: 3rem;
     height: 3rem;
@@ -239,5 +241,5 @@ a, a:visited {
     background: var(--slot-background);
     box-shadow: inset 2px 2px 0px var(--slot-shadow),
       inset -2px -2px 0px var(--slot-inset);
-    background-color: #ffae00;
+    background-color: #b98051
 }

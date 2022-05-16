@@ -65,6 +65,7 @@ function initIngredients() {
         newSlot["item"] = ingredient;
         image.classList.add("slot-image");
 
+
         newSlot.appendChild(image);
         setSlotBackground(image, ingredient);
         ingredientsList.appendChild(newSlot);
@@ -92,6 +93,7 @@ function addNewCraftingTable() {
     
     let tableDiv = document.createElement("div");
     tableDiv.classList.add("crafting-table");
+    tableDiv.setAttribute("id", "tablenumber" + tableNum);
     
     craftingTables.push([
         [null, null, null],
@@ -102,6 +104,7 @@ function addNewCraftingTable() {
     // Generate 9 slots
     for (let i = 0; i < 9; i++) {
         let slot = document.createElement("div");
+        slot.setAttribute("id", i);
         slot.classList.add("slot");
         slot["row"] = Math.floor(i/3);
         slot["col"] = i % 3;
@@ -156,6 +159,7 @@ function addNewCraftingTable() {
     let slot = document.createElement("div");
     slot.classList.add("slot")
     let imageDiv = document.createElement("div");
+    slot.setAttribute("id", "solutiondiv" + tableNum);
     imageDiv.classList.add("slot-image");
     slot.appendChild(imageDiv)
     
@@ -166,29 +170,65 @@ function addNewCraftingTable() {
         // then should lock this table, remove all event listeners from it
         
         // placeholder
-        var isCorrect;
-        isCorrect = processGuess(craftingTables[tableNum]);
-        console.log(isCorrect[0]);
+        var isCorrect = processGuess(craftingTables[tableNum]);
+
+        // Update solution div to display the correct item, change slot background and lock table
+
         if (isCorrect[0]) {
             console.log(solution_item), "solution item";
             setSlotBackground(imageDiv, solution_item);
+            for (const [index, element] of isCorrect[1].entries()) {
+                for (i = 0; i < 3; i++) {
+                    if (index === 1) {j = i + 4}
+                    else if (index === 2) {j = i + 7}
+                    else {j = i + 1}
+                    const slot = document.querySelector("#tablenumber" + tableNum + " :nth-child(" + j + ")");
+                    console.log(slot, j);
+
+                    if (element[i] === 2) {
+                        slot.classList.add("greenguess");
+                    }
+                    slot.classList.add("lockedslot");
+                    slot.classList.remove("slot");
+                }
+            }
+                     
         }
         else {
-            console.log(craftingTables[tableNum][0]);
-            console.log(isCorrect[1]);
             for (const [index, element] of isCorrect[1].entries()) {
-                console.log(index, element);
                 for (i = 0; i < 3; i++) {
-                    console.log(craftingTables[tableNum][index][i]);
+
+                    if (index === 1) {j = i + 4}
+                    else if (index === 2) {j = i + 7}
+                    else {j = i + 1}
+                    const slot = document.querySelector("#tablenumber" + tableNum + " :nth-child(" + j + ")");
+
                     if (element[i] === 2) {
-                        craftingTables[tableNum][index][i].c
+                        slot.classList.add("greenguess");
+                    }
+
+                    //TODO change 3 to whatever index in matchmap is correct ingredient but wrong position
+                    else if (element[i] === 3) {
+
+                        slot.classList.add("orangeguess");
+                    }
+
+                    slot.classList.add("lockedslot");
+                    slot.classList.remove("slot");
+
                     }
                 }
-                // if (craftingTables[tableNum][0]
+                addNewCraftingTable();    // if (craftingTables[tableNum][0]
             }
-            addNewCraftingTable();
+        var lockedtable = document.getElementById("tablenumber" + tableNum);
+        lockedtable.replaceWith(lockedtable.cloneNode(true));
+        var solutiondiv = document.getElementById("solutiondiv" + tableNum);
+        solutiondiv.classList.add("lockedslot");
+        solutiondiv.classList.remove("slot");
+        solutiondiv.replaceWith(solutiondiv.cloneNode(true));
+           
         }
-    });
+    );
     outputDiv.appendChild(slot);
     
     newTable.appendChild(outputDiv);
