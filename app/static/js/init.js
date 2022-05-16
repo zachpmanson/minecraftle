@@ -54,6 +54,7 @@ function initIngredients() {
         "minecraft:string",
         "minecraft:feather",
         "minecraft:gunpowder",
+        "minecraft:end_stone"
     ];
     
     givenIngredients.forEach((ingredient, i)=>{
@@ -136,7 +137,7 @@ function addNewCraftingTable() {
             setCursor(cursorItem);
             
             // TODO presumably this will then need to calculate if current craftingTable is a valid recipe
-            // processGuess(craftingTables[tableNum]);
+            
             
         })
     }
@@ -165,7 +166,28 @@ function addNewCraftingTable() {
         // then should lock this table, remove all event listeners from it
         
         // placeholder
-        addNewCraftingTable();
+        var isCorrect;
+        isCorrect = processGuess(craftingTables[tableNum]);
+        console.log(isCorrect[0]);
+        if (isCorrect[0]) {
+            console.log(solution_item), "solution item";
+            setSlotBackground(imageDiv, solution_item);
+        }
+        else {
+            console.log(craftingTables[tableNum][0]);
+            console.log(isCorrect[1]);
+            for (const [index, element] of isCorrect[1].entries()) {
+                console.log(index, element);
+                for (i = 0; i < 3; i++) {
+                    console.log(craftingTables[tableNum][index][i]);
+                    if (element[i] === 2) {
+                        craftingTables[tableNum][index][i].c
+                    }
+                }
+                // if (craftingTables[tableNum][0]
+            }
+            addNewCraftingTable();
+        }
     });
     outputDiv.appendChild(slot);
     

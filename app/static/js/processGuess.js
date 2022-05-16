@@ -12,22 +12,28 @@ recipenames = ['acacia_boat.json', 'acacia_button.json', 'acacia_door.json', 'ac
 'sticky_piston.json', 'stick_from_bamboo_item.json', 'stonecutter.json', 'stone_axe.json', 'stone_bricks.json', 'stone_brick_slab.json', 'stone_brick_stairs.json', 'stone_brick_wall.json', 'stone_button.json', 'stone_hoe.json', 'stone_pickaxe.json', 'stone_pressure_plate.json', 'stone_shovel.json', 'stone_slab.json', 'stone_stairs.json', 'stone_sword.json', 'stripped_acacia_wood.json', 'stripped_birch_wood.json', 'stripped_crimson_hyphae.json', 'stripped_dark_oak_wood.json', 'stripped_jungle_wood.json', 'stripped_oak_wood.json', 'stripped_spruce_wood.json', 'stripped_warped_hyphae.json', 'sugar_from_honey_bottle.json', 'sugar_from_sugar_cane.json', 'target.json', 'tinted_glass.json', 'tnt.json', 'tnt_minecart.json', 'torch.json', 'trapped_chest.json', 'tripwire_hook.json', 'turtle_helmet.json', 'warped_button.json', 'warped_door.json', 'warped_fence.json', 'warped_fence_gate.json', 'warped_fungus_on_a_stick.json', 'warped_hyphae.json', 'warped_planks.json', 'warped_pressure_plate.json', 'warped_sign.json', 'warped_slab.json', 'warped_stairs.json', 'warped_trapdoor.json', 'waxed_copper_block_from_honeycomb.json', 'waxed_cut_copper.json', 'waxed_cut_copper_from_honeycomb.json', 'waxed_cut_copper_slab.json', 'waxed_cut_copper_slab_from_honeycomb.json', 'waxed_cut_copper_stairs.json', 'waxed_cut_copper_stairs_from_honeycomb.json', 'waxed_exposed_copper_from_honeycomb.json', 'waxed_exposed_cut_copper.json', 'waxed_exposed_cut_copper_from_honeycomb.json', 'waxed_exposed_cut_copper_slab.json', 'waxed_exposed_cut_copper_slab_from_honeycomb.json', 'waxed_exposed_cut_copper_stairs.json', 'waxed_exposed_cut_copper_stairs_from_honeycomb.json', 'waxed_oxidized_copper_from_honeycomb.json', 'waxed_oxidized_cut_copper.json', 'waxed_oxidized_cut_copper_from_honeycomb.json', 'waxed_oxidized_cut_copper_slab.json', 
 'waxed_oxidized_cut_copper_slab_from_honeycomb.json', 'waxed_oxidized_cut_copper_stairs.json', 'waxed_oxidized_cut_copper_stairs_from_honeycomb.json', 'waxed_weathered_copper_from_honeycomb.json', 'waxed_weathered_cut_copper.json', 'waxed_weathered_cut_copper_from_honeycomb.json', 'waxed_weathered_cut_copper_slab.json', 'waxed_weathered_cut_copper_slab_from_honeycomb.json', 'waxed_weathered_cut_copper_stairs.json', 'waxed_weathered_cut_copper_stairs_from_honeycomb.json', 'weathered_cut_copper.json', 'weathered_cut_copper_slab.json', 'weathered_cut_copper_stairs.json', 'wheat.json', 'white_banner.json', 'white_bed.json', 'white_candle.json', 'white_carpet.json', 'white_concrete_powder.json', 'white_dye.json', 'white_dye_from_lily_of_the_valley.json', 'white_stained_glass.json', 'white_stained_glass_pane.json', 'white_stained_glass_pane_from_glass_pane.json', 'white_terracotta.json', 'white_wool_from_string.json', 'wooden_axe.json', 'wooden_hoe.json', 'wooden_pickaxe.json', 'wooden_shovel.json', 'wooden_sword.json', 'writable_book.json', 'yellow_banner.json', 'yellow_bed.json', 'yellow_bed_from_white_bed.json', 'yellow_candle.json', 'yellow_carpet.json', 'yellow_carpet_from_white_carpet.json', 'yellow_concrete_powder.json', 'yellow_dye_from_dandelion.json', 'yellow_dye_from_sunflower.json', 'yellow_stained_glass.json', 'yellow_stained_glass_pane.json', 'yellow_stained_glass_pane_from_glass_pane.json', 'yellow_terracotta.json', 'yellow_wool.json']
 
-var allrecipes = [];
+var solution_id = parseInt(document.getElementById("solution").innerHTML);
+console.log(solution_id);
+var solution_recipe;
+var solution_item;
 
-for (i in recipenames) {
-    fetch("../static/data/sanitised recipes/" + recipenames[i])
-    .then(response => {
-        return response.json();
-    })
-    .then(allrecipes => (allrecipes));
-
+async function getjson() {
+    const requestJson = "static/data/sanitised recipes/" + recipenames[solution_id];
+    console.log(requestJson);
+    const request = new Request(requestJson);
+    const response = await fetch(request);
+    const rawrecipe = await response.json();
+    populate_Solution(rawrecipe);
 }
-for (i in allrecipes) {
-    console.log(allrecipes[i]);
+
+getjson();
+
+function populate_Solution(rawrecipe) {
+    console.log(rawrecipe);
+    solution_recipe = rawrecipe["input"];
+    solution_item = rawrecipe["output"];
+    init(solution_recipe);
 }
-
-
-
 
 /**
  * Compares 2 tables of equal dimensions.  Only considers slots equal to 
@@ -66,8 +72,10 @@ function compareTables(table1, table2, matchOnly) {
                     // if match is item
                     matchmap[i][j] = 2;
                     matchcount++;
-                }  
-            } else {
+                }
+
+            }
+            else {
                 isFullMatch = false;
             }
         }                   
@@ -253,9 +261,9 @@ function init(solution) {
     allVariants = allVariants.concat(generateVariants(solution));
     remainingVariants = remainingVariants.concat(generateVariants(solution));
     // Account for horizontal reflection
-    recipe[0].reverse();
-    recipe[1].reverse();
-    recipe[2].reverse();
+    solution[0].reverse();
+    solution[1].reverse();
+    solution[2].reverse();
     allVariants = allVariants.concat(generateVariants(solution));
     remainingVariants = remainingVariants.concat(generateVariants(solution));
 }
@@ -276,7 +284,7 @@ let guessCount = -1; // this is just for console output
 //randomly select a recipe to be the solution for today
 
 //TODO implement difficulties and recipe selection changes based on difficulty, also implement solution changing every 24 hours rather than every time the server is loaded
-
+// init(solution_recipe);
 
 
 
