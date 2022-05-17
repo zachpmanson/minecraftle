@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "",
-    "output": "minecraft:pumpkin_seeds",
-    "input": [
-        "minecraft:pumpkin"
-    ]
-}

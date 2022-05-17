@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "planks",
-    "output": "minecraft:acacia_planks",
-    "input": [
-        "minecraft:acacia_logs"
-    ]
-}

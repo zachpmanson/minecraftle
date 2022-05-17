@@ -1,9 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "",
-    "output": "minecraft:flint_and_steel",
-    "input": [
-        "minecraft:iron_ingot",
-        "minecraft:flint"
-    ]
-}

@@ -1,9 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "",
-    "output": "minecraft:flower_banner_pattern",
-    "input": [
-        "minecraft:paper",
-        "minecraft:oxeye_daisy"
-    ]
-}

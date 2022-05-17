@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "blue_dye",
-    "output": "minecraft:blue_dye",
-    "input": [
-        "minecraft:lapis_lazuli"
-    ]
-}

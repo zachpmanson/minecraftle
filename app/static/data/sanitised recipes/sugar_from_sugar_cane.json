@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "sugar",
-    "output": "minecraft:sugar",
-    "input": [
-        "minecraft:sugar_cane"
-    ]
-}

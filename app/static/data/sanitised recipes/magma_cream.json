@@ -1,9 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "",
-    "output": "minecraft:magma_cream",
-    "input": [
-        "minecraft:blaze_powder",
-        "minecraft:slime_ball"
-    ]
-}

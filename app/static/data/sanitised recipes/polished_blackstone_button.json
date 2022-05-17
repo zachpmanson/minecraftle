@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "",
-    "output": "minecraft:polished_blackstone_button",
-    "input": [
-        "minecraft:polished_blackstone"
-    ]
-}

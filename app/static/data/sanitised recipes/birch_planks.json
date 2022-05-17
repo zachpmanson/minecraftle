@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "planks",
-    "output": "minecraft:birch_planks",
-    "input": [
-        "minecraft:birch_logs"
-    ]
-}

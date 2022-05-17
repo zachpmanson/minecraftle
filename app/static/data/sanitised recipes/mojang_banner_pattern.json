@@ -1,9 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "",
-    "output": "minecraft:mojang_banner_pattern",
-    "input": [
-        "minecraft:paper",
-        "minecraft:enchanted_golden_apple"
-    ]
-}

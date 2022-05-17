@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "",
-    "output": "minecraft:redstone",
-    "input": [
-        "minecraft:redstone_block"
-    ]
-}

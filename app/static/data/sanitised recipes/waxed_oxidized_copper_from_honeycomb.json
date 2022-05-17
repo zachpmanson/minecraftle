@@ -1,9 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "waxed_oxidized_copper",
-    "output": "minecraft:waxed_oxidized_copper",
-    "input": [
-        "minecraft:oxidized_copper",
-        "minecraft:honeycomb"
-    ]
-}

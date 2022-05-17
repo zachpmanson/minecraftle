@@ -149,13 +149,13 @@ a, a:visited {
     height: 3rem;
     display: flex;
     justify-content: center;
-    background: var(--slot-background);
+    background-color: var(--slot-background);
     box-shadow: inset 2px 2px 0px var(--slot-shadow),
       inset -2px -2px 0px var(--slot-inset);
 }
 
 .slot:hover {
-    background: var(--slot-background-hover);
+    background-color: var(--slot-background-hover);
 }
 
 .lockedslot {
@@ -163,7 +163,7 @@ a, a:visited {
     height: 3rem;
     display: flex;
     justify-content: center;
-    background: var(--slot-background);
+    background-color: var(--slot-background);
     box-shadow: inset 2px 2px 0px var(--slot-shadow),
       inset -2px -2px 0px var(--slot-inset);
 }
@@ -222,23 +222,16 @@ a, a:visited {
 }
 
 .greenguess {
-    width: 3rem;
-    height: 3rem;
-    display: flex;
-    justify-content: center;
-    background: var(--slot-background);
-    box-shadow: inset 2px 2px 0px var(--slot-shadow),
-      inset -2px -2px 0px var(--slot-inset);
-    background-color: hsla(92, 100%, 50%, 0.859);
+    background-color: hsla(92, 100%, 37%, 0.859);
 }
 
 .orangeguess {
-    width: 3rem;
-    height: 3rem;
-    display: flex;
-    justify-content: center;
-    background: var(--slot-background);
-    box-shadow: inset 2px 2px 0px var(--slot-shadow),
-      inset -2px -2px 0px var(--slot-inset);
     background-color: #b98051
+}
+.greyguess {
+    background-color: rgb(83, 83, 83)
+}
+
+.transition {
+    transition: all 1s ease;
 }
