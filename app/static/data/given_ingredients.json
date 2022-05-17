@@ -1,5 +1,5 @@
 [
-    "minecraft:oak_planks",
+    "minecraft:planks",
     "minecraft:cobblestone",
     "minecraft:stone",
     "minecraft:sand",
@@ -9,6 +9,5 @@
     "minecraft:redstone",
     "minecraft:string",
     "minecraft:feather",
-    "minecraft:gunpowder",
-    "minecraft:end_stone"
+    "minecraft:gunpowder"
 ]
