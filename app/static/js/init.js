@@ -21,8 +21,9 @@ function setSlotBackground(div, item) {
 /**
  * Set cursor image to match cursorItem
  */
-function setCursor() {
-    // TODO will set the div image that follows the cursor    
+ function setCursor(item) {
+    // TODO will set the div image that follows the cursor
+
 }
 
 /**
@@ -187,3 +188,4 @@ document.addEventListener("mousedown", e => {
 
 
 // TODO set event listener for mouse movement to let the cursorDiv follow the mouse around
+
