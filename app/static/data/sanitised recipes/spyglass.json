@@ -4,19 +4,13 @@
     "output": "minecraft:spyglass",
     "input": [
         [
-            null,
-            "minecraft:amethyst_shard",
-            null
+            "minecraft:amethyst_shard"
         ],
         [
-            null,
-            "minecraft:copper_ingot",
-            null
+            "minecraft:copper_ingot"
         ],
         [
-            null,
-            "minecraft:copper_ingot",
-            null
+            "minecraft:copper_ingot"
         ]
     ]
 }

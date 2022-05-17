@@ -4,19 +4,13 @@
     "output": "minecraft:wooden_shovel",
     "input": [
         [
-            "minecraft:planks",
-            null,
-            null
+            "minecraft:planks"
         ],
         [
-            "minecraft:stick",
-            null,
-            null
+            "minecraft:stick"
         ],
         [
-            "minecraft:stick",
-            null,
-            null
+            "minecraft:stick"
         ]
     ]
 }

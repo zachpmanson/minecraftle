@@ -5,18 +5,15 @@
     "input": [
         [
             "minecraft:birch_planks",
-            "minecraft:birch_planks",
-            null
+            "minecraft:birch_planks"
         ],
         [
             "minecraft:birch_planks",
-            "minecraft:birch_planks",
-            null
+            "minecraft:birch_planks"
         ],
         [
             "minecraft:birch_planks",
-            "minecraft:birch_planks",
-            null
+            "minecraft:birch_planks"
         ]
     ]
 }

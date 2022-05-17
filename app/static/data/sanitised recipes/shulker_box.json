@@ -4,19 +4,13 @@
     "output": "minecraft:shulker_box",
     "input": [
         [
-            "minecraft:shulker_shell",
-            null,
-            null
+            "minecraft:shulker_shell"
         ],
         [
-            "minecraft:chest",
-            null,
-            null
+            "minecraft:chest"
         ],
         [
-            "minecraft:shulker_shell",
-            null,
-            null
+            "minecraft:shulker_shell"
         ]
     ]
 }

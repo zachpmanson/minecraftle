@@ -5,18 +5,15 @@
     "input": [
         [
             "minecraft:diamond",
-            "minecraft:diamond",
-            null
+            "minecraft:diamond"
         ],
         [
             "minecraft:diamond",
-            "minecraft:stick",
-            null
+            "minecraft:stick"
         ],
         [
             null,
-            "minecraft:stick",
-            null
+            "minecraft:stick"
         ]
     ]
 }

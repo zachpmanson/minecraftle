@@ -5,18 +5,15 @@
     "input": [
         [
             "minecraft:dark_oak_planks",
-            "minecraft:dark_oak_planks",
-            null
+            "minecraft:dark_oak_planks"
         ],
         [
             "minecraft:dark_oak_planks",
-            "minecraft:dark_oak_planks",
-            null
+            "minecraft:dark_oak_planks"
         ],
         [
             "minecraft:dark_oak_planks",
-            "minecraft:dark_oak_planks",
-            null
+            "minecraft:dark_oak_planks"
         ]
     ]
 }

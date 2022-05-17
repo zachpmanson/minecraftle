@@ -4,19 +4,13 @@
     "output": "minecraft:stone_sword",
     "input": [
         [
-            "minecraft:stone_tool_materials",
-            null,
-            null
+            "minecraft:stone_tool_materials"
         ],
         [
-            "minecraft:stone_tool_materials",
-            null,
-            null
+            "minecraft:stone_tool_materials"
         ],
         [
-            "minecraft:stick",
-            null,
-            null
+            "minecraft:stick"
         ]
     ]
 }

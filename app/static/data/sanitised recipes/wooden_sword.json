@@ -4,19 +4,13 @@
     "output": "minecraft:wooden_sword",
     "input": [
         [
-            "minecraft:planks",
-            null,
-            null
+            "minecraft:planks"
         ],
         [
-            "minecraft:planks",
-            null,
-            null
+            "minecraft:planks"
         ],
         [
-            "minecraft:stick",
-            null,
-            null
+            "minecraft:stick"
         ]
     ]
 }

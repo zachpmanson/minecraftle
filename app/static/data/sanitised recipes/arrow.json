@@ -4,19 +4,13 @@
     "output": "minecraft:arrow",
     "input": [
         [
-            "minecraft:flint",
-            null,
-            null
+            "minecraft:flint"
         ],
         [
-            "minecraft:stick",
-            null,
-            null
+            "minecraft:stick"
         ],
         [
-            "minecraft:feather",
-            null,
-            null
+            "minecraft:feather"
         ]
     ]
 }

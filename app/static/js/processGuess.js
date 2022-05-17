@@ -25,6 +25,7 @@ function populateSolution(rawrecipe) {
     solution_recipe = rawrecipe["input"];
     solution_item = rawrecipe["output"];
     init(solution_recipe);
+    console.log(solution_item, solution_recipe);
 }
 
 /**

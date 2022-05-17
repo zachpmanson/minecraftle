@@ -4,19 +4,13 @@
     "output": "minecraft:stone_shovel",
     "input": [
         [
-            "minecraft:stone_tool_materials",
-            null,
-            null
+            "minecraft:stone_tool_materials"
         ],
         [
-            "minecraft:stick",
-            null,
-            null
+            "minecraft:stick"
         ],
         [
-            "minecraft:stick",
-            null,
-            null
+            "minecraft:stick"
         ]
     ]
 }
