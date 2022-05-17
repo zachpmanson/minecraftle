@@ -13,6 +13,7 @@ def processrecipes(path):
     recipesprocessed = []
 
     recipes = [recipe for recipe in os.listdir(path) if recipe.endswith('.json')]
+    recipes = recipes
     for i in recipes:
         jsonfile = open(path + i)
         recipesprocessed.append(json.load(jsonfile))
@@ -74,25 +75,46 @@ def processrecipes(path):
     
                             else:
                                 standard_dict["input"] = list(i)
-
-
-            
+                                
             if key == "result":
                 if isinstance(value, dict):
                     standard_dict["output"] = value["item"]
                 else:
                     standard_dict["output"] = value
+    
+        if  (standard_dict["type"] != "minecraft:crafting_shapeless"):  
+            removenull(standard_dict["input"])
+                
+            standard_dict["input"] = list(map(list, zip(*standard_dict["input"])))
+            removenull(standard_dict["input"])
         
-        for index, element in enumerate(standard_dict["input"]):
-            nullcount = 0;
-            for j in element:
-                if j == None:
-                    nullcount += 1
-            if nullcount == 3:
-                del standard_dict["input"][index]
+
+            standard_dict["input"] = list(map(list, zip(*standard_dict["input"])))
         writejson(standard_dict, name)
 
+
+def removenull(list):
+    deletions = []
+    for index, element in enumerate(list):
+        nullcount = 0;
+        for j in element:
+            if j == None:
+                nullcount += 1
+        if nullcount == 3:
+            deletions.append(index)
     
+    deletioncount = 0
+    for i in deletions:
+        if deletioncount == 1 and i == 1:
+            i = 0
+        elif (deletioncount == 1 and i == 2):
+            i = 1
+        elif (deletioncount == 2):
+            i = 0
+        del list[i]
+        deletioncount += 1
+
+
 def main():
     processrecipes("../recipes/")
 

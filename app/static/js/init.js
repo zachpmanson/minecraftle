@@ -43,7 +43,7 @@ function initIngredients() {
     
     // probably replace this with another json file to load in for easier puzzle mgmt
     let givenIngredients = [
-        "minecraft:oak_planks",
+        "minecraft:planks",
         "minecraft:cobblestone",
         "minecraft:stone",
         "minecraft:sand",
@@ -173,7 +173,7 @@ function addNewCraftingTable() {
         var isCorrect = processGuess(craftingTables[tableNum]);
 
         // Update solution div to display the correct item, change slot background and lock table
-
+        console.log(isCorrect[0], isCorrect[1]);
         if (isCorrect[0]) {
             console.log(solution_item), "solution item";
             setSlotBackground(imageDiv, solution_item);

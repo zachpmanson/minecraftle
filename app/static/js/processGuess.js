@@ -18,7 +18,8 @@ var solution_recipe;
 var solution_item;
 
 async function getjson() {
-    const requestJson = "static/data/sanitised recipes/" + recipenames[solution_id];
+    // const requestJson = "static/data/sanitised recipes/" + recipenames[solution_id];
+    const requestJson = "static/data/sanitised recipes/wooden_shovel.json"
     console.log(requestJson);
     const request = new Request(requestJson);
     const response = await fetch(request);
@@ -29,10 +30,10 @@ async function getjson() {
 getjson();
 
 function populate_Solution(rawrecipe) {
-    console.log(rawrecipe);
     solution_recipe = rawrecipe["input"];
     solution_item = rawrecipe["output"];
     init(solution_recipe);
+    console.log(solution_item, solution_recipe);
 }
 
 /**
