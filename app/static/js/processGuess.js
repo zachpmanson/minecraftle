@@ -214,25 +214,38 @@ function generateNextGuessStartingTable(guess, correctSlots) {
  */
 function addOrangeSlots(guess, correctSlots) {
     n_items = {}
+    // first pass initiliases all item dict entries to 0
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
             if (guess[i][j] === null) {
 
             } else if (n_items[guess[i][j]] === undefined) {
-                n_items[guess[i][j]] = 1
-            } else {
+                n_items[guess[i][j]] = 0
+            }
+        }
+    }
+
+    // Second pass counts how many of each item are correct
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (correctSlots[i][j] === 2) {
                 n_items[guess[i][j]]++;
             }
         }
     }
 
+
+    // finds how many of each item are left to be identified
     n_unidentified_items = {...solution_n_items};
     Object.keys(solution_n_items).forEach((e,i)=>{
         if (n_unidentified_items[e] !== undefined) {
             n_unidentified_items[e] = solution_n_items[e] - n_items[e]
         }
     });
+    console.log(solution_n_items)
+    console.log(n_unidentified_items)
 
+    // final pass marks (at most n) orange slots for each item in n_unidentified_items
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
             if (correctSlots[i][j] === 2) {
