@@ -1,12 +1,30 @@
 //Processing Social media buttons
 
-function getURL(text, url){
-   return "https://twitter.com/intent/tweet?text=" + document.title + "&url=" + document.location; 
+//Tweet
+function getT(text, url){
+   return "https://twitter.com/intent/tweet?text=" + "Checkout my latest Minecraftle Stats:" + "&url=" + document.location; 
 }
 function tweet(){
-    var url = getURL();
+    var url = getT();
     PopupCenter(url, "Share to Twitter", "590", "253");
 }
+
+//Facebook
+function getFB(text, url){
+    return "https://www.facebook.com/sharer.php?u=" + document.location + "Checkout my stats"; 
+ }
+ function facebook(){
+     var url = getFB();
+     PopupCenter(url, "Share to Facebook", "590", "253");
+ }
+ //Reddit
+function getR(text, url){
+    return "https://reddit.com/submit?url=" + document.location + "&title=" + "Checkout my latest Minecraftle stats"; 
+ }
+ function reddit(){
+     var url = getR();
+     PopupCenter(url, "Share to Reddit", "590", "253");
+ }
 
 //This is a copied function (credit later)
 function PopupCenter(url, title, w, h) {
