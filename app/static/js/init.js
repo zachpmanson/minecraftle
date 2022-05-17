@@ -12,16 +12,6 @@ let cursorItem = null;
  * @param {HTMLElement} div 
  * @param {String} item 
  */
-
-
-const onMouseMove = (e) => {
-    cursor.style.left = (e.pageX - 5) + 'px';
-    cursor.style.top = (e.pageY - 5) + 'px';
-
-}
-
-document.addEventListener("mousemove", onMouseMove);
-
 function setSlotBackground(div, item) {
     console.log("item: " + item)
     div.style.backgroundImage = (item === null) ? "none" : "url(" + items[item]["icon"] +")";
@@ -260,5 +250,7 @@ document.addEventListener("mousedown", e => {
     }
 });
 
-
-// TODO set event listener for mouse movement to let the cursorDiv follow the mouse around
+document.addEventListener("mousemove", (e) => {
+    cursor.style.left = (e.pageX - 5) + 'px';
+    cursor.style.top = (e.pageY - 5) + 'px';
+});
