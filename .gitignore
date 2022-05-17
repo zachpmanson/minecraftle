@@ -2,3 +2,5 @@
 venv/
 *.DS_Store
 .vscode/
+.flaskenv
+microblog.py
