@@ -322,9 +322,9 @@ function init(solution) {
     allVariants = allVariants.concat(generateVariants(solution));
     remainingVariants = remainingVariants.concat(generateVariants(solution));
     // Account for horizontal reflection
-    solution[0].reverse();
-    solution[1].reverse();
-    solution[2].reverse();
+    for (let i = 0; i < solution.length; i ++){
+        solution[i].reverse();
+    }
     allVariants = allVariants.concat(generateVariants(solution));
     remainingVariants = remainingVariants.concat(generateVariants(solution));
 }
