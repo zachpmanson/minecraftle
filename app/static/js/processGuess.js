@@ -1,4 +1,32 @@
 
+var solution_id = document.getElementById("solution").innerText;
+console.log(solution_id);
+var solution_recipe;
+var solution_item;
+let recipes;
+
+function getSolutionRecipe() {
+    fetch(
+        "static/data/recipes.json"
+    ).then(response => {
+        return response.json();
+    }).then(obj => {
+        recipes = obj;
+        console.log("recipes"+recipes);
+        let rawrecipe = recipes[solution_id];    
+        populateSolution(rawrecipe);
+    });
+        
+}
+
+
+function populateSolution(rawrecipe) {
+    console.log(rawrecipe);
+    solution_recipe = rawrecipe["input"];
+    solution_item = rawrecipe["output"];
+    init(solution_recipe);
+    console.log(solution_item, solution_recipe);
+}
 
 /**
  * Compares 2 tables of equal dimensions.  Only considers slots equal to 
@@ -37,8 +65,10 @@ function compareTables(table1, table2, matchOnly) {
                     // if match is item
                     matchmap[i][j] = 2;
                     matchcount++;
-                }  
-            } else {
+                }
+
+            }
+            else {
                 isFullMatch = false;
             }
         }                   
@@ -155,7 +185,7 @@ function findRemainingVariantsIndices(matchmaps, matchcounts) {
 /**
  * Creates a table of with correct items that have been guessed filled in
  * @param {Array} guess 
- * @param {Arrray} correctSlots a matchmap of guess on the solution
+ * @param {Array} correctSlots a matchmap of guess on the solution
  * @returns {Array} table with item strings filled in
  */
 function generateNextGuessStartingTable(guess, correctSlots) {
@@ -177,6 +207,58 @@ function generateNextGuessStartingTable(guess, correctSlots) {
 }
 
 /**
+ * Adds orange slots to a given table.  Requires all correctSlots to already be
+ * filled in.
+ * @param {Array} guess 
+ * @param {Array} correctSlots 
+ */
+function addOrangeSlots(guess, correctSlots) {
+    n_items = {}
+    // first pass initiliases all item dict entries to 0
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (guess[i][j] === null) {
+
+            } else if (n_items[guess[i][j]] === undefined) {
+                n_items[guess[i][j]] = 0
+            }
+        }
+    }
+
+    // Second pass counts how many of each item are correct
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (correctSlots[i][j] === 2) {
+                n_items[guess[i][j]]++;
+            }
+        }
+    }
+
+
+    // finds how many of each item are left to be identified
+    n_unidentified_items = {...solution_n_items};
+    Object.keys(solution_n_items).forEach((e,i)=>{
+        if (n_unidentified_items[e] !== undefined) {
+            n_unidentified_items[e] = solution_n_items[e] - n_items[e]
+        }
+    });
+    console.log(solution_n_items)
+    console.log(n_unidentified_items)
+
+    // final pass marks (at most n) orange slots for each item in n_unidentified_items
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (correctSlots[i][j] === 2) {
+
+            } else if (n_unidentified_items[guess[i][j]] > 0) {
+                correctSlots[i][j] = 3;
+                n_unidentified_items[guess[i][j]]--;
+            }
+        }
+    }
+}
+
+/**
  * Takes guess table, checks against all variants.  If not a full match to any,
  * it checks the remainingVariants.  Trims remainingVariants based on 
  * correctSlots identified.
@@ -194,7 +276,7 @@ function processGuess(guess) {
     let matchmap = allVariantsData[1];
 
     if (isFullMatch) {
-        return [true, matchmap];
+        return [true, compareTables(guess,guess)[0]];
     }
 
     // if it isn't a fullmatch to any variant
@@ -216,20 +298,38 @@ function processGuess(guess) {
 
     // this may unnecessary, depends how we want game to function
     startingTable = generateNextGuessStartingTable(guess, correctSlots);
+    
+    addOrangeSlots(guess, correctSlots);
 
     return [false, correctSlots];
 }
 
 function init(solution) {
+    for (let i = 0; i < solution.length; i++) {
+        for (let j = 0; j < solution[0].length; j++) {
+            if (solution[i][j] === null) {
+
+            } else if (solution_n_items[solution[i][j]] === undefined) {
+                solution_n_items[solution[i][j]] = 1
+            } else {
+                solution_n_items[solution[i][j]]++;
+            }
+        }
+    }
+
+    console.log(solution_n_items);
+
     allVariants = allVariants.concat(generateVariants(solution));
     remainingVariants = remainingVariants.concat(generateVariants(solution));
     // Account for horizontal reflection
-    recipe[0].reverse();
-    recipe[1].reverse();
-    recipe[2].reverse();
+    solution[0].reverse();
+    solution[1].reverse();
+    solution[2].reverse();
     allVariants = allVariants.concat(generateVariants(solution));
     remainingVariants = remainingVariants.concat(generateVariants(solution));
 }
+
+
 
 
 /* Recipes must be in format
@@ -239,10 +339,17 @@ function init(solution) {
     [null,"minecraft:stick"]
 ]
  */
-
+let solution_n_items = {};
 let remainingVariants = [];
 let allVariants = [];
 let guessCount = -1; // this is just for console output
+
+//randomly select a recipe to be the solution for today
+
+//TODO implement difficulties and recipe selection changes based on difficulty, also implement solution changing every 24 hours rather than every time the server is loaded
+// init(solution_recipe);
+
+
 
 /*Used for manual testing.  Can remove when hooked up to GUI * /
 let recipe = [
@@ -285,9 +392,6 @@ console.log(processGuess(guesses[1]))
 console.log(processGuess(guesses[2]))
 console.log(processGuess(guesses[3]))
 //*/
-
-
-
 
 
 
