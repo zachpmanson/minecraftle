@@ -1,9 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "waxed_weathered_cut_copper_slab",
-    "output": "minecraft:waxed_weathered_cut_copper_slab",
-    "input": [
-        "minecraft:weathered_cut_copper_slab",
-        "minecraft:honeycomb"
-    ]
-}

@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "wooden_button",
-    "output": "minecraft:acacia_button",
-    "input": [
-        "minecraft:acacia_planks"
-    ]
-}

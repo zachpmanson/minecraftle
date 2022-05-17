@@ -1,9 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "wool",
-    "output": "minecraft:light_blue_wool",
-    "input": [
-        "minecraft:light_blue_dye",
-        "minecraft:white_wool"
-    ]
-}

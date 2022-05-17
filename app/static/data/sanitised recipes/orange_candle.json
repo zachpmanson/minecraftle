@@ -1,9 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "dyed_candle",
-    "output": "minecraft:orange_candle",
-    "input": [
-        "minecraft:candle",
-        "minecraft:orange_dye"
-    ]
-}
