@@ -5,18 +5,15 @@
     "input": [
         [
             "minecraft:planks",
-            "minecraft:planks",
-            null
+            "minecraft:planks"
         ],
         [
             "minecraft:planks",
-            "minecraft:stick",
-            null
+            "minecraft:stick"
         ],
         [
             null,
-            "minecraft:stick",
-            null
+            "minecraft:stick"
         ]
     ]
 }

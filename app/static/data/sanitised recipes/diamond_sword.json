@@ -4,19 +4,13 @@
     "output": "minecraft:diamond_sword",
     "input": [
         [
-            "minecraft:diamond",
-            null,
-            null
+            "minecraft:diamond"
         ],
         [
-            "minecraft:diamond",
-            null,
-            null
+            "minecraft:diamond"
         ],
         [
-            "minecraft:stick",
-            null,
-            null
+            "minecraft:stick"
         ]
     ]
 }

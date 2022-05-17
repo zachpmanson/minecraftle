@@ -5,18 +5,15 @@
     "input": [
         [
             "minecraft:gold_ingot",
-            "minecraft:gold_ingot",
-            null
+            "minecraft:gold_ingot"
         ],
         [
             null,
-            "minecraft:stick",
-            null
+            "minecraft:stick"
         ],
         [
             null,
-            "minecraft:stick",
-            null
+            "minecraft:stick"
         ]
     ]
 }

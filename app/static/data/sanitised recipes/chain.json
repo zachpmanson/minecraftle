@@ -4,19 +4,13 @@
     "output": "minecraft:chain",
     "input": [
         [
-            "minecraft:iron_nugget",
-            null,
-            null
+            "minecraft:iron_nugget"
         ],
         [
-            "minecraft:iron_ingot",
-            null,
-            null
+            "minecraft:iron_ingot"
         ],
         [
-            "minecraft:iron_nugget",
-            null,
-            null
+            "minecraft:iron_nugget"
         ]
     ]
 }

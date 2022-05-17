@@ -5,18 +5,15 @@
     "input": [
         [
             "minecraft:oak_planks",
-            "minecraft:oak_planks",
-            null
+            "minecraft:oak_planks"
         ],
         [
             "minecraft:oak_planks",
-            "minecraft:oak_planks",
-            null
+            "minecraft:oak_planks"
         ],
         [
             "minecraft:oak_planks",
-            "minecraft:oak_planks",
-            null
+            "minecraft:oak_planks"
         ]
     ]
 }

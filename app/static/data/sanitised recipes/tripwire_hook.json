@@ -4,19 +4,13 @@
     "output": "minecraft:tripwire_hook",
     "input": [
         [
-            "minecraft:iron_ingot",
-            null,
-            null
+            "minecraft:iron_ingot"
         ],
         [
-            "minecraft:stick",
-            null,
-            null
+            "minecraft:stick"
         ],
         [
-            "minecraft:planks",
-            null,
-            null
+            "minecraft:planks"
         ]
     ]
 }

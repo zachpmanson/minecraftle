@@ -5,18 +5,15 @@
     "input": [
         [
             "minecraft:acacia_planks",
-            "minecraft:acacia_planks",
-            null
+            "minecraft:acacia_planks"
         ],
         [
             "minecraft:acacia_planks",
-            "minecraft:acacia_planks",
-            null
+            "minecraft:acacia_planks"
         ],
         [
             "minecraft:acacia_planks",
-            "minecraft:acacia_planks",
-            null
+            "minecraft:acacia_planks"
         ]
     ]
 }

@@ -5,18 +5,15 @@
     "input": [
         [
             "minecraft:warped_planks",
-            "minecraft:warped_planks",
-            null
+            "minecraft:warped_planks"
         ],
         [
             "minecraft:warped_planks",
-            "minecraft:warped_planks",
-            null
+            "minecraft:warped_planks"
         ],
         [
             "minecraft:warped_planks",
-            "minecraft:warped_planks",
-            null
+            "minecraft:warped_planks"
         ]
     ]
 }

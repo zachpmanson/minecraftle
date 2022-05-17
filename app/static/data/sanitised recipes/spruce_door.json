@@ -5,18 +5,15 @@
     "input": [
         [
             "minecraft:spruce_planks",
-            "minecraft:spruce_planks",
-            null
+            "minecraft:spruce_planks"
         ],
         [
             "minecraft:spruce_planks",
-            "minecraft:spruce_planks",
-            null
+            "minecraft:spruce_planks"
         ],
         [
             "minecraft:spruce_planks",
-            "minecraft:spruce_planks",
-            null
+            "minecraft:spruce_planks"
         ]
     ]
 }

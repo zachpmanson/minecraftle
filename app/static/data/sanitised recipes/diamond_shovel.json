@@ -4,19 +4,13 @@
     "output": "minecraft:diamond_shovel",
     "input": [
         [
-            "minecraft:diamond",
-            null,
-            null
+            "minecraft:diamond"
         ],
         [
-            "minecraft:stick",
-            null,
-            null
+            "minecraft:stick"
         ],
         [
-            "minecraft:stick",
-            null,
-            null
+            "minecraft:stick"
         ]
     ]
 }

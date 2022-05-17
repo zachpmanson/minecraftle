@@ -4,19 +4,13 @@
     "output": "minecraft:golden_shovel",
     "input": [
         [
-            "minecraft:gold_ingot",
-            null,
-            null
+            "minecraft:gold_ingot"
         ],
         [
-            "minecraft:stick",
-            null,
-            null
+            "minecraft:stick"
         ],
         [
-            "minecraft:stick",
-            null,
-            null
+            "minecraft:stick"
         ]
     ]
 }

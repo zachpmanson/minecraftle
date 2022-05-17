@@ -4,19 +4,13 @@
     "output": "minecraft:lightning_rod",
     "input": [
         [
-            "minecraft:copper_ingot",
-            null,
-            null
+            "minecraft:copper_ingot"
         ],
         [
-            "minecraft:copper_ingot",
-            null,
-            null
+            "minecraft:copper_ingot"
         ],
         [
-            "minecraft:copper_ingot",
-            null,
-            null
+            "minecraft:copper_ingot"
         ]
     ]
 }

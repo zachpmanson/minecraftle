@@ -4,19 +4,13 @@
     "output": "minecraft:soul_torch",
     "input": [
         [
-            "minecraft:coal",
-            null,
-            null
+            "minecraft:coal"
         ],
         [
-            "minecraft:stick",
-            null,
-            null
+            "minecraft:stick"
         ],
         [
-            "minecraft:soul_fire_base_blocks",
-            null,
-            null
+            "minecraft:soul_fire_base_blocks"
         ]
     ]
 }

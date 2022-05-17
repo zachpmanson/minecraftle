@@ -5,18 +5,15 @@
     "input": [
         [
             "minecraft:jungle_planks",
-            "minecraft:jungle_planks",
-            null
+            "minecraft:jungle_planks"
         ],
         [
             "minecraft:jungle_planks",
-            "minecraft:jungle_planks",
-            null
+            "minecraft:jungle_planks"
         ],
         [
             "minecraft:jungle_planks",
-            "minecraft:jungle_planks",
-            null
+            "minecraft:jungle_planks"
         ]
     ]
 }
