@@ -7,7 +7,7 @@ let maxGuesses = 5;
 let craftingTables = [];
 let cursor = document.getElementById("cursor");
 let cursorItem = null;
-
+let givenIngredients;
 /**
  * Sets background of given div to given item
  * @param {HTMLElement} div 
@@ -21,8 +21,8 @@ function setSlotBackground(div, item) {
 /**
  * Set cursor image to match cursorItem
  */
-function setCursor() {
-    // TODO will set the div image that follows the cursor    
+function setCursor(item) {
+    setSlotBackground(cursor, item);
 }
 
 /**
@@ -33,19 +33,6 @@ function initIngredients() {
     //console.log(items)    
     
     // probably replace this with another json file to load in for easier puzzle mgmt
-    let givenIngredients = [
-        "minecraft:oak_planks",
-        "minecraft:cobblestone",
-        "minecraft:stone",
-        "minecraft:sand",
-        "minecraft:stick",
-        "minecraft:iron_ingot",
-        "minecraft:coal",
-        "minecraft:redstone",
-        "minecraft:string",
-        "minecraft:feather",
-        "minecraft:gunpowder",
-    ];
     
     givenIngredients.forEach((ingredient, i)=>{
         let newSlot = document.createElement("div");
@@ -62,7 +49,9 @@ function initIngredients() {
         newSlot.addEventListener("mousedown",e=>{
             cursorItem = (e.target.parentElement["item"]);
             console.log("Picked up " + cursorItem);
+            setCursor(cursorItem);
         });
+
     });
 }
 
@@ -80,6 +69,7 @@ function addNewCraftingTable() {
     
     let tableDiv = document.createElement("div");
     tableDiv.classList.add("crafting-table");
+    tableDiv.setAttribute("id", "tablenumber" + tableNum);
     
     craftingTables.push([
         [null, null, null],
@@ -90,6 +80,7 @@ function addNewCraftingTable() {
     // Generate 9 slots
     for (let i = 0; i < 9; i++) {
         let slot = document.createElement("div");
+        slot.setAttribute("id", i);
         slot.classList.add("slot");
         slot["row"] = Math.floor(i/3);
         slot["col"] = i % 3;
@@ -122,13 +113,14 @@ function addNewCraftingTable() {
                 console.log(craftingTables[tableNum])
                 console.log("Picked up " + cursorItem)
             }
+            setCursor(cursorItem);
             
-            setCursor()
             // TODO presumably this will then need to calculate if current craftingTable is a valid recipe
+            
             
         })
     }
-    
+
     newTable.appendChild(tableDiv)
     
     let arrowDiv = document.createElement("div");
@@ -143,6 +135,7 @@ function addNewCraftingTable() {
     let slot = document.createElement("div");
     slot.classList.add("slot")
     let imageDiv = document.createElement("div");
+    slot.setAttribute("id", "solutiondiv" + tableNum);
     imageDiv.classList.add("slot-image");
     slot.appendChild(imageDiv)
     
@@ -153,7 +146,60 @@ function addNewCraftingTable() {
         // then should lock this table, remove all event listeners from it
         
         // placeholder
-        addNewCraftingTable();
+        var isCorrect = processGuess(craftingTables[tableNum]);
+
+        // Update solution div to display the correct item, change slot background and lock table
+        console.log(isCorrect[0], isCorrect[1]);
+        if (isCorrect[0]) {
+            console.log(solution_item), "solution item";
+            setSlotBackground(imageDiv, solution_item);
+            for (const [index, element] of isCorrect[1].entries()) {
+                console.log("index: "+ index+" element: " + element)
+                for (let i = 0; i < 3; i++) {
+                    if (index === 1) {j = i + 4}
+                    else if (index === 2) {j = i + 7}
+                    else {j = i + 1}
+                    const slot = document.querySelector("#tablenumber" + tableNum + " :nth-child(" + j + ")");
+                    console.log(slot, j);
+                    if (element[i] === 2) {
+                        slot.classList.add("greenguess");
+                    }
+                    slot.classList.add("lockedslot");
+                    slot.classList.remove("slot");
+                }
+            }
+            
+        } else {
+                for (const [index, element] of isCorrect[1].entries()) {
+                    for (let i = 0; i < 3; i++) {
+                        if (index === 1) {j = i + 4}
+                        else if (index === 2) {j = i + 7}
+                        else {j = i + 1}
+                        const slot = document.querySelector("#tablenumber" + tableNum + " :nth-child(" + j + ")");
+                        
+                        if (element[i] === 2) {
+                            slot.classList.add("greenguess");
+                        }
+                        
+                        //TODO change 3 to whatever index in matchmap is correct ingredient but wrong position
+                        else if (element[i] === 3) {
+                            
+                            slot.classList.add("orangeguess");
+                        }
+                        
+                        slot.classList.add("lockedslot");
+                        slot.classList.remove("slot");   
+                    }
+                }
+                addNewCraftingTable();    // if (craftingTables[tableNum][0]
+        }
+        var lockedtable = document.getElementById("tablenumber" + tableNum);
+        lockedtable.replaceWith(lockedtable.cloneNode(true));
+        var solutiondiv = document.getElementById("solutiondiv" + tableNum);
+        solutiondiv.classList.add("lockedslot");
+        solutiondiv.classList.remove("slot");
+        solutiondiv.replaceWith(solutiondiv.cloneNode(true));
+           
     });
     outputDiv.appendChild(slot);
     
@@ -165,9 +211,17 @@ function addNewCraftingTable() {
 document.addEventListener('DOMContentLoaded', () => {
     addNewCraftingTable();
 
+    
+    fetch('static/data/given_ingredients.json')
+      .then(response => response.json())
+      .then(obj => {givenIngredients = obj});
+
     fetch('static/data/items.json')
       .then(response => response.json())
-      .then(obj => {items = obj; initIngredients()})
+      .then(obj => {items = obj; initIngredients()});
+
+    
+    getSolutionRecipe();
 
     // Will probably need to read in recipes.json here
 
@@ -180,10 +234,13 @@ console.log(ingredientsDiv)
 document.addEventListener("mousedown", e => {
     let isClickOutsideIngredients = ingredientsDiv.contains(e.target) || guessesDiv.contains(e.target);
     if (!isClickOutsideIngredients) {
-        console.log("dropping item " + cursorItem)
+        console.log("dropping item because outside ingredients " + cursorItem)
         cursorItem = null;
+        setCursor(cursorItem);
     }
 });
 
-
-// TODO set event listener for mouse movement to let the cursorDiv follow the mouse around
+document.addEventListener("mousemove", (e) => {
+    cursor.style.left = (e.pageX - 5) + 'px';
+    cursor.style.top = (e.pageY - 5) + 'px';
+});
