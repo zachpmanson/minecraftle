@@ -1,8 +1,9 @@
 import json, os
+from operator import indexOf
 from tkinter import N
 
 def writejson(dictionary, filename):
-    jsonobject = json.dumps(dictionary)
+    jsonobject = json.dumps(dictionary, indent = 4)
     with open(("../sanitised recipes/" + filename), 'w') as jsonfile:
         jsonfile.write(jsonobject)
     
@@ -81,6 +82,14 @@ def processrecipes(path):
                     standard_dict["output"] = value["item"]
                 else:
                     standard_dict["output"] = value
+        
+        for index, element in enumerate(standard_dict["input"]):
+            nullcount = 0;
+            for j in element:
+                if j == None:
+                    nullcount += 1
+            if nullcount == 3:
+                del standard_dict["input"][index]
         writejson(standard_dict, name)
 
     
