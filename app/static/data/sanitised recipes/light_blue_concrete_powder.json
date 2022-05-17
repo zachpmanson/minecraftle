@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "concrete_powder",
+    "output": "minecraft:light_blue_concrete_powder",
+    "input": [
+        "minecraft:light_blue_dye",
+        "minecraft:sand",
+        "minecraft:sand",
+        "minecraft:sand",
+        "minecraft:sand",
+        "minecraft:gravel",
+        "minecraft:gravel",
+        "minecraft:gravel",
+        "minecraft:gravel"
+    ]
+}

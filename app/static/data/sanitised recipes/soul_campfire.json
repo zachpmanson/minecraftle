@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:soul_campfire",
+    "input": [
+        [
+            null,
+            "minecraft:stick",
+            null
+        ],
+        [
+            "minecraft:stick",
+            "minecraft:soul_fire_base_blocks",
+            "minecraft:stick"
+        ],
+        [
+            "minecraft:logs",
+            "minecraft:logs",
+            "minecraft:logs"
+        ]
+    ]
+}

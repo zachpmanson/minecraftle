@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "",
+    "output": "minecraft:coal",
+    "input": [
+        "minecraft:coal_block"
+    ]
+}

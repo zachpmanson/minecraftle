@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "banner",
+    "output": "minecraft:black_banner",
+    "input": [
+        [
+            "minecraft:black_wool",
+            "minecraft:black_wool",
+            "minecraft:black_wool"
+        ],
+        [
+            "minecraft:black_wool",
+            "minecraft:black_wool",
+            "minecraft:black_wool"
+        ],
+        [
+            null,
+            "minecraft:stick",
+            null
+        ]
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:dark_prismarine",
+    "input": [
+        [
+            "minecraft:prismarine_shard",
+            "minecraft:prismarine_shard",
+            "minecraft:prismarine_shard"
+        ],
+        [
+            "minecraft:prismarine_shard",
+            "minecraft:black_dye",
+            "minecraft:prismarine_shard"
+        ],
+        [
+            "minecraft:prismarine_shard",
+            "minecraft:prismarine_shard",
+            "minecraft:prismarine_shard"
+        ]
+    ]
+}

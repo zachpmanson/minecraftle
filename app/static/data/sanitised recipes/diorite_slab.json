@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:diorite_slab",
+    "input": [
+        [
+            "minecraft:diorite",
+            "minecraft:diorite",
+            "minecraft:diorite"
+        ],
+        [
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:leather_chestplate",
+    "input": [
+        [
+            "minecraft:leather",
+            null,
+            "minecraft:leather"
+        ],
+        [
+            "minecraft:leather",
+            "minecraft:leather",
+            "minecraft:leather"
+        ],
+        [
+            "minecraft:leather",
+            "minecraft:leather",
+            "minecraft:leather"
+        ]
+    ]
+}

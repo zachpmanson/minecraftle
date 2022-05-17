@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:purpur_block",
+    "input": [
+        [
+            "minecraft:popped_chorus_fruit",
+            "minecraft:popped_chorus_fruit",
+            null
+        ],
+        [
+            "minecraft:popped_chorus_fruit",
+            "minecraft:popped_chorus_fruit",
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

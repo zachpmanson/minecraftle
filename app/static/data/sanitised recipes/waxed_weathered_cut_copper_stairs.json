@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "waxed_weathered_cut_copper_stairs",
+    "output": "minecraft:waxed_weathered_cut_copper_stairs",
+    "input": [
+        [
+            "minecraft:waxed_weathered_cut_copper",
+            null,
+            null
+        ],
+        [
+            "minecraft:waxed_weathered_cut_copper",
+            "minecraft:waxed_weathered_cut_copper",
+            null
+        ],
+        [
+            "minecraft:waxed_weathered_cut_copper",
+            "minecraft:waxed_weathered_cut_copper",
+            "minecraft:waxed_weathered_cut_copper"
+        ]
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "",
+    "output": "minecraft:diamond",
+    "input": [
+        "minecraft:diamond_block"
+    ]
+}

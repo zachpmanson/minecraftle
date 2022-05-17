@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wooden_fence",
+    "output": "minecraft:crimson_fence",
+    "input": [
+        [
+            "minecraft:crimson_planks",
+            "minecraft:stick",
+            "minecraft:crimson_planks"
+        ],
+        [
+            "minecraft:crimson_planks",
+            "minecraft:stick",
+            "minecraft:crimson_planks"
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

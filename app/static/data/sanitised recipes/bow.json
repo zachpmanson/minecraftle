@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:bow",
+    "input": [
+        [
+            null,
+            "minecraft:stick",
+            "minecraft:string"
+        ],
+        [
+            "minecraft:stick",
+            null,
+            "minecraft:string"
+        ],
+        [
+            null,
+            "minecraft:stick",
+            "minecraft:string"
+        ]
+    ]
+}

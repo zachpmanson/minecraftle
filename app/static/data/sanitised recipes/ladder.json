@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:ladder",
+    "input": [
+        [
+            "minecraft:stick",
+            null,
+            "minecraft:stick"
+        ],
+        [
+            "minecraft:stick",
+            "minecraft:stick",
+            "minecraft:stick"
+        ],
+        [
+            "minecraft:stick",
+            null,
+            "minecraft:stick"
+        ]
+    ]
+}

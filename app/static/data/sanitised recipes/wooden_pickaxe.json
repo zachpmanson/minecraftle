@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:wooden_pickaxe",
+    "input": [
+        [
+            "minecraft:planks",
+            "minecraft:planks",
+            "minecraft:planks"
+        ],
+        [
+            null,
+            "minecraft:stick",
+            null
+        ],
+        [
+            null,
+            "minecraft:stick",
+            null
+        ]
+    ]
+}

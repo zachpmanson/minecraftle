@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "banner",
+    "output": "minecraft:yellow_banner",
+    "input": [
+        [
+            "minecraft:yellow_wool",
+            "minecraft:yellow_wool",
+            "minecraft:yellow_wool"
+        ],
+        [
+            "minecraft:yellow_wool",
+            "minecraft:yellow_wool",
+            "minecraft:yellow_wool"
+        ],
+        [
+            null,
+            "minecraft:stick",
+            null
+        ]
+    ]
+}

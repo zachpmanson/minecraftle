@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:lead",
+    "input": [
+        [
+            "minecraft:string",
+            "minecraft:string",
+            null
+        ],
+        [
+            "minecraft:string",
+            "minecraft:slime_ball",
+            null
+        ],
+        [
+            null,
+            null,
+            "minecraft:string"
+        ]
+    ]
+}

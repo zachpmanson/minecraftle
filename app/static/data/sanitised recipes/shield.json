@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:shield",
+    "input": [
+        [
+            "minecraft:planks",
+            "minecraft:iron_ingot",
+            "minecraft:planks"
+        ],
+        [
+            "minecraft:planks",
+            "minecraft:planks",
+            "minecraft:planks"
+        ],
+        [
+            null,
+            "minecraft:planks",
+            null
+        ]
+    ]
+}

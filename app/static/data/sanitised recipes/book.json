@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "",
+    "output": "minecraft:book",
+    "input": [
+        "minecraft:paper",
+        "minecraft:paper",
+        "minecraft:paper",
+        "minecraft:leather"
+    ]
+}

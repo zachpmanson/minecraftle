@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:spyglass",
+    "input": [
+        [
+            null,
+            "minecraft:amethyst_shard",
+            null
+        ],
+        [
+            null,
+            "minecraft:copper_ingot",
+            null
+        ],
+        [
+            null,
+            "minecraft:copper_ingot",
+            null
+        ]
+    ]
+}

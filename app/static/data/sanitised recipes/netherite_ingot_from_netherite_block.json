@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "netherite_ingot",
+    "output": "minecraft:netherite_ingot",
+    "input": [
+        "minecraft:netherite_block"
+    ]
+}

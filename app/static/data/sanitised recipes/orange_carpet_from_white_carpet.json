@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "carpet",
+    "output": "minecraft:orange_carpet",
+    "input": [
+        [
+            "minecraft:white_carpet",
+            "minecraft:white_carpet",
+            "minecraft:white_carpet"
+        ],
+        [
+            "minecraft:white_carpet",
+            "minecraft:orange_dye",
+            "minecraft:white_carpet"
+        ],
+        [
+            "minecraft:white_carpet",
+            "minecraft:white_carpet",
+            "minecraft:white_carpet"
+        ]
+    ]
+}

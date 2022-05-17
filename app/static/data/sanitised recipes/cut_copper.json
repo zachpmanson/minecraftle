@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:cut_copper",
+    "input": [
+        [
+            "minecraft:copper_block",
+            "minecraft:copper_block",
+            null
+        ],
+        [
+            "minecraft:copper_block",
+            "minecraft:copper_block",
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

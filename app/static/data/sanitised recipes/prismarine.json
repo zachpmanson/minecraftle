@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:prismarine",
+    "input": [
+        [
+            "minecraft:prismarine_shard",
+            "minecraft:prismarine_shard",
+            null
+        ],
+        [
+            "minecraft:prismarine_shard",
+            "minecraft:prismarine_shard",
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

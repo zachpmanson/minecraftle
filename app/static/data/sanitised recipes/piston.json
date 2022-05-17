@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:piston",
+    "input": [
+        [
+            "minecraft:planks",
+            "minecraft:planks",
+            "minecraft:planks"
+        ],
+        [
+            "minecraft:cobblestone",
+            "minecraft:iron_ingot",
+            "minecraft:cobblestone"
+        ],
+        [
+            "minecraft:cobblestone",
+            "minecraft:redstone",
+            "minecraft:cobblestone"
+        ]
+    ]
+}

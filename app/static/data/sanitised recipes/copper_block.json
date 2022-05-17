@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:copper_block",
+    "input": [
+        [
+            "minecraft:copper_ingot",
+            "minecraft:copper_ingot",
+            "minecraft:copper_ingot"
+        ],
+        [
+            "minecraft:copper_ingot",
+            "minecraft:copper_ingot",
+            "minecraft:copper_ingot"
+        ],
+        [
+            "minecraft:copper_ingot",
+            "minecraft:copper_ingot",
+            "minecraft:copper_ingot"
+        ]
+    ]
+}

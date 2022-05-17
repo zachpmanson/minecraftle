@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:comparator",
+    "input": [
+        [
+            null,
+            "minecraft:redstone_torch",
+            null
+        ],
+        [
+            "minecraft:redstone_torch",
+            "minecraft:quartz",
+            "minecraft:redstone_torch"
+        ],
+        [
+            "minecraft:stone",
+            "minecraft:stone",
+            "minecraft:stone"
+        ]
+    ]
+}

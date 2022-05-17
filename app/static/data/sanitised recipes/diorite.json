@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:diorite",
+    "input": [
+        [
+            "minecraft:cobblestone",
+            "minecraft:quartz",
+            null
+        ],
+        [
+            "minecraft:quartz",
+            "minecraft:cobblestone",
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

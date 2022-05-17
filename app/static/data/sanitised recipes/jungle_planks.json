@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "planks",
+    "output": "minecraft:jungle_planks",
+    "input": [
+        "minecraft:jungle_logs"
+    ]
+}

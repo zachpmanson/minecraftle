@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wooden_slab",
+    "output": "minecraft:acacia_slab",
+    "input": [
+        [
+            "minecraft:acacia_planks",
+            "minecraft:acacia_planks",
+            "minecraft:acacia_planks"
+        ],
+        [
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

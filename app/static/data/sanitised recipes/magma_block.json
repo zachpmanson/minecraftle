@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:magma_block",
+    "input": [
+        [
+            "minecraft:magma_cream",
+            "minecraft:magma_cream",
+            null
+        ],
+        [
+            "minecraft:magma_cream",
+            "minecraft:magma_cream",
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

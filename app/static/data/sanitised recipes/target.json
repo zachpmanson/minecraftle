@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:target",
+    "input": [
+        [
+            null,
+            "minecraft:redstone",
+            null
+        ],
+        [
+            "minecraft:redstone",
+            "minecraft:hay_block",
+            "minecraft:redstone"
+        ],
+        [
+            null,
+            "minecraft:redstone",
+            null
+        ]
+    ]
+}

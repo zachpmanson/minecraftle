@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:smoker",
+    "input": [
+        [
+            null,
+            "minecraft:logs",
+            null
+        ],
+        [
+            "minecraft:logs",
+            "minecraft:furnace",
+            "minecraft:logs"
+        ],
+        [
+            null,
+            "minecraft:logs",
+            null
+        ]
+    ]
+}

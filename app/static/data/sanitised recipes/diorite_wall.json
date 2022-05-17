@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:diorite_wall",
+    "input": [
+        [
+            "minecraft:diorite",
+            "minecraft:diorite",
+            "minecraft:diorite"
+        ],
+        [
+            "minecraft:diorite",
+            "minecraft:diorite",
+            "minecraft:diorite"
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

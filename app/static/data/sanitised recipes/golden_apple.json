@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:golden_apple",
+    "input": [
+        [
+            "minecraft:gold_ingot",
+            "minecraft:gold_ingot",
+            "minecraft:gold_ingot"
+        ],
+        [
+            "minecraft:gold_ingot",
+            "minecraft:apple",
+            "minecraft:gold_ingot"
+        ],
+        [
+            "minecraft:gold_ingot",
+            "minecraft:gold_ingot",
+            "minecraft:gold_ingot"
+        ]
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:stone_pickaxe",
+    "input": [
+        [
+            "minecraft:stone_tool_materials",
+            "minecraft:stone_tool_materials",
+            "minecraft:stone_tool_materials"
+        ],
+        [
+            null,
+            "minecraft:stick",
+            null
+        ],
+        [
+            null,
+            "minecraft:stick",
+            null
+        ]
+    ]
+}

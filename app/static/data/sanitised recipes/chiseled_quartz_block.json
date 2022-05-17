@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:chiseled_quartz_block",
+    "input": [
+        [
+            "minecraft:quartz_slab",
+            null,
+            null
+        ],
+        [
+            "minecraft:quartz_slab",
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

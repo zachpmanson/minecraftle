@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:item_frame",
+    "input": [
+        [
+            "minecraft:stick",
+            "minecraft:stick",
+            "minecraft:stick"
+        ],
+        [
+            "minecraft:stick",
+            "minecraft:leather",
+            "minecraft:stick"
+        ],
+        [
+            "minecraft:stick",
+            "minecraft:stick",
+            "minecraft:stick"
+        ]
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wooden_pressure_plate",
+    "output": "minecraft:crimson_pressure_plate",
+    "input": [
+        [
+            "minecraft:crimson_planks",
+            "minecraft:crimson_planks",
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

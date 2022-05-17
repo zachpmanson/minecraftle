@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wooden_fence_gate",
+    "output": "minecraft:spruce_fence_gate",
+    "input": [
+        [
+            "minecraft:stick",
+            "minecraft:spruce_planks",
+            "minecraft:stick"
+        ],
+        [
+            "minecraft:stick",
+            "minecraft:spruce_planks",
+            "minecraft:stick"
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "planks",
+    "output": "minecraft:warped_planks",
+    "input": [
+        "minecraft:warped_stems"
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:crossbow",
+    "input": [
+        [
+            "minecraft:stick",
+            "minecraft:iron_ingot",
+            "minecraft:stick"
+        ],
+        [
+            "minecraft:string",
+            "minecraft:tripwire_hook",
+            "minecraft:string"
+        ],
+        [
+            null,
+            "minecraft:stick",
+            null
+        ]
+    ]
+}

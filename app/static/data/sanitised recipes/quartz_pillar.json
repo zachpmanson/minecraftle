@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:quartz_pillar",
+    "input": [
+        [
+            "minecraft:quartz_block",
+            null,
+            null
+        ],
+        [
+            "minecraft:quartz_block",
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

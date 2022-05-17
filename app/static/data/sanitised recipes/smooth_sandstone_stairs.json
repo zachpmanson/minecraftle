@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:smooth_sandstone_stairs",
+    "input": [
+        [
+            "minecraft:smooth_sandstone",
+            null,
+            null
+        ],
+        [
+            "minecraft:smooth_sandstone",
+            "minecraft:smooth_sandstone",
+            null
+        ],
+        [
+            "minecraft:smooth_sandstone",
+            "minecraft:smooth_sandstone",
+            "minecraft:smooth_sandstone"
+        ]
+    ]
+}

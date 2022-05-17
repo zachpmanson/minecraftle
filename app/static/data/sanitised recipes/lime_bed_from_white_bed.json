@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "dyed_bed",
+    "output": "minecraft:lime_bed",
+    "input": [
+        "minecraft:white_bed",
+        "minecraft:lime_dye"
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:coal_block",
+    "input": [
+        [
+            "minecraft:coal",
+            "minecraft:coal",
+            "minecraft:coal"
+        ],
+        [
+            "minecraft:coal",
+            "minecraft:coal",
+            "minecraft:coal"
+        ],
+        [
+            "minecraft:coal",
+            "minecraft:coal",
+            "minecraft:coal"
+        ]
+    ]
+}

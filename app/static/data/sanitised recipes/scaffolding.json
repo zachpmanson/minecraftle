@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:scaffolding",
+    "input": [
+        [
+            "minecraft:bamboo",
+            "minecraft:string",
+            "minecraft:bamboo"
+        ],
+        [
+            "minecraft:bamboo",
+            null,
+            "minecraft:bamboo"
+        ],
+        [
+            "minecraft:bamboo",
+            null,
+            "minecraft:bamboo"
+        ]
+    ]
+}

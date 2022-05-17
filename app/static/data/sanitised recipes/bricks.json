@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:bricks",
+    "input": [
+        [
+            "minecraft:brick",
+            "minecraft:brick",
+            null
+        ],
+        [
+            "minecraft:brick",
+            "minecraft:brick",
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "carpet",
+    "output": "minecraft:purple_carpet",
+    "input": [
+        [
+            "minecraft:purple_wool",
+            "minecraft:purple_wool",
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

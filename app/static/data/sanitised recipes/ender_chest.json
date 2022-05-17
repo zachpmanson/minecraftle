@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:ender_chest",
+    "input": [
+        [
+            "minecraft:obsidian",
+            "minecraft:obsidian",
+            "minecraft:obsidian"
+        ],
+        [
+            "minecraft:obsidian",
+            "minecraft:ender_eye",
+            "minecraft:obsidian"
+        ],
+        [
+            "minecraft:obsidian",
+            "minecraft:obsidian",
+            "minecraft:obsidian"
+        ]
+    ]
+}

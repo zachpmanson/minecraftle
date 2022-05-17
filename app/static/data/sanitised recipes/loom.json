@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:loom",
+    "input": [
+        [
+            "minecraft:string",
+            "minecraft:string",
+            null
+        ],
+        [
+            "minecraft:planks",
+            "minecraft:planks",
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

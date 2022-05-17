@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:jack_o_lantern",
+    "input": [
+        [
+            "minecraft:carved_pumpkin",
+            null,
+            null
+        ],
+        [
+            "minecraft:torch",
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

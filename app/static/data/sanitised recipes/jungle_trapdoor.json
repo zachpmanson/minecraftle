@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wooden_trapdoor",
+    "output": "minecraft:jungle_trapdoor",
+    "input": [
+        [
+            "minecraft:jungle_planks",
+            "minecraft:jungle_planks",
+            "minecraft:jungle_planks"
+        ],
+        [
+            "minecraft:jungle_planks",
+            "minecraft:jungle_planks",
+            "minecraft:jungle_planks"
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

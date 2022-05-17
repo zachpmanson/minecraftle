@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "brown_dye",
+    "output": "minecraft:brown_dye",
+    "input": [
+        "minecraft:cocoa_beans"
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:diamond_axe",
+    "input": [
+        [
+            "minecraft:diamond",
+            "minecraft:diamond",
+            null
+        ],
+        [
+            "minecraft:diamond",
+            "minecraft:stick",
+            null
+        ],
+        [
+            null,
+            "minecraft:stick",
+            null
+        ]
+    ]
+}

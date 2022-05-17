@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:tnt_minecart",
+    "input": [
+        [
+            "minecraft:tnt",
+            null,
+            null
+        ],
+        [
+            "minecraft:minecart",
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

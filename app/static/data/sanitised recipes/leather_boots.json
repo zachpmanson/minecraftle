@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:leather_boots",
+    "input": [
+        [
+            "minecraft:leather",
+            null,
+            "minecraft:leather"
+        ],
+        [
+            "minecraft:leather",
+            null,
+            "minecraft:leather"
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

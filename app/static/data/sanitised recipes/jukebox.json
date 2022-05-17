@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:jukebox",
+    "input": [
+        [
+            "minecraft:planks",
+            "minecraft:planks",
+            "minecraft:planks"
+        ],
+        [
+            "minecraft:planks",
+            "minecraft:diamond",
+            "minecraft:planks"
+        ],
+        [
+            "minecraft:planks",
+            "minecraft:planks",
+            "minecraft:planks"
+        ]
+    ]
+}

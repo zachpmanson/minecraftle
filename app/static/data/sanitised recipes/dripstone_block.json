@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "pointed_dripstone",
+    "output": "minecraft:dripstone_block",
+    "input": [
+        [
+            "minecraft:pointed_dripstone",
+            "minecraft:pointed_dripstone",
+            null
+        ],
+        [
+            "minecraft:pointed_dripstone",
+            "minecraft:pointed_dripstone",
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

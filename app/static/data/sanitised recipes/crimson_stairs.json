@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "wooden_stairs",
+    "output": "minecraft:crimson_stairs",
+    "input": [
+        [
+            "minecraft:crimson_planks",
+            null,
+            null
+        ],
+        [
+            "minecraft:crimson_planks",
+            "minecraft:crimson_planks",
+            null
+        ],
+        [
+            "minecraft:crimson_planks",
+            "minecraft:crimson_planks",
+            "minecraft:crimson_planks"
+        ]
+    ]
+}

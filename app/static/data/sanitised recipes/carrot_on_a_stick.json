@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:carrot_on_a_stick",
+    "input": [
+        [
+            "minecraft:fishing_rod",
+            null,
+            null
+        ],
+        [
+            null,
+            "minecraft:carrot",
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

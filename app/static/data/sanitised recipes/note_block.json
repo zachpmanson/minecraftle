@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:note_block",
+    "input": [
+        [
+            "minecraft:planks",
+            "minecraft:planks",
+            "minecraft:planks"
+        ],
+        [
+            "minecraft:planks",
+            "minecraft:redstone",
+            "minecraft:planks"
+        ],
+        [
+            "minecraft:planks",
+            "minecraft:planks",
+            "minecraft:planks"
+        ]
+    ]
+}

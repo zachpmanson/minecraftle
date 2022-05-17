@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:soul_lantern",
+    "input": [
+        [
+            "minecraft:iron_nugget",
+            "minecraft:iron_nugget",
+            "minecraft:iron_nugget"
+        ],
+        [
+            "minecraft:iron_nugget",
+            "minecraft:soul_torch",
+            "minecraft:iron_nugget"
+        ],
+        [
+            "minecraft:iron_nugget",
+            "minecraft:iron_nugget",
+            "minecraft:iron_nugget"
+        ]
+    ]
+}

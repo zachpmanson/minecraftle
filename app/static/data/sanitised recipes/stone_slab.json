@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:stone_slab",
+    "input": [
+        [
+            "minecraft:stone",
+            "minecraft:stone",
+            "minecraft:stone"
+        ],
+        [
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

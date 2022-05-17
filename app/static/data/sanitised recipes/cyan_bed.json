@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "bed",
+    "output": "minecraft:cyan_bed",
+    "input": [
+        [
+            "minecraft:cyan_wool",
+            "minecraft:cyan_wool",
+            "minecraft:cyan_wool"
+        ],
+        [
+            "minecraft:planks",
+            "minecraft:planks",
+            "minecraft:planks"
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

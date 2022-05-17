@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "bark",
+    "output": "minecraft:birch_wood",
+    "input": [
+        [
+            "minecraft:birch_log",
+            "minecraft:birch_log",
+            null
+        ],
+        [
+            "minecraft:birch_log",
+            "minecraft:birch_log",
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

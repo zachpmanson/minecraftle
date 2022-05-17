@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "",
+    "output": "minecraft:wheat",
+    "input": [
+        "minecraft:hay_block"
+    ]
+}

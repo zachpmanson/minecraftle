@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:red_sandstone_slab",
+    "input": [
+        [
+            "minecraft:red_sandstone",
+            "minecraft:red_sandstone",
+            "minecraft:red_sandstone"
+        ],
+        [
+            null,
+            null,
+            null
+        ],
+        [
+            null,
+            null,
+            null
+        ]
+    ]
+}

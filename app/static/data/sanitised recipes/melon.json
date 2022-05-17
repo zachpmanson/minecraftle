@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:melon",
+    "input": [
+        [
+            "minecraft:melon_slice",
+            "minecraft:melon_slice",
+            "minecraft:melon_slice"
+        ],
+        [
+            "minecraft:melon_slice",
+            "minecraft:melon_slice",
+            "minecraft:melon_slice"
+        ],
+        [
+            "minecraft:melon_slice",
+            "minecraft:melon_slice",
+            "minecraft:melon_slice"
+        ]
+    ]
+}
