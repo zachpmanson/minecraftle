@@ -163,6 +163,7 @@ function addNewCraftingTable() {
 
         // Update solution div to display the correct item, change slot background and lock table
         console.log(isCorrect[0], isCorrect[1]);
+
         if (isCorrect[0]) {
             console.log(solution_item), "solution item";
             setSlotBackground(imageDiv, solution_item);
@@ -181,31 +182,36 @@ function addNewCraftingTable() {
                     slot.classList.remove("slot");
                 }
             }
-            
-        } else {
-                for (const [index, element] of isCorrect[1].entries()) {
-                    for (let i = 0; i < 3; i++) {
-                        if (index === 1) {j = i + 4}
-                        else if (index === 2) {j = i + 7}
-                        else {j = i + 1}
-                        const slot = document.querySelector("#tablenumber" + tableNum + " :nth-child(" + j + ")");
-                        
-                        if (element[i] === 2) {
-                            slot.classList.add("greenguess");
-                        }
-                        
-                        //TODO change 3 to whatever index in matchmap is correct ingredient but wrong position
-                        else if (element[i] === 3) {
-                            
-                            slot.classList.add("orangeguess");
-                        }
-                        
-                        slot.classList.add("lockedslot");
-                        slot.classList.remove("slot");   
+            winner();
+        } 
+        else if (guessCount < 9) {
+            for (const [index, element] of isCorrect[1].entries()) {
+                for (let i = 0; i < 3; i++) {
+                    if (index === 1) {j = i + 4}
+                    else if (index === 2) {j = i + 7}
+                    else {j = i + 1}
+                    const slot = document.querySelector("#tablenumber" + tableNum + " :nth-child(" + j + ")");
+                    
+                    if (element[i] === 2) {
+                        slot.classList.add("greenguess");
                     }
+                    
+                    //TODO change 3 to whatever index in matchmap is correct ingredient but wrong position
+                    else if (element[i] === 3) {
+                        
+                        slot.classList.add("orangeguess");
+                    }
+                    
+                    slot.classList.add("lockedslot");
+                    slot.classList.remove("slot");   
                 }
-                addNewCraftingTable();    // if (craftingTables[tableNum][0]
+            }
+            addNewCraftingTable();
+            // if (guessCount > 8) {loser()}
         }
+
+
+
         var lockedtable = document.getElementById("tablenumber" + tableNum);
         lockedtable.replaceWith(lockedtable.cloneNode(true));
         var solutiondiv = document.getElementById("solutiondiv" + tableNum);
@@ -257,3 +263,14 @@ document.addEventListener("mousemove", (e) => {
     cursor.style.left = (e.pageX - 5) + 'px';
     cursor.style.top = (e.pageY - 5) + 'px';
 });
+
+
+//Function for on win
+function winner() {
+    console.log("winner");
+}
+
+//function on lose
+function loser() {
+    console.log("loser");
+}
