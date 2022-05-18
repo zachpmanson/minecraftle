@@ -1,9 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "",
-    "output": "minecraft:ender_eye",
-    "input": [
-        "minecraft:ender_pearl",
-        "minecraft:blaze_powder"
-    ]
-}

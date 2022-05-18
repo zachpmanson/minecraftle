@@ -1,9 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "",
-    "output": "minecraft:firework_rocket",
-    "input": [
-        "minecraft:gunpowder",
-        "minecraft:paper"
-    ]
-}

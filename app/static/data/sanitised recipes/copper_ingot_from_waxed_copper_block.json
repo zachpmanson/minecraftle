@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "copper_ingot",
-    "output": "minecraft:copper_ingot",
-    "input": [
-        "minecraft:waxed_copper_block"
-    ]
-}

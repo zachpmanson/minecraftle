@@ -1,9 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "",
-    "output": "minecraft:andesite",
-    "input": [
-        "minecraft:diorite",
-        "minecraft:cobblestone"
-    ]
-}

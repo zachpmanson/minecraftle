@@ -4,4 +4,7 @@ venv/
 .vscode/
 .flaskenv
 microblog.py
+<<<<<<< HEAD
 
+=======
+>>>>>>> main

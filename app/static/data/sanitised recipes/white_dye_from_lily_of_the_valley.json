@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "white_dye",
-    "output": "minecraft:white_dye",
-    "input": [
-        "minecraft:lily_of_the_valley"
-    ]
-}

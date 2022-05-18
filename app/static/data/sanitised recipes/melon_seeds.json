@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "",
-    "output": "minecraft:melon_seeds",
-    "input": [
-        "minecraft:melon_slice"
-    ]
-}

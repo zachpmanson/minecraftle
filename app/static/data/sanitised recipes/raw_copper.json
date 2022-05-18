@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "",
-    "output": "minecraft:raw_copper",
-    "input": [
-        "minecraft:raw_copper_block"
-    ]
-}

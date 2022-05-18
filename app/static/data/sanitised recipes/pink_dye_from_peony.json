@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "pink_dye",
-    "output": "minecraft:pink_dye",
-    "input": [
-        "minecraft:peony"
-    ]
-}

@@ -7,6 +7,7 @@ let maxGuesses = 5;
 let craftingTables = [];
 let cursor = document.getElementById("cursor");
 let cursorItem = null;
+let givenIngredients;
 /**
  * Sets background of given div to given item
  * @param {HTMLElement} div 
@@ -26,6 +27,19 @@ function setSlotBackground(div, item) {
     div.style.backgroundImage = (item === null) ? "none" : "url(" + items[item]["icon"] +")";
 }
 
+
+var click = document.getElementById("audio");
+
+function playAudio() {
+  click.play();
+}
+
+buttons = document.getElementsByClassName("mc-button");
+console.log(buttons);
+for (let i = 0; i < buttons.length; i ++) {
+    // buttons[i].addEventListener("mousedown", playAudio());
+}
+
 /**
  * Set cursor image to match cursorItem
  */
@@ -41,20 +55,6 @@ function initIngredients() {
     //console.log(items)    
     
     // probably replace this with another json file to load in for easier puzzle mgmt
-    let givenIngredients = [
-        "minecraft:planks",
-        "minecraft:cobblestone",
-        "minecraft:stone",
-        "minecraft:sand",
-        "minecraft:stick",
-        "minecraft:iron_ingot",
-        "minecraft:coal",
-        "minecraft:redstone",
-        "minecraft:string",
-        "minecraft:feather",
-        "minecraft:gunpowder",
-        "minecraft:end_stone"
-    ];
     
     givenIngredients.forEach((ingredient, i)=>{
         let newSlot = document.createElement("div");
@@ -63,7 +63,6 @@ function initIngredients() {
         newSlot.classList.add("slot");
         newSlot["item"] = ingredient;
         image.classList.add("slot-image");
-
 
         newSlot.appendChild(image);
         setSlotBackground(image, ingredient);
@@ -177,13 +176,13 @@ function addNewCraftingTable() {
             console.log(solution_item), "solution item";
             setSlotBackground(imageDiv, solution_item);
             for (const [index, element] of isCorrect[1].entries()) {
-                for (i = 0; i < 3; i++) {
+                console.log("index: "+ index+" element: " + element)
+                for (let i = 0; i < 3; i++) {
                     if (index === 1) {j = i + 4}
                     else if (index === 2) {j = i + 7}
                     else {j = i + 1}
                     const slot = document.querySelector("#tablenumber" + tableNum + " :nth-child(" + j + ")");
                     console.log(slot, j);
-
                     if (element[i] === 2) {
                         slot.classList.add("greenguess");
                     }
@@ -191,34 +190,31 @@ function addNewCraftingTable() {
                     slot.classList.remove("slot");
                 }
             }
-                     
-        }
-        else {
-            for (const [index, element] of isCorrect[1].entries()) {
-                for (i = 0; i < 3; i++) {
-
-                    if (index === 1) {j = i + 4}
-                    else if (index === 2) {j = i + 7}
-                    else {j = i + 1}
-                    const slot = document.querySelector("#tablenumber" + tableNum + " :nth-child(" + j + ")");
-
-                    if (element[i] === 2) {
-                        slot.classList.add("greenguess");
-                    }
-
-                    //TODO change 3 to whatever index in matchmap is correct ingredient but wrong position
-                    else if (element[i] === 3) {
-
-                        slot.classList.add("orangeguess");
-                    }
-
-                    slot.classList.add("lockedslot");
-                    slot.classList.remove("slot");
-
+            
+        } else {
+                for (const [index, element] of isCorrect[1].entries()) {
+                    for (let i = 0; i < 3; i++) {
+                        if (index === 1) {j = i + 4}
+                        else if (index === 2) {j = i + 7}
+                        else {j = i + 1}
+                        const slot = document.querySelector("#tablenumber" + tableNum + " :nth-child(" + j + ")");
+                        
+                        if (element[i] === 2) {
+                            slot.classList.add("greenguess");
+                        }
+                        
+                        //TODO change 3 to whatever index in matchmap is correct ingredient but wrong position
+                        else if (element[i] === 3) {
+                            
+                            slot.classList.add("orangeguess");
+                        }
+                        
+                        slot.classList.add("lockedslot");
+                        slot.classList.remove("slot");   
                     }
                 }
                 addNewCraftingTable();    // if (craftingTables[tableNum][0]
-            }
+        }
         var lockedtable = document.getElementById("tablenumber" + tableNum);
         lockedtable.replaceWith(lockedtable.cloneNode(true));
         var solutiondiv = document.getElementById("solutiondiv" + tableNum);
@@ -226,8 +222,7 @@ function addNewCraftingTable() {
         solutiondiv.classList.remove("slot");
         solutiondiv.replaceWith(solutiondiv.cloneNode(true));
            
-        }
-    );
+    });
     outputDiv.appendChild(slot);
     
     newTable.appendChild(outputDiv);
@@ -238,9 +233,17 @@ function addNewCraftingTable() {
 document.addEventListener('DOMContentLoaded', () => {
     addNewCraftingTable();
 
+    
+    fetch('static/data/given_ingredients.json')
+      .then(response => response.json())
+      .then(obj => {givenIngredients = obj});
+
     fetch('static/data/items.json')
       .then(response => response.json())
-      .then(obj => {items = obj; initIngredients()})
+      .then(obj => {items = obj; initIngredients()});
+
+    
+    getSolutionRecipe();
 
     // Will probably need to read in recipes.json here
 
@@ -259,5 +262,7 @@ document.addEventListener("mousedown", e => {
     }
 });
 
-
-// TODO set event listener for mouse movement to let the cursorDiv follow the mouse around
+document.addEventListener("mousemove", (e) => {
+    cursor.style.left = (e.pageX - 5) + 'px';
+    cursor.style.top = (e.pageY - 5) + 'px';
+});

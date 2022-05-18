@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "bonemeal",
-    "output": "minecraft:bone_meal",
-    "input": [
-        "minecraft:bone"
-    ]
-}

@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "",
-    "output": "minecraft:raw_iron",
-    "input": [
-        "minecraft:raw_iron_block"
-    ]
-}

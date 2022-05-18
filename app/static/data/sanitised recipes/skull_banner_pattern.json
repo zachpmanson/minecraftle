@@ -1,9 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "",
-    "output": "minecraft:skull_banner_pattern",
-    "input": [
-        "minecraft:paper",
-        "minecraft:wither_skeleton_skull"
-    ]
-}

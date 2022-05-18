@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "group": "",
-    "output": "minecraft:lapis_lazuli",
-    "input": [
-        "minecraft:lapis_block"
-    ]
-}
