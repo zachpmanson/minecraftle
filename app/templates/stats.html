@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <main>
+        <script src="{{ url_for('static', filename='js/stats.js') }}"></script>
+        <h2 class="stats_h2">Statistics</h1>
+
+        <div class = "stats_div">
+                <table>
+                    <tr>
+                        <td>Games played</td>
+                        <td class="stats_value">0</td>
+                    </tr>
+                    <tr>
+                        <td>Games won</td>
+                        <td class="stats_value">0</td>
+                    </tr>
+                    <tr>
+                        <td>Games lost</td>
+                        <td class="stats_value">0</td>
+                    </tr>
+                    <tr>
+                        <td>Win/loss raio</td>
+                        <td class="stats_value">0</td>
+                    </tr>
+                    <tr>
+                        <td>Global wins ranking</td>
+                        <td class="stats_value">0</td>
+                    </tr>
+                    <tr>
+                        <td>Global win/loss ratio</td>
+                        <td class="stats_value">0</td>
+                    </tr>
+                </table>
+        </div>
+        <header>
+            <div>
+                <br>
+                <h2 class = "stats_h2">Share your stats on social media to flex your superior human complex</h2>
+            </div>
+            <div class="navigation">
+                <div class="left">
+                    <a>
+                        <div onclick="tweet()" class="mc-button">
+                            <div class="title">Twitter</div>
+                        </div> 
+                    </a>
+
+                </div>
+
+                <div class="left">
+                    <a>
+                        <div onclick="facebook()" class="mc-button">
+                            <div class="title">Facebook</div>
+                        </div>  
+                    </a>
+                </div>
+                <div class="left">
+                    <a >
+                        <div onclick="reddit()" class="mc-button">
+                            <div class="title">Reddit</div>
+                        </div>  
+                    </a>
+                </div>
+            </div>          
+        </header>
+
+
+
+    </main>
+
+{% endblock %}
