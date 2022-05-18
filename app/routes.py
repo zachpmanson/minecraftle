@@ -1,4 +1,4 @@
-from flask import render_template, url_for
+from flask import render_template, url_for, request
 
 from app import app 
 
@@ -34,13 +34,13 @@ for recipe_name in all_recipes_names:
 
 
 
-
-
-
 @app.route('/')
 @app.route('/index')
 def index():
-    random.seed(datetime.today().strftime('%Y-%m-%d'))
+    # goto example.com/?random=True
+    unseeded_random = request.args.get("random")
+    if not unseeded_random:
+        random.seed(datetime.today().strftime('%Y-%m-%d'))
     solutionstring = random.choice(valid_recipe_names)
     print(solutionstring)
     render_args = {
