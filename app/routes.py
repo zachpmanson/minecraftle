@@ -62,3 +62,12 @@ def rules():
         'how-to-play.html',
         **render_args
     )
+@app.route('/stats')
+def statistics():
+    render_args = {
+        "title":"Stats"        
+    }
+    return render_template(
+        'stats.html',
+        **render_args
+    )

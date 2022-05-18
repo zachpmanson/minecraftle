@@ -226,7 +226,7 @@ a, a:visited {
 }
 
 .orangeguess {
-    background-color: #b98051
+    background-color: #caa905
 }
 .greyguess {
     background-color: rgb(83, 83, 83)
@@ -234,4 +234,32 @@ a, a:visited {
 
 .transition {
     transition: all 1s ease;
+}
+/*
+Support for the statistics page
+*/
+table{
+    width: 100%;
+}
+.stats_div{
+    background: rgba(0, 0, 0, 0.5); 
+}
+.stats_h2{
+    color: white;
+    font-size:x-large;
+    font-weight: lighter; 
+    text-align: center; 
+}
+tr:nth-child(even){
+    color: grey;
+}
+tr:nth-child(odd){
+    color: white;
+}
+td{
+    text-align: left;
+    font-size: large;
+}
+.stats_value{
+    text-align: right;
 }

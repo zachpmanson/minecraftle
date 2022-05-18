@@ -18,6 +18,19 @@ function setSlotBackground(div, item) {
     div.style.backgroundImage = (item === null) ? "none" : "url(" + items[item]["icon"] +")";
 }
 
+
+var click = document.getElementById("audio");
+
+function playAudio() {
+  click.play();
+}
+
+buttons = document.getElementsByClassName("mc-button");
+console.log(buttons);
+for (let i = 0; i < buttons.length; i ++) {
+    // buttons[i].addEventListener("mousedown", playAudio());
+}
+
 /**
  * Set cursor image to match cursorItem
  */

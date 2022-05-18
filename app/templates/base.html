@@ -8,34 +8,80 @@
         <link rel="stylesheet" href="{{ url_for('static', filename="styles/style.css") }}">
     </head>
     <body>
+          <audio id="audio" src="static\audio\4.wav"></audio>
+          <audio id="music" src="static\audio\C418 - Aria Math (Minecraft Volume Beta).mp3"></audio>
         <header>
             <h1>Minecraftle</h1>
             <div class="navigation">
                 <div class="left">
-                    <a href="/">
-                        <div class="mc-button">
+                    <script>
+                        function playhome() {
+                          var audio = document.getElementById("audio");
+                          audio.play();
+                          audio.addEventListener('ended', function () {
+                            location.href = "/";
+                          })
+                        }
+                      </script>
+                        <div onclick = "playhome()", class="mc-button">
                             <div class="title">Home</div>
                         </div>  
-                    </a>
                 </div>
-
                 <div class="left">
-                    <a href="/how-to-play">
-                        <div class="mc-button">
+                        <script>
+                            function playhowtoplay() {
+                              var audio = document.getElementById("audio");
+                              audio.play();
+                              audio.addEventListener('ended', function () {
+                                location.href = "/how-to-play";
+                              })
+                            }
+                          </script>
+                        <div onclick = "playhowtoplay()", class="mc-button">
                             <div class="title">How To Play</div>
                         </div>  
-                    </a>
+
                 </div>
                 <div class="left">
-                    <a href="#">
-                        <div class="mc-button">
+                    <script>
+                        function playstats() {
+                          var audio = document.getElementById("audio");
+                          audio.play();
+                          audio.addEventListener('ended', function () {
+                            location.href = "#";
+                          })
+                        }
+                      </script>
+                        <div onclick = "playstats()", class="mc-button">
                             <div class="title">Stats</div>
                         </div>  
-                    </a>
                 </div>
                 <div class="left">
-                        <div class="mc-button">
+                    <script>
+                        function play() {
+                          var audio = document.getElementById("audio");
+                          audio.play();
+                          audio.addEventListener('ended', function () {
+                            location.href = "";
+                          })
+                        }
+                      </script>
+                        <div onclick = "play()", class="mc-button">
                             <div class="title">Check</div>
+                        </div>  
+                </div>
+                <div class="left">
+                    <script>
+                        function playmusic() {
+                          var audio = document.getElementById("music");
+                          audio.play();
+                          audio.addEventListener('ended', function () {
+                            location.href = "";
+                          })
+                        }
+                      </script>
+                        <div onclick = "playmusic()", class="mc-button">
+                            <div class="title">play</div>
                         </div>  
                 </div>
             </div>          
