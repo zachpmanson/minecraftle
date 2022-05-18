@@ -42,6 +42,8 @@ def index():
     unseeded_random = request.args.get("random")
     if not unseeded_random:
         random.seed(datetime.today().strftime('%Y-%m-%d'))
+    else:
+        random.seed(None)
     solutionstring = random.choice(valid_recipe_names)
     print(solutionstring)
 
