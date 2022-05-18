@@ -242,7 +242,8 @@ table{
     width: 100%;
 }
 .stats_div{
-    background: rgba(0, 0, 0, 0.5); 
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem;
 }
 .stats_h2{
     color: white;

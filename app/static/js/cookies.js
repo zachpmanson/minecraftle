@@ -1,5 +1,6 @@
 
 const userCookieName = "user_id";
+var user_id;
 
 /**
  * checks user-id cookie to see if it has been set before, if not it calls 
@@ -10,6 +11,7 @@ function checkUserCookie() {
     console.log(cookieExists);
     if (cookieExists !== null) {
         console.log("Welcome back! Your user_id is: " + getCookie("user_id"));
+        user_id = getCookie("user_id");
     } else {
         createUserCookie(userCookieName);
     }
@@ -21,7 +23,7 @@ function checkUserCookie() {
  * @param {String} userCookieName 
  */
 function createUserCookie(userCookieName) {
-    let uuid = self.crypto.randomUUID();
+    let uuid = Date.now().toString();//self.crypto.randomUUID();
     const userCookieDays = 30;
     let expiryDate = new Date();
     expiryDate.setDate(expiryDate.getDate() + userCookieDays);
@@ -29,6 +31,7 @@ function createUserCookie(userCookieName) {
     let cookieValue = userCookieName + "=" + uuid + ";expires=" + expiryDate.toGMTString() + ";path=/";
     document.cookie = cookieValue;
     console.log("Generated new user_id: "+ cookieValue);
+    user_id = cookieValue;
 }
 
 /**
@@ -53,4 +56,8 @@ function getCookie(cName) {
  */
  document.addEventListener("DOMContentLoaded", ()=>{
     checkUserCookie();
+    let statsbutton = document.getElementById("statsbutton");
+    statsbutton.onclick = ()=>{
+        location.href = "/stats?user_id="+user_id;
+    }
 });

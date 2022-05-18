@@ -165,7 +165,7 @@ function addNewCraftingTable() {
         console.log(isCorrect[0], isCorrect[1]);
 
         if (isCorrect[0]) {
-            console.log(solution_item), "solution item";
+            console.log(solution_item+ "solution item");
             setSlotBackground(imageDiv, solution_item);
             for (const [index, element] of isCorrect[1].entries()) {
                 console.log("index: "+ index+" element: " + element)
@@ -207,7 +207,9 @@ function addNewCraftingTable() {
                 }
             }
             addNewCraftingTable();
-            // if (guessCount > 8) {loser()}
+        }
+        if (guessCount > 8) {
+            loser()
         }
 
 
@@ -268,9 +270,17 @@ document.addEventListener("mousemove", (e) => {
 //Function for on win
 function winner() {
     console.log("winner");
+    alert("You won! Took " + (guessCount+1) + " attempts.");
+    setTimeout(()=>{
+        window.location.replace("/stats?user_id="+user_id+"&win="+1+"&attempts="+guessCount);
+    }, 1000);
 }
 
 //function on lose
 function loser() {
     console.log("loser");
+    alert("You lost!");
+    setTimeout(()=>{
+        window.location.replace("/stats?user_id="+user_id+"&win="+0+"&attempts="+guessCount);
+    }, 1000);
 }

@@ -8,29 +8,31 @@
     <div class="stats_div">
       <table>
         <tr>
-          <td>Games played</td>
-          <td class="stats_value">0</td>
+          <td>Global ranking</td>
+          <td class="stats_value">{{rank}}</td>
         </tr>
         <tr>
           <td>Games won</td>
-          <td class="stats_value">0</td>
+          <td class="stats_value">{{wins}}</td>
         </tr>
         <tr>
           <td>Games lost</td>
-          <td class="stats_value">0</td>
+          <td class="stats_value">{{games_played-wins}}</td>
         </tr>
         <tr>
           <td>Win/loss raio</td>
-          <td class="stats_value">0</td>
+          <td class="stats_value">{{wins/games_played}}</td>
         </tr>
         <tr>
-          <td>Global wins ranking</td>
-          <td class="stats_value">0</td>
+          <td>Games played</td>
+          <td class="stats_value">{{games_played}}</td>
         </tr>
+        {% for i in attempts %}
         <tr>
-          <td>Global win/loss ratio</td>
-          <td class="stats_value">0</td>
+          <td>Number of games with {{loop.index}} attempts</td>
+          <td>{{i}}</td>
         </tr>
+        {% endfor %}
       </table>
     </div>
     <header>
