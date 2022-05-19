@@ -298,7 +298,7 @@ function winner() {
     console.log("winner");
     setTimeout(()=>{
         alert("You won! Took " + (guessCount) + " guesses.\n" + generateSummary());
-        window.location.replace("/stats?user_id="+user_id+"&win="+1+"&attempts="+guessCount);
+        window.location.replace("/stats/"+user_id+"?win="+1+"&attempts="+guessCount);
     }, 2000);
 }
 
@@ -308,6 +308,6 @@ function loser() {
     setTimeout(()=>{
         
         alert("You lost!  The solution was " + solution_item + "\n" + generateSummary());
-        window.location.replace("/stats?user_id="+user_id+"&win="+0+"&attempts="+guessCount);
+        window.location.replace("/stats/"+user_id+"?win="+0+"&attempts="+guessCount);
     }, 2000);
 }
