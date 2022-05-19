@@ -23,13 +23,13 @@ function checkUserCookie() {
  * @param {String} userCookieName 
  */
 function createUserCookie(userCookieName) {
-    let uuid = Date.now().toString();//self.crypto.randomUUID();
+    let uuid = Date.now().toString() + Math.random().toString();//self.crypto.randomUUID();// crypto only works with SSL
     const userCookieDays = 30;
     let expiryDate = new Date();
     expiryDate.setDate(expiryDate.getDate() + userCookieDays);
     console.log(expiryDate)
-    let cookieValue = userCookieName + "=" + uuid + ";expires=" + expiryDate.toGMTString() + ";path=/";
-    document.cookie = cookieValue;
+    let cookieValue = uuid + ";expires=" + expiryDate.toGMTString() + ";path=/";
+    document.cookie["user_id"] = cookieValue;
     console.log("Generated new user_id: "+ cookieValue);
     user_id = cookieValue;
 }
