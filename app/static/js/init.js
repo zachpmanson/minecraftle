@@ -209,7 +209,6 @@ function addNewCraftingTable() {
                         slot.classList.add("greenguess");
                     }
                     
-                    //TODO change 3 to whatever index in matchmap is correct ingredient but wrong position
                     else if (element[i] === 3) {
                         
                         slot.classList.add("orangeguess");
