@@ -289,30 +289,23 @@ function addToClipboard(text) {
     navigator.clipboard.writeText(text);
 }
 
-//Function for on win
-function winner() {
+function createPopup(text, win) {
     document.getElementById("popup").style = "visibility: visible;";
     document.getElementById("popupContainer").style = "visibility: visible;";
-    let summary = generateSummary();
-    let winnerMessage = "You won! Took " + (guessCount) + " guesses.\n" + summary;
-    console.log(winnerMessage);
-    document.getElementById("popupContent").textContent = winnerMessage;
+    document.getElementById("popupContent").textContent = text;
     document.getElementById("popupStatsButton").onclick = function(){
         window.location.replace("/stats/"+user_id+"?win="+1+"&attempts="+(guessCount));
     }
     document.getElementById("popupCopyButton").onclick = function(){
         addToClipboard(summary)
     }
-    
-    
-    /**
-    console.log("winner");
-    setTimeout(()=>{
-        let summary = generateSummary();
-        alert("You won! Took " + (guessCount) + " guesses.\n" + summary);
-        window.location.replace("/stats/"+user_id+"?win="+1+"&attempts="+guessCount);
-        addToClipboard(summary)
-    }, 1500); */
+}
+
+//Function for on win
+function winner() {
+    let summary = generateSummary();
+    let winnerMessage = "You won! Took " + (guessCount) + " guesses.\n" + summary;
+    createPopup(winnerMessage, 1);
 }
 
 //function on lose
@@ -321,15 +314,8 @@ function loser() {
     document.getElementById("popupContainer").style = "visibility: visible;";
     let summary = generateSummary();
     let loserMessage = "You lost!  The solution was " + solution_item + "\n" + summary;
-    document.getElementById("popupContent").textContent = loserMessage;
+    createPopup(loserMessage, 0);
 
-    document.getElementById("popupStatsButton").onclick = function(){
-        window.location.replace("/stats/"+user_id+"?win="+0+"&attempts="+(guessCount));
-    }
-    
-    document.getElementById("popupCopyButton").onclick = function(){
-        addToClipboard(summary)
-    }
     
     /** 
     console.log("loser");

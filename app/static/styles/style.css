@@ -1,35 +1,5 @@
 /* Global stylesheet */
 
-#popup{
-    /*display: flex;
-    align-items: center;
-    justify-content: center; */
-    visibility: hidden;
-    position: fixed;
-    background-color: green;
-    width: 50%;
-    height: 50%;
-}
-#popupContainer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    visibility: hidden;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-}
-#popupStatsButton{
-    position: absolute;
-    right: 25%;
-    bottom: 2%;
-}
-#popupCopyButton{
-    position: absolute;
-    left: 25%;
-    bottom: 2%;
-}
-
 @font-face {
     font-family: Minecraft-Regular;
     src: url("../fonts/Minecraft-Regular.otf") format("opentype");
@@ -94,7 +64,8 @@ main {
     margin: auto;
 }
 
-a, a:visited {
+a,
+a:visited {
     text-decoration: none;
     color: blue;
 }
@@ -119,23 +90,25 @@ a, a:visited {
     margin-bottom: 1rem;
 }
 
-.left, .right, .middle {
+.left,
+.right,
+.middle {
     flex: 1;
     margin: 0 .5rem;
 }
 
 /* Minecraft Style Button */
 .mc-button {
-	overflow: hidden;
-	white-space: nowrap;
-	user-select: none;
+    overflow: hidden;
+    white-space: nowrap;
+    user-select: none;
 
     color: var(--inv-background);
     text-decoration: none;
 
-	background: var(--button-background) url('../images/button-background.png') center / cover;
-	image-rendering: pixelated;
-	border: 2px solid black;
+    background: var(--button-background) url('../images/button-background.png') center / cover;
+    image-rendering: pixelated;
+    border: 2px solid black;
 }
 
 /* Mouseover */
@@ -144,15 +117,17 @@ a, a:visited {
     text-shadow: 2px 2px var(--button-text-hover-shadow);
     color: var(--button-text-hover);
 }
+
 .mc-button:active .title {
     box-shadow: inset -2px -4px var(--button-active-inset-dark), inset 2px 2px var(--button-active-text-inset-light);
 }
 
 /* Button title */
 .mc-button .title {
-    width: 100%; height: 100%;
+    width: 100%;
+    height: 100%;
     padding: .5rem 0;
-    
+
     color: var(--button-text);
     text-shadow: 2px 2px var(--button-text-shadow);
     box-shadow: inset -2px -4px var(--button-text-inset-dark), inset 2px 2px var(--button-active-inset-light);
@@ -168,7 +143,7 @@ a, a:visited {
     background: var(--inv-background);
     color: var(--slot-shadow);
     border-radius: 3px;
-    box-shadow: 5px 5px 0px var(--slot-shadow), inset 4px 4px 0px var(--slot-inset) ;
+    box-shadow: 5px 5px 0px var(--slot-shadow), inset 4px 4px 0px var(--slot-inset);
     padding: 1.5rem;
     margin-bottom: 10px;
 }
@@ -180,7 +155,7 @@ a, a:visited {
     justify-content: center;
     background-color: var(--slot-background);
     box-shadow: inset 2px 2px 0px var(--slot-shadow),
-      inset -2px -2px 0px var(--slot-inset);
+        inset -2px -2px 0px var(--slot-inset);
 }
 
 .slot:hover {
@@ -194,11 +169,11 @@ a, a:visited {
     justify-content: center;
     background-color: var(--slot-background);
     box-shadow: inset 2px 2px 0px var(--slot-shadow),
-      inset -2px -2px 0px var(--slot-inset);
+        inset -2px -2px 0px var(--slot-inset);
 }
 
 .slot-image {
-    margin:auto;
+    margin: auto;
     width: 2.5rem;
     height: 2.5rem;
     image-rendering: pixelated;
@@ -208,7 +183,7 @@ a, a:visited {
 .crafting-table {
     width: 9rem;
     height: 9rem;
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
 }
 
@@ -231,18 +206,18 @@ a, a:visited {
     margin: auto;
 }
 
-#cursor{
-    position:absolute;
-    transform:translate(-50%,-50%);
-    pointer-events:none;
-    height:3rem;
-    width:3rem;
+#cursor {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    height: 3rem;
+    width: 3rem;
     margin: auto;
     background-size: cover;
     image-rendering: pixelated;
 }
 
-#solution{
+#solution {
     opacity: 0;
     position: absolute;
     pointer-events: none;
@@ -257,6 +232,7 @@ a, a:visited {
 .orangeguess {
     background-color: #caa905
 }
+
 .greyguess {
     background-color: rgb(83, 83, 83)
 }
@@ -264,40 +240,64 @@ a, a:visited {
 .transition {
     transition: all 1s ease;
 }
+
 /*
 Support for the statistics page
 */
-table{
+table {
     width: 100%;
 }
-.stats_div{
+
+.stats_div {
     background: rgba(0, 0, 0, 0.5);
     padding: 0.5rem;
 }
-.stats_h2{
-    color: white;
-    font-size:x-large;
-    font-weight: lighter; 
-    text-align: center; 
-}
-tr:nth-child(even){
+
+.white {
+    color: var(--button-text);
+    margin: 1rem 0;
+} 
+
+
+tr:nth-child(even) {
     color: grey;
 }
-tr:nth-child(odd){
+
+tr:nth-child(odd) {
     color: white;
 }
-td{
+
+td {
     text-align: left;
     font-size: large;
 }
-.stats_value{
+
+.stats_value {
     text-align: right;
 }
 
 .ingredients-list {
     margin: 1rem 0;
 }
+
+#popupContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    margin: 0 auto;
+    max-width: 25rem;
+    max-height: 90%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
 #popupContent {
     white-space: pre;
     font-family: Minecraft-Regular;
+    max-height: 30rem;
+    overflow-y: scroll;
 }
