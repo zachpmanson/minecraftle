@@ -14,7 +14,7 @@ def create_table():
             user_id TEXT NOT NULL,
             date DATE NOT NULL,
             win INTEGER NOT NULL,
-            attempts INTEGER NOT NULL
+            attempts INTEGER
         )"""
     )
 
@@ -24,6 +24,9 @@ def create_table():
 
 
 def insert_record(user_id, date, win, attempts):
+    if win == 0:
+        attempts = None
+    
     connection = sqlite3.connect(
         "minecraftle.db",
         detect_types=sqlite3.PARSE_DECLTYPES | sqlite3.PARSE_COLNAMES

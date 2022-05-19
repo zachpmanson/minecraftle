@@ -35,6 +35,7 @@ Due date: May 23, 2022 12:00 (noon)
   + [ ] social sharing links for emoji output similar to stats page
 + [ ] A system for admins to add/remove from given_ingredients and recipes
 + [ ] Make it play nicely on mobile (reactive to device size)
++ [x] An indicator for the guess number
 + [ ] UNIT TESTS + SELEIUM TESTS
 
 ### Submission Todos:

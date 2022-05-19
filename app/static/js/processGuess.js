@@ -342,7 +342,7 @@ function init(solution) {
 let solution_n_items = {};
 let remainingVariants = [];
 let allVariants = [];
-let guessCount = -1; // this is just for console output
+let guessCount = 0; // this is just for console output
 
 //randomly select a recipe to be the solution for today
 

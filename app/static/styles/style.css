@@ -57,7 +57,6 @@ h1 {
 h2 {
     text-align: center;
     margin: auto;
-    margin-bottom: 1rem;
 }
 
 main {
@@ -198,7 +197,7 @@ a, a:visited {
 }
 
 .ingredients {
-    max-width: 27rem;
+    max-width: 21rem;
     margin: auto;
 }
 
@@ -263,4 +262,8 @@ td{
 }
 .stats_value{
     text-align: right;
+}
+
+.ingredients-list {
+    margin: 1rem 0;
 }
