@@ -316,7 +316,7 @@ function loser() {
     document.getElementById("popupContainer").style = "visibility: visible;";
     let summary = generateSummary();
     let loserMessage = "You lost!  The solution was " + solution_item + "\n" + summary;
-    window.location.replace("/stats/"+user_id+"?win="+0+"&attempts="+guessCount);
+    //window.location.replace("/stats/"+user_id+"?win="+0+"&attempts="+guessCount);
     document.getElementById("popupContent").textContent = loserMessage;
 
 
