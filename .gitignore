@@ -2,4 +2,4 @@
 venv/
 *.DS_Store
 .vscode/
-*.db
+minecraftle.db
