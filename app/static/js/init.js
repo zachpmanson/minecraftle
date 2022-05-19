@@ -294,7 +294,7 @@ function createPopup(text, win) {
     document.getElementById("popupContainer").style = "visibility: visible;";
     document.getElementById("popupContent").textContent = text;
     document.getElementById("popupStatsButton").onclick = function(){
-        window.location.replace("/stats/"+user_id+"?win="+1+"&attempts="+(guessCount));
+        window.location.replace("/stats/"+user_id+"?win="+win+"&attempts="+(guessCount));
     }
     document.getElementById("popupCopyButton").onclick = function(){
         addToClipboard(summary)
@@ -310,8 +310,6 @@ function winner() {
 
 //function on lose
 function loser() {
-    document.getElementById("popup").style = "visibility: visible;";
-    document.getElementById("popupContainer").style = "visibility: visible;";
     let summary = generateSummary();
     let loserMessage = "You lost!  The solution was " + solution_item + "\n" + summary;
     createPopup(loserMessage, 0);
