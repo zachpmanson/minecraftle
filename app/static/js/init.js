@@ -292,22 +292,50 @@ function addToClipboard(text) {
 
 //Function for on win
 function winner() {
+    document.getElementById("popup").style = "visibility: visible;";
+    document.getElementById("popupContainer").style = "visibility: visible;";
+    let summary = generateSummary();
+    let winnerMessage = "You won! Took " + (guessCount) + " guesses.\n" + summary;
+    console.log(winnerMessage);
+    //window.location.replace("/stats/"+user_id+"?win="+1+"&attempts="+guessCount);
+    document.getElementById("popupContent").textContent = winnerMessage;
+
+    /**
     console.log("winner");
     setTimeout(()=>{
         let summary = generateSummary();
         alert("You won! Took " + (guessCount) + " guesses.\n" + summary);
         window.location.replace("/stats/"+user_id+"?win="+1+"&attempts="+guessCount);
         addToClipboard(summary)
-    }, 1500);
+    }, 1500); */
 }
 
 //function on lose
 function loser() {
+    document.getElementById("popup").style = "visibility: visible;";
+    document.getElementById("popupContainer").style = "visibility: visible;";
+    let summary = generateSummary();
+    let loserMessage = "You lost!  The solution was " + solution_item + "\n" + summary;
+    window.location.replace("/stats/"+user_id+"?win="+0+"&attempts="+guessCount);
+    document.getElementById("popupContent").textContent = loserMessage;
+
+
+
+    /** 
     console.log("loser");
     setTimeout(()=>{
         let summary = generateSummary();
         alert("You lost!  The solution was " + solution_item + "\n" + summary);
         window.location.replace("/stats/"+user_id+"?win="+0+"&attempts="+guessCount);
         addToClipboard(summary)
-    }, 1500);
+    }, 1500); */
+}
+
+document.getElementById("popupCopyButton").onclick = function(){
+    let summary = generateSummary();
+    addToClipboard(summary)
+}
+
+document.getElementById("popupStatsButton").onclick = function(){
+    window.location.replace("/stats/"+user_id+"?win="+0+"&attempts="+guessCount);
 }
