@@ -1,7 +1,5 @@
-//BELOW IS THE CODE FOR COOKIES
-
 /**
- * On document load, looks to call checkUserCookie() function to check to see if
+ * On document load, looks to call checkUserCookie() function to check to see if a User-id cookie has been set
  */
  document.addEventListener("DOMContentLoaded", function () {
     const userCookieName = "User-id";
@@ -30,14 +28,14 @@ function checkUserCookie(userCookieName) {
  */
 function createUserCookie(userCookieName) {
     
-    let uuid = self.crypto.randomUUID();
+    let uuid = randomUUID();
     const userCookieValue = uuid;
     const userCookieDays = 30;
     let expiryDate = new Date();
     expiryDate.setDate(expiryDate.getDate() + userCookieDays);
     console.log(expiryDate)
     document.cookie = userCookieName + "=" + userCookieValue + ";expires=" + expiryDate.toGMTString() + ";path=/";
-    document.cookie = "first time user log in...User-id cookie being set:"
+    console.log("first time user log in...User-id cookie being set:")
     console.log(userCookieName + " =" + userCookieValue + " ;expires=" + expiryDate.toGMTString() + ";path=/")
 }
 
