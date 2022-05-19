@@ -297,3 +297,7 @@ td{
 .ingredients-list {
     margin: 1rem 0;
 }
+#popupContent {
+    white-space: pre;
+    font-family: Minecraft-Regular;
+}

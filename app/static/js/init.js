@@ -209,7 +209,6 @@ function addNewCraftingTable() {
                         slot.classList.add("greenguess");
                     }
                     
-                    //TODO change 3 to whatever index in matchmap is correct ingredient but wrong position
                     else if (element[i] === 3) {
                         
                         slot.classList.add("orangeguess");
@@ -297,7 +296,7 @@ function winner() {
     let summary = generateSummary();
     let winnerMessage = "You won! Took " + (guessCount) + " guesses.\n" + summary;
     console.log(winnerMessage);
-    document.getElementById("popupContent").textContent = winnerMessage;
+    document.getElementById("popupContent").innerHTML = winnerMessage;
 
     /**
     console.log("winner");
