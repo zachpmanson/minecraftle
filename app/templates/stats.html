@@ -20,8 +20,12 @@
           <td class="stats_value">{{games_played-wins}}</td>
         </tr>
         <tr>
-          <td>Win/loss raio</td>
+          <td>Win/loss ratio</td>
+          {% if games_played == 0 %}
+          <td class="stats_value">N\A</td>
+          {% else %}
           <td class="stats_value">{{wins/games_played}}</td>
+          {% endif %}
         </tr>
         <tr>
           <td>Games played</td>
@@ -29,7 +33,11 @@
         </tr>
         {% for i in attempts %}
         <tr>
-          <td>Number of games with {{loop.index}} attempts</td>
+          {% if loop.index == 1 %}
+          <td>Wins with {{loop.index}} attempt</td>
+          {% else %}
+          <td>Wins with {{loop.index}} attempts</td>
+          {% endif %}
           <td>{{i}}</td>
         </tr>
         {% endfor %}
@@ -43,20 +51,20 @@
       <div class="navigation">
         <div class="left">
           <a>
-            <div onclick="tweet()" class="mc-button">
+            <div onclick="triggerAudioButton('#','click');tweet()" class="mc-button">
               <div class="title">Twitter</div>
             </div>
         </div>
         <div class="left">
           <a>
-            <div onclick="facebook()" class="mc-button">
+            <div onclick="triggerAudioButton('#','click');facebook()" class="mc-button">
               <div class="title">Facebook</div>
             </div>
           </a>
         </div>
         <div class="left">
           <a>
-            <div onclick="reddit()" class="mc-button">
+            <div onclick="triggerAudioButton('#','click');reddit()" class="mc-button">
               <div class="title">Reddit</div>
             </div>
           </a>

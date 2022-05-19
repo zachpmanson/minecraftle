@@ -4,10 +4,13 @@
     "minecraft:stone",
     "minecraft:sand",
     "minecraft:stick",
-    "minecraft:iron_ingot",
     "minecraft:coal",
+    "minecraft:iron_ingot",
+    "minecraft:gold_ingot",
     "minecraft:redstone",
+    "minecraft:diamond",
     "minecraft:string",
-    "minecraft:feather",
-    "minecraft:gunpowder"
+    "minecraft:gunpowder",
+    "minecraft:white_wool",
+    "minecraft:chest"
 ]

@@ -3,18 +3,20 @@
 
 
 let items;
-let maxGuesses = 5;
+let maxGuesses = 10;
 let craftingTables = [];
 let cursor = document.getElementById("cursor");
 let cursorItem = null;
 let givenIngredients;
+
+let emojiSummaries = []
+
 /**
  * Sets background of given div to given item
  * @param {HTMLElement} div 
  * @param {String} item 
  */
 function setSlotBackground(div, item) {
-    console.log("item: " + item)
     div.style.backgroundImage = (item === null) ? "none" : "url(" + items[item]["icon"] +")";
 }
 
@@ -24,11 +26,23 @@ var click = document.getElementById("audio");
 function playAudio() {
   click.play();
 }
-
 buttons = document.getElementsByClassName("mc-button");
-console.log(buttons);
-for (let i = 0; i < buttons.length; i ++) {
-    // buttons[i].addEventListener("mousedown", playAudio());
+
+function generateEmojiSummary(matchmap) {
+
+    let emojiSummary = [
+        ["⬜", "⬜", "⬜"],
+        ["⬜", "⬜", "⬜"],
+        ["⬜", "⬜", "⬜"]
+    ];
+
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (matchmap[i][j] == 2) emojiSummary[i][j] = "🟩";
+            else if (matchmap[i][j] == 3) emojiSummary[i][j] = "🟨";
+        }
+    }
+    return emojiSummary;
 }
 
 /**
@@ -36,6 +50,10 @@ for (let i = 0; i < buttons.length; i ++) {
  */
 function setCursor(item) {
     setSlotBackground(cursor, item);
+}
+
+function updateRemainingGuesses() {
+    document.getElementById("guess-counter").innerText = guessCount+1
 }
 
 /**
@@ -97,7 +115,6 @@ function addNewCraftingTable() {
         slot.classList.add("slot");
         slot["row"] = Math.floor(i/3);
         slot["col"] = i % 3;
-        console.log("Creating slot: " + slot["row"] + " " + slot["col"])
         tableDiv.appendChild(slot);
         let imageDiv = document.createElement("div");
         imageDiv.classList.add("slot-image");
@@ -112,7 +129,6 @@ function addNewCraftingTable() {
                 setSlotBackground(imageDiv, null);
 
                 console.log("Placed " + null + " in position " + slot["row"] + " " + slot["col"] + " in table " + tableNum)
-                console.log(craftingTables[tableNum])
                 console.log("Picked up " + cursorItem)
             } else {
                 
@@ -123,14 +139,11 @@ function addNewCraftingTable() {
                 setSlotBackground(imageDiv, temp);
                 
                 console.log("Placed " + temp + " in position " + slot["row"] + " " + slot["col"] + " in table " + tableNum)
-                console.log(craftingTables[tableNum])
                 console.log("Picked up " + cursorItem)
             }
             setCursor(cursorItem);
             
             // TODO presumably this will then need to calculate if current craftingTable is a valid recipe
-            
-            
         })
     }
 
@@ -163,9 +176,9 @@ function addNewCraftingTable() {
 
         // Update solution div to display the correct item, change slot background and lock table
         console.log(isCorrect[0], isCorrect[1]);
-
+        emojiSummaries.push(generateEmojiSummary(isCorrect[1]));
         if (isCorrect[0]) {
-            console.log(solution_item+ "solution item");
+            console.log(solution_item + "solution item");
             setSlotBackground(imageDiv, solution_item);
             for (const [index, element] of isCorrect[1].entries()) {
                 console.log("index: "+ index+" element: " + element)
@@ -184,7 +197,7 @@ function addNewCraftingTable() {
             }
             winner();
         } 
-        else if (guessCount < 9) {
+        else if (guessCount < maxGuesses) {
             for (const [index, element] of isCorrect[1].entries()) {
                 for (let i = 0; i < 3; i++) {
                     if (index === 1) {j = i + 4}
@@ -208,11 +221,10 @@ function addNewCraftingTable() {
             }
             addNewCraftingTable();
         }
-        if (guessCount > 8) {
+        if (guessCount >= maxGuesses) {
             loser()
+            return
         }
-
-
 
         var lockedtable = document.getElementById("tablenumber" + tableNum);
         lockedtable.replaceWith(lockedtable.cloneNode(true));
@@ -220,7 +232,8 @@ function addNewCraftingTable() {
         solutiondiv.classList.add("lockedslot");
         solutiondiv.classList.remove("slot");
         solutiondiv.replaceWith(solutiondiv.cloneNode(true));
-           
+        
+        updateRemainingGuesses();
     });
     outputDiv.appendChild(slot);
     
@@ -232,7 +245,6 @@ function addNewCraftingTable() {
 document.addEventListener('DOMContentLoaded', () => {
     addNewCraftingTable();
 
-    
     fetch('static/data/given_ingredients.json')
       .then(response => response.json())
       .then(obj => {givenIngredients = obj});
@@ -241,17 +253,12 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(response => response.json())
       .then(obj => {items = obj; initIngredients()});
 
-    
     getSolutionRecipe();
-
-    // Will probably need to read in recipes.json here
-
 });
 
 // Check for dropping item if placed outside important divs.
 let ingredientsDiv = document.getElementById("ingredients");
 let guessesDiv = document.getElementById("guesses");
-console.log(ingredientsDiv)
 document.addEventListener("mousedown", e => {
     let isClickOutsideIngredients = ingredientsDiv.contains(e.target) || guessesDiv.contains(e.target);
     if (!isClickOutsideIngredients) {
@@ -266,21 +273,69 @@ document.addEventListener("mousemove", (e) => {
     cursor.style.top = (e.pageY - 5) + 'px';
 });
 
+function generateSummary() {
+    let summaryString = "Minecraftle " + new Date().toISOString().slice(0, 10) + "\n";
+    for (let emojiSummary of emojiSummaries) {
+        for (let row of emojiSummary) {
+            summaryString += row.join("") + "\n";
+
+        }
+        summaryString += "\n"
+    }
+    return summaryString;
+
+}
+
+function addToClipboard(text) {
+    navigator.clipboard.writeText(text);
+}
 
 //Function for on win
 function winner() {
+    document.getElementById("popup").style = "visibility: visible;";
+    document.getElementById("popupContainer").style = "visibility: visible;";
+    let summary = generateSummary();
+    let winnerMessage = "You won! Took " + (guessCount) + " guesses.\n" + summary;
+    console.log(winnerMessage);
+    //window.location.replace("/stats/"+user_id+"?win="+1+"&attempts="+guessCount);
+    document.getElementById("popupContent").textContent = winnerMessage;
+
+    /**
     console.log("winner");
-    alert("You won! Took " + (guessCount+1) + " attempts.");
     setTimeout(()=>{
-        window.location.replace("/stats?user_id="+user_id+"&win="+1+"&attempts="+guessCount);
-    }, 1000);
+        let summary = generateSummary();
+        alert("You won! Took " + (guessCount) + " guesses.\n" + summary);
+        window.location.replace("/stats/"+user_id+"?win="+1+"&attempts="+guessCount);
+        addToClipboard(summary)
+    }, 1500); */
 }
 
 //function on lose
 function loser() {
+    document.getElementById("popup").style = "visibility: visible;";
+    document.getElementById("popupContainer").style = "visibility: visible;";
+    let summary = generateSummary();
+    let loserMessage = "You lost!  The solution was " + solution_item + "\n" + summary;
+    window.location.replace("/stats/"+user_id+"?win="+0+"&attempts="+guessCount);
+    document.getElementById("popupContent").textContent = loserMessage;
+
+
+
+    /** 
     console.log("loser");
-    alert("You lost!");
     setTimeout(()=>{
-        window.location.replace("/stats?user_id="+user_id+"&win="+0+"&attempts="+guessCount);
-    }, 1000);
+        let summary = generateSummary();
+        alert("You lost!  The solution was " + solution_item + "\n" + summary);
+        window.location.replace("/stats/"+user_id+"?win="+0+"&attempts="+guessCount);
+        addToClipboard(summary)
+    }, 1500); */
+}
+
+document.getElementById("popupCopyButton").onclick = function(){
+    let summary = generateSummary();
+    addToClipboard(summary)
+}
+
+document.getElementById("popupStatsButton").onclick = function(){
+    window.location.replace("/stats/"+user_id+"?win="+0+"&attempts="+guessCount);
 }

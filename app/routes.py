@@ -69,14 +69,14 @@ def rules():
         **render_args
     )
 
-@app.route('/stats')
-def statistics():
+@app.route('/stats/<user_id>')
+def statistics(user_id):
 
-    games_played = 1
+    games_played = 0
     wins = 0
-    rank = -1
+    rank = "N/A"
 
-    user_id = request.args.get("user_id")
+    #user_id = request.args.get("user_id")
     win = request.args.get("win")
     attempts = request.args.get("attempts")
     print(user_id, win, attempts)
