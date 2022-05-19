@@ -3,11 +3,14 @@
 
 
 let items;
-let maxGuesses = 5;
+let maxGuesses = 10;
 let craftingTables = [];
 let cursor = document.getElementById("cursor");
 let cursorItem = null;
 let givenIngredients;
+
+let emojiSummaries = []
+
 /**
  * Sets background of given div to given item
  * @param {HTMLElement} div 
@@ -24,18 +27,36 @@ var click = document.getElementById("audio");
 function playAudio() {
   click.play();
 }
-
 buttons = document.getElementsByClassName("mc-button");
-console.log(buttons);
-for (let i = 0; i < buttons.length; i ++) {
-    // buttons[i].addEventListener("mousedown", playAudio());
+
+function generateEmojiSummary(matchmap) {
+
+    let emojiSummary = [
+        ["⬜", "⬜", "⬜"],
+        ["⬜", "⬜", "⬜"],
+        ["⬜", "⬜", "⬜"]
+    ];
+
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (matchmap[i][j] == 2) emojiSummary[i][j] = "🟩";
+            else if (matchmap[i][j] == 3) emojiSummary[i][j] = "🟨";
+        }
+    }
+    return emojiSummary;
 }
+
+console.log(buttons);
 
 /**
  * Set cursor image to match cursorItem
  */
 function setCursor(item) {
     setSlotBackground(cursor, item);
+}
+
+function updateRemainingGuesses() {
+    document.getElementById("guess-counter").innerText = guessCount+1
 }
 
 /**
@@ -129,8 +150,6 @@ function addNewCraftingTable() {
             setCursor(cursorItem);
             
             // TODO presumably this will then need to calculate if current craftingTable is a valid recipe
-            
-            
         })
     }
 
@@ -163,7 +182,7 @@ function addNewCraftingTable() {
 
         // Update solution div to display the correct item, change slot background and lock table
         console.log(isCorrect[0], isCorrect[1]);
-
+        emojiSummaries.push(generateEmojiSummary(isCorrect[1]));
         if (isCorrect[0]) {
             console.log(solution_item+ "solution item");
             setSlotBackground(imageDiv, solution_item);
@@ -184,7 +203,7 @@ function addNewCraftingTable() {
             }
             winner();
         } 
-        else if (guessCount < 9) {
+        else if (guessCount < maxGuesses) {
             for (const [index, element] of isCorrect[1].entries()) {
                 for (let i = 0; i < 3; i++) {
                     if (index === 1) {j = i + 4}
@@ -208,11 +227,10 @@ function addNewCraftingTable() {
             }
             addNewCraftingTable();
         }
-        if (guessCount > 8) {
+        if (guessCount >= maxGuesses) {
             loser()
+            return
         }
-
-
 
         var lockedtable = document.getElementById("tablenumber" + tableNum);
         lockedtable.replaceWith(lockedtable.cloneNode(true));
@@ -220,7 +238,8 @@ function addNewCraftingTable() {
         solutiondiv.classList.add("lockedslot");
         solutiondiv.classList.remove("slot");
         solutiondiv.replaceWith(solutiondiv.cloneNode(true));
-           
+        
+        updateRemainingGuesses();
     });
     outputDiv.appendChild(slot);
     
@@ -232,7 +251,6 @@ function addNewCraftingTable() {
 document.addEventListener('DOMContentLoaded', () => {
     addNewCraftingTable();
 
-    
     fetch('static/data/given_ingredients.json')
       .then(response => response.json())
       .then(obj => {givenIngredients = obj});
@@ -241,11 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(response => response.json())
       .then(obj => {items = obj; initIngredients()});
 
-    
     getSolutionRecipe();
-
-    // Will probably need to read in recipes.json here
-
 });
 
 // Check for dropping item if placed outside important divs.
@@ -266,21 +280,34 @@ document.addEventListener("mousemove", (e) => {
     cursor.style.top = (e.pageY - 5) + 'px';
 });
 
+function generateSummary() {
+    let summaryString = "Minecraftle " + new Date().toISOString().slice(0, 10) + "\n";
+    for (let emojiSummary of emojiSummaries) {
+        for (let row of emojiSummary) {
+            summaryString += row.join("") + "\n";
+
+        }
+        summaryString += "\n"
+    }
+    return summaryString;
+
+}
 
 //Function for on win
 function winner() {
     console.log("winner");
-    alert("You won! Took " + (guessCount+1) + " attempts.");
     setTimeout(()=>{
+        alert("You won! Took " + (guessCount) + " guesses.\n" + generateSummary());
         window.location.replace("/stats?user_id="+user_id+"&win="+1+"&attempts="+guessCount);
-    }, 1000);
+    }, 2000);
 }
 
 //function on lose
 function loser() {
     console.log("loser");
-    alert("You lost!  The solution was " + solution_item);
     setTimeout(()=>{
+        
+        alert("You lost!  The solution was " + solution_item + "\n" + generateSummary());
         window.location.replace("/stats?user_id="+user_id+"&win="+0+"&attempts="+guessCount);
-    }, 1000);
+    }, 2000);
 }

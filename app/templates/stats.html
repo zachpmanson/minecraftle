@@ -33,7 +33,11 @@
         </tr>
         {% for i in attempts %}
         <tr>
-          <td>Number of games with {{loop.index}} attempts</td>
+          {% if loop.index == 1 %}
+          <td>Wins with {{loop.index}} attempt</td>
+          {% else %}
+          <td>Wins with {{loop.index}} attempts</td>
+          {% endif %}
           <td>{{i}}</td>
         </tr>
         {% endfor %}

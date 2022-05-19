@@ -30,11 +30,12 @@ Due date: May 23, 2022 12:00 (noon)
     + [x] aggregate results and stats
 
 ### Misc. Features Todos:
-+ [ ] Generate shareable emoji text from progressGuess() return tables
++ [x] Generate shareable emoji text from progressGuess() return tables
   + [ ] Make popups that are triggered by winner() and loser() that shows a shareable emoji text like wordle, has button linking to view user stats
   + [ ] social sharing links for emoji output similar to stats page
 + [ ] A system for admins to add/remove from given_ingredients and recipes
 + [ ] Make it play nicely on mobile (reactive to device size)
++ [x] An indicator for the guess number
 + [ ] UNIT TESTS + SELEIUM TESTS
 
 ### Submission Todos:
