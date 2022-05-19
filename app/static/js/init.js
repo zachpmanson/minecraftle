@@ -17,7 +17,6 @@ let emojiSummaries = []
  * @param {String} item 
  */
 function setSlotBackground(div, item) {
-    console.log("item: " + item)
     div.style.backgroundImage = (item === null) ? "none" : "url(" + items[item]["icon"] +")";
 }
 
@@ -45,8 +44,6 @@ function generateEmojiSummary(matchmap) {
     }
     return emojiSummary;
 }
-
-console.log(buttons);
 
 /**
  * Set cursor image to match cursorItem
@@ -118,7 +115,6 @@ function addNewCraftingTable() {
         slot.classList.add("slot");
         slot["row"] = Math.floor(i/3);
         slot["col"] = i % 3;
-        console.log("Creating slot: " + slot["row"] + " " + slot["col"])
         tableDiv.appendChild(slot);
         let imageDiv = document.createElement("div");
         imageDiv.classList.add("slot-image");
@@ -133,7 +129,6 @@ function addNewCraftingTable() {
                 setSlotBackground(imageDiv, null);
 
                 console.log("Placed " + null + " in position " + slot["row"] + " " + slot["col"] + " in table " + tableNum)
-                console.log(craftingTables[tableNum])
                 console.log("Picked up " + cursorItem)
             } else {
                 
@@ -144,7 +139,6 @@ function addNewCraftingTable() {
                 setSlotBackground(imageDiv, temp);
                 
                 console.log("Placed " + temp + " in position " + slot["row"] + " " + slot["col"] + " in table " + tableNum)
-                console.log(craftingTables[tableNum])
                 console.log("Picked up " + cursorItem)
             }
             setCursor(cursorItem);
@@ -184,7 +178,7 @@ function addNewCraftingTable() {
         console.log(isCorrect[0], isCorrect[1]);
         emojiSummaries.push(generateEmojiSummary(isCorrect[1]));
         if (isCorrect[0]) {
-            console.log(solution_item+ "solution item");
+            console.log(solution_item + "solution item");
             setSlotBackground(imageDiv, solution_item);
             for (const [index, element] of isCorrect[1].entries()) {
                 console.log("index: "+ index+" element: " + element)
@@ -265,7 +259,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // Check for dropping item if placed outside important divs.
 let ingredientsDiv = document.getElementById("ingredients");
 let guessesDiv = document.getElementById("guesses");
-console.log(ingredientsDiv)
 document.addEventListener("mousedown", e => {
     let isClickOutsideIngredients = ingredientsDiv.contains(e.target) || guessesDiv.contains(e.target);
     if (!isClickOutsideIngredients) {
@@ -293,21 +286,28 @@ function generateSummary() {
 
 }
 
+function addToClipboard(text) {
+    navigator.clipboard.writeText(text);
+}
+
 //Function for on win
 function winner() {
     console.log("winner");
     setTimeout(()=>{
-        alert("You won! Took " + (guessCount) + " guesses.\n" + generateSummary());
+        let summary = generateSummary();
+        alert("You won! Took " + (guessCount) + " guesses.\n" + summary);
         window.location.replace("/stats/"+user_id+"?win="+1+"&attempts="+guessCount);
-    }, 2000);
+        addToClipboard(summary)
+    }, 1500);
 }
 
 //function on lose
 function loser() {
     console.log("loser");
     setTimeout(()=>{
-        
-        alert("You lost!  The solution was " + solution_item + "\n" + generateSummary());
+        let summary = generateSummary();
+        alert("You lost!  The solution was " + solution_item + "\n" + summary);
         window.location.replace("/stats/"+user_id+"?win="+0+"&attempts="+guessCount);
-    }, 2000);
+        addToClipboard(summary)
+    }, 1500);
 }

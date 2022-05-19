@@ -1,6 +1,6 @@
 
 var solution_id = document.getElementById("solution").innerText;
-console.log(solution_id);
+console.log("solution: " + solution_id);
 var solution_recipe;
 var solution_item;
 let recipes;
@@ -12,7 +12,6 @@ function getSolutionRecipe() {
         return response.json();
     }).then(obj => {
         recipes = obj;
-        console.log("recipes"+recipes);
         let rawrecipe = recipes[solution_id];    
         populateSolution(rawrecipe);
     });
@@ -21,11 +20,9 @@ function getSolutionRecipe() {
 
 
 function populateSolution(rawrecipe) {
-    console.log(rawrecipe);
     solution_recipe = rawrecipe["input"];
     solution_item = rawrecipe["output"];
     init(solution_recipe);
-    console.log(solution_item, solution_recipe);
 }
 
 /**
@@ -316,9 +313,6 @@ function init(solution) {
             }
         }
     }
-
-    console.log(solution_n_items);
-
     allVariants = allVariants.concat(generateVariants(solution));
     remainingVariants = remainingVariants.concat(generateVariants(solution));
     // Account for horizontal reflection
@@ -345,53 +339,6 @@ let allVariants = [];
 let guessCount = 0; // this is just for console output
 
 //randomly select a recipe to be the solution for today
-
-//TODO implement difficulties and recipe selection changes based on difficulty, also implement solution changing every 24 hours rather than every time the server is loaded
-// init(solution_recipe);
-
-
-
-/*Used for manual testing.  Can remove when hooked up to GUI * /
-let recipe = [
-    ["minecraft:planks","minecraft:planks"],
-    [null,"minecraft:stick"],
-    [null,"minecraft:stick"]
-];
-let recipe2 = [
-    ["minecraft:coal"],
-    ["minecraft:stick"]
-]
-
-let guesses = [
-    [
-        [null, null, null],
-        [null, "minecraft:stick", null],
-        [null, "minecraft:stick", null]
-    ],
-    [
-        [null, "minecraft:planks", null],
-        [null, "minecraft:stick", null],
-        [null, "minecraft:stick", null]
-    ],
-    [
-        ["minecraft:planks", "minecraft:planks", null],
-        ["minecraft:planks", "minecraft:stick", null],
-        [null, "minecraft:stick", null]
-    ],
-    [
-        ["minecraft:planks", "minecraft:planks", null],
-        [null, "minecraft:stick", null],
-        [null, "minecraft:stick", null]
-    ]
-]
-
-init(recipe);
-
-console.log(processGuess(guesses[0]))
-console.log(processGuess(guesses[1]))
-console.log(processGuess(guesses[2]))
-console.log(processGuess(guesses[3]))
-//*/
 
 
 
