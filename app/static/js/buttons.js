@@ -4,4 +4,4 @@ function triggerAudioButton(href, sound) {
     audio.addEventListener('ended', function () {
       location.href = href;
     })
-  }
+}

@@ -31,6 +31,6 @@ function createUserID() {
     checkUserCookie();
     let statsbutton = document.getElementById("statsbutton");
     statsbutton.onclick = ()=>{
-        location.href = "/stats?user_id="+user_id;
+        location.href = "/stats/"+user_id;
     }
 });
