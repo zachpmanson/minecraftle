@@ -83,30 +83,32 @@ def statistics(user_id):
     if None not in (user_id, win, attempts):
         database.insert_record(user_id, date.today(), win, attempts)
     
-    wins_records, games_played_records, user_attempts = database.get_records(user_id,date.today())
-    print(user_attempts)
-    for i, entry in enumerate(wins_records):
-        if entry[0] == user_id:
-            games_played = games_played_records[i][1]
-            wins = wins_records[i][1]
+    wins_records, games_played_records, user_attempt_wincounts = database.get_records(user_id,date.today())
+
+    games_played = games_played_records[0][0]
+
+    for i, record in enumerate(wins_records):
+        if record[0] == user_id:
+            wins = record[1]
             rank = str(i+1)+"/"+str(len(wins_records))
 
-    user_attempts = {x:y for x, y in user_attempts}
+    # Convert user_attempt_wincounts tuples to a dict (x-1 is to use 0 indexing)
+    user_attempts = {x-1:y for x, y in user_attempt_wincounts}
 
-    expanded_user_attempts = [None] * 10
-    for i, row in enumerate(expanded_user_attempts):
+    expanded_user_attempts_wincounts = [None] * 10
+    for i, row in enumerate(expanded_user_attempts_wincounts):
         if i in user_attempts.keys():
-            expanded_user_attempts[i] = user_attempts[i]
+            # if there is a wincount for this many attempts
+            expanded_user_attempts_wincounts[i] = user_attempts[i]
         else:
-            expanded_user_attempts[i] = 0
-
+            expanded_user_attempts_wincounts[i] = 0
 
     render_args = {
         "title":"Stats",
         "games_played":games_played,
         "wins":wins,
         "rank":rank,
-        "attempts":expanded_user_attempts
+        "attempts":expanded_user_attempts_wincounts
     }
     return render_template(
         'stats.html',
