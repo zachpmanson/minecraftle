@@ -279,7 +279,7 @@ function winner() {
 //function on lose
 function loser() {
     console.log("loser");
-    alert("You lost!");
+    alert("You lost!  The solution was " + solution_item);
     setTimeout(()=>{
         window.location.replace("/stats?user_id="+user_id+"&win="+0+"&attempts="+guessCount);
     }, 1000);

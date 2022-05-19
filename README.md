@@ -4,15 +4,16 @@ Due date: May 23, 2022 12:00 (noon)
 
 ## Todo
 
+### General Todos:
  + [x] Come up with idea
  + [x] Find Minecraft recipes list
    + [x] Import required recipes into repo (potentially all of them)
  + [ ] Back end functionality (50%)
-   + [ ] A user account and tracking feature.
-   + [ ] A method to store puzzles and results.
+   + [x] A user account and tracking feature.
+   + [x] A method to store puzzles and results.
    + [ ] A method to update and vet puzzles.
      + [x] given_ingredients.json used to modify potential puzzles
-   + [ ] A mechanism for users to share their achievements.
+   + [x] A mechanism for users to share their achievements.
  + [ ] Front end functionality (50%)
   + [ ] 3 page views
     + [ ] Instructions and description
@@ -26,5 +27,27 @@ Due date: May 23, 2022 12:00 (noon)
       + [x] Setting slot colour hints on guess submission
       + [ ] Valid crafting recipe check
       + [ ] Success screen
-    + [ ] aggregate results and stats
+    + [x] aggregate results and stats
+
+### Misc. Features Todos:
++ [ ] Generate shareable emoji text from progressGuess() return tables
+  + [ ] Make popups that are triggered by winner() and loser() that shows a shareable emoji text like wordle, has button linking to view user stats
+  + [ ] social sharing links for emoji output similar to stats page
++ [ ] A system for admins to add/remove from given_ingredients and recipes
++ [ ] Make it play nicely on mobile (reactive to device size)
++ [ ] UNIT TESTS + SELEIUM TESTS
+
+### Submission Todos:
++ [ ] Complete writeup in the README.md file
+  1. the purpose of the web application, explaining the design of the game
+  2. the architecture of the web application.
+  3. describe how to launch the web application.
+  4. describe some unit tests for the web application, and how to run them.
++ [ ] Include commit logs, showing contributions and review from all contributing students (`.git` is not included so git log must be a seperate file)
++ [ ] Add comments and jsdoc
++ [ ] Freeze all pip requirements (may just be flask) (`pip freeze > requirements.txt`)
++ [ ] Validation (https://validator.w3.org/)
+  + [ ] HTML
+  + [ ] CSS
+  + [ ] JavaScipt
 + [ ] Add references to pictures/recipe json files/libraries/css to `references.txt` (do this as we go)

@@ -70,9 +70,9 @@ def rules():
 @app.route('/stats')
 def statistics():
 
-    games_played = 1
+    games_played = 0
     wins = 0
-    rank = -1
+    rank = "N/A"
 
     user_id = request.args.get("user_id")
     win = request.args.get("win")
