@@ -8,6 +8,9 @@ let craftingTables = [];
 let cursor = document.getElementById("cursor");
 let cursorItem = null;
 let givenIngredients;
+
+let emojiSummaries = []
+
 /**
  * Sets background of given div to given item
  * @param {HTMLElement} div 
@@ -25,6 +28,23 @@ function playAudio() {
   click.play();
 }
 buttons = document.getElementsByClassName("mc-button");
+
+function generateEmojiSummary(matchmap) {
+
+    let emojiSummary = [
+        ["⬜", "⬜", "⬜"],
+        ["⬜", "⬜", "⬜"],
+        ["⬜", "⬜", "⬜"]
+    ];
+
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (matchmap[i][j] == 2) emojiSummary[i][j] = "🟩";
+            else if (matchmap[i][j] == 3) emojiSummary[i][j] = "🟨";
+        }
+    }
+    return emojiSummary;
+}
 
 console.log(buttons);
 
@@ -162,7 +182,7 @@ function addNewCraftingTable() {
 
         // Update solution div to display the correct item, change slot background and lock table
         console.log(isCorrect[0], isCorrect[1]);
-
+        emojiSummaries.push(generateEmojiSummary(isCorrect[1]));
         if (isCorrect[0]) {
             console.log(solution_item+ "solution item");
             setSlotBackground(imageDiv, solution_item);
@@ -260,12 +280,24 @@ document.addEventListener("mousemove", (e) => {
     cursor.style.top = (e.pageY - 5) + 'px';
 });
 
+function generateSummary() {
+    let summaryString = "Minecraftle " + new Date().toISOString().slice(0, 10) + "\n";
+    for (let emojiSummary of emojiSummaries) {
+        for (let row of emojiSummary) {
+            summaryString += row.join("") + "\n";
+
+        }
+        summaryString += "\n"
+    }
+    return summaryString;
+
+}
 
 //Function for on win
 function winner() {
     console.log("winner");
     setTimeout(()=>{
-        alert("You won! Took " + (guessCount) + " guesses.");
+        alert("You won! Took " + (guessCount) + " guesses.\n" + generateSummary());
         window.location.replace("/stats?user_id="+user_id+"&win="+1+"&attempts="+guessCount);
     }, 2000);
 }
@@ -274,7 +306,8 @@ function winner() {
 function loser() {
     console.log("loser");
     setTimeout(()=>{
-    alert("You lost!  The solution was " + solution_item);
+        
+        alert("You lost!  The solution was " + solution_item + "\n" + generateSummary());
         window.location.replace("/stats?user_id="+user_id+"&win="+0+"&attempts="+guessCount);
     }, 2000);
 }
