@@ -1,44 +1,38 @@
-/**
- * On document load, looks to call checkUserCookie() function to check to see if a User-id cookie has been set
- */
- document.addEventListener("DOMContentLoaded", function () {
-    const userCookieName = "User-id";
-    checkUserCookie(userCookieName);
-    });
+
+const userCookieName = "user_id";
+var user_id;
 
 /**
- * checks user-id cookie to see if it has been set before, if not it calls createUserCookie() to create a user id
+ * checks user-id cookie to see if it has been set before, if not it calls 
+ * createUserCookie() to create a user id
  */
-function checkUserCookie(userCookieName) {
+function checkUserCookie() {
     const cookieExists = document.cookie.match(userCookieName);
     console.log(cookieExists);
-    if (cookieExists != null) {
-        console.log("welcome back!!");
-        console.log("your saved user id is: " + getCookie("User-id"));
+    if (cookieExists !== null) {
+        console.log("Welcome back! Your user_id is: " + getCookie("user_id"));
+        user_id = getCookie("user_id");
     } else {
         createUserCookie(userCookieName);
     }
 }
-  
+
 /**
- * 
- * @param {String} userCookieName 
  * users a randomUUID() generator function to assign the User-id cookie a unique value
  * sets the cookie expiry date to 30 days
+ * @param {String} userCookieName 
  */
 function createUserCookie(userCookieName) {
-    
-    let uuid = randomUUID();
-    const userCookieValue = uuid;
+    let uuid = Date.now().toString();//self.crypto.randomUUID();
     const userCookieDays = 30;
     let expiryDate = new Date();
     expiryDate.setDate(expiryDate.getDate() + userCookieDays);
     console.log(expiryDate)
-    document.cookie = userCookieName + "=" + userCookieValue + ";expires=" + expiryDate.toGMTString() + ";path=/";
-    console.log("first time user log in...User-id cookie being set:")
-    console.log(userCookieName + " =" + userCookieValue + " ;expires=" + expiryDate.toGMTString() + ";path=/")
+    let cookieValue = userCookieName + "=" + uuid + ";expires=" + expiryDate.toGMTString() + ";path=/";
+    document.cookie = cookieValue;
+    console.log("Generated new user_id: "+ cookieValue);
+    user_id = cookieValue;
 }
-
 
 /**
  * 
@@ -51,7 +45,19 @@ function getCookie(cName) {
     const cArr = cDecoded.split('; ');
     let res;
     cArr.forEach(val => {
-      if (val.indexOf(name) === 0) res = val.substring(name.length);
+        if (val.indexOf(name) === 0) res = val.substring(name.length);
     })
     return res
-  }
+}
+
+/**
+ * On document load, looks to call checkUserCookie() function to check to see if
+ * user_id exists
+ */
+ document.addEventListener("DOMContentLoaded", ()=>{
+    checkUserCookie();
+    let statsbutton = document.getElementById("statsbutton");
+    statsbutton.onclick = ()=>{
+        location.href = "/stats?user_id="+user_id;
+    }
+});
