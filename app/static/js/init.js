@@ -297,7 +297,6 @@ function winner() {
     let summary = generateSummary();
     let winnerMessage = "You won! Took " + (guessCount) + " guesses.\n" + summary;
     console.log(winnerMessage);
-    //window.location.replace("/stats/"+user_id+"?win="+1+"&attempts="+guessCount);
     document.getElementById("popupContent").textContent = winnerMessage;
 
     /**
@@ -316,7 +315,6 @@ function loser() {
     document.getElementById("popupContainer").style = "visibility: visible;";
     let summary = generateSummary();
     let loserMessage = "You lost!  The solution was " + solution_item + "\n" + summary;
-    //window.location.replace("/stats/"+user_id+"?win="+0+"&attempts="+guessCount);
     document.getElementById("popupContent").textContent = loserMessage;
 
 
