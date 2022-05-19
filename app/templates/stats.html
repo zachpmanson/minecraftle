@@ -20,11 +20,11 @@
           <td class="stats_value">{{games_played-wins}}</td>
         </tr>
         <tr>
-          <td>Win/loss ratio</td>
+          <td>Win% ratio</td>
           {% if games_played == 0 %}
           <td class="stats_value">N\A</td>
           {% else %}
-          <td class="stats_value">{{wins/games_played}}</td>
+          <td class="stats_value">{{wins/games_played * 100}}%</td>
           {% endif %}
         </tr>
         <tr>
