@@ -298,7 +298,14 @@ function winner() {
     let winnerMessage = "You won! Took " + (guessCount) + " guesses.\n" + summary;
     console.log(winnerMessage);
     document.getElementById("popupContent").textContent = winnerMessage;
-
+    document.getElementById("popupStatsButton").onclick = function(){
+        window.location.replace("/stats/"+user_id+"?win="+1+"&attempts="+(guessCount));
+    }
+    document.getElementById("popupCopyButton").onclick = function(){
+        addToClipboard(summary)
+    }
+    
+    
     /**
     console.log("winner");
     setTimeout(()=>{
@@ -317,8 +324,14 @@ function loser() {
     let loserMessage = "You lost!  The solution was " + solution_item + "\n" + summary;
     document.getElementById("popupContent").textContent = loserMessage;
 
-
-
+    document.getElementById("popupStatsButton").onclick = function(){
+        window.location.replace("/stats/"+user_id+"?win="+0+"&attempts="+(guessCount));
+    }
+    
+    document.getElementById("popupCopyButton").onclick = function(){
+        addToClipboard(summary)
+    }
+    
     /** 
     console.log("loser");
     setTimeout(()=>{
@@ -329,11 +342,4 @@ function loser() {
     }, 1500); */
 }
 
-document.getElementById("popupCopyButton").onclick = function(){
-    let summary = generateSummary();
-    addToClipboard(summary)
-}
 
-document.getElementById("popupStatsButton").onclick = function(){
-    window.location.replace("/stats/"+user_id+"?win="+0+"&attempts="+guessCount);
-}
