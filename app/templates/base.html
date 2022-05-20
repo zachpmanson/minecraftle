@@ -17,11 +17,7 @@
   <header>
     <h1>Minecraftle</h1>
     <div class="navigation">
-      <div class="left">
-        <div onclick="triggerAudioButton('/', 'click')" oncontextmenu="triggerAudioButton('/?random=True', 'click')" class="mc-button">
-          <div class="title">Home</div>
-        </div>
-      </div>
+
       <div class="left">
         <div onclick="triggerAudioButton('../how-to-play', 'click')" class="mc-button">
           <div class="title">How To Play</div>
@@ -38,6 +34,19 @@
         </div>
       </div>
     </div>
+    <div class="navigation">
+      <div class="left">
+        <div onclick="triggerAudioButton('/', 'click')" class="mc-button">
+          <div class="title">Daily</div>
+        </div>
+      </div>
+      <div class="left">
+        <div onclick="triggerAudioButton('/?random=True', 'click')" class="mc-button">
+          <div class="title">Random</div>
+        </div>
+      </div>
+    </div>
+
   </header>
   <div id="content">{% block content %}{% endblock %}</div>
   <script src="{{ url_for('static', filename='js/buttons.js') }}"></script>
