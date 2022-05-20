@@ -84,6 +84,10 @@ a:visited {
     flex-wrap: wrap;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 .navigation {
     display: flex;
     margin: 0;
