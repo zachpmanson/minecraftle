@@ -32,17 +32,24 @@ def insert_record(user_id, date, win, attempts):
         detect_types=sqlite3.PARSE_DECLTYPES | sqlite3.PARSE_COLNAMES
     )
     cursor = connection.cursor()
-    sql_command = (
-        f"""INSERT INTO games_played(user_id, date, win, attempts) VALUES (
-            ?,
-            ?,
-            ?,
-            ?
+
+    cursor.execute("SELECT * FROM games_played WHERE user_id==? AND date==?", (user_id, date))
+
+    todays_submissions = cursor.fetchall()
+    print(f"{todays_submissions=}")
+    # Only allow 1 submission per day
+    if len(todays_submissions) < 1:
+        sql_command = (
+            f"""INSERT INTO games_played(user_id, date, win, attempts) VALUES (
+                ?,
+                ?,
+                ?,
+                ?
+            )
+            """
         )
-        """
-    )
-    cursor.execute(sql_command, (user_id, date, win, attempts))
-    connection.commit()
+        cursor.execute(sql_command, (user_id, date, win, attempts))
+        connection.commit()
     return cursor.lastrowid
 
 def get_records(user_id, date):
