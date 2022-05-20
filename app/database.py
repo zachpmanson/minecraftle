@@ -36,12 +36,12 @@ def insert_record(user_id, date, win, attempts):
         f"""INSERT INTO games_played(user_id, date, win, attempts) VALUES (
             ?,
             ?,
-            {win},
-            {attempts}
+            ?,
+            ?
         )
         """
     )
-    cursor.execute(sql_command, (user_id, date))
+    cursor.execute(sql_command, (user_id, date, win, attempts))
     connection.commit()
     return cursor.lastrowid
 

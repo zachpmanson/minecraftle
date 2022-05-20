@@ -81,8 +81,11 @@ def statistics(user_id):
     attempts = request.args.get("attempts")
     print(user_id, win, attempts)
     if None not in (user_id, win, attempts):
-        database.insert_record(user_id, date.today(), win, attempts)
-    
+        try:
+            float(user_id)
+            database.insert_record(user_id, date.today(), int(win), int(attempts))
+        except ValueError:
+            print("Attmpted SQL injection!")
     wins_records, games_played_records, user_attempt_wincounts = database.get_records(user_id,date.today())
 
     games_played = games_played_records[0][0]
