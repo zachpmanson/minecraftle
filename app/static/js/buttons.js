@@ -5,3 +5,8 @@ function triggerAudioButton(href, sound) {
       location.href = href;
     })
 }
+
+function playMusic() {
+  var audio = new Audio('/app/static/audio/C418 - Aria Math (Minecraft Volume Beta).mp3');
+  audio.play();
+}
