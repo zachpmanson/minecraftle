@@ -206,6 +206,12 @@ a:visited {
     margin: auto;
 }
 
+.ingredients-list {
+    justify-content: center;
+    width: auto;
+    margin: 1rem auto;
+}
+
 #cursor {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -274,10 +280,6 @@ td {
 
 .stats_value {
     text-align: right;
-}
-
-.ingredients-list {
-    margin: 1rem 0;
 }
 
 #popupContainer {
