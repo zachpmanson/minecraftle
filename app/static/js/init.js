@@ -306,7 +306,7 @@ function createPopup(msg, summary, win) {
 //Function for on win
 function winner() {
     let summary = generateSummary();
-    let winnerMessage = "You won! Took " + (guessCount) + " guesses.\n" + summary;
+    let winnerMessage = "You won! Took " + (guessCount) + " guesses.\n";
     createPopup(winnerMessage, summary, 1);
 }
 
