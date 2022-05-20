@@ -13,7 +13,10 @@
 
 <body>
   <audio id="click" src="{{ url_for('static', filename='audio/button_click.wav') }}"></audio>
-  <audio id="music" src="{{ url_for('static', filename='audio/C418 - Aria Math (Minecraft Volume Beta).mp3') }}"></audio>
+  <audio preload="none">
+    <source src="{{ url_for('static', filename='audio/C418 - Aria Math (Minecraft Volume Beta).mp3') }}"/>
+  </audio> 
+  
   <header>
     <h1>Minecraftle</h1>
     <div class="navigation">
