@@ -1,4 +1,4 @@
-from flask import render_template, url_for, request
+from flask import render_template, url_for, request, redirect
 
 from app import app 
 from app import database
@@ -84,6 +84,8 @@ def statistics(user_id):
         try:
             float(user_id)
             database.insert_record(user_id, date.today(), int(win), int(attempts))
+            return redirect("/stats/"+user_id)
+
         except ValueError:
             print("Attmpted SQL injection!")
     wins_records, games_played_records, user_attempt_wincounts = database.get_records(user_id,date.today())
