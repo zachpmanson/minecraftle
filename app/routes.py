@@ -119,3 +119,7 @@ def statistics(user_id):
         'stats.html',
         **render_args
     )
+
+@app.errorhandler(404)
+def pagenotfound():
+    return render_template('404.html'), 404
