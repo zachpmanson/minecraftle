@@ -121,5 +121,5 @@ def statistics(user_id):
     )
 
 @app.errorhandler(404)
-def pagenotfound():
+def pagenotfound(e):
     return render_template('404.html'), 404
