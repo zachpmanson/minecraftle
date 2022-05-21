@@ -209,7 +209,6 @@ function addNewCraftingTable() {
                         slot.classList.add("greenguess");
                     }
                     
-                    //TODO change 3 to whatever index in matchmap is correct ingredient but wrong position
                     else if (element[i] === 3) {
                         
                         slot.classList.add("orangeguess");
@@ -286,28 +285,36 @@ function generateSummary() {
 
 }
 
-function addToClipboard(text) {
-    navigator.clipboard.writeText(text);
+const copyToClipboard = str => {
+    if (navigator && navigator.clipboard && navigator.clipboard.writeText)
+        return navigator.clipboard.writeText(str);
+    return Promise.reject('The Clipboard API is not available.');
+    };
+
+function createPopup(msg, summary, win) {
+    document.getElementById("popup").style = "visibility: visible;";
+    document.getElementById("popupContainer").style = "visibility: visible;";
+    document.getElementById("popupContent").textContent = msg+summary;
+    document.getElementById("popupStatsButton").onclick = function(){
+        window.location.replace("/stats/"+user_id+"?win="+win+"&attempts="+(guessCount));
+    }
+    document.getElementById("popupCopyButton").onclick = function(){
+        copyToClipboard(summary)
+    }
 }
 
 //Function for on win
 function winner() {
-    console.log("winner");
-    setTimeout(()=>{
-        let summary = generateSummary();
-        alert("You won! Took " + (guessCount) + " guesses.\n" + summary);
-        window.location.replace("/stats/"+user_id+"?win="+1+"&attempts="+guessCount);
-        addToClipboard(summary)
-    }, 1500);
+    let summary = generateSummary();
+    let winnerMessage = "You won! Took " + (guessCount) + " guesses.\n";
+    createPopup(winnerMessage, summary, 1);
 }
 
 //function on lose
 function loser() {
-    console.log("loser");
-    setTimeout(()=>{
-        let summary = generateSummary();
-        alert("You lost!  The solution was " + solution_item + "\n" + summary);
-        window.location.replace("/stats/"+user_id+"?win="+0+"&attempts="+guessCount);
-        addToClipboard(summary)
-    }, 1500);
+    let summary = generateSummary();
+    let loserMessage = "You lost!  The solution was " + solution_item + "\n" + summary;
+    createPopup(loserMessage, 0);
 }
+
+

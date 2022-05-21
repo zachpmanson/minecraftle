@@ -32,17 +32,24 @@ def insert_record(user_id, date, win, attempts):
         detect_types=sqlite3.PARSE_DECLTYPES | sqlite3.PARSE_COLNAMES
     )
     cursor = connection.cursor()
-    sql_command = (
-        f"""INSERT INTO games_played(user_id, date, win, attempts) VALUES (
-            ?,
-            ?,
-            {win},
-            {attempts}
+
+    cursor.execute("SELECT * FROM games_played WHERE user_id==? AND date==?", (user_id, date))
+
+    todays_submissions = cursor.fetchall()
+    print(f"{todays_submissions=}")
+    # Only allow 1 submission per day
+    if len(todays_submissions) < 1:
+        sql_command = (
+            f"""INSERT INTO games_played(user_id, date, win, attempts) VALUES (
+                ?,
+                ?,
+                ?,
+                ?
+            )
+            """
         )
-        """
-    )
-    cursor.execute(sql_command, (user_id, date))
-    connection.commit()
+        cursor.execute(sql_command, (user_id, date, win, attempts))
+        connection.commit()
     return cursor.lastrowid
 
 def get_records(user_id, date):
@@ -52,13 +59,17 @@ def get_records(user_id, date):
     )
     cursor = connection.cursor()
 
-    cursor.execute(f"SELECT user_id, COUNT(win) FROM games_played WHERE win=1 GROUP BY user_id ORDER BY COUNT(win) DESC")
-    wins = cursor.fetchall()    
-    cursor.execute(f"SELECT user_id, COUNT(win) FROM games_played GROUP BY user_id ORDER BY COUNT(win) DESC")
+    # gets list of all users' number wins, in desc order
+    cursor.execute(f"SELECT user_id, COUNT(win) FROM games_played WHERE win==1 GROUP BY user_id ORDER BY COUNT(win) DESC")
+    wins = cursor.fetchall()  
+
+    # get number of games played by this user      
+    cursor.execute(f"SELECT COUNT(*) FROM games_played WHERE user_id==?", (user_id,))
     games_played = cursor.fetchall()
-    cursor.execute(f"SELECT attempts, COUNT(win) FROM games_played WHERE user_id==? GROUP BY attempts ORDER BY COUNT(win) DESC", (user_id,))
-    user_attempts = cursor.fetchall()
-    from pprint import pprint
-    pprint(wins)
-    pprint(games_played)
-    return wins, games_played, user_attempts
+
+
+    # gets count of games with x turns that given user has won
+    cursor.execute(f"SELECT attempts, COUNT(win) FROM games_played WHERE user_id==? AND win==1 GROUP BY attempts ORDER BY attempts ASC", (user_id,))
+    user_attempt_wincounts = cursor.fetchall()  
+
+    return wins, games_played, user_attempt_wincounts

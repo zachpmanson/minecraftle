@@ -13,6 +13,23 @@
   <p class="left center">Guess <span id="guess-counter">1</span>/10</p>
 </div>
 <div id="cursor"></div>
+<div id="popupContainer" class="inv-background">
+  <div id="popup">
+    <p id="popupContent" class="center"></p>
+    <div class="flex">
+      <div class="left">
+        <div id="popupCopyButton" class="mc-button">
+          <div class="title center">Copy</div>
+        </div>
+      </div>
+      <div class="left">
+        <div id="popupStatsButton" class="mc-button">
+          <div class="title center">Stats</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="{{ url_for('static', filename='js/processGuess.js') }}"></script>
 <script src="{{ url_for('static', filename='js/init.js') }}"></script>
 {% endblock %}
