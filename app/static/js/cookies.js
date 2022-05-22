@@ -5,7 +5,7 @@ var user_id;
  * Checks if user_id exists already, creates one if not
  */
 function checkUserCookie() {
-    user_id = localStorage.getItem("user_id")
+    user_id = localStorage.getItem("user_id");
     if (user_id !== null) {
         console.log("Welcome back! Your user_id is: " + user_id);
     } else {
@@ -18,7 +18,7 @@ function checkUserCookie() {
  */
 function createUserID() {
     let uuid = Date.now().toString() + Math.random().toString();//self.crypto.randomUUID();// crypto only works with SSL
-    localStorage["user_id"] = uuid
+    localStorage["user_id"] = uuid;
     console.log("Generated new user_id: "+ localStorage["user_id"] );
     user_id = localStorage["user_id"];
 }
@@ -32,5 +32,5 @@ function createUserID() {
     let statsbutton = document.getElementById("statsbutton");
     statsbutton.onclick = ()=>{
         location.href = "/stats/"+user_id;
-    }
+    };
 });

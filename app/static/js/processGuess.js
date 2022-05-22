@@ -20,8 +20,8 @@ function getSolutionRecipe() {
 
 
 function populateSolution(rawrecipe) {
-    solution_recipe = rawrecipe["input"];
-    solution_item = rawrecipe["output"];
+    solution_recipe = rawrecipe.input;
+    solution_item = rawrecipe.output;
     init(solution_recipe);
 }
 
@@ -81,12 +81,12 @@ function compareTables(table1, table2, matchOnly) {
  * @returns {Array} Array of all possible variants
  */
 function generateVariants(recipe) {
-    let height = recipe.length
+    let height = recipe.length;
     let width = recipe[0].length;
     let verticalVariants = 4 - recipe.length;
     let horizontalVariants = 4 - recipe[0].length;
 
-    let variants = []
+    let variants = [];
 
     for (let i = 0; i < verticalVariants; i++) {
         for (let j = 0; j < horizontalVariants; j++) {
@@ -114,7 +114,7 @@ function generateVariants(recipe) {
  * @returns {Array} if matches any variants, matchmap of guess and that variant
  */
 function checkAllVariants(guess) {
-    let isCorrect = false
+    let isCorrect = false;
     let matchmap = null;
     
     allVariants.forEach( (variant, i)=>{
@@ -136,7 +136,7 @@ function checkAllVariants(guess) {
 function checkRemainingVariants(guess) {
     
     let matchmaps = [];
-    let matchcounts = []
+    let matchcounts = [];
     
     remainingVariants.forEach( (variant)=>{
         let matchData = compareTables(variant, guess);
@@ -162,13 +162,13 @@ function findRemainingVariantsIndices(matchmaps, matchcounts) {
     // generate mask matchmap at this index for 2's
     let correctSlots = compareTables(matchmaps[maxMatchesIndex], matchmaps[maxMatchesIndex], 2)[0];
 
-    let remainingVariantsIndices = []
+    let remainingVariantsIndices = [];
 
     matchmaps.forEach( (matchmap, i)=>{
         // mask to only include 2's in matchmaps
         let matchDataToCompare = compareTables(matchmap, matchmap, 2); 
         // compare masked
-        let correctSlotOverlapData = compareTables(correctSlots, matchDataToCompare[0])
+        let correctSlotOverlapData = compareTables(correctSlots, matchDataToCompare[0]);
         
         // if correctSlotOverlapData is full match
         if (correctSlotOverlapData[2]) {
@@ -210,14 +210,14 @@ function generateNextGuessStartingTable(guess, correctSlots) {
  * @param {Array} correctSlots 
  */
 function addOrangeSlots(guess, correctSlots) {
-    n_items = {}
+    n_items = {};
     // first pass initiliases all item dict entries to 0
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
             if (guess[i][j] === null) {
 
             } else if (n_items[guess[i][j]] === undefined) {
-                n_items[guess[i][j]] = 0
+                n_items[guess[i][j]] = 0;
             }
         }
     }
@@ -236,11 +236,11 @@ function addOrangeSlots(guess, correctSlots) {
     n_unidentified_items = {...solution_n_items};
     Object.keys(solution_n_items).forEach((e,i)=>{
         if (n_unidentified_items[e] !== undefined) {
-            n_unidentified_items[e] = solution_n_items[e] - n_items[e]
+            n_unidentified_items[e] = solution_n_items[e] - n_items[e];
         }
     });
-    console.log(solution_n_items)
-    console.log(n_unidentified_items)
+    console.log(solution_n_items);
+    console.log(n_unidentified_items);
 
     // final pass marks (at most n) orange slots for each item in n_unidentified_items
     for (let i = 0; i < 3; i++) {
@@ -255,6 +255,8 @@ function addOrangeSlots(guess, correctSlots) {
     }
 }
 
+
+
 /**
  * Takes guess table, checks against all variants.  If not a full match to any,
  * it checks the remainingVariants.  Trims remainingVariants based on 
@@ -262,9 +264,9 @@ function addOrangeSlots(guess, correctSlots) {
  * @param {Array} guess 
  * @returns {Array} isGuessTheSolution, matchmap of guess to remainingVariants
  */
-function processGuess(guess) {
+ function processGuess(guess) {
     guessCount++;
-    console.log("GUESS #"+guessCount)
+    console.log("GUESS #"+guessCount);
 
     // Checks guess against ALL variants.
     // May be able to replace this later when the crafting decision tree is implemented
@@ -287,7 +289,7 @@ function processGuess(guess) {
 
 
     // Recreate remainingVariants based on the given indices
-    let cleanedVariants = []
+    let cleanedVariants = [];
     remainingVariantsIndices.forEach((variantIndex)=>{
         cleanedVariants.push(remainingVariants[variantIndex]);
     });
@@ -307,7 +309,7 @@ function init(solution) {
             if (solution[i][j] === null) {
 
             } else if (solution_n_items[solution[i][j]] === undefined) {
-                solution_n_items[solution[i][j]] = 1
+                solution_n_items[solution[i][j]] = 1;
             } else {
                 solution_n_items[solution[i][j]]++;
             }
@@ -339,6 +341,10 @@ let allVariants = [];
 let guessCount = 0; // this is just for console output
 
 //randomly select a recipe to be the solution for today
+
+
+
+
 
 
 

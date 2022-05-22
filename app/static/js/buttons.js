@@ -3,7 +3,7 @@ function triggerAudioButton(href, sound) {
     audio.play();
     audio.addEventListener('ended', function () {
       location.href = href;
-    })
+    });
 }
 
 function playMusic() {

@@ -9,7 +9,7 @@ let cursor = document.getElementById("cursor");
 let cursorItem = null;
 let givenIngredients;
 
-let emojiSummaries = []
+let emojiSummaries = [];
 
 /**
  * Sets background of given div to given item
@@ -53,7 +53,7 @@ function setCursor(item) {
 }
 
 function updateRemainingGuesses() {
-    document.getElementById("guess-counter").innerText = guessCount+1
+    document.getElementById("guess-counter").innerText = guessCount+1;
 }
 
 /**
@@ -125,11 +125,11 @@ function addNewCraftingTable() {
             // switch held item and slot item
             if (cursorItem === null) {
                 cursorItem = craftingTables[tableNum][slot["row"]][slot["col"]];
-                craftingTables[tableNum][slot["row"]][slot["col"]] = null;;
+                craftingTables[tableNum][slot["row"]][slot["col"]] = null;
                 setSlotBackground(imageDiv, null);
 
-                console.log("Placed " + null + " in position " + slot["row"] + " " + slot["col"] + " in table " + tableNum)
-                console.log("Picked up " + cursorItem)
+                console.log("Placed " + null + " in position " + slot["row"] + " " + slot["col"] + " in table " + tableNum);
+                console.log("Picked up " + cursorItem);
             } else {
                 
                 let temp = (cursorItem === null) ? null : cursorItem.slice();
@@ -138,32 +138,32 @@ function addNewCraftingTable() {
                 
                 setSlotBackground(imageDiv, temp);
                 
-                console.log("Placed " + temp + " in position " + slot["row"] + " " + slot["col"] + " in table " + tableNum)
-                console.log("Picked up " + cursorItem)
+                console.log("Placed " + temp + " in position " + slot["row"] + " " + slot["col"] + " in table " + tableNum);
+                console.log("Picked up " + cursorItem);
             }
             setCursor(cursorItem);
             
             // TODO presumably this will then need to calculate if current craftingTable is a valid recipe
-        })
+        });
     }
 
-    newTable.appendChild(tableDiv)
+    newTable.appendChild(tableDiv);
     
     let arrowDiv = document.createElement("div");
     arrowDiv.classList.add("arrow");
     let arrow = document.createElement("p");
     arrow.innerText = "→";
     arrowDiv.appendChild(arrow);
-    newTable.appendChild(arrowDiv)
+    newTable.appendChild(arrowDiv);
     
     let outputDiv = document.createElement("div");
-    outputDiv.classList.add("crafting-output")
+    outputDiv.classList.add("crafting-output");
     let slot = document.createElement("div");
-    slot.classList.add("slot")
+    slot.classList.add("slot");
     let imageDiv = document.createElement("div");
     slot.setAttribute("id", "solutiondiv" + tableNum);
     imageDiv.classList.add("slot-image");
-    slot.appendChild(imageDiv)
+    slot.appendChild(imageDiv);
     
     slot.addEventListener("mousedown", e=>{
         // TODO only clickable if recipe is valid.
@@ -171,7 +171,6 @@ function addNewCraftingTable() {
         // then should change slot background colors to green yellow etc
         // then should lock this table, remove all event listeners from it
         
-        // placeholder
         var isCorrect = processGuess(craftingTables[tableNum]);
 
         // Update solution div to display the correct item, change slot background and lock table
@@ -181,9 +180,9 @@ function addNewCraftingTable() {
             console.log(solution_item + "solution item");
             setSlotBackground(imageDiv, solution_item);
             for (const [index, element] of isCorrect[1].entries()) {
-                console.log("index: "+ index+" element: " + element)
+                console.log("index: "+ index+" element: " + element);
                 for (let i = 0; i < 3; i++) {
-                    if (index === 1) {j = i + 4}
+                    if(index === 1) {j = i + 4}
                     else if (index === 2) {j = i + 7}
                     else {j = i + 1}
                     const slot = document.querySelector("#tablenumber" + tableNum + " :nth-child(" + j + ")");
@@ -196,7 +195,8 @@ function addNewCraftingTable() {
                 }
             }
             setTimeout(()=>{winner()}, 750);
-        } 
+        }
+
         else if (guessCount < maxGuesses) {
             for (const [index, element] of isCorrect[1].entries()) {
                 for (let i = 0; i < 3; i++) {
@@ -222,7 +222,7 @@ function addNewCraftingTable() {
         }
         if (guessCount >= maxGuesses) {
             setTimeout(()=>{loser()}, 750);
-            return
+            return;
         }
 
         var lockedtable = document.getElementById("tablenumber" + tableNum);
@@ -261,7 +261,7 @@ let guessesDiv = document.getElementById("guesses");
 document.addEventListener("mousedown", e => {
     let isClickOutsideIngredients = ingredientsDiv.contains(e.target) || guessesDiv.contains(e.target);
     if (!isClickOutsideIngredients) {
-        console.log("dropping item because outside ingredients " + cursorItem)
+        console.log("dropping item because outside ingredients " + cursorItem);
         cursorItem = null;
         setCursor(cursorItem);
     }
@@ -279,7 +279,7 @@ function generateSummary() {
             summaryString += row.join("") + "\n";
 
         }
-        summaryString += "\n"
+        summaryString += "\n";
     }
     return summaryString;
 
@@ -298,10 +298,10 @@ function createPopup(msg, summary, win) {
     document.getElementById("popupContent").textContent = msg+summary;
     document.getElementById("popupStatsButton").onclick = function(){
         window.location.replace("/stats/"+user_id+"?win="+win+"&attempts="+(guessCount));
-    }
+    };
     document.getElementById("popupCopyButton").onclick = function(){
-        copyToClipboard(summary)
-    }
+        copyToClipboard(summary);
+    };
 }
 
 //Function for on win
