@@ -60,7 +60,7 @@ def get_records(user_id, date):
     cursor = connection.cursor()
 
     # gets list of all users' number wins, in desc order
-    cursor.execute(f"SELECT user_id, COUNT(win) FROM games_played WHERE win==1 GROUP BY user_id ORDER BY COUNT(win) DESC")
+    cursor.execute(f"SELECT user_id, COUNT(win) FROM games_played WHERE win==1 GROUP BY user_id ORDER BY COUNT(win) DESC, AVG(attempts) ASC")
     wins = cursor.fetchall()  
 
     # get number of games played by this user      
