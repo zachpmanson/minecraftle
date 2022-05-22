@@ -195,7 +195,7 @@ function addNewCraftingTable() {
                     slot.classList.remove("slot");
                 }
             }
-            winner();
+            setTimeout(()=>{winner()}, 750);
         } 
         else if (guessCount < maxGuesses) {
             for (const [index, element] of isCorrect[1].entries()) {
@@ -221,7 +221,7 @@ function addNewCraftingTable() {
             addNewCraftingTable();
         }
         if (guessCount >= maxGuesses) {
-            loser()
+            setTimeout(()=>{loser()}, 750);
             return
         }
 
@@ -293,6 +293,7 @@ const copyToClipboard = str => {
 
 function createPopup(msg, summary, win) {
     document.getElementById("popup").style = "visibility: visible;";
+    setSlotBackground(document.getElementById("popupSlot").firstChild, solution_item);
     document.getElementById("popupContainer").style = "visibility: visible;";
     document.getElementById("popupContent").textContent = msg+summary;
     document.getElementById("popupStatsButton").onclick = function(){
