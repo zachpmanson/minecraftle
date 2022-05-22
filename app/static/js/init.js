@@ -313,8 +313,8 @@ function winner() {
 //function on lose
 function loser() {
     let summary = generateSummary();
-    let loserMessage = "You lost!  The solution was " + solution_item + "\n" + summary;
-    createPopup(loserMessage, 0);
+    let loserMessage = "You lost!  The solution was " + solution_item + "\n";
+    createPopup(loserMessage, summary, 0);
 }
 
 
