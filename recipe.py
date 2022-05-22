@@ -1,6 +1,10 @@
 import json, os
-from operator import indexOf
-from tkinter import N
+
+# this definitely could've been done better but was in a rush and this worked, very shoddy code but it runs fast enough thanks to modern beefy computers and it works
+# I would comment each function and explain but its a bit messy the gyst of it is we go through minecrafts standard recipe.json format and append the recipe "pattern"
+# to the new json format so the pattern is the name of the item rather than a key code like # or %.
+
+
 
 def writejson(dictionary, filename):
     jsonobject = json.dumps(dictionary, indent = 4)
