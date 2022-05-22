@@ -88,7 +88,7 @@ def statistics(user_id):
 
         except ValueError:
             print("Attmpted SQL injection!")
-    wins_records, games_played_records, user_attempt_wincounts = database.get_records(user_id,date.today())
+    wins_records, games_played_records, user_attempt_wincounts = database.get_records(user_id)
 
     games_played = games_played_records[0][0]
 

@@ -52,7 +52,7 @@ def insert_record(user_id, date, win, attempts):
         connection.commit()
     return cursor.lastrowid
 
-def get_records(user_id, date):
+def get_records(user_id):
     connection = sqlite3.connect(
         "minecraftle.db",
         detect_types=sqlite3.PARSE_DECLTYPES | sqlite3.PARSE_COLNAMES
