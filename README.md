@@ -15,9 +15,9 @@ Due date: May 23, 2022 12:00 (noon)
      + [x] given_ingredients.json used to modify potential puzzles
    + [x] A mechanism for users to share their achievements.
  + [ ] Front end functionality (50%)
-  + [ ] 3 page views
-    + [ ] Instructions and description
-    + [ ] Actual puzzle interface
+  + [x] 3 page views
+    + [x] Instructions and description
+    + [x] Actual puzzle interface
       + [x] General structure
       + [x] Crafting tables/Inventory
       + [x] Minecraft-esque appearance
@@ -25,16 +25,15 @@ Due date: May 23, 2022 12:00 (noon)
       + [x] Item follow mouse movement
       + [x] Freezing past guesses
       + [x] Setting slot colour hints on guess submission
-      + [ ] Valid crafting recipe check
-      + [ ] Success screen
+      + [ ] ~~Valid crafting recipe check~~ (not going to do)
+      + [x] Success screen
     + [x] aggregate results and stats
 
 ### Misc. Features Todos:
 + [x] Generate shareable emoji text from progressGuess() return tables
-  + [ ] Make popups that are triggered by winner() and loser() that shows a shareable emoji text like wordle, has button linking to view user stats
-  + [ ] social sharing links for emoji output similar to stats page
+  + [x] Make popups that are triggered by winner() and loser() that shows a shareable emoji text like wordle, has button linking to view user stats
 + [ ] A system for admins to add/remove from given_ingredients and recipes
-+ [ ] Make it play nicely on mobile (reactive to device size)
++ [x] Make it play nicely on mobile (reactive to device size)
 + [x] An indicator for the guess number
 + [ ] UNIT TESTS + SELEIUM TESTS
 
