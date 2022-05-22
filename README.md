@@ -8,13 +8,13 @@ Due date: May 23, 2022 12:00 (noon)
  + [x] Come up with idea
  + [x] Find Minecraft recipes list
    + [x] Import required recipes into repo (potentially all of them)
- + [ ] Back end functionality (50%)
+ + [x] Back end functionality (50%)
    + [x] A user account and tracking feature.
    + [x] A method to store puzzles and results.
-   + [ ] A method to update and vet puzzles.
+   + [x] A method to update and vet puzzles.
      + [x] given_ingredients.json used to modify potential puzzles
    + [x] A mechanism for users to share their achievements.
- + [ ] Front end functionality (50%)
+ + [x] Front end functionality (50%)
   + [x] 3 page views
     + [x] Instructions and description
     + [x] Actual puzzle interface
@@ -32,7 +32,7 @@ Due date: May 23, 2022 12:00 (noon)
 ### Misc. Features Todos:
 + [x] Generate shareable emoji text from progressGuess() return tables
   + [x] Make popups that are triggered by winner() and loser() that shows a shareable emoji text like wordle, has button linking to view user stats
-+ [ ] A system for admins to add/remove from given_ingredients and recipes
++ [x] A system for admins to add/remove from given_ingredients and recipes
 + [x] Make it play nicely on mobile (reactive to device size)
 + [x] An indicator for the guess number
 + [ ] UNIT TESTS + SELEIUM TESTS
@@ -45,9 +45,9 @@ Due date: May 23, 2022 12:00 (noon)
   4. describe some unit tests for the web application, and how to run them.
 + [ ] Include commit logs, showing contributions and review from all contributing students (`.git` is not included so git log must be a seperate file)
 + [ ] Add comments and jsdoc
-+ [ ] Freeze all pip requirements (may just be flask) (`pip freeze > requirements.txt`)
-+ [ ] Validation (https://validator.w3.org/)
-  + [ ] HTML
-  + [ ] CSS
-  + [ ] JavaScipt
++ [x] Freeze all pip requirements (may just be flask) (`pip freeze > requirements.txt`)
++ [x] Validation (https://validator.w3.org/)
+  + [x] HTML
+  + [x] CSS
+  + [x] JavaScipt
 + [ ] Add references to pictures/recipe json files/libraries/css to `references.txt` (do this as we go)
