@@ -184,6 +184,10 @@ a:visited {
     background-size: cover;
 }
 
+#popupSlot {
+    margin: auto;
+}
+
 .crafting-table {
     width: 9rem;
     height: 9rem;
