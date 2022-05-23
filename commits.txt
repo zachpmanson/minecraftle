@@ -1,0 +1,948 @@
+* commit 44dda56a8898b20b02f61813db450c3251f9601d (HEAD -> main, origin/main, origin/HEAD)
+| Author: Tamura77 <tnbddd77@gmail.com>
+| Date:   Mon May 23 11:48:55 2022 +0800
+| 
+|     a
+| 
+* commit 0980ca259a87fc6bbfa82b5823cc71f64988e690
+| Author: pavo-etc <z1verdeman2@gmail.com>
+| Date:   Mon May 23 11:46:31 2022 +0800
+| 
+|     More readme updates
+|   
+*   commit a7c8dedf9c2568b19c88b29c3fb6426dbedaf114
+|\  Merge: f91a155 a511ace
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Mon May 23 11:44:15 2022 +0800
+| | 
+| |     Merge branch 'main' of https://github.com/pavo-etc/cits3403-project into main
+| |   
+| *   commit a511ace6246c798230f803651cb299b1457d73e0
+| |\  Merge: 9ee79e3 cc4ce9d
+| | | Author: Tamura77 <tnbddd77@gmail.com>
+| | | Date:   Mon May 23 11:33:51 2022 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/pavo-etc/cits3403-project
+| | |   
+| | *   commit cc4ce9d27b184b1940799fa35024eb3221b39946
+| | |\  Merge: ce01771 62480e7
+| | | | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | | | Date:   Mon May 23 11:13:14 2022 +0800
+| | | | 
+| | | |     Merge branch 'main' of https://github.com/pavo-etc/cits3403-project
+| | | | 
+| | * | commit ce01771f558dd393941daf822904cf2895f4a315
+| | | | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | | | Date:   Mon May 23 11:13:07 2022 +0800
+| | | | 
+| | | |     formatting
+| | | | 
+| * | | commit 9ee79e33374992687ae5299ee7cb177ff68d6477
+| | |/  Author: Tamura77 <tnbddd77@gmail.com>
+| |/|   Date:   Mon May 23 11:33:12 2022 +0800
+| | |   
+| | |       Comments to all stats.js
+| | | 
+* | | commit f91a155ed70d4f4a377faa215c9696592d991c06
+|/ /  Author: pavo-etc <z1verdeman2@gmail.com>
+| |   Date:   Mon May 23 11:43:25 2022 +0800
+| |   
+| |       Expand explanation
+| | 
+* | commit 62480e7d06d8d19760543d88d0b209a6baeecce6
+|\| Merge: 386656e 48b2ca0
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Mon May 23 11:12:35 2022 +0800
+| | 
+| |     Merge branch 'main' of https://github.com/pavo-etc/cits3403-project into main
+| | 
+| * commit 48b2ca0f84085151a3039d5ac195c208702e486f
+| | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | Date:   Mon May 23 11:12:07 2022 +0800
+| | 
+| |     readme submission done
+| |   
+| *   commit 006ed23bee296d0b4308e417e803345f75d3b924
+| |\  Merge: 4ec8eba c32f534
+| | | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | | Date:   Mon May 23 10:50:17 2022 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/pavo-etc/cits3403-project
+| | | 
+| * | commit 4ec8eba6d4ff3f5eb971c125085dee750c026528
+| | | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | | Date:   Mon May 23 10:50:02 2022 +0800
+| | | 
+| | |     submission readme without unit tests
+| | | 
+* | | commit 386656efc74d3795feb83c54579102c7d1f8c8aa
+| | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | Date:   Mon May 23 11:12:27 2022 +0800
+| | | 
+| | |     Add pydoc
+| | | 
+* | | commit 392982fc2cd9ac598593af294f654b2f4899f329
+| | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | Date:   Mon May 23 11:12:20 2022 +0800
+| | | 
+| | |     Add jsdoc
+| | | 
+* | | commit 27ffcfc2703fa15deb1ea83931c815655f041e9d
+| |/  Author: pavo-etc <z1verdeman2@gmail.com>
+|/|   Date:   Mon May 23 11:12:10 2022 +0800
+| |   
+| |       Change spacing
+| | 
+* | commit c32f534b2abb2a98325a035b0749a81dff2ed77a
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Mon May 23 10:49:24 2022 +0800
+| | 
+| |     Add firefox driver
+| | 
+* | commit efce356be910b131bee4d89d05164ba3fe8979cb
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Mon May 23 10:49:14 2022 +0800
+| | 
+| |     Add system unit
+| | 
+* | commit 736c848b0b27b53ad5666747bbceb5987c707746
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Mon May 23 10:46:26 2022 +0800
+| | 
+| |     Add selenium/unit/testing
+| | 
+* | commit 9193db57184da2686e13fbfd764a7c88ba335ce5
+|/  Author: pavo-etc <z1verdeman2@gmail.com>
+|   Date:   Mon May 23 10:28:03 2022 +0800
+|   
+|       Updated requirements
+|   
+*   commit 77538a1d9d27fd5b411a35f5eec3a90261d413f4
+|\  Merge: d9ce0e7 3ad4fc1
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Mon May 23 09:28:25 2022 +0800
+| | 
+| |     Merge branch 'change_ingredients' into main
+| | 
+| * commit 3ad4fc11645757f19c1d0d1ea8de49d47014b045 (origin/change_ingredients, change_ingredients)
+| | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | Date:   Mon May 23 02:58:20 2022 +0800
+| | 
+| |     update todolist
+| | 
+| * commit aab5690da02dd6e6e6f8b3fade16505a7ef9f5f2
+| | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | Date:   Mon May 23 02:55:37 2022 +0800
+| | 
+| |     cleanup of recipe.py
+| | 
+| * commit a8afbbe1bcb6cbee9e0ee6ebfb04e156dc963ef4
+| | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | Date:   Mon May 23 02:46:45 2022 +0800
+| | 
+| |     validation
+| | 
+| * commit 7a5a92ddd243863cdf22600f3b2273e63ca27926
+| | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | Date:   Mon May 23 02:37:16 2022 +0800
+| | 
+| |     semicolon validator changes
+| | 
+| * commit 66857b324c283721577d06241a1f491503bc8b4b
+| | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | Date:   Mon May 23 02:04:12 2022 +0800
+| | 
+| |     final script working
+| | 
+| * commit 5eaa200faa15ae56344d7041290cc1d8b1663b8f
+| | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | Date:   Mon May 23 01:09:02 2022 +0800
+| | 
+| |     change_puzzles implemented
+| | 
+* | commit d9ce0e78487323e71cbde3b40eca6328d080fa0b
+|\| Merge: a29a66f af6b6d9
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Mon May 23 09:26:35 2022 +0800
+| | 
+| |     Merge branch 'main' of https://github.com/pavo-etc/cits3403-project into main
+| | 
+| * commit af6b6d99e5f3fe154d836d3ec2d40fdefbe988bf
+| | Author: Zach Manson <zachpmanson@gmail.com>
+| | Date:   Sun May 22 13:15:40 2022 +0800
+| | 
+| |     Add attempt avg in ranking
+| | 
+| * commit 0e60fae4317f4de54da28ddc49f833a6277ada2e
+| | Author: Zach Manson <zachpmanson@gmail.com>
+| | Date:   Sun May 22 13:15:21 2022 +0800
+| | 
+| |     Update readme
+| | 
+| * commit ba5d918526bb04a199beacc9be51443a857b56ad
+| | Author: Zach Manson <zachpmanson@gmail.com>
+| | Date:   Sun May 22 12:07:03 2022 +0800
+| | 
+| |     Add timer to popup and image of solution
+| | 
+| * commit d0446ebecdce0c726f7a0c56de804df899dadfe0
+| | Author: Zach Manson <zachpmanson@gmail.com>
+| | Date:   Sun May 22 00:47:35 2022 +0800
+| | 
+| |     Fix 404
+| | 
+| * commit ecc9b0f905d1c840ba7b29e78f498d16c628f85c
+| | Author: Zach Manson <zachpmanson@gmail.com>
+| | Date:   Sun May 22 00:42:00 2022 +0800
+| | 
+| |     Add 404 page
+| |   
+| *   commit 363658259badec2c3edfba0a643cea70bb5cc457
+| |\  Merge: b8f7de5 a634d15
+| | | Author: Zach Manson <zachpmanson@gmail.com>
+| | | Date:   Sun May 22 00:31:43 2022 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/pavo-etc/cits3403-project
+| | | 
+| * | commit b8f7de5aacaf03ee7999c7fd68d3458692cc35b7
+| | | Author: Zach Manson <zachpmanson@gmail.com>
+| | | Date:   Sun May 22 00:30:04 2022 +0800
+| | | 
+| | |     Add favicon
+| | | 
+* | | commit a29a66f2afb8e08fffaff68dadef8b34a8aebec1
+| | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | Date:   Mon May 23 02:55:37 2022 +0800
+| | | 
+| | |     Make loser match winner
+| | | 
+* | | commit 96efdeee5c78a8f08c14bb3eab49692f624b2ad0
+| |/  Author: pavo-etc <z1verdeman2@gmail.com>
+|/|   Date:   Mon May 23 02:31:22 2022 +0800
+| |   
+| |       Remove unnecessary arg
+| | 
+* | commit a634d151287a0010c68ae6703ed954f7fcfabe58
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Fri May 20 23:02:27 2022 +0800
+| | 
+| |     Remove duplication
+| | 
+* | commit b4bf934057ef04ecd0ee7e6ac935f76e16149d63
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Fri May 20 22:59:56 2022 +0800
+| | 
+| |     Fix copy function
+| | 
+* | commit 6862da9ddb15f9bb9fbeb188157772a71c53f2d8
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Fri May 20 22:15:21 2022 +0800
+| | 
+| |     Fix audio location
+| | 
+* | commit 5f46e09db169f4dd5abf662ef2b2c3e3c3a33e8b
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Fri May 20 22:14:05 2022 +0800
+| | 
+| |     Add bold
+| | 
+* | commit 6ae24aa49808f147856b8dd9fd24fd98497901e1
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Fri May 20 22:13:58 2022 +0800
+| | 
+| |     Make js load music
+| | 
+* | commit 8ead111149cbf26df8b5f9fc29605dc3eb87231a
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Fri May 20 22:05:57 2022 +0800
+| | 
+| |     Make how to play use ul
+| | 
+* | commit ef7f9423ce4fb6764c1c883e8085736def127a6a
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Fri May 20 22:05:45 2022 +0800
+| | 
+| |     Make audio not preload
+| | 
+* | commit e5540be3b79674141df6a368be1654a32c23a3df
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Fri May 20 21:37:18 2022 +0800
+| | 
+| |     Center ingredients
+| | 
+* | commit 28af3ba2da52b09a5bda9a1ad9dc413bd027c3ec
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Fri May 20 21:37:08 2022 +0800
+| | 
+| |     Add random puzzle button
+| |   
+* |   commit 6f2fd48e0880103d81f36d097d39c60cd05975df
+|\ \  Merge: c420fb7 f4c2a0f
+| | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | Date:   Fri May 20 21:21:55 2022 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/pavo-etc/cits3403-project into main
+| | | 
+| * | commit f4c2a0f54f5702d13e08e2a71ee9526b45a2f3c9
+| | | Author: Zach Manson <zachpmanson@gmail.com>
+| | | Date:   Fri May 20 21:20:51 2022 +0800
+| | | 
+| | |     Remove minecraft.db
+| | | 
+| * | commit 6708d0455d7f58c07752732f93762569ac64ccc9
+| | | Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+| | | Date:   Fri May 20 18:52:22 2022 +0800
+| | | 
+| | |     Added HOW TO PLAY content
+| | |   
+| | | * commit 068a83b9b1edcfcc520a0f04cb0b8b96786d299c (refs/stash)
+| |_|/| Merge: c420fb7 0185507
+|/| | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | | Date:   Fri May 20 21:21:53 2022 +0800
+| | | | 
+| | | |     WIP on main: c420fb7 Add automatic redirect to mask stats sql submission
+| | | | 
+| | | * commit 01855072ae0d4187e43b53a858c1ac49d93df4b0
+| |_|/  Author: pavo-etc <z1verdeman2@gmail.com>
+|/| |   Date:   Fri May 20 21:21:53 2022 +0800
+| | |   
+| | |       index on main: c420fb7 Add automatic redirect to mask stats sql submission
+| | | 
+* | | commit c420fb7f83494b311952a0ef5c2af376e04e4a08
+| | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | Date:   Fri May 20 21:19:27 2022 +0800
+| | | 
+| | |     Add automatic redirect to mask stats sql submission
+| | | 
+* | | commit 8da14adcb4e6fb2b94d044b5c26dc1bdc11161ff
+| | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | Date:   Fri May 20 21:11:40 2022 +0800
+| | | 
+| | |     Only allow 1 stat submission per day
+| | | 
+* | | commit e64032d64ca0b82787b8c17db095ae6002bf4700
+|/ /  Author: pavo-etc <z1verdeman2@gmail.com>
+| |   Date:   Fri May 20 21:08:01 2022 +0800
+| |   
+| |       Remove SQL injection vuln
+| | 
+* | commit cdbe2af94b15f5820e67db84777c8d8e3237bb11
+| | Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+| | Date:   Fri May 20 00:46:40 2022 +0800
+| | 
+| |     fixed createPopup() to update losses instead of just wins, removed some duplicated code in loser()
+| | 
+* | commit 68f14b9e7650d42f5af28dc34876bd99551b1dfd
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Fri May 20 00:28:36 2022 +0800
+| | 
+| |     Style popup
+| | 
+* | commit f33ba5e4d3c8466fbbe2c8090435218431d23641
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Fri May 20 00:28:17 2022 +0800
+| | 
+| |     Update gitignore
+| | 
+* | commit 2e668cf39dbce1a3753b0662d82e07cbe6bbb96c
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Thu May 19 23:42:23 2022 +0800
+| | 
+| |     Fix stats properly
+| |   
+* |   commit f378705f78466a88db0ac753e6a39dd89fb116e8
+|\ \  Merge: df52249 55597cb
+| | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | Date:   Thu May 19 23:34:39 2022 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/pavo-etc/cits3403-project into main
+| | | 
+| * | commit 55597cb5d032ee04c19631723294b84220b16c55
+| | | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | | Date:   Thu May 19 23:17:10 2022 +0800
+| | | 
+| | |     fixed bug where how to play from stats wouldnt work and added formatting to popup
+| | | 
+* | | commit df52249d21d84b4d38a312cf551aab1fd5b7fb01
+| | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | Date:   Thu May 19 23:33:40 2022 +0800
+| | | 
+| | |     Fix stats displaying
+| | | 
+* | | commit c653cb009c0a0335bc81b65f55633b1476abbbff
+| | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | Date:   Thu May 19 23:32:52 2022 +0800
+| | | 
+| | |     Change win ratio to win%
+| | | 
+* | | commit 179ac2a7b64e2fc7627bc799717fac71ae17ad38
+|/ /  Author: pavo-etc <z1verdeman2@gmail.com>
+| |   Date:   Thu May 19 23:32:38 2022 +0800
+| |   
+| |       Fix stats submissions
+| |   
+* |   commit 6cdc6da00c93289411daa429d662d81495700ebc
+|\ \  Merge: c5ed253 77475df
+| | | Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+| | | Date:   Thu May 19 22:45:53 2022 +0800
+| | | 
+| | |     fixed bug in loser() function for popup
+| | | 
+| * | commit 77475dffa197b85c850923aac9bd6eb39785516e
+| | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | Date:   Thu May 19 22:39:46 2022 +0800
+| | | 
+| | |     Remove db and add to gitignore
+| | |   
+| * |   commit e14a199f125221a67b24591c72cc39a1dc47f584
+| |\ \  Merge: 30353bb c1e2c26
+| | | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | | Date:   Thu May 19 22:35:42 2022 +0800
+| | | | 
+| | | |     Merge branch 'main' of https://github.com/pavo-etc/cits3403-project into main
+| | | | 
+| * | | commit 30353bbec30266d97f8c3dd3e92e8a5880df6007
+| | | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | | Date:   Wed May 18 23:45:26 2022 +0800
+| | | | 
+| | | |     Fix random seeding
+| | | | 
+* | | | commit c5ed253363fc75bda89f0c2f1b93c9efc8286d78
+| |/ /  Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+|/| |   Date:   Thu May 19 22:41:08 2022 +0800
+| | |   
+| | |       fixed loser() function bug
+| | | 
+* | | commit c1e2c26041ee3769bcfad2967737f158dbcd947b
+| | | Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+| | | Date:   Thu May 19 22:32:58 2022 +0800
+| | | 
+| | |     added popup box without styling
+| | |   
+* | |   commit 79c8f3fd39ee90f7850c9afbd210303b4f839e06
+|\ \ \  Merge: e9c1481 bfb11d4
+| | |/  Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+| |/|   Date:   Thu May 19 21:48:53 2022 +0800
+| | |   
+| | |       Merge branch 'main' of https://github.com/pavo-etc/cits3403-project
+| | | 
+| * | commit bfb11d4b614920d997e9154c5c34a7386bcd3532
+| | | Author: Zach Manson <zachpmanson@gmail.com>
+| | | Date:   Thu May 19 21:37:02 2022 +0800
+| | | 
+| | |     Add copy function and cleanup
+| | | 
+| * | commit 6fe070f024c706f250e1d492527d9fb1a8a5fed9
+| | | Author: Zach Manson <zachpmanson@gmail.com>
+| | | Date:   Thu May 19 18:29:52 2022 +0800
+| | | 
+| | |     Improve mobile scaling significantly
+| | | 
+| * | commit 7c714ad2e2f350e9f53af5c970c4144f50d71e06
+| | | Author: Zach Manson <zachpmanson@gmail.com>
+| | | Date:   Thu May 19 18:21:11 2022 +0800
+| | | 
+| | |     Add button click sound to social buttons
+| | | 
+| * | commit c6b954d73caf8e5f1d25133810199669e44c8c19
+| | | Author: Zach Manson <zachpmanson@gmail.com>
+| | | Date:   Thu May 19 18:18:17 2022 +0800
+| | | 
+| | |     Fix static references, make stats a subdir
+| | | 
+* | | commit e9c1481b689b8ec827774231a17b5fcac8da315d
+|\| | Merge: 23559b9 860be30
+| | | Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+| | | Date:   Thu May 19 18:19:52 2022 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/pavo-etc/cits3403-project
+| | | 
+| * | commit 860be3009b1812e194ac0dda3ea7d609f1067a7e
+| | | Author: Zach Manson <zachpmanson@gmail.com>
+| | | Date:   Thu May 19 18:00:10 2022 +0800
+| | | 
+| | |     Update readme
+| | | 
+| * | commit 6f6d593e2b948b62165995840d64c8f2ddf52bea
+| | | Author: Zach Manson <zachpmanson@gmail.com>
+| | | Date:   Thu May 19 17:57:46 2022 +0800
+| | | 
+| | |     Add emoji summaries and proper random puzzles
+| | | 
+| * | commit 2e2ff8c55f41bdf5a4608444ffab1f5e90acf12f
+| | | Author: Zach Manson <zachpmanson@gmail.com>
+| | | Date:   Thu May 19 17:37:45 2022 +0800
+| | | 
+| | |     Add guess counter, change given_items.json
+| | |     
+| | |     Also changed attempt count stats to only count wins.
+| | | 
+* | | commit 23559b93b1121c8a092402c3c02d107d33d4495b
+|\| | Merge: 7b3e1ce 3955c3f
+| | | Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+| | | Date:   Thu May 19 17:21:56 2022 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/pavo-etc/cits3403-project
+| | | 
+| * | commit 3955c3fed60924b201e2268f1f673623506cf4b9
+| | | Author: Zach Manson <zachpmanson@gmail.com>
+| | | Date:   Thu May 19 15:56:12 2022 +0800
+| | | 
+| | |     Update Todolist
+| | | 
+| * | commit 0934ec18fd9aaddcdf015e0cb8e402e7c5c43b39
+| | | Author: Zach Manson <zachpmanson@gmail.com>
+| | | Date:   Thu May 19 15:03:39 2022 +0800
+| | | 
+| | |     Switch cookies to webstorage
+| | | 
+| * | commit e1dcedb2ce279eef516967fc90472d969348452f
+| | | Author: Zach Manson <zachpmanson@gmail.com>
+| | | Date:   Thu May 19 14:52:50 2022 +0800
+| | | 
+| | |     Move cookies into base
+| | | 
+| * | commit dc8af3f179d90774a8b2febdc20c9a408d90e02f
+| |/  Author: Zach Manson <zachpmanson@gmail.com>
+| |   Date:   Thu May 19 14:46:26 2022 +0800
+| |   
+| |       Fix default stats and cookie generation
+| | 
+* | commit 7b3e1cef38e43da7467fd44ff4fd78ac96246c2b
+|\| Merge: c0028e5 c812a24
+| | Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+| | Date:   Thu May 19 11:50:55 2022 +0800
+| | 
+| |     pavo cleanup of cookies
+| | 
+| * commit c812a24e692898684c7f1e59422d00f3c8838b72
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Wed May 18 23:10:38 2022 +0800
+| | 
+| |     Add database for recording stats
+| |   
+| *   commit e3e2020cc8bd34d77ce0550fc8c8ba0254b6edc2
+| |\  Merge: 328d3ea 86d9e6b
+| | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | Date:   Wed May 18 18:44:00 2022 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/pavo-etc/cits3403-project into main
+| | |   
+| | *   commit 86d9e6b319260b2abc2b38650fe55facdfd00e13
+| | |\  Merge: 09f97db 400e76b
+| | | | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | | | Date:   Wed May 18 18:38:20 2022 +0800
+| | | | 
+| | | |     Merge branch 'main' of https://github.com/pavo-etc/cits3403-project
+| | | | 
+| | * | commit 09f97dbad0c542405ca8062b8be2cd738ff7aa17
+| | | | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | | | Date:   Wed May 18 18:38:09 2022 +0800
+| | | | 
+| | | |     functions on win and lose
+| | | | 
+| * | | commit 328d3ea996a7ac386494c1875ab39e577da5ef05
+| | | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | | Date:   Wed May 18 18:39:42 2022 +0800
+| | | | 
+| | | |     General cleanup of cookies.js
+| | | | 
+| * | | commit 10aa0d0ecd5c3cbf1d859acdaa6329b9e370b092
+| | |/  Author: pavo-etc <z1verdeman2@gmail.com>
+| |/|   Date:   Wed May 18 18:37:26 2022 +0800
+| | |   
+| | |       Remove errant commas
+| | | 
+* | | commit c0028e5ca37a84a44df80c5647ec61e8d54bf511
+|/ /  Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+| |   Date:   Thu May 19 11:47:01 2022 +0800
+| |   
+| |       further cleanup of cookies.js
+| | 
+* | commit 400e76b97efe45aa7e888749d462ea34148453c7 (origin/cookies2)
+| | Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+| | Date:   Wed May 18 18:08:52 2022 +0800
+| | 
+| |     added cookies.js, modiefied index.html src section to account for this new js file
+| | 
+* | commit c16e67270270b74d7ee67483cb9232d4e0550a6b
+|/  Author: pavo-etc <z1verdeman2@gmail.com>
+|   Date:   Wed May 18 17:45:48 2022 +0800
+|   
+|       Add truly random link
+| 
+* commit 4a33c75907594787c3150f426953b98750d08841
+| Author: pavo-etc <z1verdeman2@gmail.com>
+| Date:   Wed May 18 17:34:19 2022 +0800
+| 
+|     HTML cleanup and reformat
+| 
+* commit b2ada263b0c026fa8613a302e7e71c6f15c373ab
+| Author: pavo-etc <z1verdeman2@gmail.com>
+| Date:   Wed May 18 17:15:18 2022 +0800
+| 
+|     Streamline audio triggers
+|   
+| * commit c2a36d2692b57fe441cbe2d5ef9828a6e5aec368 (origin/cookies)
+| | Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+| | Date:   Wed May 18 16:12:52 2022 +0800
+| | 
+| |     removed dupliacte cookies.js file
+| | 
+| * commit 1f41899cc24cc5f2e0e1c9f7e7c96b7727af3cdd
+| | Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+| | Date:   Wed May 18 16:01:56 2022 +0800
+| | 
+| |     merged cookies with main
+| |   
+| *   commit 4bf1ec43dad5266bfcc6446c60fbb4e43f331be6
+| |\  Merge: 5e77628 85603ab
+| | | Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+| | | Date:   Wed May 18 15:56:36 2022 +0800
+| | | 
+| | |     merged current main to cookies in order to merge later
+| | |   
+| | *   commit 85603abc8afb2cddf37293643e487766fab51a78
+| | |\  Merge: 7fc0aac 244e065
+| |_|/  Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+|/| |   Date:   Wed May 18 15:41:35 2022 +0800
+| | |   
+| | |       Merge branch 'main' of https://github.com/pavo-etc/cits3403-project
+| | | 
+* | | commit 244e06586a7305b02f8b07a65dabdaa0bc6527da
+| | | Author: Tamura77 <92499933+Tamura77@users.noreply.github.com>
+| | | Date:   Wed May 18 13:18:11 2022 +0800
+| | | 
+| | |     Update routes.py
+| | |     
+| | |     Added route to /stats (stats.html)
+| | | 
+* | | commit 44693f39e913dbd3c624d55dd92adbea8062500f
+| | | Author: Tamura77 <92499933+Tamura77@users.noreply.github.com>
+| | | Date:   Wed May 18 13:11:38 2022 +0800
+| | | 
+| | |     Update style.css
+| | |     
+| | |     Added css for stats.html page
+| | | 
+* | | commit 9d03df84b680d7aaf78e2390af5f87c7f777eabd
+| | | Author: Tamura77 <92499933+Tamura77@users.noreply.github.com>
+| | | Date:   Wed May 18 13:10:13 2022 +0800
+| | | 
+| | |     Create stats.js
+| | |     
+| | |     Support for popup windows to share stats to other people on the social media buttons
+| | | 
+* | | commit 43c1cae412b6b8878428b47341252740c7779065
+| | | Author: Tamura77 <92499933+Tamura77@users.noreply.github.com>
+| | | Date:   Wed May 18 13:04:58 2022 +0800
+| | | 
+| | |     Create stats.html
+| | |     
+| | |     Additional page to view stats of players
+| | | 
+* | | commit cbdd93f14fc49a05db026a22090664d00c576668
+| | | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | | Date:   Wed May 18 01:42:22 2022 +0800
+| | | 
+| | |     adding gangsta sounds warning no option to stop music and its loud
+| | |   
+| | *   commit 7fc0aac95bde50c31908538ce09d3df27a5adf65
+| | |\  Merge: e224d4e 24ac64a
+| |_|/  Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+|/| |   Date:   Tue May 17 22:43:53 2022 +0800
+| | |   
+| | |       Merge branch 'main' of https://github.com/pavo-etc/cits3403-project
+| | | 
+* | | commit 24ac64a103b8baf894058f05bc09433eb40ee27a
+| | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | Date:   Tue May 17 22:14:57 2022 +0800
+| | | 
+| | |     Update readme
+| | |   
+* | |   commit 0b3237e275fc0e05867ae74e78993ba463663a26
+|\ \ \  Merge: 96e0efa c46b914
+| | | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | | Date:   Tue May 17 22:13:29 2022 +0800
+| | | | 
+| | | |     Merge branch 'recipe_sanitiser' into main
+| | | | 
+| * | | commit c46b914b176323b3e64c7b40e8917e0f60368cf2 (origin/recipe_sanitiser, recipe_sanitiser)
+| | | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | | Date:   Tue May 17 22:11:20 2022 +0800
+| | | | 
+| | | |     Remove sanitised recipes
+| | | | 
+| * | | commit d00e9253cb5a6c1d04d9d20527cf388aa3426fc7
+| | | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | | Date:   Tue May 17 22:10:49 2022 +0800
+| | | | 
+| | | |     Fix edge cases for orange slots
+| | | | 
+| * | | commit 2027923c80ebda931198a3a1c29942cbcc3ba094
+| | | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | | Date:   Tue May 17 22:10:36 2022 +0800
+| | | | 
+| | | |     Prettify recipes
+| | | | 
+| * | | commit 0a8e33858c7a8c579586f7594b3249993749f97f
+| | | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | | Date:   Tue May 17 22:10:25 2022 +0800
+| | | | 
+| | | |     Update recipes with new format
+| | | | 
+| * | | commit ac806e2cfc5a6b81bb333ab69fbba457ad970324
+| | | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | | Date:   Tue May 17 22:09:28 2022 +0800
+| | | | 
+| | | |     Updated given_ingredients.json with new format
+| | | |   
+| * | |   commit 7ccaa3515e097659074648396a2482366db58f9d
+| |\ \ \  Merge: 5589085 c3f4cde
+| | | | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | | | Date:   Tue May 17 21:41:09 2022 +0800
+| | | | | 
+| | | | |     Merge branch 'recipe_sanitiser' of https://github.com/pavo-etc/cits3403-project into recipe_sanitiser
+| | | | | 
+| * | | | commit 558908505479449bfb3dbc95aeabc709f30228be
+| | | | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | | | Date:   Tue May 17 21:40:02 2022 +0800
+| | | | | 
+| | | | |     Readd jsons to solve merge conflict
+| | | | | 
+| * | | | commit 175880db54791b56e108d758276bc95f253ec3c3
+| | | | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | | | Date:   Tue May 17 21:27:06 2022 +0800
+| | | | | 
+| | | | |     Complete main gameplay functions
+| | | | |     
+| | | | |     Added random solution validation, merged recipes jsons, added orange slot detection, added greenslots to correct solution submission
+| | | | | 
+| * | | | commit a3449be8816660d07ba3e5d9e01fb2b2df4f2ff8
+| | | | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | | | Date:   Tue May 17 18:07:18 2022 +0800
+| | | | | 
+| | | | |     Move mousemove eventlistener
+| | | | | 
+| * | | | commit 6baacc3d84d3e6a791cade538eed3d65b91e1a9d
+| | | | | Author: pavo-etc <z1verdeman2@gmail.com>
+| | | | | Date:   Tue May 17 18:06:44 2022 +0800
+| | | | | 
+| | | | |     Removed debug shulker
+| | | | | 
+| | | | * commit e224d4e3ca03022bebf59d1d431c41476994f017
+| |_|_|/  Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+|/| | |   Date:   Tue May 17 12:27:59 2022 +0800
+| | | |   
+| | | |       updating git ignore
+| | | | 
+| | | * commit 5e77628a88051a03a62f961344a3aa51d76be1d2
+| | | | Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+| | | | Date:   Wed May 18 15:49:30 2022 +0800
+| | | | 
+| | | |     removed cookies code from init.js
+| | | | 
+| | | * commit 6844f3c52081f8b4061b65769d746b4f50fa588e
+| | | | Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+| | | | Date:   Wed May 18 15:33:16 2022 +0800
+| | | | 
+| | | |     made seperate cookies.js file
+| | | | 
+| | | * commit dbcee3d26e8e56292ebbe117cb3dbaddcacd7038
+| | | | Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+| | | | Date:   Tue May 17 19:00:02 2022 +0800
+| | | | 
+| | | |     Initial addition of User-id Cookie
+| | | | 
+| | | * commit 6f66cf33623ece99769bc837739779d0eff37aea
+| | |/  Author: Ivan Sossa Gongora <ivansossagongora27@yahoo.com>
+| | |   Date:   Tue May 17 13:39:59 2022 +0800
+| | |   
+| | |       initial
+| | | 
+| | * commit c3f4cde3a0eeef65a2c3a91a7e1408aaacf63bba
+| | | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | | Date:   Tue May 17 12:11:05 2022 +0800
+| | | 
+| | |     change sanitised recipes to have nonnull
+| | | 
+| | * commit f481796c0c964fcb5e07ca8b394eecea19473905
+| | | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | | Date:   Tue May 17 12:10:02 2022 +0800
+| | | 
+| | |     removed all null columns and rows
+| | | 
+| | * commit c79e02bec3c909f65bd87dbaf0c8cdd0036470f2
+| |/  Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| |   Date:   Tue May 17 11:13:23 2022 +0800
+| |   
+| |       removed null rows
+| | 
+| * commit 69d1af01fd8101e6c388775b8c68133d0ed9a9c0
+| | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | Date:   Mon May 16 22:52:01 2022 +0800
+| | 
+| |     got colours working and removed event listeners from previous tables
+| | 
+| * commit 8b9d0d2e615426c66ff4fca8cbe82a22fadef4e4
+| | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | Date:   Mon May 16 17:02:59 2022 +0800
+| | 
+| |     added check button slot updating if correct guess
+| | 
+| * commit 463af736c9f520ad90b19d6ec5b7feb3020a7c3a
+| | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | Date:   Sat May 14 18:02:52 2022 +0800
+| | 
+| |     images follow cursor starting on recipe validation
+| | 
+| * commit 8224f758d891ec69cb5fafc9475c3f1f4196a1ba
+| | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | Date:   Mon May 9 03:22:10 2022 +0800
+| | 
+| |     Finished script
+| | 
+| * commit 7ceedab57a67bc25673d360a36e4baa1714d31ab
+| | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | Date:   Mon May 9 02:11:11 2022 +0800
+| | 
+| |     recipes formatted properly
+| | 
+| * commit 3d740eb72e7e3150d7b4b2fbb23b92b752e9b063
+| | Author: Oatesha <73292759+Oatesha@users.noreply.github.com>
+| | Date:   Sun May 8 22:24:47 2022 +0800
+| | 
+| |     initial recipe sanitiser logic
+| |   
+| | * commit 645ac4deed95ffc73ede9d5bdbf40355dc98f2a3 (origin/stats)
+| | | Author: Tamura77 <tnbddd77@gmail.com>
+| | | Date:   Wed May 18 02:07:45 2022 +0800
+| | | 
+| | |     Support for Socials
+| | | 
+| | * commit e7529882777da32f4733b1ec3c9825b52b25bc57
+| |/  Author: Tamura77 <tnbddd77@gmail.com>
+|/|   Date:   Wed May 18 01:18:54 2022 +0800
+| |   
+| |       Initializing stats
+| | 
+* | commit 96e0efa882787ed2df15e7b0b41dc037b9548d66
+|/  Author: Zach Manson <zachpmanson@gmail.com>
+|   Date:   Tue May 10 16:16:43 2022 +0800
+|   
+|       Updated todolist
+| 
+* commit b2891aef6de5034dbb0613057763bd48528b5066
+| Author: pavo-etc <z1verdeman2@gmail.com>
+| Date:   Sat May 7 13:32:43 2022 +0800
+| 
+|     Add item picking-placing-dropping to interface
+| 
+* commit f94713b00c966889315f38f11e2e356999ed4ef3
+| Author: pavo-etc <z1verdeman2@gmail.com>
+| Date:   Fri May 6 16:47:37 2022 +0800
+| 
+|     Add preliminary init.js, allow page to be dynamically structured, and add items.json
+| 
+* commit 9b5fb05c68896ab7b21d3f3b7787831069568f13
+| Author: pavo-etc <z1verdeman2@gmail.com>
+| Date:   Fri May 6 14:19:12 2022 +0800
+| 
+|     Add slot hover background
+|   
+*   commit dc1df400a38d708c737a3077ae81de35297b7ae3
+|\  Merge: 6f3e80c fde60e7
+| | Author: pavo-etc <z1verdeman2@gmail.com>
+| | Date:   Fri May 6 13:50:02 2022 +0800
+| | 
+| |     Merge branch 'main' of https://github.com/pavo-etc/cits3403-project into main
+| | 
+| * commit fde60e7d12cf63b3a1d5edfc9571d7d4e24184aa
+| | Author: Zach Manson <zachpmanson@gmail.com>
+| | Date:   Wed May 4 17:13:10 2022 +0800
+| | 
+| |     Add crafting recipes to references
+| | 
+| * commit 19aa0af9a1946605d58c735fe2c424e89339d868 (origin/guess-processing)
+| | Author: Zach Manson <zachpmanson@gmail.com>
+| | Date:   Wed May 4 16:59:29 2022 +0800
+| | 
+| |     Add DS_Store to gitignore
+| | 
+| * commit a54afa01e329b50e8cca5d895e8e6993a2b7ebdd
+| | Author: Zach Manson <zachpmanson@gmail.com>
+| | Date:   Wed May 4 13:51:41 2022 +0800
+| | 
+| |     Added about section
+| | 
+| * commit fcc0e0c5ea0b2624debd7104dfb6a842d29af280
+| | Author: Zach Manson <zachpmanson@gmail.com>
+| | Date:   Wed May 4 13:34:42 2022 +0800
+| | 
+| |     Restructure processGuess.js with hooks for GUI
+| | 
+| * commit e1eab551ff06e05e8ee472427c20e0bc8a9bbc53
+| | Author: Zach Manson <zachpmanson@gmail.com>
+| | Date:   Wed May 4 02:49:06 2022 +0800
+| | 
+| |     Created prototype logic for guess processing
+| | 
+| * commit 7a5480d54b9b6589b5e02633a4eafcf0b88c9fba
+| | Author: Zach Manson <zachpmanson@gmail.com>
+| | Date:   Wed May 4 01:04:12 2022 +0800
+| | 
+| |     Change title
+| | 
+| * commit 51067e2cbc5c207323266545c8831156c4ba79b9
+| | Author: Zach Manson <zachpmanson@gmail.com>
+| | Date:   Wed May 4 00:52:54 2022 +0800
+| | 
+| |     Change name
+| | 
+* | commit 6f3e80c72dd5f9cfd51551bcb99e77662dd2e894
+|/  Author: pavo-etc <z1verdeman2@gmail.com>
+|   Date:   Fri May 6 13:48:25 2022 +0800
+|   
+|       Add UUID references
+| 
+* commit 49806d839f19bee5f16034f8ea9d93c4cfd427aa
+| Author: Zach Manson <zachpmanson@gmail.com>
+| Date:   Mon May 2 13:47:06 2022 +0800
+| 
+|     Add minecraft style buttons and howto play page
+| 
+* commit 387dc33df7ce188a372cb12c362c385555ee5093
+| Author: Zach Manson <zachpmanson@gmail.com>
+| Date:   Mon May 2 04:04:42 2022 +0800
+| 
+|     Add fonts, background, and basic crafting css
+| 
+* commit 8b2a8fa3418d73973782c87b29aef2e84b422219
+| Author: Zach Manson <zachpmanson@gmail.com>
+| Date:   Mon May 2 04:03:45 2022 +0800
+| 
+|     Add gitignore
+| 
+* commit 38e15230dcde8b298073cad4e74743cdf71f040d
+| Author: Zach Manson <zachpmanson@gmail.com>
+| Date:   Mon May 2 01:03:54 2022 +0800
+| 
+|     Add slightly modified workshop template and Minecraft fonts
+| 
+* commit c5be565a58d8009c55648ee449b80069d831c5d8
+| Author: Zach Manson <zachpmanson@gmail.com>
+| Date:   Tue Mar 29 14:55:59 2022 +0800
+| 
+|     Create references.txt
+| 
+* commit 16b7425990ff2c4bb358e842a3738b515d687cea
+| Author: Zach Manson <zachpmanson@gmail.com>
+| Date:   Tue Mar 29 14:55:28 2022 +0800
+| 
+|     Add todo list
+| 
+* commit eda62eb76dd37aee36626c64b6b3a18e2756b79c
+  Author: Zach Manson <zachpmanson@gmail.com>
+  Date:   Tue Mar 29 14:44:14 2022 +0800
+  
+      Initial commit
