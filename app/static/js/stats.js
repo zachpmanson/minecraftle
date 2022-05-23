@@ -1,5 +1,6 @@
 //Processing Social media buttons
 let shareable_link = String(document.location).split("&")[0];
+
 //Tweet
 function getT(text, url) {
   return (
@@ -9,6 +10,7 @@ function getT(text, url) {
     shareable_link
   );
 }
+
 function tweet() {
   var url = getT();
   PopupCenter(url, "Share to Twitter", "590", "253");
@@ -22,10 +24,12 @@ function getFB(text, url) {
     "Check out my stats"
   );
 }
+
 function facebook() {
   var url = getFB();
   PopupCenter(url, "Share to Facebook", "590", "253");
 }
+
 //Reddit
 function getR(text, url) {
   return (
@@ -35,14 +39,13 @@ function getR(text, url) {
     "Check out my latest Minecraftle stats"
   );
 }
+
 function reddit() {
   var url = getR();
   PopupCenter(url, "Share to Reddit", "590", "253");
 }
 
-//This is a copied function (credit later: https://pastebin.com/g84Ms4Lv)
 function PopupCenter(url, title, w, h) {
-  // Fixes dual-screen position                         Most browsers      Firefox
   var dualScreenLeft =
     window.screenLeft != undefined ? window.screenLeft : screen.left;
   var dualScreenTop =
