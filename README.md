@@ -93,9 +93,11 @@ flask run
 If you have not specified different host IP or port number the server will be reachable on localhost:5000.
 
 
-## Unit tests
+## Unit tests and Validation
 
 Our tests cover basic cases that are self explanatory in the function names. To run our tests the venv must be active and the flask server must be running, our default unit tests use Firefox webdriver.
+
+Our validation was done on the W3C website found [here](https://validator.w3.org/) we put in the local host url and it passed both tests for HTML and CSS!
 
 `python -m tests.systemtest`
 
