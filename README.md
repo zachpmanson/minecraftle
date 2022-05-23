@@ -41,9 +41,9 @@ We designed our game with these three principles in mind:
 
 <strong>Engaging,</strong> so that it looks good and a user wants to play it every day.
 
-<strong>Challenging,</strong> so the user feels a sense of achievement
+<strong>Challenging,</strong> so the user feels a sense of achievement.
 
-<strong>Intuitive,</strong> so that it is easy for a user to access
+<strong>Intuitive,</strong> so that it is easy for a user to access.
 
 Keeping these principles in mind we decided to capitalise on the popularity of wordle as it was a game that all of has had played qutie often and believed it covered these points well. Upon researching the wordle clone market we quickly realised there was a glaring gap with no wordle clone for the popular game minecraft!. After commencing the project we found a game with a similar concept, however this clone whilst having a beautiful interface lost sight of the charm of wordle and the puzzle is long hints are obfuscated and the ingredient list has many redudant items.
 
@@ -70,12 +70,12 @@ Navigate to the cloned repository and then run the server with the following, ad
 flask run
 ```
 
-If you have not specified different host IP or port number the server will be reachable on localhost:5000
+If you have not specified different host IP or port number the server will be reachable on localhost:5000.
 
 
 ## Unit tests
 
-Our tests cover basic cases that are self explanatory in the function names. To run our tests the venv must be active and the flask server must be running, our default unit tests use Firefox webdriver
+Our tests cover basic cases that are self explanatory in the function names. To run our tests the venv must be active and the flask server must be running, our default unit tests use Firefox webdriver.
 
 ## Python scripts
 
