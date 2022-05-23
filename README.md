@@ -90,12 +90,12 @@ Navigate to the cloned repository and then run the server with the following, ad
 flask run
 ```
 
-If you have not specified different host IP or port number the server will be reachable on localhost:5000
+If you have not specified different host IP or port number the server will be reachable on localhost:5000.
 
 
 ## Unit tests
 
-Our tests cover basic cases that are self explanatory in the function names. To run our tests the venv must be active and the flask server must be running, our default unit tests use Firefox webdriver
+Our tests cover basic cases that are self explanatory in the function names. To run our tests the venv must be active and the flask server must be running, our default unit tests use Firefox webdriver.
 
 ## Python scripts
 
