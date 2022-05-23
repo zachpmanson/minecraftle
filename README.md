@@ -73,3 +73,30 @@ flask run
 If you have not specified different host IP or port number the server will be reachable on localhost:5000
 
 
+## Unit tests
+
+Our tests cover basic cases that are self explanatory in the function names. To run our tests the venv must be active and the flask server must be running, our default unit tests use Firefox webdriver
+
+## Python scripts
+
+We have a few python scripts to aid the setup and vetting of puzzles:
+
+### Change_puzzles.py
+
+This is the big script that constantly asks for input from the user (presumably admin) to vet the possible puzzles, you can add and remove ingredients from the given_ingredients.json file which will then vet the possible puzzles to only match puzzles that can be made from the given ingredients. The script is rudamentary and instructions are printed when it runs. The validation of the admin submitted puzzles happens in the script ensuring only valid recipe names can be submitted.
+
+### Recipe.py
+
+This script was just to go through the recipe.json files in the minecraft source code and change the formatting to work with our process guess JS functions. We took the jsons from this format.
+
+![original recipe format](/app/static/images/original.png)
+
+To this format.
+
+![New format](/app/static/images/new.png)
+
+Once all the recipes were put into this format we saved them into a sanitised recipes folder.
+
+### Merge_recipes.py
+This file takes the list of sanitised recipes and merges them into a single json file to make processing easier in the JS file.
+
