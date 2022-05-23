@@ -5,6 +5,9 @@ var solution_recipe;
 var solution_item;
 let recipes;
 
+/**
+ * Gets solution recipe from recipes.json
+ */
 function getSolutionRecipe() {
     fetch(
         "static/data/recipes.json"

@@ -39,21 +39,41 @@ The project brief can be found [here](https://teaching.csse.uwa.edu.au/units/CIT
 
 We designed our game with these three principles in mind:
 
-<strong>Engaging,</strong> so that it looks good and a user wants to play it every day.
+ + **Engaging**, so that it looks good and a user wants to play it every day.\
+ + **Challenging**, so the user feels a sense of achievement
+ + **Intuitive**, so that it is easy for a user to access
 
-<strong>Challenging,</strong> so the user feels a sense of achievement
+Keeping these principles in mind we decided to capitalise on the popularity of Wordle as it was a game that all of us had played quite often and believed it covered these points well. Upon researching the Wordle-style game market we quickly realised there was a glaring gap: no Wordle-style game for the world's popular game Minecraft!. After commencing the project we found a game with a similar concept, however this game, whilst having a beautiful interface, lost sight of the charm of Wordle.  The puzzle hints are inconsistent and the ingredient list has many redudant items that impede the gameplay.
 
-<strong>Intuitive,</strong> so that it is easy for a user to access
-
-Keeping these principles in mind we decided to capitalise on the popularity of wordle as it was a game that all of has had played qutie often and believed it covered these points well. Upon researching the wordle clone market we quickly realised there was a glaring gap with no wordle clone for the popular game minecraft!. After commencing the project we found a game with a similar concept, however this clone whilst having a beautiful interface lost sight of the charm of wordle and the puzzle is long hints are obfuscated and the ingredient list has many redudant items.
-
-The essence of our clone was to ensure that in the complexity of minecraft we dont lose the simplicity that makes the daily puzzle quick and enjoyable.
+The essence of our game was to ensure that in the complexity of Minecraft we dont lose the simplicity that makes the daily puzzle quick and enjoyable.
 
 ### Architecture
-We tried to abstract functions that our web application had to be able to complete into different files, under static in the JS folder we had files for the logic of buttons, cookies, processing guesses, stats and initialisation. Further we have folders for audio, data, icons, images and styles which further abstracts each part of our project so that everything is easily debuggable.
+
+We tried to abstract functions that our web application had to be able to complete into different files, under `/app/static/js/`.  The logic of buttons, cookies/webstorage, processing guesses, stats and page initialisation were all seperated into their own .js files. Further we have folders for audio, data, icons, images and styles which further abstracts each part of our project so that everything is easily debuggable.
+
+The solution to the puzzle is generated in Flask where it is randomly chosen from the recipes in `/app/static/data/recipes.json` that only contain ingredients found in `/app/static/data/give-ingredients.json`.  For "Daily" puzzles the RNG seed is the date, for "Random" puzzles the RNG seed is unset.  This solution is inserted into the HTML through jinja2, and then read by the `/app/static/js/init.js`.
+
+`/app/static/js/init.js` initialises many of the event listeners, loads in images, 
+and creates global variables to store data in.  `/app/static/js/cookies.js` checks if this user has a UUID already stored in webstorage, generating a new UUID if the user doens't.  The UUID is based on milliseconds since Unix Epoch and Math.Random().
+
+The user can pick up items and place them in the 3x3 grid to form a guess.  If they want to submit their guess the click on the empty slot to the right of the grid.  This will send their guess to `/app/static/js/processGuess.js`, which will compare the guess to all possible variants of the solution (in Minecraft, crafting recipes have multiple positions and orientations).  The 2D arrays returned by `processGuess()` are used to colour the crafting tables to give user feedback, before a new crafting table is added and the previous table is frozen.
+
+Once the user determines the solution or hits the maximum number of guesses, a popup appears with the solution, an shareable emoji-obfuscated summary of their guesses, and a link to their user statitics page.
+
+Clicking the stats button will redirect the user to a page such as:
+
+`localhost:5000/stats/16532725040000.8878274171882354?win=1&attempts=1`
+
+Flask interprets this as the user_id, and attempts to add the win and attempts key-pair values to the `minecraftle.db` database.  This may or may not succeed (max 1 submission per day per user, malformed input), but will then redirect the user to their own personal stats page such as:
+
+`localhost:5000/stats/16532725040000.8878274171882354`
+
+This link is shareable, and uses SQL commands on `minecraftle.db` to find the user statistics and generate a ranking.
 
 ## Launching
+
 To launch on local host you must first clone the repository into a directory that suits with the following command:
+
 ```
 git clone https://github.com/pavo-etc/cits3403-project
 ```
