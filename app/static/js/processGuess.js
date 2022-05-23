@@ -236,7 +236,7 @@ function addOrangeSlots(guess, correctSlots) {
 
 
     // finds how many of each item are left to be identified
-    n_unidentified_items = {solution_n_items};
+    n_unidentified_items = {...solution_n_items};
     Object.keys(solution_n_items).forEach((e,i)=>{
         if (n_unidentified_items[e] !== undefined) {
             n_unidentified_items[e] = solution_n_items[e] - n_items[e];
