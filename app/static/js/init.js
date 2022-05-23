@@ -22,12 +22,20 @@ function setSlotBackground(div, item) {
 
 
 var click = document.getElementById("audio");
-
+/**
+ * Plays minecraft music in the background
+ */
 function playAudio() {
   click.play();
 }
 buttons = document.getElementsByClassName("mc-button");
 
+/**
+ * Creates an emoji map to summarise the game's guesses as right or wrong
+ * and it documents their location
+ * @param {Array} matchmap array of guess locations
+ * @returns {Array} array full of coloured squares (green and yellow) to represent guesses  
+ */
 function generateEmojiSummary(matchmap) {
 
     let emojiSummary = [
@@ -47,11 +55,15 @@ function generateEmojiSummary(matchmap) {
 
 /**
  * Set cursor image to match cursorItem
+ * @param {String} item item to follow cursor 
  */
 function setCursor(item) {
     setSlotBackground(cursor, item);
 }
 
+/**
+ * Updates remaining guesses
+ */
 function updateRemainingGuesses() {
     document.getElementById("guess-counter").innerText = guessCount+1;
 }
@@ -61,10 +73,7 @@ function updateRemainingGuesses() {
  */
 function initIngredients() {
     let ingredientsList = document.getElementById("ingredientsList");
-    //console.log(items)    
-    
-    // probably replace this with another json file to load in for easier puzzle mgmt
-    
+ 
     givenIngredients.forEach((ingredient, i)=>{
         let newSlot = document.createElement("div");
         let image = document.createElement("div");
@@ -142,8 +151,6 @@ function addNewCraftingTable() {
                 console.log("Picked up " + cursorItem);
             }
             setCursor(cursorItem);
-            
-            // TODO presumably this will then need to calculate if current craftingTable is a valid recipe
         });
     }
 
@@ -166,11 +173,6 @@ function addNewCraftingTable() {
     slot.appendChild(imageDiv);
     
     slot.addEventListener("mousedown", e=>{
-        // TODO only clickable if recipe is valid.
-        // then should pass craftingTable[tableNum] to processGuess()
-        // then should change slot background colors to green yellow etc
-        // then should lock this table, remove all event listeners from it
-        
         var isCorrect = processGuess(craftingTables[tableNum]);
 
         // Update solution div to display the correct item, change slot background and lock table
@@ -272,6 +274,10 @@ document.addEventListener("mousemove", (e) => {
     cursor.style.top = (e.pageY - 5) + 'px';
 });
 
+/**
+ * Creates a summary of how the match played out in the form of emoji's
+ * @returns {string} all game emoji's grouped together
+ */
 function generateSummary() {
     let summaryString = "Minecraftle " + new Date().toISOString().slice(0, 10) + "\n";
     for (let emojiSummary of emojiSummaries) {
@@ -291,6 +297,12 @@ const copyToClipboard = str => {
     return Promise.reject('The Clipboard API is not available.');
     };
 
+    /**
+     * Creates a popup window for game summary
+     * @param {String} msg 
+     * @param {String} summary 
+     * @param {String} win 
+     */
 function createPopup(msg, summary, win) {
     document.getElementById("popup").style = "visibility: visible;";
     setSlotBackground(document.getElementById("popupSlot").firstChild, solution_item);
@@ -304,14 +316,18 @@ function createPopup(msg, summary, win) {
     };
 }
 
-//Function for on win
+/**
+ * Win message
+ */
 function winner() {
     let summary = generateSummary();
     let winnerMessage = "You won! Took " + (guessCount) + " guesses.\n";
     createPopup(winnerMessage, summary, 1);
 }
 
-//function on lose
+/**
+ * Lose message
+ */
 function loser() {
     let summary = generateSummary();
     let loserMessage = "You lost!  The solution was " + solution_item + "\n";
