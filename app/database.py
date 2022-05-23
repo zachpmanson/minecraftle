@@ -2,6 +2,7 @@ from app import app
 import sqlite3 
 
 def create_table():
+    """Creates new database if it doesn't already exist to store played games"""
     connection = sqlite3.connect(
         "minecraftle.db",
         detect_types=sqlite3.PARSE_DECLTYPES | sqlite3.PARSE_COLNAMES
@@ -24,6 +25,18 @@ def create_table():
 
 
 def insert_record(user_id, date, win, attempts):
+    """Attempts to store data on a played game.  Will only allow 1 insert per 
+    user_id per day to avoid manipualting user stats.
+
+    Parameters:
+    user_id (str): UUID for each user
+    date (datetime): day the game was played
+    win (int): if player won the  game win == 1, otherwise win==0
+    attempts (int): number of attempts made in the game
+
+    Returns:
+    int: last row id
+    """
     if win == 0:
         attempts = None
     
@@ -35,9 +48,8 @@ def insert_record(user_id, date, win, attempts):
 
     cursor.execute("SELECT * FROM games_played WHERE user_id==? AND date==?", (user_id, date))
 
-    todays_submissions = cursor.fetchall()
-    print(f"{todays_submissions=}")
     # Only allow 1 submission per day
+    todays_submissions = cursor.fetchall()
     if len(todays_submissions) < 1:
         sql_command = (
             f"""INSERT INTO games_played(user_id, date, win, attempts) VALUES (
@@ -53,6 +65,16 @@ def insert_record(user_id, date, win, attempts):
     return cursor.lastrowid
 
 def get_records(user_id):
+    """Retrieves records for particular user_id
+
+    Parameters:
+    user_id (str): UUID of user
+    
+    Returns:
+    list: list of all users number of wins, ordered by most wins then least avg attempts
+    list: list containing tuple containing int, number of games played by user_id
+    list: list with counts of games with x turns that given user has won
+    """
     connection = sqlite3.connect(
         "minecraftle.db",
         detect_types=sqlite3.PARSE_DECLTYPES | sqlite3.PARSE_COLNAMES
