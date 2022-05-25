@@ -36,13 +36,22 @@ buttons = document.getElementsByClassName("mc-button");
  * @param {Array} matchmap array of guess locations
  * @returns {Array} array full of coloured squares (green and yellow) to represent guesses  
  */
-function generateEmojiSummary(matchmap) {
+function generateEmojiSummary(ismatch, matchmap) {
+
+    if (ismatch) {
+        return [
+            ["🟩", "🟩", "🟩"],
+            ["🟩", "🟩", "🟩"],
+            ["🟩", "🟩", "🟩"]
+        ];
+    }
 
     let emojiSummary = [
         ["⬜", "⬜", "⬜"],
         ["⬜", "⬜", "⬜"],
         ["⬜", "⬜", "⬜"]
     ];
+
 
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
@@ -177,7 +186,7 @@ function addNewCraftingTable() {
 
         // Update solution div to display the correct item, change slot background and lock table
         console.log(isCorrect[0], isCorrect[1]);
-        emojiSummaries.push(generateEmojiSummary(isCorrect[1]));
+        emojiSummaries.push(generateEmojiSummary(isCorrect[0], isCorrect[1]));
         if (isCorrect[0]) {
             console.log(solution_item + "solution item");
             setSlotBackground(imageDiv, solution_item);
@@ -189,9 +198,7 @@ function addNewCraftingTable() {
                     else {j = i + 1}
                     const slot = document.querySelector("#tablenumber" + tableNum + " :nth-child(" + j + ")");
                     console.log(slot, j);
-                    if (element[i] === 2) {
-                        slot.classList.add("greenguess");
-                    }
+                    slot.classList.add("greenguess");
                     slot.classList.add("lockedslot");
                     slot.classList.remove("slot");
                 }
@@ -279,7 +286,7 @@ document.addEventListener("mousemove", (e) => {
  * @returns {string} all game emoji's grouped together
  */
 function generateSummary() {
-    let summaryString = "Minecraftle " + new Date().toISOString().slice(0, 10) + "\n";
+    let summaryString = "Minecraftle " + new Date().toISOString().slice(0, 10) + " " + guessCount + "/" + maxGuesses + "\n";
     for (let emojiSummary of emojiSummaries) {
         for (let row of emojiSummary) {
             summaryString += row.join("") + "\n";
