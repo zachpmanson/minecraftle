@@ -12,7 +12,6 @@ itsdangerous==2.1.2
 Jinja2==3.1.2
 MarkupSafe==2.1.1
 outcome==1.1.0
-pkg_resources==0.0.0
 pycparser==2.21
 pyOpenSSL==22.0.0
 PySocks==1.7.1
