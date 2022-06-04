@@ -110,6 +110,14 @@ function generateVariants(recipe) {
     return variants;
 }
 
+function getVariantsWithReflections(solution) {
+    let variants = generateVariants(solution)
+    for (let i = 0; i < solution.length; i ++){
+        solution[i].reverse();
+    }
+    variants = variants.concat(generateVariants(solution));
+    return variants;
+}
 
 /**
  * Compares given guess to each variant in allVariants
@@ -309,13 +317,10 @@ function processGuess(guess) {
 
 function checkArrangement(table) {
     for (let [key, value] of Object.entries(recipes)) {
-        let variants = generateVariants(value.input);
-        //console.log(value.output)
+        let variants = getVariantsWithReflections(value.input);
         for (let variant of variants) {
             matchmapdata = compareTables(variant, table);
-            //console.log(matchmapdata[2]);
             if (matchmapdata[2]) {
-                //console.log("Found match with " + value.output);
                 return [true, value.output];
             }
         }
@@ -336,14 +341,8 @@ function init(solution) {
             }
         }
     }
-    allVariants = allVariants.concat(generateVariants(solution));
-    remainingVariants = remainingVariants.concat(generateVariants(solution));
-    // Account for horizontal reflection
-    for (let i = 0; i < solution.length; i ++){
-        solution[i].reverse();
-    }
-    allVariants = allVariants.concat(generateVariants(solution));
-    remainingVariants = remainingVariants.concat(generateVariants(solution));
+    allVariants = allVariants.concat(getVariantsWithReflections(solution));
+    remainingVariants = remainingVariants.concat(allVariants);
 }
 
 
