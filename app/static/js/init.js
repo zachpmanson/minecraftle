@@ -5,6 +5,7 @@
 let items;
 let maxGuesses = 10;
 let craftingTables = [];
+let isTableValid = false;
 let cursor = document.getElementById("cursor");
 let cursorItem = null;
 let givenIngredients;
@@ -126,43 +127,8 @@ function addNewCraftingTable() {
         [null, null, null]
     ]);
     
-    // Generate 9 slots
-    for (let i = 0; i < 9; i++) {
-        let slot = document.createElement("div");
-        slot.setAttribute("id", i);
-        slot.classList.add("slot");
-        slot["row"] = Math.floor(i/3);
-        slot["col"] = i % 3;
-        tableDiv.appendChild(slot);
-        let imageDiv = document.createElement("div");
-        imageDiv.classList.add("slot-image");
-        slot.appendChild(imageDiv);
 
-        slot.addEventListener("mousedown", e=>{
-
-            // switch held item and slot item
-            if (cursorItem === null) {
-                cursorItem = craftingTables[tableNum][slot["row"]][slot["col"]];
-                craftingTables[tableNum][slot["row"]][slot["col"]] = null;
-                setSlotBackground(imageDiv, null);
-
-                console.log("Placed " + null + " in position " + slot["row"] + " " + slot["col"] + " in table " + tableNum);
-                console.log("Picked up " + cursorItem);
-            } else {
-                
-                let temp = (cursorItem === null) ? null : cursorItem.slice();
-                cursorItem = craftingTables[tableNum][slot["row"]][slot["col"]];
-                craftingTables[tableNum][slot["row"]][slot["col"]] = temp;
-                
-                setSlotBackground(imageDiv, temp);
-                
-                console.log("Placed " + temp + " in position " + slot["row"] + " " + slot["col"] + " in table " + tableNum);
-                console.log("Picked up " + cursorItem);
-            }
-            setCursor(cursorItem);
-        });
-    }
-
+    
     newTable.appendChild(tableDiv);
     
     let arrowDiv = document.createElement("div");
@@ -182,6 +148,8 @@ function addNewCraftingTable() {
     slot.appendChild(imageDiv);
     
     slot.addEventListener("mousedown", e=>{
+        if (!isTableValid) return;
+
         var isCorrect = processGuess(craftingTables[tableNum]);
 
         // Update solution div to display the correct item, change slot background and lock table
@@ -245,6 +213,51 @@ function addNewCraftingTable() {
     });
     outputDiv.appendChild(slot);
     
+    // Generate 9 slots
+    for (let i = 0; i < 9; i++) {
+        let slot = document.createElement("div");
+        slot.setAttribute("id", i);
+        slot.classList.add("slot");
+        slot["row"] = Math.floor(i/3);
+        slot["col"] = i % 3;
+        tableDiv.appendChild(slot);
+        let imageSlotDiv = document.createElement("div");
+        imageSlotDiv.classList.add("slot-image");
+        slot.appendChild(imageSlotDiv);
+
+        slot.addEventListener("mousedown", e=>{
+
+            // switch held item and slot item
+            if (cursorItem === null) {
+                cursorItem = craftingTables[tableNum][slot["row"]][slot["col"]];
+                craftingTables[tableNum][slot["row"]][slot["col"]] = null;
+                setSlotBackground(imageSlotDiv, null);
+
+                console.log("Placed " + null + " in position " + slot["row"] + " " + slot["col"] + " in table " + tableNum);
+                console.log("Picked up " + cursorItem);
+            } else {
+                
+                let temp = (cursorItem === null) ? null : cursorItem.slice();
+                cursorItem = craftingTables[tableNum][slot["row"]][slot["col"]];
+                craftingTables[tableNum][slot["row"]][slot["col"]] = temp;
+                
+                setSlotBackground(imageSlotDiv, temp);
+                
+                console.log("Placed " + temp + " in position " + slot["row"] + " " + slot["col"] + " in table " + tableNum);
+                console.log("Picked up " + cursorItem);
+            }
+            setCursor(cursorItem);
+            let checkArrangementData = checkArrangement(craftingTables[tableNum])
+            if (checkArrangementData[0]) {
+                isTableValid = true;
+                setSlotBackground(imageDiv, checkArrangementData[1]);
+            } else {
+                isTableValid = false;
+                setSlotBackground(imageDiv, null);
+            }
+        });
+    }
+
     newTable.appendChild(outputDiv);
     document.getElementById("guesses").appendChild(newTable);
 }

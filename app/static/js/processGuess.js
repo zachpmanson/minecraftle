@@ -306,6 +306,24 @@ function processGuess(guess) {
     return [false, correctSlots];
 }
 
+
+function checkArrangement(table) {
+    for (let [key, value] of Object.entries(recipes)) {
+        let variants = generateVariants(value.input);
+        //console.log(value.output)
+        for (let variant of variants) {
+            matchmapdata = compareTables(variant, table);
+            //console.log(matchmapdata[2]);
+            if (matchmapdata[2]) {
+                //console.log("Found match with " + value.output);
+                return [true, value.output];
+            }
+        }
+    }
+    console.log("Doesn't match")
+    return [false, null];
+}
+
 function init(solution) {
     for (let i = 0; i < solution.length; i++) {
         for (let j = 0; j < solution[0].length; j++) {
