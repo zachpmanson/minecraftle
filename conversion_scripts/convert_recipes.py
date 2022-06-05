@@ -32,7 +32,7 @@ def process_recipes(path):
                     key_item = jsonfile["key"][char]
                     if isinstance(key_item, list):
                         key_item = key_item[0]
-                    itemname = key_item.get("item", )
+                    itemname = key_item.get("item", None)
                     if itemname is None:
                         itemname = key_item.get("tag", None)
                         if "planks" in itemname:
@@ -41,7 +41,10 @@ def process_recipes(path):
                             itemname = "minecraft:cobblestone"
                         elif "wool" in itemname:
                             itemname = "minecraft:white_wool"
-                    
+                        elif "coals" in itemname:
+                            itemname = "minecraft:coal"
+
+
                     if itemname == "minecraft:oak_planks":
                         itemname = "minecraft:planks"
                     new_row.append(itemname)
