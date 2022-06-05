@@ -39,6 +39,8 @@ def process_recipes(path):
                             itemname = "minecraft:planks"
                         elif "stone" in itemname:
                             itemname = "minecraft:cobblestone"
+                        elif "wool" in itemname:
+                            itemname = "minecraft:white_wool"
                     
                     if itemname == "minecraft:oak_planks":
                         itemname = "minecraft:planks"
