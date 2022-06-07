@@ -247,7 +247,7 @@ function addNewCraftingTable() {
                 console.log("Picked up " + cursorItem);
             }
             setCursor(cursorItem);
-            let checkArrangementData = checkArrangement(craftingTables[tableNum])
+            let checkArrangementData = checkArrangement(craftingTables[tableNum]);
             if (checkArrangementData[0]) {
                 isTableValid = true;
                 setSlotBackground(imageDiv, checkArrangementData[1]);
@@ -283,34 +283,48 @@ const copyToClipboard = str => {
     if (navigator && navigator.clipboard && navigator.clipboard.writeText)
         return navigator.clipboard.writeText(str);
     return Promise.reject('The Clipboard API is not available.');
-    };
+};
 
-    /**
-     * Creates a popup window for game summary
-     * @param {String} msg 
-     * @param {String} summary 
-     * @param {String} win 
-     */
+/**
+ * Creates a popup window for game summary
+ * @param {String} msg 
+ * @param {String} summary 
+ * @param {String} win 
+ */
 function createPopup(msg, summary, win) {
     document.getElementById("popup").style = "visibility: visible;";
     setSlotBackground(document.getElementById("popupSlot").firstChild, solution_item);
     document.getElementById("popupContainer").style = "visibility: visible;";
-    document.getElementById("popupContent").textContent = msg+summary;
-    document.getElementById("popupStatsButton").onclick = function(){
-        window.location.replace("/stats/"+user_id+"?win="+win+"&attempts="+(guessCount));
-    };
-    document.getElementById("popupCopyButton").onclick = function(){
-        copyToClipboard(summary);
-    };
+    
+    if (window.location.href.includes("random")) {
+        document.getElementById("popupContent").textContent = msg + "\nNew Puzzle?";
+        document.getElementById("popupCopyButton").children[0].textContent = "Daily"
+        document.getElementById("popupCopyButton").onclick = function(){
+            window.location.replace("/");
+        };
+        document.getElementById("popupStatsButton").children[0].textContent = "Random"
+        document.getElementById("popupStatsButton").onclick = function(){
+            window.location.replace("/?random=True");
+        };
+    } else {
+        document.getElementById("popupContent").textContent = msg+summary;
+        document.getElementById("popupStatsButton").onclick = function(){
+            window.location.replace("/stats/"+user_id+"?win="+win+"&attempts="+(guessCount));
+        };
+        document.getElementById("popupCopyButton").onclick = function(){
+            copyToClipboard(summary);
+        };
+
+    }  
 }
 
 /**
  * Win message
  */
-function winner() {
+function winner() {        
     let summary = generateSummary();
     let winnerMessage = "You won! Took " + (guessCount) + " guesses.\n";
-    createPopup(winnerMessage, summary, 1);
+    createPopup(winnerMessage, summary, 1); 
 }
 
 /**
