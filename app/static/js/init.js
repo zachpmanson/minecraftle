@@ -262,38 +262,6 @@ function addNewCraftingTable() {
     document.getElementById("guesses").appendChild(newTable);
 }
 
-// Loads jsons after DOM has properly loaded
-document.addEventListener('DOMContentLoaded', () => {
-    addNewCraftingTable();
-
-    fetch('static/data/given_ingredients.json')
-      .then(response => response.json())
-      .then(obj => {givenIngredients = obj});
-
-    fetch('static/data/items.json')
-      .then(response => response.json())
-      .then(obj => {items = obj; initIngredients()});
-
-    getSolutionRecipe();
-});
-
-// Check for dropping item if placed outside important divs.
-let ingredientsDiv = document.getElementById("ingredients");
-let guessesDiv = document.getElementById("guesses");
-document.addEventListener("mousedown", e => {
-    let isClickOutsideIngredients = ingredientsDiv.contains(e.target) || guessesDiv.contains(e.target);
-    if (!isClickOutsideIngredients) {
-        console.log("dropping item because outside ingredients " + cursorItem);
-        cursorItem = null;
-        setCursor(cursorItem);
-    }
-});
-
-document.addEventListener("mousemove", (e) => {
-    cursor.style.left = (e.pageX - 5) + 'px';
-    cursor.style.top = (e.pageY - 5) + 'px';
-});
-
 /**
  * Creates a summary of how the match played out in the form of emoji's
  * @returns {string} all game emoji's grouped together
@@ -355,3 +323,34 @@ function loser() {
 }
 
 
+// Loads jsons after DOM has properly loaded
+document.addEventListener('DOMContentLoaded', () => {
+    addNewCraftingTable();
+
+    fetch('static/data/given_ingredients.json')
+      .then(response => response.json())
+      .then(obj => {givenIngredients = obj});
+
+    fetch('static/data/items.json')
+      .then(response => response.json())
+      .then(obj => {items = obj; initIngredients()});
+
+    getSolutionRecipe();
+});
+
+// Check for dropping item if placed outside important divs.
+let ingredientsDiv = document.getElementById("ingredients");
+let guessesDiv = document.getElementById("guesses");
+document.addEventListener("mousedown", e => {
+    let isClickOutsideIngredients = ingredientsDiv.contains(e.target) || guessesDiv.contains(e.target);
+    if (!isClickOutsideIngredients) {
+        console.log("dropping item because outside ingredients " + cursorItem);
+        cursorItem = null;
+        setCursor(cursorItem);
+    }
+});
+
+document.addEventListener("mousemove", (e) => {
+    cursor.style.left = (e.pageX - 5) + 'px';
+    cursor.style.top = (e.pageY - 5) + 'px';
+});

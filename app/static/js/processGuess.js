@@ -4,6 +4,7 @@ console.log("solution: " + solution_id);
 var solution_recipe;
 var solution_item;
 let recipes;
+let allRecipesAllVariants = {};
 
 /**
  * Gets solution recipe from recipes.json
@@ -314,14 +315,12 @@ function processGuess(guess) {
     return [false, correctSlots];
 }
 
-
 function checkArrangement(table) {
-    for (let [key, value] of Object.entries(recipes)) {
-        let variants = getVariantsWithReflections(value.input);
-        for (let variant of variants) {
+    for (let [key, value] of Object.entries(allRecipesAllVariants)) {
+        for (let variant of value) {
             matchmapdata = compareTables(variant, table);
             if (matchmapdata[2]) {
-                return [true, value.output];
+                return [true, key];
             }
         }
     }
@@ -343,6 +342,10 @@ function init(solution) {
     }
     allVariants = allVariants.concat(getVariantsWithReflections(solution));
     remainingVariants = remainingVariants.concat(allVariants);
+    
+    for (let [key, value] of Object.entries(recipes)) {
+        allRecipesAllVariants[value.output] = getVariantsWithReflections(value.input);
+    }
 }
 
 
@@ -358,9 +361,7 @@ function init(solution) {
 let solution_n_items = {};
 let remainingVariants = [];
 let allVariants = [];
-let guessCount = 0; // this is just for console output
-
-//randomly select a recipe to be the solution for today
+let guessCount = 0;
 
 
 
