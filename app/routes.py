@@ -1,4 +1,4 @@
-from flask import render_template, url_for, request, redirect
+from flask import render_template, url_for, request, redirect, jsonify
 
 from app import app 
 from app import database
@@ -76,18 +76,6 @@ def statistics(user_id):
     wins = 0
     rank = "N/A"
 
-    #user_id = request.args.get("user_id")
-    win = request.args.get("win")
-    attempts = request.args.get("attempts")
-    print(user_id, win, attempts)
-    if None not in (user_id, win, attempts):
-        try:
-            float(user_id)
-            database.insert_record(user_id, date.today(), int(win), int(attempts))
-            return redirect("/stats/"+user_id)
-
-        except ValueError:
-            print("Attmpted SQL injection!")
     wins_records, games_played_records, user_attempt_wincounts = database.get_records(user_id)
 
     games_played = games_played_records[0][0]
@@ -119,6 +107,22 @@ def statistics(user_id):
         'stats.html',
         **render_args
     )
+
+@app.route('/api/submitgame')
+def submitstats():
+    user_id = request.args.get("user_id")
+    win = request.args.get("win")
+    attempts = request.args.get("attempts")
+    print(user_id, win, attempts)
+    response = {"succeeded":0}
+    if None not in (user_id, win, attempts):
+        try:
+            float(user_id)
+            response["succeeded"] = database.insert_record(user_id, date.today(), int(win), int(attempts))
+        except ValueError:
+            print("Attmpted SQL injection!")
+    print(response)
+    return jsonify(response)
 
 @app.errorhandler(404)
 def pagenotfound(e):
