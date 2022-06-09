@@ -4,6 +4,7 @@ console.log("solution: " + solution_id);
 var solution_recipe;
 var solution_item;
 let recipes;
+let allRecipesAllVariants = {};
 
 /**
  * Gets solution recipe from recipes.json
@@ -110,6 +111,14 @@ function generateVariants(recipe) {
     return variants;
 }
 
+function getVariantsWithReflections(solution) {
+    let variants = generateVariants(solution)
+    for (let i = 0; i < solution.length; i ++){
+        solution[i].reverse();
+    }
+    variants = variants.concat(generateVariants(solution));
+    return variants;
+}
 
 /**
  * Compares given guess to each variant in allVariants
@@ -306,6 +315,19 @@ function processGuess(guess) {
     return [false, correctSlots];
 }
 
+function checkArrangement(table) {
+    for (let [key, value] of Object.entries(allRecipesAllVariants)) {
+        for (let variant of value) {
+            matchmapdata = compareTables(variant, table);
+            if (matchmapdata[2]) {
+                return [true, key];
+            }
+        }
+    }
+    console.log("Doesn't match")
+    return [false, null];
+}
+
 function init(solution) {
     for (let i = 0; i < solution.length; i++) {
         for (let j = 0; j < solution[0].length; j++) {
@@ -318,14 +340,12 @@ function init(solution) {
             }
         }
     }
-    allVariants = allVariants.concat(generateVariants(solution));
-    remainingVariants = remainingVariants.concat(generateVariants(solution));
-    // Account for horizontal reflection
-    for (let i = 0; i < solution.length; i ++){
-        solution[i].reverse();
+    allVariants = allVariants.concat(getVariantsWithReflections(solution));
+    remainingVariants = remainingVariants.concat(allVariants);
+    
+    for (let [key, value] of Object.entries(recipes)) {
+        allRecipesAllVariants[value.output] = getVariantsWithReflections(value.input);
     }
-    allVariants = allVariants.concat(generateVariants(solution));
-    remainingVariants = remainingVariants.concat(generateVariants(solution));
 }
 
 
@@ -341,9 +361,7 @@ function init(solution) {
 let solution_n_items = {};
 let remainingVariants = [];
 let allVariants = [];
-let guessCount = 0; // this is just for console output
-
-//randomly select a recipe to be the solution for today
+let guessCount = 0;
 
 
 
