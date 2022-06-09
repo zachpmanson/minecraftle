@@ -36,7 +36,7 @@ buttons = document.getElementsByClassName("mc-button");
  * @param {Array} matchmap array of guess locations
  * @returns {Array} array full of coloured squares (green and yellow) to represent guesses  
  */
-function generateEmojiSummary(ismatch, matchmap) {
+ function generateEmojiSummary(ismatch, matchmap) {
 
     if (ismatch) {
         return [
@@ -298,25 +298,39 @@ function generateSummary() {
 
 }
 
+function sendStats(win, attempts) {
+    let request = new XMLHttpRequest();
+    request.open("GET", "/api/submitgame?user_id="+user_id+"&win="+win+"&attempts="+attempts);
+    request.send();
+    request.onload = () => {
+        if (request.status === 200) {
+            console.log(JSON.parse(request.response));
+        } else {
+            console.log("Error: " + request.status + " " + request.statusText);
+        }
+    };
+}
+
 const copyToClipboard = str => {
     if (navigator && navigator.clipboard && navigator.clipboard.writeText)
         return navigator.clipboard.writeText(str);
     return Promise.reject('The Clipboard API is not available.');
-    };
+};
 
-    /**
-     * Creates a popup window for game summary
-     * @param {String} msg 
-     * @param {String} summary 
-     * @param {String} win 
-     */
+/**
+ * Creates a popup window for game summary
+ * @param {String} msg 
+ * @param {String} summary 
+ * @param {String} win 
+ */
 function createPopup(msg, summary, win) {
     document.getElementById("popup").style = "visibility: visible;";
     setSlotBackground(document.getElementById("popupSlot").firstChild, solution_item);
     document.getElementById("popupContainer").style = "visibility: visible;";
     document.getElementById("popupContent").textContent = msg+summary;
+    
     document.getElementById("popupStatsButton").onclick = function(){
-        window.location.replace("/stats/"+user_id+"?win="+win+"&attempts="+(guessCount));
+        window.location.replace("/stats/"+user_id);
     };
     document.getElementById("popupCopyButton").onclick = function(){
         copyToClipboard(summary);
@@ -330,6 +344,7 @@ function winner() {
     let summary = generateSummary();
     let winnerMessage = "You won! Took " + (guessCount) + " guesses.\n";
     createPopup(winnerMessage, summary, 1);
+    sendStats(1, guessCount);
 }
 
 /**
@@ -339,6 +354,8 @@ function loser() {
     let summary = generateSummary();
     let loserMessage = "You lost!  The solution was " + solution_item + "\n";
     createPopup(loserMessage, summary, 0);
+    sendStats(0, guessCount);
+
 }
 
 
