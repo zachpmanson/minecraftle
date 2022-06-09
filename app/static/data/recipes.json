@@ -3032,7 +3032,7 @@
         "input": [
             [
                 "minecraft:planks",
-                "minecraft:wooden_slabs",
+                "minecraft:oak_slab",
                 "minecraft:planks"
             ],
             [
@@ -3042,7 +3042,7 @@
             ],
             [
                 "minecraft:planks",
-                "minecraft:wooden_slabs",
+                "minecraft:oak_slab",
                 "minecraft:planks"
             ]
         ]
@@ -5548,19 +5548,19 @@
         "output": "minecraft:composter",
         "input": [
             [
-                "minecraft:wooden_slabs",
+                "minecraft:oak_slab",
                 null,
-                "minecraft:wooden_slabs"
+                "minecraft:oak_slab"
             ],
             [
-                "minecraft:wooden_slabs",
+                "minecraft:oak_slab",
                 null,
-                "minecraft:wooden_slabs"
+                "minecraft:oak_slab"
             ],
             [
-                "minecraft:wooden_slabs",
-                "minecraft:wooden_slabs",
-                "minecraft:wooden_slabs"
+                "minecraft:oak_slab",
+                "minecraft:oak_slab",
+                "minecraft:oak_slab"
             ]
         ]
     },
@@ -7901,9 +7901,9 @@
         "output": "minecraft:lectern",
         "input": [
             [
-                "minecraft:wooden_slabs",
-                "minecraft:wooden_slabs",
-                "minecraft:wooden_slabs"
+                "minecraft:oak_slab",
+                "minecraft:oak_slab",
+                "minecraft:oak_slab"
             ],
             [
                 null,
@@ -7912,7 +7912,7 @@
             ],
             [
                 null,
-                "minecraft:wooden_slabs",
+                "minecraft:oak_slab",
                 null
             ]
         ]
@@ -8614,9 +8614,9 @@
                 "minecraft:quartz"
             ],
             [
-                "minecraft:wooden_slabs",
-                "minecraft:wooden_slabs",
-                "minecraft:wooden_slabs"
+                "minecraft:oak_slab",
+                "minecraft:oak_slab",
+                "minecraft:oak_slab"
             ]
         ]
     },

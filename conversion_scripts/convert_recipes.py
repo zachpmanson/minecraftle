@@ -37,6 +37,10 @@ def process_recipes(path):
                         itemname = key_item.get("tag", None)
                         if "planks" in itemname:
                             itemname = "minecraft:planks"
+                        elif "wooden_slabs" in itemname:
+                            itemname = "minecraft:oak_slab"
+                        elif "logs" in itemname:
+                            itemname = "minecraft:oak_log"
                         elif "stone" in itemname:
                             itemname = "minecraft:cobblestone"
                         elif "wool" in itemname:
