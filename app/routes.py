@@ -76,18 +76,6 @@ def statistics(user_id):
     wins = 0
     rank = "N/A"
 
-    #user_id = request.args.get("user_id")
-    win = request.args.get("win")
-    attempts = request.args.get("attempts")
-    print(user_id, win, attempts)
-    if None not in (user_id, win, attempts):
-        try:
-            float(user_id)
-            database.insert_record(user_id, date.today(), int(win), int(attempts))
-            return redirect("/stats/"+user_id)
-
-        except ValueError:
-            print("Attmpted SQL injection!")
     wins_records, games_played_records, user_attempt_wincounts = database.get_records(user_id)
 
     games_played = games_played_records[0][0]
