@@ -197,17 +197,17 @@ function addNewCraftingTable() {
             }
             addNewCraftingTable();
         }
-        if (guessCount >= maxGuesses) {
-            setTimeout(()=>{loser()}, 750);
-            return;
-        }
-
+        
         var lockedtable = document.getElementById("tablenumber" + tableNum);
         lockedtable.replaceWith(lockedtable.cloneNode(true));
         var solutiondiv = document.getElementById("solutiondiv" + tableNum);
         solutiondiv.classList.add("lockedslot");
         solutiondiv.classList.remove("slot");
         solutiondiv.replaceWith(solutiondiv.cloneNode(true));
+        if (guessCount >= maxGuesses) {
+            setTimeout(()=>{loser()}, 750);
+            return;
+        }
         
         updateRemainingGuesses();
     });
@@ -313,22 +313,28 @@ function createPopup(msg, summary, win) {
         document.getElementById("popupContent").textContent = msg + "\nNew Puzzle?";
         document.getElementById("popupCopyButton").children[0].textContent = "Daily"
         document.getElementById("popupCopyButton").onclick = function(){
-            window.location.replace("/");
+            triggerAudioButton('/', 'click');
         };
         document.getElementById("popupStatsButton").children[0].textContent = "Random"
         document.getElementById("popupStatsButton").onclick = function(){
+            triggerAudioButton("/?random=True", 'click');
             window.location.replace("/?random=True");
         };
     } else {
         document.getElementById("popupContent").textContent = msg+summary;
         document.getElementById("popupStatsButton").onclick = function(){
-            window.location.replace("/stats/"+user_id);
+            triggerAudioButton("/stats/"+user_id, 'click');
         };
         document.getElementById("popupCopyButton").onclick = function(){
+            triggerAudioButton('', 'click');
             copyToClipboard(summary);
         };
+    }
 
-    }  
+    document.getElementById("close-popup").onclick = function(){
+        triggerAudioButton('', 'click');
+        togglePopup();
+    }
 }
 
 /**
@@ -338,6 +344,7 @@ function winner() {
     let summary = generateSummary();
     let winnerMessage = "You won! Took " + (guessCount) + " guesses.\n";
     createPopup(winnerMessage, summary, 1);
+    addShowPopupButton();
     sendStats(1, guessCount);
 }
 
@@ -348,8 +355,35 @@ function loser() {
     let summary = generateSummary();
     let loserMessage = "You lost!  The solution was " + solution_item + "\n";
     createPopup(loserMessage, summary, 0);
+    addShowPopupButton();
     sendStats(0, guessCount);
 
+}
+
+function togglePopup() {
+    let popup = document.getElementById("popup");
+    let popupContainer = document.getElementById("popupContainer");
+    if (popup.style.visibility === "visible") {
+        popupContainer.style.visibility = "hidden";
+        popup.style.visibility = "hidden";
+        console.log("hiding")
+    } else {
+        popupContainer.style.visibility = "visible";
+        popup.style.visibility = "visible";
+        console.log("visible")
+
+    }
+}
+
+function addShowPopupButton() {
+    let showPopup = document.createElement("div");
+    showPopup.classList.add("mc-button", "show-popup");
+    let buttonTitle = document.createElement("div");
+    buttonTitle.classList.add("title", "center");
+    buttonTitle.textContent = "Show Summary";
+    showPopup.appendChild(buttonTitle);
+    showPopup.onclick = ()=>{togglePopup()};
+    document.getElementById("content").appendChild(showPopup);
 }
 
 

@@ -311,3 +311,14 @@ td {
     max-height: 30rem;
     overflow-y: scroll;
 }
+
+.close-popup {
+    margin: .5rem auto;
+    margin-bottom: 0;
+    max-width: 6rem;
+}
+
+.show-popup {
+    margin: .5rem auto;
+    max-width: 10rem; 
+}
