@@ -6,6 +6,9 @@ from app import database
 import random
 import json
 from datetime import datetime, date
+import pytz
+
+TIMEZONE = 'Australia/Perth' # set this to None to use machine timezone
 
 with open("app/static/data/given_ingredients.json", "r") as f:
     given_ingredients = json.load(f)
@@ -41,7 +44,10 @@ def index():
     # goto example.com/?random=True
     unseeded_random = request.args.get("random")
     if not unseeded_random:
-        random.seed(datetime.today().strftime('%Y-%m-%d'))
+        if TIMEZONE:
+            random.seed(datetime.now(pytz.timezone(TIMEZONE)).strftime('%Y-%m-%d'))
+        else:
+            random.seed(datetime.today().strftime('%Y-%m-%d'))
     else:
         random.seed(None)
     solutionstring = random.choice(valid_recipe_names)
@@ -52,10 +58,13 @@ def index():
         "title":"Minecraftle",
         "solution": solutionstring
     }
+
+    if TIMEZONE:
+        render_args["timezone"] = TIMEZONE
+
     return render_template(
         'index.html',
         **render_args
-        
     )
 
 

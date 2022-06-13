@@ -267,7 +267,15 @@ function addNewCraftingTable() {
  * @returns {string} all game emoji's grouped together
  */
 function generateSummary() {
-    let summaryString = "Minecraftle " + new Date().toISOString().slice(0, 10) + " " + guessCount + "/" + maxGuesses + "\n";
+    let timezone = document.getElementById("timzone");
+    let summaryString;
+    if (timezone === null) {
+        summaryString = "Minecraftle " + new Date().toISOString().slice(0, 10) + " " + guessCount + "/" + maxGuesses + "\n";
+    } else {
+        // not sure if "en-AU" breaks when timezone is set to other countries
+        summaryString = "Minecraftle " + new Date().toLocaleString("en-AU", {timeZone: timezone.innerText}).slice(0, 10)  + " " + guessCount + "/" + maxGuesses + "\n";
+    }
+
     for (let emojiSummary of emojiSummaries) {
         for (let row of emojiSummary) {
             summaryString += row.join("") + "\n";
