@@ -3,3 +3,6 @@ venv/
 *.DS_Store
 .vscode/
 minecraftle.db
+minecraftle.ini
+scripts/
+wsgi.py
