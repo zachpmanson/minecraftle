@@ -362,10 +362,3 @@ let solution_n_items = {};
 let remainingVariants = [];
 let allVariants = [];
 let guessCount = 0;
-
-
-
-
-
-
-
