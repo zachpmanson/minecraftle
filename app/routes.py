@@ -125,9 +125,13 @@ def submitstats():
     print(user_id, win, attempts)
     response = {"succeeded":0}
     if None not in (user_id, win, attempts):
+        if TIMEZONE:
+            today = datetime.now(pytz.timezone(TIMEZONE)).strftime('%Y-%m-%d')
+        else:
+            today = datetime.today().strftime('%Y-%m-%d')
         try:
             float(user_id)
-            response["succeeded"] = database.insert_record(user_id, date.today(), int(win), int(attempts))
+            response["succeeded"] = database.insert_record(user_id, today, int(win), int(attempts))
         except ValueError:
             print("Attmpted SQL injection!")
     print(response)
