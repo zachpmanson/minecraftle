@@ -11,7 +11,6 @@ pip install -r requirements.txt
 flask run
 ```
 
-
 ## Contributors
 
 | [Zach Manson](https://github.com/pavo-etc) | [Harrison Oates](https://github.com/Oatesha) | [Tamura Boog](https://github.com/Tamura77) | [Ivan Sossa](https://github.com/SossaG) |
@@ -25,6 +24,8 @@ Due date: May 23, 2022 12:00 (noon)
 Final Mark: TBD
 
 Weighting: 30%
+
+Final mark: 100%
 
 ## Todo
 
