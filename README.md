@@ -21,8 +21,6 @@ CITS3403 Agile Web Development Project 2022
 
 Due date: May 23, 2022 12:00 (noon)
 
-Final Mark: 100%
-
 Weighting: 30%
 
 Final mark: 100%
