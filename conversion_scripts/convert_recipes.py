@@ -1,15 +1,43 @@
+"""
+Written by Zach Manson, based on the previous script by Harrison Oates
+
+To use, get the recipes folder from the Minecraft source files and copy it into 
+this folder.  Then run this script, which will output a single file, recipes.json.
+
+Copy recipes.json into the data folder in app/static/data.
+
+"""
+
 import json, os
 from pprint import pprint
 
+# Converts tags to acceptable equivalent blocks
+tag_map = {
+    "planks": "minecraft:planks",
+    "wooden_slabs":"minecraft:oak_slab",
+    "logs":"minecraft:oak_log",
+    "stone":"minecraft:cobblestone",
+    "wool":"minecraft:white_wool",
+    "coals":"minecraft:coal",
+}
+
+files_to_skip = [
+    "stick_from_bamboo_item"
+]
+
 def process_recipes(path):
+    # Reads all recipe filenames (in minecraft.jar they are all seperate)
     recipe_filenames = [recipe for recipe in os.listdir(path) if recipe.endswith('.json')]
     new_recipes = {}
 
     for recipe_filename in recipe_filenames:
         print(f"{recipe_filename=}")
+
+        # Load all shaped files
         jsonfile = json.load(open(os.path.join(path, recipe_filename)))
+        extless_filename = recipe_filename[:recipe_filename.find(".")]
+        if extless_filename in files_to_skip: continue
         if jsonfile["type"] != "minecraft:crafting_shaped": continue
-        
         
         new_recipe = {
             "type": "",
@@ -33,21 +61,13 @@ def process_recipes(path):
                     if isinstance(key_item, list):
                         key_item = key_item[0]
                     itemname = key_item.get("item", None)
+                    
+                    # Convert tags to blocks
                     if itemname is None:
                         itemname = key_item.get("tag", None)
-                        if "planks" in itemname:
-                            itemname = "minecraft:planks"
-                        elif "wooden_slabs" in itemname:
-                            itemname = "minecraft:oak_slab"
-                        elif "logs" in itemname:
-                            itemname = "minecraft:oak_log"
-                        elif "stone" in itemname:
-                            itemname = "minecraft:cobblestone"
-                        elif "wool" in itemname:
-                            itemname = "minecraft:white_wool"
-                        elif "coals" in itemname:
-                            itemname = "minecraft:coal"
-
+                        for tag in tag_map.keys():
+                            if tag in itemname:
+                                itemname = tag_map[tag]
 
                     if itemname == "minecraft:oak_planks":
                         itemname = "minecraft:planks"
@@ -55,7 +75,6 @@ def process_recipes(path):
 
             new_recipe["input"].append(new_row)
         
-        extless_filename = recipe_filename[:recipe_filename.find(".")]
         new_recipes[extless_filename] = new_recipe
         pprint(new_recipe)
     return new_recipes
