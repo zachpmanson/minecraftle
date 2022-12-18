@@ -322,3 +322,17 @@ td {
     margin: .5rem auto;
     max-width: 10rem; 
 }
+
+.loading-spinner {
+    border: 0.5rem solid var(--slot-background-hover); /* Light grey */
+    border-top: 0.5rem solid var(--slot-background); /* Blue */
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+    animation: spin 2s linear infinite;
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

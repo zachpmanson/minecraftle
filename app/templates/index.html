@@ -12,13 +12,17 @@
   <div class="flex">
     <h2 class="left">Crafting Ingredients</h2>
   </div>
-  <div class="flex wrap ingredients-list" id="ingredientsList"></div>
+  <div class="flex wrap ingredients-list" id="ingredientsList">
+    <div class="loading-spinner" id="inv-spinner"></div>
+  </div>
   <p class="left center">Guess <span id="guess-counter">1</span>/10</p>
 </div>
 <div id="cursor"></div>
 <div id="popupContainer" class="inv-background">
   <div id="popup">
-    <div id="popupSlot" class="slot"><div class="slot-image"></div></div>
+    <div id="popupSlot" class="slot">
+      <div class="slot-image"></div>
+    </div>
     <p id="popupContent" class="center"></p>
     <div class="flex">
       <div class="left">
