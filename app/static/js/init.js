@@ -356,10 +356,7 @@ const copyToClipboard = (str) => {
  */
 function createPopup(msg, summary, win) {
   document.getElementById("popup").style = "visibility: visible;";
-  setSlotBackground(
-    document.getElementById("popupSlot").firstChild,
-    solution_item
-  );
+  setSlotBackground(document.getElementById("popupSlotImage"), solution_item);
   document.getElementById("popupContainer").style = "visibility: visible;";
 
   if (window.location.href.includes("random")) {
