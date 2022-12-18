@@ -6,6 +6,8 @@ from app import database
 import random
 import json
 from datetime import datetime, date
+import math
+
 import pytz
 
 TIMEZONE = 'Australia/Perth' # set this to None to use machine timezone
@@ -88,11 +90,27 @@ def statistics(user_id):
     wins_records, games_played_records, user_attempt_wincounts = database.get_records(user_id)
 
     games_played = games_played_records[0][0]
+    up_score = math.inf
+    down_score = -1
+    position = "N/A"
+    total_player_count = len(wins_records)
 
     for i, record in enumerate(wins_records):
+
+        # if this record is lower than previous, set up_score to previous, stop checking after we have found a rank
+        if rank == "N/A" and i != 0 and record[1] < wins_records[i-1][1]:
+            up_score = wins_records[i-1][1]
+        
+        # get score of person below user_id, can exit loop after that
+        if rank != "N/A":
+            down_score = max(down_score, record[1])
+            break
+
         if record[0] == user_id:
             wins = record[1]
+            position = i+1
             rank = str(i+1)+"/"+str(len(wins_records))
+            position = i+1
 
     # Convert user_attempt_wincounts tuples to a dict (x-1 is to use 0 indexing)
     user_attempts = {x-1:y for x, y in user_attempt_wincounts}
@@ -109,6 +127,10 @@ def statistics(user_id):
         "title":"Stats",
         "games_played":games_played,
         "wins":wins,
+        "up_diff":up_score-wins,
+        "down_diff":wins-down_score,
+        "position":position,
+        "total_player_count":total_player_count,
         "rank":rank,
         "attempts":expanded_user_attempts_wincounts
     }

@@ -11,6 +11,27 @@
           <td>Global ranking</td>
           <td class="stats_value">{{rank}}</td>
         </tr>
+        {% if position != "N/A" and position != 1 %}
+        <tr>
+          <td>Wins behind #{{position-1}}</td>
+          <td class="stats_value">{{up_diff}}</td>
+        </tr>
+        {% endif %}
+        {% if position != "N/A" and position != total_player_count %}
+        <tr>
+          <td>Wins ahead of #{{position+1}}</td>
+          <td class="stats_value">{{down_diff}}</td>
+        </tr>
+        {% endif %}
+
+        <tr>
+          <td><br></td>
+          <td><br></td>
+        </tr>
+        <tr>
+          <td>Games played</td>
+          <td class="stats_value">{{games_played}}</td>
+        </tr>
         <tr>
           <td>Games won</td>
           <td class="stats_value">{{wins}}</td>
@@ -28,8 +49,8 @@
           {% endif %}
         </tr>
         <tr>
-          <td>Games played</td>
-          <td class="stats_value">{{games_played}}</td>
+          <td><br></td>
+          <td><br></td>
         </tr>
         {% for i in attempts %}
         <tr>
@@ -38,7 +59,7 @@
           {% else %}
           <td>Wins with {{loop.index}} attempts</td>
           {% endif %}
-          <td>{{i}}</td>
+          <td class="stats_value">{{i}}</td>
         </tr>
         {% endfor %}
       </table>
