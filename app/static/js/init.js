@@ -441,19 +441,30 @@ function addShowPopupButton() {
 // Loads jsons after DOM has properly loaded
 document.addEventListener("DOMContentLoaded", () => {
   addNewCraftingTable();
+  givenIngredients = JSON.parse(localStorage.getItem('givenIngredients'));
 
-  fetch("static/data/given_ingredients.json")
-    .then((response) => response.json())
-    .then((obj) => {
-      givenIngredients = obj;
-    });
+  if (!givenIngredients) {
+    fetch("static/data/given_ingredients.json")
+      .then((response) => response.json())
+      .then((obj) => {
+        givenIngredients = obj;
+        localStorage.setItem("givenIngredients", JSON.stringify(givenIngredients));
+      });
+  }
+  
+  items = JSON.parse(localStorage.getItem('items'));
 
-  fetch("static/data/items.json")
-    .then((response) => response.json())
-    .then((obj) => {
-      items = obj;
-      initIngredients();
-    });
+  if (!items) {
+    fetch("static/data/items.json")
+      .then((response) => response.json())
+      .then((obj) => {
+        items = obj;
+        localStorage.setItem("items", JSON.stringify(items));
+        initIngredients();
+      });
+  } else {
+    initIngredients();
+  }
 
   getSolutionRecipe();
 });

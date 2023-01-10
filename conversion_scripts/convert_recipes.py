@@ -25,6 +25,8 @@ files_to_skip = [
     "stick_from_bamboo_item"
 ]
 
+given_ingredients = json.load(open("../app/static/data/given_ingredients.json"))
+
 def process_recipes(path):
     # Reads all recipe filenames (in minecraft.jar they are all seperate)
     recipe_filenames = [recipe for recipe in os.listdir(path) if recipe.endswith('.json')]
@@ -50,10 +52,10 @@ def process_recipes(path):
         new_recipe["group"] = jsonfile.get("group", "")
         
         new_recipe["output"] = jsonfile["result"]["item"]
+        skip = False
         for row in jsonfile["pattern"]:
             new_row = []
             for char in row:
-                print(f"{char=}")
                 if char == " ":
                     new_row.append(None)
                 else:
@@ -71,21 +73,41 @@ def process_recipes(path):
 
                     if itemname == "minecraft:oak_planks":
                         itemname = "minecraft:planks"
+                        
                     new_row.append(itemname)
+
+                    if itemname not in given_ingredients:
+                        skip = True
 
             new_recipe["input"].append(new_row)
         
+        if skip: continue
         new_recipes[extless_filename] = new_recipe
-        pprint(new_recipe)
+
     return new_recipes
 
 
-def main():
+def create_recipes():
     processed_recipes = process_recipes("./recipes/")
     outputfilename = "./recipes.json"
     with open(outputfilename, "w") as write_file:
         json.dump(processed_recipes, write_file, indent = 4)
-    print("Written to", outputfilename)
+
+    print(f"Written {len(processed_recipes)} recipes to {outputfilename}")
+
+def create_all_items():
+    recipes = json.load(open("./recipes.json"))
+    recipes_outputs = [value["output"] for value in recipes.values()]
+    all_items = json.load(open("./all_items.json"))
+
+    items = {key:value for key,value in all_items.items() if (key in recipes_outputs) or (key in given_ingredients)}
+    
+    outputfilename = "./items.json"
+    with open(outputfilename, "w") as write_file:
+        json.dump(items, write_file, indent = 4)
+    print(f"Written {len(items)} recipes to {outputfilename}")
+
 
 if __name__ == "__main__":
-    main()
+    create_recipes()
+    create_all_items()
