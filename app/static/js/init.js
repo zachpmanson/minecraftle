@@ -5,6 +5,7 @@ let isTableValid = false;
 let cursor = document.getElementById("cursor");
 let cursorItem = null;
 let givenIngredients;
+let ingredientSlots = {};
 
 let emojiSummaries = [];
 
@@ -79,7 +80,6 @@ function initIngredients() {
   document.getElementById("inv-spinner").remove();
 
   let ingredientsList = document.getElementById("ingredientsList");
-
   givenIngredients.forEach((ingredient, i) => {
     let newSlot = document.createElement("div");
     let image = document.createElement("div");
@@ -97,6 +97,8 @@ function initIngredients() {
       console.log("Picked up " + cursorItem);
       setCursor(cursorItem);
     });
+
+    ingredientSlots[ingredient] = newSlot;
   });
 }
 
@@ -143,20 +145,48 @@ function addNewCraftingTable() {
   slot.addEventListener("mousedown", (e) => {
     if (!isTableValid) return;
 
-    var isCorrect = processGuess(craftingTables[tableNum]);
+    let { isCorrect, matchmap } = processGuess(craftingTables[tableNum]);
 
     // Update solution div to display the correct item, change slot background and lock table
-    console.log(isCorrect[0], isCorrect[1]);
-    emojiSummaries.push(generateEmojiSummary(isCorrect[0], isCorrect[1]));
-    if (isCorrect[0]) {
+    console.log(isCorrect, matchmap);
+    emojiSummaries.push(generateEmojiSummary(isCorrect, matchmap));
+
+    // update the bottom given ingredients indicators
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        let itemAtSlot = craftingTables[tableNum][i][j];
+
+        if (itemAtSlot === null) continue;
+
+        if (matchmap[i][j] === 2) {
+          ingredientSlots[itemAtSlot].classList.remove("greyguess");
+          ingredientSlots[itemAtSlot].classList.remove("orangeguess");
+          ingredientSlots[itemAtSlot].classList.add("greenguess");
+        } else if (matchmap[i][j] == 3) {
+          // if not already green
+          if (!ingredientSlots[itemAtSlot].classList.contains("greenguess")) {
+            ingredientSlots[itemAtSlot].classList.remove("greyguess");
+            ingredientSlots[itemAtSlot].classList.add("orangeguess");
+          }
+        } else {
+          if (
+            !ingredientSlots[itemAtSlot].classList.contains("greenguess") &&
+            !ingredientSlots[itemAtSlot].classList.contains("orangeguess")
+          ) {
+            ingredientSlots[itemAtSlot].classList.add("greyguess");
+          }
+        }
+      }
+    }
+
+    if (isCorrect) {
       console.log(solution_item + "solution item");
       setSlotBackground(imageDiv, solution_item);
-      for (const [index, element] of isCorrect[1].entries()) {
-        console.log("index: " + index + " element: " + element);
+      for (const [rowNum, rowElements] of matchmap.entries()) {
         for (let i = 0; i < 3; i++) {
-          if (index === 1) {
+          if (rowNum === 1) {
             j = i + 4;
-          } else if (index === 2) {
+          } else if (rowNum === 2) {
             j = i + 7;
           } else {
             j = i + 1;
@@ -174,11 +204,11 @@ function addNewCraftingTable() {
         winner();
       }, 750);
     } else if (guessCount < maxGuesses) {
-      for (const [index, element] of isCorrect[1].entries()) {
+      for (const [rowNum, rowElements] of matchmap.entries()) {
         for (let i = 0; i < 3; i++) {
-          if (index === 1) {
+          if (rowNum === 1) {
             j = i + 4;
-          } else if (index === 2) {
+          } else if (rowNum === 2) {
             j = i + 7;
           } else {
             j = i + 1;
@@ -187,9 +217,9 @@ function addNewCraftingTable() {
             "#tablenumber" + tableNum + " :nth-child(" + j + ")"
           );
 
-          if (element[i] === 2) {
+          if (rowElements[i] === 2) {
             slot.classList.add("greenguess");
-          } else if (element[i] === 3) {
+          } else if (rowElements[i] === 3) {
             slot.classList.add("orangeguess");
           }
 
@@ -441,18 +471,21 @@ function addShowPopupButton() {
 // Loads jsons after DOM has properly loaded
 document.addEventListener("DOMContentLoaded", () => {
   addNewCraftingTable();
-  givenIngredients = JSON.parse(localStorage.getItem('givenIngredients'));
+  givenIngredients = JSON.parse(localStorage.getItem("givenIngredients"));
 
   if (!givenIngredients) {
     fetch("static/data/given_ingredients.json")
       .then((response) => response.json())
       .then((obj) => {
         givenIngredients = obj;
-        localStorage.setItem("givenIngredients", JSON.stringify(givenIngredients));
+        localStorage.setItem(
+          "givenIngredients",
+          JSON.stringify(givenIngredients)
+        );
       });
   }
-  
-  items = JSON.parse(localStorage.getItem('items'));
+
+  items = JSON.parse(localStorage.getItem("items"));
 
   if (!items) {
     fetch("static/data/items.json")

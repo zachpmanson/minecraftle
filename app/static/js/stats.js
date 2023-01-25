@@ -35,7 +35,7 @@ function getFB() {
 }
 
 /**
- * Collects facebook post link structure and calls a popup window function to post it 
+ * Collects facebook post link structure and calls a popup window function to post it
  */
 function facebook() {
   var url = getFB();
@@ -56,7 +56,7 @@ function getR() {
 }
 
 /**
- * Collects reddit post link structure and calls a popup window function to post it 
+ * Collects reddit post link structure and calls a popup window function to post it
  */
 function reddit() {
   var url = getR();
@@ -66,10 +66,10 @@ function reddit() {
 /**
  * Constructs a new popup tab in center of the users screen to with input links to automatically post messages
  * to social media.
- * @param {String} url 
- * @param {String} title 
- * @param {int} w 
- * @param {int} h 
+ * @param {String} url
+ * @param {String} title
+ * @param {int} w
+ * @param {int} h
  */
 function PopupCenter(url, title, w, h) {
   var dualScreenLeft =
