@@ -17,9 +17,22 @@ function checkUserCookie() {
  */
 function createUserID() {
   let uuid = Date.now().toString() + Math.random().toString(); //self.crypto.randomUUID();// crypto only works with SSL
-  localStorage["user_id"] = uuid;
-  console.log("Generated new user_id: " + localStorage["user_id"]);
-  user_id = localStorage["user_id"];
+  saveUserID(uuid);
+}
+
+function saveUserID(uuid) {
+  if (uuid.match(/^\d+\.\d+$/)) {
+    localStorage["user_id"] = uuid;
+    console.log("Generated new user_id: " + localStorage["user_id"]);
+    user_id = localStorage["user_id"];
+  }
+}
+
+function changeID() {
+  let newID = window.prompt("Enter new ID", "");
+  if (newID) {
+    saveUserID(newID);
+  }
 }
 
 /**
