@@ -1,4 +1,4 @@
-var solution_id = document.getElementById("solution").innerText;
+var solution_id = document.getElementById("solution").getAttribute("solution");
 console.log("solution: " + solution_id);
 var solution_recipe;
 var solution_item;

@@ -3,7 +3,7 @@
 {% block content %}
 <div class="guesses" id="guesses"></div>
 {% if solution %}
-<div id="solution">{{ solution }}</div>
+<div id="solution" solution="{{solution}}" ></div>
 {% endif %}
 {% if timezone %}
 <div id="timezone">{{ timezone }}</div>
