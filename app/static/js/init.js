@@ -10,6 +10,8 @@ let highContrastMode = false;
 
 let emojiSummaries = [];
 
+let isDragging = false;
+
 const greyGuess = "greyguess";
 const orangeGuess = "orangeguess";
 const greenGuess = "greenguess";
@@ -252,6 +254,18 @@ function addNewCraftingTable() {
   });
   outputDiv.appendChild(slot);
 
+  // Helper function - called after placing item(s)
+  const checkSolution = () => {
+    let checkArrangementData = checkArrangement(craftingTables[tableNum]);
+    if (checkArrangementData[0]) {
+      isTableValid = true;
+      setSlotBackground(imageDiv, checkArrangementData[1]);
+    } else {
+      isTableValid = false;
+      setSlotBackground(imageDiv, null);
+    }
+  }
+
   // Generate 9 slots
   for (let i = 0; i < 9; i++) {
     let slot = document.createElement("div");
@@ -264,51 +278,48 @@ function addNewCraftingTable() {
     imageSlotDiv.classList.add("slot-image");
     slot.appendChild(imageSlotDiv);
 
-    slot.addEventListener("mousedown", (e) => {
-      // switch held item and slot item
-      if (cursorItem === null) {
-        cursorItem = craftingTables[tableNum][slot["row"]][slot["col"]];
-        craftingTables[tableNum][slot["row"]][slot["col"]] = null;
-        setSlotBackground(imageSlotDiv, null);
-
-        console.log(
-          "Placed " +
-            null +
-            " in position " +
-            slot["row"] +
-            " " +
-            slot["col"] +
-            " in table " +
-            tableNum
-        );
-        console.log("Picked up " + cursorItem);
-      } else {
-        let temp = cursorItem === null ? null : cursorItem.slice();
-        cursorItem = craftingTables[tableNum][slot["row"]][slot["col"]];
-        craftingTables[tableNum][slot["row"]][slot["col"]] = temp;
-
-        setSlotBackground(imageSlotDiv, temp);
-
-        console.log(
-          "Placed " +
-            temp +
-            " in position " +
-            slot["row"] +
-            " " +
-            slot["col"] +
-            " in table " +
-            tableNum
-        );
-        console.log("Picked up " + cursorItem);
-      }
+    // Slot-specific helper functions
+    const swap = () => {
+      setSlotBackground(imageSlotDiv, cursorItem);
+      [craftingTables[tableNum][slot["row"]][slot["col"]], cursorItem] = [cursorItem, craftingTables[tableNum][slot["row"]][slot["col"]]]
       setCursor(cursorItem);
-      let checkArrangementData = checkArrangement(craftingTables[tableNum]);
-      if (checkArrangementData[0]) {
-        isTableValid = true;
-        setSlotBackground(imageDiv, checkArrangementData[1]);
-      } else {
-        isTableValid = false;
-        setSlotBackground(imageDiv, null);
+    }
+
+    const setSlotToCursor = () => {
+      craftingTables[tableNum][slot["row"]][slot["col"]] = cursorItem;
+      setSlotBackground(imageSlotDiv, cursorItem);
+    }
+
+    slot.addEventListener("mousedown", (e) => {
+      if (craftingTables[tableNum][slot["row"]][slot["col"]] !== null) {
+        swap();
+        checkSolution();
+        return;
+      }
+
+      if (cursorItem === null)
+        return;
+
+      isDragging = true;
+
+      const onmouseup = () => {
+        setSlotToCursor()
+
+        isDragging = false;
+        cursorItem = null;
+        setCursor(null);
+        checkSolution();
+        document.removeEventListener("mouseup", onmouseup);
+      }
+      document.addEventListener("mouseup", onmouseup);
+    });
+
+    slot.addEventListener("mousemove", (e) => {
+      if (!isDragging)
+        return;
+
+      if (craftingTables[tableNum][slot["row"]][slot["col"]] === null) {
+        setSlotToCursor()
       }
     });
   }
