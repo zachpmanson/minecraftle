@@ -302,7 +302,7 @@ function addNewCraftingTable() {
 
       isDragging = true;
 
-      const onmouseup = () => {
+      document.addEventListener("mouseup", (e) => {
         setSlotToCursor()
 
         isDragging = false;
@@ -315,10 +315,7 @@ function addNewCraftingTable() {
         for (const s of Array.from(newTable.getElementsByClassName("dragging"))) {
           s.classList.remove("dragging");
         }
-
-        document.removeEventListener("mouseup", onmouseup);
-      }
-      document.addEventListener("mouseup", onmouseup);
+      }, { once: true });
     });
 
     slot.addEventListener("mousemove", (e) => {
