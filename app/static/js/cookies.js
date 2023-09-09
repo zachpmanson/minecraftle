@@ -35,6 +35,14 @@ function changeID() {
   }
 }
 
+function getHighContrastMode() {
+  return localStorage.getItem("highContrast") === "true";
+}
+
+function toggleHighContrastMode() {
+  localStorage.setItem("highContrast", !getHighContrastMode());
+}
+
 /**
  * On document load, looks to call checkUserCookie() function to check to see if
  * user_id exists

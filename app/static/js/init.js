@@ -6,8 +6,13 @@ let cursor = document.getElementById("cursor");
 let cursorItem = null;
 let givenIngredients;
 let ingredientSlots = {};
+let highContrastMode = false;
 
 let emojiSummaries = [];
+
+const greyGuess = "greyguess";
+const orangeGuess = "orangeguess";
+const greenGuess = "greenguess";
 
 /**
  * Sets background of given div to given item
@@ -159,21 +164,21 @@ function addNewCraftingTable() {
         if (itemAtSlot === null) continue;
 
         if (matchmap[i][j] === 2) {
-          ingredientSlots[itemAtSlot].classList.remove("greyguess");
-          ingredientSlots[itemAtSlot].classList.remove("orangeguess");
-          ingredientSlots[itemAtSlot].classList.add("greenguess");
+          ingredientSlots[itemAtSlot].classList.remove(greyGuess);
+          ingredientSlots[itemAtSlot].classList.remove(orangeGuess);
+          ingredientSlots[itemAtSlot].classList.add(greenGuess);
         } else if (matchmap[i][j] == 3) {
           // if not already green
-          if (!ingredientSlots[itemAtSlot].classList.contains("greenguess")) {
-            ingredientSlots[itemAtSlot].classList.remove("greyguess");
-            ingredientSlots[itemAtSlot].classList.add("orangeguess");
+          if (!ingredientSlots[itemAtSlot].classList.contains(greenGuess)) {
+            ingredientSlots[itemAtSlot].classList.remove(greyGuess);
+            ingredientSlots[itemAtSlot].classList.add(orangeGuess);
           }
         } else {
           if (
-            !ingredientSlots[itemAtSlot].classList.contains("greenguess") &&
-            !ingredientSlots[itemAtSlot].classList.contains("orangeguess")
+            !ingredientSlots[itemAtSlot].classList.contains(greenGuess) &&
+            !ingredientSlots[itemAtSlot].classList.contains(orangeGuess)
           ) {
-            ingredientSlots[itemAtSlot].classList.add("greyguess");
+            ingredientSlots[itemAtSlot].classList.add(greyGuess);
           }
         }
       }
@@ -468,6 +473,25 @@ function addShowPopupButton() {
   document.getElementById("content").appendChild(showPopup);
 }
 
+function switchHighContrastMode() {
+  highContrastMode = !highContrastMode;
+  toggleHighContrastMode();
+  setCss();
+}
+
+function setCss() {
+  changeCssStyle(
+    `.${greenGuess}`,
+    "background-color",
+    highContrastMode ? "#85c0f9" : "hsla(92, 100%, 37%, 0.859)"
+  );
+  changeCssStyle(
+    `.${orangeGuess}`,
+    "background-color",
+    highContrastMode ? "#f5793a" : "#caa905"
+  );
+}
+
 // Loads jsons after DOM has properly loaded
 document.addEventListener("DOMContentLoaded", () => {
   addNewCraftingTable();
@@ -500,6 +524,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   getSolutionRecipe();
+
+  highContrastMode = getHighContrastMode();
+  setCss();
 });
 
 // Check for dropping item if placed outside important divs.
