@@ -167,7 +167,7 @@ a:visited {
     inset -2px -2px 0px var(--slot-inset);
 }
 
-.slot:hover {
+.slot:hover, .slot.dragging {
   background-color: var(--slot-background-hover);
 }
 

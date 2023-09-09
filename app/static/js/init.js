@@ -309,6 +309,13 @@ function addNewCraftingTable() {
         cursorItem = null;
         setCursor(null);
         checkSolution();
+
+        // getElements returns items lazily but we are removing items during
+        // iteration, so force it to finish before we start by calling Array.from()
+        for (const s of Array.from(newTable.getElementsByClassName("dragging"))) {
+          s.classList.remove("dragging");
+        }
+
         document.removeEventListener("mouseup", onmouseup);
       }
       document.addEventListener("mouseup", onmouseup);
@@ -319,6 +326,7 @@ function addNewCraftingTable() {
         return;
 
       if (craftingTables[tableNum][slot["row"]][slot["col"]] === null) {
+        slot.classList.add("dragging");
         setSlotToCursor()
       }
     });
