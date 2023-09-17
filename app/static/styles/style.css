@@ -186,7 +186,10 @@ a:visited {
   width: 2.5rem;
   height: 2.5rem;
   image-rendering: pixelated;
-  background-size: cover;
+  /* image-rendering: auto; */
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #popupSlot {
