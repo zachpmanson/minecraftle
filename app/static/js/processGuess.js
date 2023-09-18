@@ -1,5 +1,4 @@
 var solution_id = document.getElementById("solution").getAttribute("solution");
-console.log("solution: " + solution_id);
 var solution_recipe;
 var solution_item;
 let recipes;
@@ -249,8 +248,6 @@ function addOrangeSlots(guess, correctSlots) {
       n_unidentified_items[e] = solution_n_items[e] - n_items[e];
     }
   });
-  console.log(solution_n_items);
-  console.log(n_unidentified_items);
 
   // final pass marks (at most n) orange slots for each item in n_unidentified_items
   for (let i = 0; i < 3; i++) {
@@ -273,7 +270,6 @@ function addOrangeSlots(guess, correctSlots) {
  */
 function processGuess(guess) {
   guessCount++;
-  console.log("GUESS #" + guessCount);
 
   // Checks guess against ALL variants.
   // May be able to replace this later when the crafting decision tree is implemented
@@ -321,7 +317,6 @@ function checkArrangement(table) {
       }
     }
   }
-  console.log("Doesn't match");
   return [false, null];
 }
 

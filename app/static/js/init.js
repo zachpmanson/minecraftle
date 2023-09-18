@@ -99,7 +99,6 @@ function initIngredients() {
 
     newSlot.addEventListener("mousedown", (e) => {
       cursorItem = e.target.parentElement["item"];
-      console.log("Picked up " + cursorItem);
       setCursor(cursorItem);
     });
 
@@ -153,7 +152,6 @@ function addNewCraftingTable() {
     let { isCorrect, matchmap } = processGuess(craftingTables[tableNum]);
 
     // Update solution div to display the correct item, change slot background and lock table
-    console.log(isCorrect, matchmap);
     emojiSummaries.push(generateEmojiSummary(isCorrect, matchmap));
 
     // update the bottom given ingredients indicators
@@ -185,7 +183,6 @@ function addNewCraftingTable() {
     }
 
     if (isCorrect) {
-      console.log(solution_item + "solution item");
       setSlotBackground(imageDiv, solution_item);
       for (const [rowNum, rowElements] of matchmap.entries()) {
         for (let i = 0; i < 3; i++) {
@@ -199,7 +196,6 @@ function addNewCraftingTable() {
           const slot = document.querySelector(
             "#tablenumber" + tableNum + " :nth-child(" + j + ")"
           );
-          console.log(slot, j);
           slot.classList.add("greenguess");
           slot.classList.add("lockedslot");
           slot.classList.remove("slot");
@@ -270,36 +266,12 @@ function addNewCraftingTable() {
         cursorItem = craftingTables[tableNum][slot["row"]][slot["col"]];
         craftingTables[tableNum][slot["row"]][slot["col"]] = null;
         setSlotBackground(imageSlotDiv, null);
-
-        console.log(
-          "Placed " +
-            null +
-            " in position " +
-            slot["row"] +
-            " " +
-            slot["col"] +
-            " in table " +
-            tableNum
-        );
-        console.log("Picked up " + cursorItem);
       } else {
         let temp = cursorItem === null ? null : cursorItem.slice();
         cursorItem = craftingTables[tableNum][slot["row"]][slot["col"]];
         craftingTables[tableNum][slot["row"]][slot["col"]] = temp;
 
         setSlotBackground(imageSlotDiv, temp);
-
-        console.log(
-          "Placed " +
-            temp +
-            " in position " +
-            slot["row"] +
-            " " +
-            slot["col"] +
-            " in table " +
-            tableNum
-        );
-        console.log("Picked up " + cursorItem);
       }
       setCursor(cursorItem);
       let checkArrangementData = checkArrangement(craftingTables[tableNum]);
@@ -452,11 +424,9 @@ function togglePopup() {
   if (popup.style.visibility === "visible") {
     popupContainer.style.visibility = "hidden";
     popup.style.visibility = "hidden";
-    console.log("hiding");
   } else {
     popupContainer.style.visibility = "visible";
     popup.style.visibility = "visible";
-    console.log("visible");
   }
 }
 
@@ -536,7 +506,6 @@ document.addEventListener("mousedown", (e) => {
   let isClickOutsideIngredients =
     ingredientsDiv.contains(e.target) || guessesDiv.contains(e.target);
   if (!isClickOutsideIngredients) {
-    console.log("dropping item because outside ingredients " + cursorItem);
     cursorItem = null;
     setCursor(cursorItem);
   }
