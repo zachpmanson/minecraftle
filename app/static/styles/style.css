@@ -167,7 +167,8 @@ a:visited {
     inset -2px -2px 0px var(--slot-inset);
 }
 
-.slot:hover, .slot.dragging {
+.slot:hover,
+.slot.dragging {
   background-color: var(--slot-background-hover);
 }
 
@@ -188,7 +189,7 @@ a:visited {
   image-rendering: pixelated;
   /* image-rendering: auto; */
   background-size: contain;
-  background-position: center;
+  background-position: bottom;
   background-repeat: no-repeat;
 }
 
