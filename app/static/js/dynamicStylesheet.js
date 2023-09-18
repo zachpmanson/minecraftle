@@ -8,7 +8,6 @@ function changeCssStyle(selector, cssProp, cssVal) {
     i < len;
     i++
   ) {
-    console.log(`changeCssStyle`, selector, cssProp, cssVal);
     if (document.styleSheets[ssMain][cssRules][i].selectorText === selector) {
       document.styleSheets[ssMain][cssRules][i].style[cssProp] = cssVal;
       return;
