@@ -10,6 +10,8 @@ let highContrastMode = false;
 
 let emojiSummaries = [];
 
+let isDragging = false;
+
 const greyGuess = "greyguess";
 const orangeGuess = "orangeguess";
 const greenGuess = "greenguess";
@@ -248,6 +250,18 @@ function addNewCraftingTable() {
   });
   outputDiv.appendChild(slot);
 
+  // Helper function - called after placing item(s)
+  const checkSolution = () => {
+    let checkArrangementData = checkArrangement(craftingTables[tableNum]);
+    if (checkArrangementData[0]) {
+      isTableValid = true;
+      setSlotBackground(imageDiv, checkArrangementData[1]);
+    } else {
+      isTableValid = false;
+      setSlotBackground(imageDiv, null);
+    }
+  };
+
   // Generate 9 slots
   for (let i = 0; i < 9; i++) {
     let slot = document.createElement("div");
@@ -260,27 +274,60 @@ function addNewCraftingTable() {
     imageSlotDiv.classList.add("slot-image");
     slot.appendChild(imageSlotDiv);
 
-    slot.addEventListener("mousedown", (e) => {
-      // switch held item and slot item
-      if (cursorItem === null) {
-        cursorItem = craftingTables[tableNum][slot["row"]][slot["col"]];
-        craftingTables[tableNum][slot["row"]][slot["col"]] = null;
-        setSlotBackground(imageSlotDiv, null);
-      } else {
-        let temp = cursorItem === null ? null : cursorItem.slice();
-        cursorItem = craftingTables[tableNum][slot["row"]][slot["col"]];
-        craftingTables[tableNum][slot["row"]][slot["col"]] = temp;
-
-        setSlotBackground(imageSlotDiv, temp);
-      }
+    // Slot-specific helper functions
+    const swap = () => {
+      setSlotBackground(imageSlotDiv, cursorItem);
+      [craftingTables[tableNum][slot["row"]][slot["col"]], cursorItem] = [
+        cursorItem,
+        craftingTables[tableNum][slot["row"]][slot["col"]],
+      ];
       setCursor(cursorItem);
-      let checkArrangementData = checkArrangement(craftingTables[tableNum]);
-      if (checkArrangementData[0]) {
-        isTableValid = true;
-        setSlotBackground(imageDiv, checkArrangementData[1]);
-      } else {
-        isTableValid = false;
-        setSlotBackground(imageDiv, null);
+    };
+
+    const setSlotToCursor = () => {
+      craftingTables[tableNum][slot["row"]][slot["col"]] = cursorItem;
+      setSlotBackground(imageSlotDiv, cursorItem);
+    };
+
+    slot.addEventListener("mousedown", (e) => {
+      if (craftingTables[tableNum][slot["row"]][slot["col"]] !== null) {
+        swap();
+        checkSolution();
+        return;
+      }
+
+      if (cursorItem === null) return;
+
+      isDragging = true;
+
+      document.addEventListener(
+        "mouseup",
+        (e) => {
+          setSlotToCursor();
+
+          isDragging = false;
+          cursorItem = null;
+          setCursor(null);
+          checkSolution();
+
+          // getElements returns items lazily but we are removing items during
+          // iteration, so force it to finish before we start by calling Array.from()
+          for (const s of Array.from(
+            newTable.getElementsByClassName("dragging")
+          )) {
+            s.classList.remove("dragging");
+          }
+        },
+        { once: true }
+      );
+    });
+
+    slot.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+
+      if (craftingTables[tableNum][slot["row"]][slot["col"]] === null) {
+        slot.classList.add("dragging");
+        setSlotToCursor();
       }
     });
   }

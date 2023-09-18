@@ -167,7 +167,8 @@ a:visited {
     inset -2px -2px 0px var(--slot-inset);
 }
 
-.slot:hover {
+.slot:hover,
+.slot.dragging {
   background-color: var(--slot-background-hover);
 }
 
@@ -186,7 +187,10 @@ a:visited {
   width: 2.5rem;
   height: 2.5rem;
   image-rendering: pixelated;
-  background-size: cover;
+  /* image-rendering: auto; */
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
 }
 
 #popupSlot {
