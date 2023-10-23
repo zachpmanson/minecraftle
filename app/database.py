@@ -23,6 +23,7 @@ def create_table():
     cursor.execute(sql_command)
     connection.commit()
     
+    cursor.close()
     connection.close()
 
 
@@ -67,6 +68,7 @@ def insert_record(user_id, date, win, attempts):
     
     lastrowid = cursor.lastrowid
     
+    cursor.close()
     connection.close()
     
     return lastrowid
@@ -101,6 +103,7 @@ def get_records(user_id):
     cursor.execute(f"SELECT attempts, COUNT(win) FROM games_played WHERE user_id==? AND win==1 GROUP BY attempts ORDER BY attempts ASC", (user_id,))
     user_attempt_wincounts = cursor.fetchall()  
     
+    cursor.close()
     connection.close()
 
     return wins, games_played, user_attempt_wincounts
