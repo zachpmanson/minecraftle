@@ -1,11 +1,21 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <div class="guesses" id="guesses"></div>
-{% if solution %}
-<div id="solution" solution="{{solution}}" ></div>
-{% endif %}
-{% if timezone %}
+{% if solutions %}
+<div id="solutions">
+  <div
+    date="{{solutions[0]['date']}}"
+    solution="{{solutions[0]['solution']}}"
+  ></div>
+  <div
+    date="{{solutions[1]['date']}}"
+    solution="{{solutions[1]['solution']}}"
+  ></div>
+  <div
+    date="{{solutions[2]['date']}}"
+    solution="{{solutions[2]['solution']}}"
+  ></div>
+</div>
+{% endif %} {% if timezone %}
 <div id="timezone">{{ timezone }}</div>
 {% endif %}
 <div class="inv-background ingredients" id="ingredients">
@@ -36,7 +46,11 @@
         </div>
       </div>
     </div>
-    <div id="close-popup" class="mc-button close-popup" onclick="triggerAudioButton('', 'click');togglePopup()">
+    <div
+      id="close-popup"
+      class="mc-button close-popup"
+      onclick="triggerAudioButton('', 'click');togglePopup()"
+    >
       <div class="title center">Close</div>
     </div>
   </div>

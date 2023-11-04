@@ -1,4 +1,10 @@
-var solution_id = document.getElementById("solution").getAttribute("solution");
+// sv is sweden, sweden local time looks like 2023-11-05 00:18:41
+// dirty hack https://stackoverflow.com/a/58614322
+let currentDate = new Date().toLocaleString("sv").slice(0, 10);
+console.log(currentDate);
+var solution_id = [...document.getElementById("solutions").children]
+  .find((n) => n.getAttribute("date") === currentDate)
+  .getAttribute("solution");
 var solution_recipe;
 var solution_item;
 let recipes;

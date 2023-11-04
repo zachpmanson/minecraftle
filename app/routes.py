@@ -5,30 +5,49 @@ from app.database import DbConn
 
 import random
 import json
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 import math
 
 import pytz
+
+oneday = timedelta(days=1)
 
 @app.route('/')
 @app.route('/index')
 def index():
     # goto example.com/?random=True
     unseeded_random = request.args.get("random")
+
+    if TIMEZONE:
+        now = datetime.now(pytz.timezone(TIMEZONE))
+    else:
+        now = datetime.today()
+
+
+    solutions = [
+        { "date": (now - oneday).strftime('%Y-%m-%d') },
+        { "date": (now).strftime('%Y-%m-%d') },
+        { "date": (now + oneday).strftime('%Y-%m-%d') },
+    ]
     if not unseeded_random:
-        if TIMEZONE:
-            random.seed(datetime.now(pytz.timezone(TIMEZONE)).strftime('%Y-%m-%d'))
-        else:
-            random.seed(datetime.today().strftime('%Y-%m-%d'))
+        random.seed(solutions[0]["date"])
+        solutions[0]["solution"] = random.choice(valid_recipe_names)
+        random.seed(solutions[1]["date"])
+        solutions[1]["solution"] = random.choice(valid_recipe_names)
+        random.seed(solutions[2]["date"])
+        solutions[2]["solution"] = random.choice(valid_recipe_names)
+
     else:
         random.seed(None)
-    solutionstring = random.choice(valid_recipe_names)
-    print(solutionstring)
-
+        solution = random.choice(valid_recipe_names)
+        solutions[0]["solution"] = solution
+        solutions[1]["solution"] = solution
+        solutions[2]["solution"] = solution
+        
 
     render_args = {
         "title":"Minecraftle",
-        "solution": solutionstring
+        "solutions": solutions
     }
 
     if TIMEZONE:
