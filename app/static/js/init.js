@@ -206,7 +206,7 @@ function addNewCraftingTable() {
       setTimeout(() => {
         winner();
       }, 750);
-    } else if (guessCount < maxGuesses) {
+    } else if (guessCount <= maxGuesses) {
       for (const [rowNum, rowElements] of matchmap.entries()) {
         for (let i = 0; i < 3; i++) {
           if (rowNum === 1) {
@@ -239,7 +239,7 @@ function addNewCraftingTable() {
     solutiondiv.classList.add("lockedslot");
     solutiondiv.classList.remove("slot");
     solutiondiv.replaceWith(solutiondiv.cloneNode(true));
-    if (guessCount >= maxGuesses) {
+    if (guessCount > maxGuesses) {
       setTimeout(() => {
         loser();
       }, 750);
