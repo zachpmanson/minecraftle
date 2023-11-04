@@ -1,7 +1,7 @@
 from flask import render_template, url_for, request, redirect, jsonify
 
 from app import app 
-from app import database
+from app.database import DbConn
 
 import random
 import json
@@ -9,36 +9,6 @@ from datetime import datetime, date
 import math
 
 import pytz
-
-TIMEZONE = 'Australia/Perth' # set this to None to use machine timezone
-
-with open("app/static/data/given_ingredients.json", "r") as f:
-    given_ingredients = json.load(f)
-
-with open("app/static/data/recipes.json", "r") as f:
-    recipes = json.load(f)
-
-all_recipes_names = list(recipes.keys())
-
-valid_recipe_names = []
-
-for recipe_name in all_recipes_names:
-    valid = True
-    items_in_recipe = set()
-    if recipes[recipe_name]["type"] != "minecraft:crafting_shaped": continue
-    for row in recipes[recipe_name]["input"]:
-        for item in row:
-            #print(item)
-            if item is not None:
-                items_in_recipe.add(item)
-
-    for item in items_in_recipe:
-        if item not in given_ingredients:
-            valid = False
-    if valid:
-        valid_recipe_names.append(recipe_name)
-
-
 
 @app.route('/')
 @app.route('/index')
@@ -87,7 +57,8 @@ def statistics(user_id):
     wins = 0
     rank = "N/A"
 
-    wins_records, games_played_records, user_attempt_wincounts = database.get_records(user_id)
+    with DbConn() as conn:
+        wins_records, games_played_records, user_attempt_wincounts = conn.get_records(user_id)
 
     games_played = games_played_records[0][0]
     up_score = math.inf
@@ -152,8 +123,10 @@ def submitstats():
         else:
             today = datetime.today().strftime('%Y-%m-%d')
         try:
-            float(user_id)
-            response["succeeded"] = database.insert_record(user_id, today, int(win), int(attempts))
+            float(user_id) # if this throws error then user_id has been manipulated
+            with DbConn() as conn:
+                response["succeeded"] = conn.insert_record(user_id, today, int(win), int(attempts))
+            print(response)
         except ValueError:
             print("Attmpted SQL injection!")
     print(response)
@@ -162,3 +135,34 @@ def submitstats():
 @app.errorhandler(404)
 def pagenotfound(e):
     return render_template('404.html'), 404
+
+TIMEZONE = 'Australia/Perth' # set this to None to use machine timezone
+
+with open("app/static/data/given_ingredients.json", "r") as f:
+    given_ingredients = json.load(f)
+
+with open("app/static/data/recipes.json", "r") as f:
+    recipes = json.load(f)
+
+all_recipes_names = list(recipes.keys())
+
+valid_recipe_names = []
+
+for recipe_name in all_recipes_names:
+    valid = True
+    items_in_recipe = set()
+    if recipes[recipe_name]["type"] != "minecraft:crafting_shaped": continue
+    for row in recipes[recipe_name]["input"]:
+        for item in row:
+            #print(item)
+            if item is not None:
+                items_in_recipe.add(item)
+
+    for item in items_in_recipe:
+        if item not in given_ingredients:
+            valid = False
+    if valid:
+        valid_recipe_names.append(recipe_name)
+
+with DbConn() as conn:
+    conn.create_table()
