@@ -149,6 +149,7 @@ function addNewCraftingTable() {
   slot.appendChild(imageDiv);
 
   slot.addEventListener("mousedown", (e) => {
+    checkSolution();
     if (!isTableValid) return;
 
     let { isCorrect, matchmap } = processGuess(craftingTables[tableNum]);
@@ -250,7 +251,7 @@ function addNewCraftingTable() {
   });
   outputDiv.appendChild(slot);
 
-  // Helper function - called after placing item(s)
+  // Helper function - called after placing item(s) or clicking the solution slot
   const checkSolution = () => {
     let checkArrangementData = checkArrangement(craftingTables[tableNum]);
     if (checkArrangementData[0]) {
