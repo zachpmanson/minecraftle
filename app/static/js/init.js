@@ -429,6 +429,10 @@ function createPopup(msg, summary, win) {
     };
   } else {
     document.getElementById("popupContent").textContent = msg + summary;
+
+    // emoji summaries are non high contrast by default, so only need conversion _to_ high contrast mode
+    if (highContrastMode) document.getElementById("popupContent").textContent = convertEmojisToHighContrast(document.getElementById("popupContent").textContent);
+    
     document.getElementById("popupStatsButton").onclick = function () {
       triggerAudioButton("/stats/" + user_id, "click");
     };
@@ -473,10 +477,47 @@ function togglePopup() {
     popupContainer.style.visibility = "hidden";
     popup.style.visibility = "hidden";
   } else {
+    popupContent = document.getElementById("popupContent");
+    if (highContrastMode) popupContent.textContent = convertEmojisToHighContrast(popupContent.textContent);
+    else popupContent.textContent = convertEmojisToNonHighContrast(popupContent.textContent);
+
     popupContainer.style.visibility = "visible";
     popup.style.visibility = "visible";
   }
 }
+
+/**
+ * Converts emojis in given string to high contrast emojis
+ * @param {String} str
+ * @returns {String} string with emojis converted to high contrast emojis
+ * 
+ * 🟩 -> 🟦,
+ * 🟨 -> 🟧
+ * 
+ * For converting summaries during high contrast mode
+ */
+function convertEmojisToHighContrast(str) {
+  return str
+    .replace(/🟩/g, "🟦")
+    .replace(/🟨/g, "🟧")
+};
+
+/**
+ * Converts emojis in given string to non high contrast emojis
+ * @param {String} str
+ * @returns {String} string with emojis converted to non high contrast emojis
+ * 
+ * 🟦 -> 🟩,
+ * 🟧 -> 🟨
+ * 
+ * For converting summaries when high contrast mode is turned off
+ */
+
+function convertEmojisToNonHighContrast(str) {
+  return str
+    .replace(/🟦/g, "🟩")
+    .replace(/🟧/g, "🟨")
+};
 
 function addShowPopupButton() {
   let showPopup = document.createElement("div");
