@@ -311,6 +311,11 @@ function processGuess(guess) {
 
   addOrangeSlots(guess, correctSlots);
 
+  // only needs to progress to the next guess if the game is not over
+  // if guessCount reaches maxGuesses, the game is over
+  let currentGuessNumber = Math.min(guessCount + 1, maxGuesses);
+  document.getElementById("guess-counter").innerText = currentGuessNumber;
+
   return { isCorrect: false, matchmap: correctSlots };
 }
 
