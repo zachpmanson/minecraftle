@@ -342,30 +342,14 @@ function addNewCraftingTable() {
  * @returns {string} all game emoji's grouped together
  */
 function generateSummary() {
-  let timezone = document.getElementById("timzone");
-  let summaryString;
-  if (timezone === null) {
-    summaryString =
-      "Minecraftle " +
-      new Date().toISOString().slice(0, 10) +
-      " " +
-      guessCount +
-      "/" +
-      maxGuesses +
-      "\n";
-  } else {
-    // not sure if "en-AU" breaks when timezone is set to other countries
-    summaryString =
-      "Minecraftle " +
-      new Date()
-        .toLocaleString("en-AU", { timeZone: timezone.innerText })
-        .slice(0, 10) +
-      " " +
-      guessCount +
-      "/" +
-      maxGuesses +
-      "\n";
-  }
+  let summaryString =
+    "Minecraftle " +
+    new Date().toISOString().slice(0, 10) +
+    " " +
+    guessCount +
+    "/" +
+    maxGuesses +
+    "\n";
 
   for (let emojiSummary of emojiSummaries) {
     for (let row of emojiSummary) {
@@ -431,8 +415,12 @@ function createPopup(msg, summary, win) {
     document.getElementById("popupContent").textContent = msg + summary;
 
     // emoji summaries are non high contrast by default, so only need conversion _to_ high contrast mode
-    if (highContrastMode) document.getElementById("popupContent").textContent = convertEmojisToHighContrast(document.getElementById("popupContent").textContent);
-    
+    if (highContrastMode)
+      document.getElementById("popupContent").textContent =
+        convertEmojisToHighContrast(
+          document.getElementById("popupContent").textContent
+        );
+
     document.getElementById("popupStatsButton").onclick = function () {
       triggerAudioButton("/stats/" + user_id, "click");
     };
@@ -478,8 +466,14 @@ function togglePopup() {
     popup.style.visibility = "hidden";
   } else {
     popupContent = document.getElementById("popupContent");
-    if (highContrastMode) popupContent.textContent = convertEmojisToHighContrast(popupContent.textContent);
-    else popupContent.textContent = convertEmojisToNonHighContrast(popupContent.textContent);
+    if (highContrastMode)
+      popupContent.textContent = convertEmojisToHighContrast(
+        popupContent.textContent
+      );
+    else
+      popupContent.textContent = convertEmojisToNonHighContrast(
+        popupContent.textContent
+      );
 
     popupContainer.style.visibility = "visible";
     popup.style.visibility = "visible";
@@ -490,34 +484,30 @@ function togglePopup() {
  * Converts emojis in given string to high contrast emojis
  * @param {String} str
  * @returns {String} string with emojis converted to high contrast emojis
- * 
+ *
  * 🟩 -> 🟦,
  * 🟨 -> 🟧
- * 
+ *
  * For converting summaries during high contrast mode
  */
 function convertEmojisToHighContrast(str) {
-  return str
-    .replace(/🟩/g, "🟦")
-    .replace(/🟨/g, "🟧")
-};
+  return str.replace(/🟩/g, "🟦").replace(/🟨/g, "🟧");
+}
 
 /**
  * Converts emojis in given string to non high contrast emojis
  * @param {String} str
  * @returns {String} string with emojis converted to non high contrast emojis
- * 
+ *
  * 🟦 -> 🟩,
  * 🟧 -> 🟨
- * 
+ *
  * For converting summaries when high contrast mode is turned off
  */
 
 function convertEmojisToNonHighContrast(str) {
-  return str
-    .replace(/🟦/g, "🟩")
-    .replace(/🟧/g, "🟨")
-};
+  return str.replace(/🟦/g, "🟩").replace(/🟧/g, "🟨");
+}
 
 function addShowPopupButton() {
   let showPopup = document.createElement("div");
