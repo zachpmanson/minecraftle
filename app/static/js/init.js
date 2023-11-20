@@ -476,13 +476,13 @@ function togglePopup() {
  * @param {String} str
  * @returns {String} string with emojis converted to high contrast emojis
  *
- * 🟩 -> 🟦,
- * 🟨 -> 🟧
+ * 🟩 -> 🟧,
+ * 🟨 -> 🟦
  *
  * For converting summaries during high contrast mode
  */
 function convertEmojisToHighContrast(str) {
-  return str.replace(/🟩/g, "🟦").replace(/🟨/g, "🟧");
+  return str.replace(/🟩/g, "🟧").replace(/🟨/g, "🟦");
 }
 
 /**
@@ -490,14 +490,14 @@ function convertEmojisToHighContrast(str) {
  * @param {String} str
  * @returns {String} string with emojis converted to non high contrast emojis
  *
- * 🟦 -> 🟩,
- * 🟧 -> 🟨
+ * 🟧 -> 🟩,
+ * 🟦 -> 🟨
  *
  * For converting summaries when high contrast mode is turned off
  */
 
 function convertEmojisToNonHighContrast(str) {
-  return str.replace(/🟦/g, "🟩").replace(/🟧/g, "🟨");
+  return str.replace(/🟧/g, "🟩").replace(/🟦/g, "🟨");
 }
 
 function addShowPopupButton() {
@@ -519,16 +519,21 @@ function switchHighContrastMode() {
   setCss();
 }
 
+greenColor = "hsla(92, 100%, 37%, 0.859)";
+yellowColor = "#caa905";
+orangeColor = "#f5793a";
+blueColor = "#85c0f9";
+
 function setCss() {
   changeCssStyle(
     `.${greenGuess}`,
     "background-color",
-    highContrastMode ? "#85c0f9" : "hsla(92, 100%, 37%, 0.859)"
+    highContrastMode ? orangeColor : greenColor
   );
   changeCssStyle(
     `.${orangeGuess}`,
     "background-color",
-    highContrastMode ? "#f5793a" : "#caa905"
+    highContrastMode ? blueColor : yellowColor
   );
 }
 
