@@ -403,14 +403,10 @@ function createPopup(msg, summary, win) {
       window.location.replace("/?random=True");
     };
   } else {
-    document.getElementById("popupContent").textContent = msg + summary;
-
     // emoji summaries are non high contrast by default, so only need conversion _to_ high contrast mode
-    if (highContrastMode)
-      document.getElementById("popupContent").textContent =
-        convertEmojisToHighContrast(
-          document.getElementById("popupContent").textContent
-        );
+    if (highContrastMode) summary = convertEmojisToHighContrast(summary);
+    
+    document.getElementById("popupContent").textContent = msg + summary;
 
     document.getElementById("popupStatsButton").onclick = function () {
       triggerAudioButton("/stats/" + user_id, "click");
