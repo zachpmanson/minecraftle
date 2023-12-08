@@ -12,6 +12,8 @@ let emojiSummaries = [];
 
 let isDragging = false;
 
+let gameIsFinished = true;
+
 const greyGuess = "greyguess";
 const orangeGuess = "orangeguess";
 const greenGuess = "greenguess";
@@ -333,6 +335,8 @@ function addNewCraftingTable() {
  * Clear the latest crafting table
  */
 function clearTable() {
+  if(gameIsFinished) return;
+
   let currentTableID = craftingTables.length - 1;
   let table = document.getElementById("tablenumber" + currentTableID);
   let solution = document.getElementById("solutiondiv" + currentTableID);
@@ -450,6 +454,7 @@ function createPopup(msg, summary, win) {
  * Win message
  */
 function winner() {
+  clearbutton = false;
   let summary = generateSummary();
   let winnerMessage = "You won! Took " + guessCount + " guesses.\n";
   createPopup(winnerMessage, summary, 1);
@@ -461,6 +466,7 @@ function winner() {
  * Lose message
  */
 function loser() {
+  clearbutton = false;
   let summary = generateSummary();
   let loserMessage = "You lost!  The solution was " + solution_item + "\n";
   createPopup(loserMessage, summary, 0);
