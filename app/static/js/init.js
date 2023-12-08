@@ -12,7 +12,7 @@ let emojiSummaries = [];
 
 let isDragging = false;
 
-let gameIsFinished = true;
+let gameIsFinished = false;
 
 const greyGuess = "greyguess";
 const orangeGuess = "orangeguess";
@@ -454,7 +454,7 @@ function createPopup(msg, summary, win) {
  * Win message
  */
 function winner() {
-  clearbutton = false;
+  gameIsFinished = true;
   let summary = generateSummary();
   let winnerMessage = "You won! Took " + guessCount + " guesses.\n";
   createPopup(winnerMessage, summary, 1);
@@ -466,7 +466,7 @@ function winner() {
  * Lose message
  */
 function loser() {
-  clearbutton = false;
+  gameIsFinished = true;
   let summary = generateSummary();
   let loserMessage = "You lost!  The solution was " + solution_item + "\n";
   createPopup(loserMessage, summary, 0);
