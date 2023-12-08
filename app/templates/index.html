@@ -25,10 +25,14 @@
   <div class="flex wrap ingredients-list" id="ingredientsList">
     <div class="loading-spinner" id="inv-spinner"></div>
   </div>
-  <p class="left center">Guess <span id="guess-counter">1</span>/10</p>
-  <div onclick="triggerAudioButton('', 'click');clearTable()" class="mc-button">
-    <div class="title" >
-      Clear Table
+  <div class="guess-box">
+    <div onclick="triggerAudioButton('', 'click');clearTable()" class="mc-button" id="clearButton">
+      <div class="title">
+          Clear Table
+      </div>
+  </div>
+    <div class="counter-container">
+        <p class="left center">Guess <span id="guess-counter">1</span>/10</p>
     </div>
   </div>
 </div>

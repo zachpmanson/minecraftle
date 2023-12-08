@@ -349,3 +349,22 @@ td {
     transform: rotate(360deg);
   }
 }
+
+
+/*
+style for the guess section
+*/
+
+.guess-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#clearButton{
+  width: 12rem;
+}
+
+.counter-container {
+  margin-left: 20px; 
+}

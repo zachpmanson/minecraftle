@@ -329,24 +329,24 @@ function addNewCraftingTable() {
 }
 
 /**
- * Obtanin the length of the crafting table array
- * Clear the lats crafting table
+ * Obtain the length of the crafting table array.
+ * Clear the latest crafting table
  */
 function clearTable() {
-  let lastTable = craftingTables.length - 1;
-  let table = document.getElementById("tablenumber" + lastTable);
-  let solution = document.getElementById("solutiondiv" + lastTable);
+  let currentTableID = craftingTables.length - 1;
+  let table = document.getElementById("tablenumber" + currentTableID);
+  let solution = document.getElementById("solutiondiv" + currentTableID);
 
   let solutionSlot = solution.children[0];
   solutionSlot.removeAttribute("style");
 
-  for (let row = 0; row < craftingTables[lastTable].length; row++) {
-    for (let col = 0; col < craftingTables[lastTable][row].length; col++) {
-      craftingTables[lastTable][row][col] = null;
+  for (let row = 0; row < craftingTables[currentTableID].length; row++) {
+    for (let col = 0; col < craftingTables[currentTableID][row].length; col++) {
+      craftingTables[currentTableID][row][col] = null;
 
       let slotId = row * 3 + col;
       let slot = table.children[slotId].children[0];
-      slot.removeAttribute("style");
+      setSlotBackground(slot, null);
     }
   }
 }
