@@ -234,7 +234,7 @@ function addNewCraftingTable() {
     solutiondiv.classList.remove("slot");
     solutiondiv.replaceWith(solutiondiv.cloneNode(true));
 
-    if (!isCorrect && (guessCount >= maxGuesses)) {
+    if (!isCorrect && guessCount >= maxGuesses) {
       setTimeout(() => {
         loser();
       }, 750);
@@ -352,24 +352,21 @@ function generateSummary() {
 }
 
 function sendStats(win, attempts) {
-  let request = new XMLHttpRequest();
-  request.open(
-    "GET",
-    "/api/submitgame?user_id=" +
-      user_id +
-      "&win=" +
-      win +
-      "&attempts=" +
-      attempts
-  );
-  request.send();
-  request.onload = () => {
-    if (request.status === 200) {
-      console.log(JSON.parse(request.response));
-    } else {
-      console.log("Error: " + request.status + " " + request.statusText);
-    }
-  };
+  fetch("http://127.0.0.1:3000/api/submitgame", {
+    method: "POST",
+    body: JSON.stringify({
+      user_id: user_id,
+      win: win,
+      attempts: attempts,
+      // date: new Date().toLocaleString("sv").slice(0, 10),
+      date: new Date(currentDate).toISOString(),
+    }),
+    headers: {
+      "Content-Type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((response) => response.json())
+    .then((json) => console.log(json));
 }
 
 const copyToClipboard = (str) => {
@@ -405,7 +402,7 @@ function createPopup(msg, summary, win) {
   } else {
     // emoji summaries are non high contrast by default, so only need conversion _to_ high contrast mode
     if (highContrastMode) summary = convertEmojisToHighContrast(summary);
-    
+
     document.getElementById("popupContent").textContent = msg + summary;
 
     document.getElementById("popupStatsButton").onclick = function () {
