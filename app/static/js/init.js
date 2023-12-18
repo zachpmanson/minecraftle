@@ -178,52 +178,37 @@ function addNewCraftingTable() {
       }
     }
 
+    // color the guess
+    for (const [rowNum, rowElements] of matchmap.entries()) {
+      for (let i = 0; i < 3; i++) {
+        if (rowNum === 1) {
+          j = i + 4;
+        } else if (rowNum === 2) {
+          j = i + 7;
+        } else {
+          j = i + 1;
+        }
+        const slot = document.querySelector(
+          "#tablenumber" + tableNum + " :nth-child(" + j + ")"
+        );
+
+        if (rowElements[i] === 2) {
+          slot.classList.add("greenguess");
+        } else if (rowElements[i] === 3) {
+          slot.classList.add("orangeguess");
+        }
+
+        slot.classList.add("lockedslot");
+        slot.classList.remove("slot");
+      }
+    }
+
     if (isCorrect) {
       setSlotBackground(imageDiv, solution_item);
-      for (const [rowNum, rowElements] of matchmap.entries()) {
-        for (let i = 0; i < 3; i++) {
-          if (rowNum === 1) {
-            j = i + 4;
-          } else if (rowNum === 2) {
-            j = i + 7;
-          } else {
-            j = i + 1;
-          }
-          const slot = document.querySelector(
-            "#tablenumber" + tableNum + " :nth-child(" + j + ")"
-          );
-          slot.classList.add("greenguess");
-          slot.classList.add("lockedslot");
-          slot.classList.remove("slot");
-        }
-      }
       setTimeout(() => {
         winner();
       }, 750);
     } else if (guessCount < maxGuesses) {
-      for (const [rowNum, rowElements] of matchmap.entries()) {
-        for (let i = 0; i < 3; i++) {
-          if (rowNum === 1) {
-            j = i + 4;
-          } else if (rowNum === 2) {
-            j = i + 7;
-          } else {
-            j = i + 1;
-          }
-          const slot = document.querySelector(
-            "#tablenumber" + tableNum + " :nth-child(" + j + ")"
-          );
-
-          if (rowElements[i] === 2) {
-            slot.classList.add("greenguess");
-          } else if (rowElements[i] === 3) {
-            slot.classList.add("orangeguess");
-          }
-
-          slot.classList.add("lockedslot");
-          slot.classList.remove("slot");
-        }
-      }
       addNewCraftingTable();
     }
 
