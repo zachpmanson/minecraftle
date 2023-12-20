@@ -439,7 +439,11 @@ function winner() {
  */
 function loser() {
   let summary = generateSummary();
-  let loserMessage = "You lost!  The solution was " + solution_item + "\n";
+
+  // conversion required because solution_item is in ingredient/recipe format, not as an item name
+  let solution_item_name = items[solution_item]["name"];
+
+  let loserMessage = "You lost!  The solution was " + solution_item_name + "\n";
   createPopup(loserMessage, summary, 0);
   addShowPopupButton();
   sendStats(0, guessCount);
