@@ -1,5 +1,6 @@
 import MCButton from "@/components/MCButton.component";
 import { useGlobal } from "@/context/Global/context";
+import { Head } from "next/document";
 import Link from "next/link";
 
 export default function Layout({ children }: any) {

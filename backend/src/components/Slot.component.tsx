@@ -14,19 +14,23 @@ export default function Slot({
 }) {
   const { items } = useGlobal();
   const itemImage = item ? items[item]?.icon : undefined;
-  console.log(itemImage);
+
   const clickAction = (event: any) => {
     event.stopPropagation();
     if (clickable && onClick) {
       onClick();
     }
   };
+  const backgroundImage = itemImage
+    ? { backgroundImage: `url(${itemImage})` }
+    : {};
   return (
-    <div className="slot" onClick={clickAction}>
-      <div
-        className="slot-image"
-        style={{ backgroundImage: `url(${itemImage})` }}
-      ></div>
+    <div
+      className="slot"
+      style={{ backgroundColor: backgroundColor }}
+      onClick={clickAction}
+    >
+      <div className="slot-image" style={backgroundImage}></div>
     </div>
   );
 }

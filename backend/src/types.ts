@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export type GenericApiError = { error: string | z.ZodError<any> };
 
-export type TableItem = string | undefined | null;
+export type TableItem = string | undefined | null | number;
 export type Row = [TableItem, TableItem, TableItem];
 export type Table = [Row, Row, Row];
 
@@ -25,3 +25,6 @@ export type Recipe = {
 export type RecipeMap = {
   [key: string]: Recipe;
 };
+
+export type MatchMapRow = [number, number, number];
+export type MatchMap = [MatchMapRow, MatchMapRow, MatchMapRow];
