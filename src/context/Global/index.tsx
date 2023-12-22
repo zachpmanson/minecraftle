@@ -342,8 +342,6 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
     // finds how many of each item are left to be identified
     let n_unidentified_items = { ...solution_n_items };
     for (let name of Object.keys(n_unidentified_items)) {
-      console.log("name", name, n_unidentified_items[name], n_items[name]);
-
       n_unidentified_items[name] -= n_items[name];
     }
 
