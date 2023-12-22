@@ -87,6 +87,7 @@ export default function Home() {
       <Cursor />
       {popupVisible && (
         <Popup
+          isRandom={!!random}
           isOpen={popupVisible}
           closeModal={() => {
             setPopupVisible(false);

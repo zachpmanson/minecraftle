@@ -23,7 +23,6 @@ export default function CraftingTable({
     setColorTables,
     setGameState,
     options: { highContrast },
-    recipes,
   } = useGlobal();
 
   const [currentRecipe, setCurrentRecipe] = useState<string | undefined>();

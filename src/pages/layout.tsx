@@ -16,7 +16,9 @@ export default function Layout({ children }: any) {
           <nav>
             <div className="flex flex-col gap-2">
               <div className="flex justify-evenly gap-4">
-                <MCButton className="flex-1">How To Play</MCButton>
+                <Link className="flex-1" href="/how-to-play">
+                  <MCButton className="flex-1">How To Play</MCButton>
+                </Link>
 
                 <Link className="flex-1" href={`/stats/${userId.toString()}`}>
                   <MCButton>Stats</MCButton>
@@ -45,8 +47,7 @@ export default function Layout({ children }: any) {
                   <MCButton onClick={() => resetGame(false)}>Daily</MCButton>
                 </Link>
                 <Link className="flex-1" href="/?random=true">
-                  <MCButton className="flex-1">
-                    {/* <MCButton onClick={() => resetGame(true)} className="flex-1"> */}
+                  <MCButton className="flex-1" onClick={() => resetGame(true)}>
                     Random
                   </MCButton>
                 </Link>

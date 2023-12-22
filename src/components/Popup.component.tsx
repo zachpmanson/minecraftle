@@ -8,9 +8,11 @@ import Slot from "./Slot.component";
 export default function Popup({
   isOpen,
   closeModal,
+  isRandom,
 }: {
   isOpen: boolean;
   closeModal: () => void;
+  isRandom: boolean;
 }) {
   const {
     gameState,
@@ -19,6 +21,7 @@ export default function Popup({
     colorTables,
     userId,
     options: { highContrast },
+    resetGame,
   } = useGlobal();
   const [copyButtonText, setCopyButtonText] = useState("Copy");
   console.log("highContrast", highContrast);
@@ -97,18 +100,34 @@ export default function Popup({
                     >
                       You {gameState}! Took {craftingTables.length} guesses.
                     </Dialog.Title>
-                    <p className="whitespace-pre text-center max-h-96 overflow-y-scroll">
-                      {generateSummary()}
-                    </p>
+                    {!isRandom && (
+                      <p className="whitespace-pre text-center max-h-96 overflow-y-scroll">
+                        {generateSummary()}
+                      </p>
+                    )}
                     <div className="flex flex-col gap-2">
                       <div className="flex gap-2">
-                        <MCButton onClick={() => handleCopy()}>
-                          {copyButtonText}
-                        </MCButton>
-                        <Link href={userId ? `/stats/${userId}` : ""}>
-                          <MCButton onClick={closeModal}>Stats</MCButton>
-                        </Link>
+                        {!isRandom && (
+                          <>
+                            <MCButton onClick={() => handleCopy()}>
+                              {copyButtonText}
+                            </MCButton>
+                            <Link href={userId ? `/stats/${userId}` : ""}>
+                              <MCButton onClick={closeModal}>Stats</MCButton>
+                            </Link>
+                          </>
+                        )}
                         <MCButton onClick={closeModal}>Close</MCButton>
+                        {isRandom && (
+                          <MCButton
+                            onClick={() => {
+                              closeModal();
+                              resetGame(true);
+                            }}
+                          >
+                            New Random
+                          </MCButton>
+                        )}
                       </div>
                     </div>
                   </div>
