@@ -60,6 +60,8 @@ export default function CraftingTable({
       setIsDown(true);
       document.addEventListener("mouseup", () => {
         setIsDown(false);
+        const result = checkAllVariants(craftingTables[tableNum]);
+        setCurrentRecipe(result);
       });
     }
   };
@@ -81,7 +83,6 @@ export default function CraftingTable({
       setCursorItem(oldCraftingTable);
     }
     const result = checkAllVariants(craftingTables[tableNum]);
-    console.log("result", result);
     setCurrentRecipe(result);
   };
 

@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "generate": "prisma generate",
+    "migrate": "prisma migrate deploy",
     "postinstall": "npm run generate"
   },
   "dependencies": {
