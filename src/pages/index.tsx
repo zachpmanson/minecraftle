@@ -25,6 +25,7 @@ export default function Home() {
   useEffect(() => {
     if (random) {
       resetGame(true);
+      setPopupVisible(false);
     }
   }, [random]);
 
