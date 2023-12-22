@@ -29,6 +29,7 @@ export default function CraftingTable({
   const [currentRecipe, setCurrentRecipe] = useState<string | undefined>();
   const colorTable = colorTables[tableNum];
 
+  const [isDown, setIsDown] = useState(false); // TODO: remove this
   const [isDragging, setIsDragging] = useState(false);
 
   const { SUCCESS_COLOR, NEAR_SUCCESS_COLOR } = highContrast
@@ -41,11 +42,24 @@ export default function CraftingTable({
     3: NEAR_SUCCESS_COLOR,
   };
 
+  useEffect(() => {
+    if (craftingTables[tableNum]) {
+      for (let row of craftingTables[tableNum]) {
+        for (let item of row) {
+          if (item) {
+            return;
+          }
+        }
+      }
+    }
+    setCurrentRecipe(undefined);
+  }, [craftingTables]);
+
   const onMouseDown = (row: number, col: number) => {
     if (!!cursorItem) {
-      setIsDragging(true);
+      setIsDown(true);
       document.addEventListener("mouseup", () => {
-        setIsDragging(false);
+        setIsDown(false);
       });
     }
   };
@@ -54,16 +68,16 @@ export default function CraftingTable({
     let oldCursorItem = cursorItem;
     let oldCraftingTable = craftingTables[tableNum][row][col];
 
-    setCraftingTables((old) => {
-      const newCraftingTables = [...old];
-      newCraftingTables[tableNum][row][col] = oldCursorItem;
-      return newCraftingTables;
-    });
-
+    setIsDown(false);
     if (isDragging) {
       setCursorItem(undefined);
       setIsDragging(false);
     } else {
+      setCraftingTables((old) => {
+        const newCraftingTables = [...old];
+        newCraftingTables[tableNum][row][col] = oldCursorItem;
+        return newCraftingTables;
+      });
       setCursorItem(oldCraftingTable);
     }
     const result = checkAllVariants(craftingTables[tableNum]);
@@ -72,7 +86,8 @@ export default function CraftingTable({
   };
 
   const onMouseMove = (row: number, col: number) => {
-    if (isDragging && !craftingTables[tableNum][row][col]) {
+    if (isDown && !craftingTables[tableNum][row][col]) {
+      setIsDragging(true);
       setCraftingTables((old) => {
         const newCraftingTables = [...old];
         newCraftingTables[tableNum][row][col] = cursorItem;
