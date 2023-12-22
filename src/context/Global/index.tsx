@@ -64,7 +64,6 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
         Object.keys(recipes)[
           Math.floor(Math.random() * Object.keys(recipes).length)
         ];
-      console.log(randomSolution);
       setSolution(randomSolution);
     } else {
       generateSetPuzzle();
@@ -143,7 +142,6 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
     const randomSolution =
       Object.keys(recipes)[Math.floor(random() * Object.keys(recipes).length)];
     setSolution(randomSolution);
-    console.log(randomSolution);
   };
 
   const getUserId = () => {
@@ -153,7 +151,6 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
       user_id = Date.now().toString() + Math.random().toString(); //self.crypto.randomUUID();// crypto only works with SSL
       localStorage.setItem("user_id", user_id);
     }
-    console.log("user_id", user_id);
 
     setUserId(user_id);
   };
@@ -366,12 +363,6 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
         }
       }
     }
-
-    console.log("n_items", n_items);
-    console.log("n_unidentified_items", n_unidentified_items);
-    console.log("solution_n_items", solution_n_items);
-
-    console.log("correctSlots", correctSlots);
   }
 
   const value: GlobalContextProps = useMemo(
