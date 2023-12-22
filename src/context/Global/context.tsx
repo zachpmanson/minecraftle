@@ -28,7 +28,7 @@ export type GlobalContextProps = {
   setGameState: Dispatch<SetStateAction<GameState>>;
   options: Options;
   setOptions: Dispatch<SetStateAction<Options>>;
-  resetGame: (isRandom) => void;
+  resetGame: (isRandom: boolean) => void;
 };
 
 const GlobalContext = createContext<GlobalContextProps>({
