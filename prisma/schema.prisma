@@ -16,4 +16,6 @@ model game {
   date     DateTime
   win      Int
   attempts Int?
+
+  @@unique([user_id, date])
 }

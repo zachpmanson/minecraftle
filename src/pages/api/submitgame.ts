@@ -48,8 +48,10 @@ export default async function handler(
       try {
         await prisma.game.upsert({
           where: {
-            user_id: user_id.toString(),
-            date: flatDate,
+            user_id_date: {
+              user_id: user_id.toString(),
+              date: flatDate,
+            },
           },
           update: {},
           create: {
