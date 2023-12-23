@@ -1,9 +1,23 @@
 import MCButton from "@/components/MCButton.component";
 import { useGlobal } from "@/context/Global/context";
 import Link from "next/link";
+import { useState, useRef } from "react";
 
 export default function Layout({ children }: any) {
   const { setCursorItem, userId, setOptions, resetGame } = useGlobal();
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioToPlay = useRef<HTMLAudioElement>();
+  const playMusic = () => {
+    if (isPlaying) {
+      audioToPlay.current?.pause();
+    } else {
+      audioToPlay.current = new Audio(
+        "/audio/C418 - Aria Math (Minecraft Volume Beta).mp3"
+      );
+      audioToPlay.current.play();
+    }
+    setIsPlaying((o) => !o);
+  };
   return (
     <div
       onClick={(e) => {
@@ -25,7 +39,7 @@ export default function Layout({ children }: any) {
                 </Link>
                 <div className="flex flex-1 justify-normal gap-4">
                   <div className="flex-1">
-                    <MCButton>
+                    <MCButton onClick={playMusic}>
                       <div className="px-4">♫</div>
                     </MCButton>
                   </div>
