@@ -12,7 +12,7 @@ datasource db {
 
 model game {
   id       Int      @id @default(autoincrement())
-  user_id  String   @unique
+  user_id  String
   date     DateTime
   win      Int
   attempts Int?
