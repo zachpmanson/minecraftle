@@ -60,7 +60,7 @@ export default function HowToPlay() {
           Hosted by <a href="https://zachmanson.com">Zach Manson</a>. If you are
           reading this please{" "}
           <a href="mailto:zachpmanson@gmail.com">email me</a> and tell me how
-          you found the site since I haven't a clue.
+          you found the site since I haven&apos;t a clue.
         </p>
       </div>
     </main>
