@@ -85,7 +85,9 @@ export default function CraftingTable({
         newCraftingTables[tableNum][row][col] = oldCursorItem;
         return newCraftingTables;
       });
-      setCursorItem(oldCraftingTableItem);
+      // setTimeout hack to prevent cursor item changing before mouse movement is registered
+
+      setTimeout(() => setCursorItem(oldCraftingTableItem), 0);
     }
     const result = checkAllVariants(currentTable);
     setCurrentRecipe(result);
