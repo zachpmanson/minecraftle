@@ -19,3 +19,16 @@ model game {
 
   @@unique([user_id, date])
 }
+
+// model user {
+//   id             Int       @id @default(autoincrement())
+//   user_id        String    @unique
+//   last_game      DateTime?
+// }
+
+// model game_counts {
+//   id          Int    @id @default(autoincrement())
+//   user_id     String
+//   attempts    Int
+//   games_count Int
+// }

@@ -8,9 +8,11 @@ export default function Cursor() {
   useEffect(() => {
     if (document) {
       document.addEventListener("mousemove", (e) => {
+        // console.log(`mousemove: ${e.pageX}, ${e.pageY}`);
         setCursorPosition({ left: e.pageX - 5, top: e.pageY - 5 });
       });
     }
+    return document.removeEventListener("mousemove", (e) => {});
   }, []);
 
   return (

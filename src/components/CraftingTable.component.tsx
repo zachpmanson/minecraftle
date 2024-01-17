@@ -28,6 +28,9 @@ export default function CraftingTable({
   const [currentRecipe, setCurrentRecipe] = useState<string | undefined>();
   const colorTable = colorTables[tableNum];
 
+  const currentTable = craftingTables[tableNum];
+  console.log(currentTable);
+
   const [isDown, setIsDown] = useState(false); // TODO: remove this
   const [isDragging, setIsDragging] = useState(false);
 
@@ -42,8 +45,8 @@ export default function CraftingTable({
   };
 
   useEffect(() => {
-    if (craftingTables[tableNum]) {
-      for (let row of craftingTables[tableNum]) {
+    if (currentTable) {
+      for (let row of currentTable) {
         for (let item of row) {
           if (item) {
             return;
@@ -54,20 +57,23 @@ export default function CraftingTable({
     setCurrentRecipe(undefined);
   }, [craftingTables]);
 
+  const onReleaseMouseDown = () => {
+    setIsDown(false);
+    const result = checkAllVariants(currentTable);
+    setCurrentRecipe(result);
+    document.removeEventListener("mouseup", onReleaseMouseDown);
+  };
+
   const onMouseDown = (row: number, col: number) => {
     if (!!cursorItem) {
       setIsDown(true);
-      document.addEventListener("mouseup", () => {
-        setIsDown(false);
-        const result = checkAllVariants(craftingTables[tableNum]);
-        setCurrentRecipe(result);
-      });
+      document.addEventListener("mouseup", onReleaseMouseDown);
     }
   };
 
   const onMouseUp = (row: number, col: number) => {
     let oldCursorItem = cursorItem;
-    let oldCraftingTable = craftingTables[tableNum][row][col];
+    let oldCraftingTableItem = currentTable[row][col];
 
     setIsDown(false);
     if (isDragging) {
@@ -79,14 +85,14 @@ export default function CraftingTable({
         newCraftingTables[tableNum][row][col] = oldCursorItem;
         return newCraftingTables;
       });
-      setCursorItem(oldCraftingTable);
+      setCursorItem(oldCraftingTableItem);
     }
-    const result = checkAllVariants(craftingTables[tableNum]);
+    const result = checkAllVariants(currentTable);
     setCurrentRecipe(result);
   };
 
   const onMouseMove = (row: number, col: number) => {
-    if (isDown && !craftingTables[tableNum][row][col]) {
+    if (isDown && !currentTable[row][col]) {
       setIsDragging(true);
       setCraftingTables((old) => {
         const newCraftingTables = [...old];
@@ -118,7 +124,7 @@ export default function CraftingTable({
     }
 
     // is wrong, trim the remaining solution variants
-    const correctSlots = trimVariants(craftingTables[tableNum]);
+    const correctSlots = trimVariants(currentTable);
 
     // update colors based on matchmap
     setColorTable(correctSlots);
@@ -156,7 +162,7 @@ export default function CraftingTable({
         onClick={(e: any) => e.stopPropagation()}
       >
         <div className="w-36 h-36 flex flex-wrap">
-          {craftingTables[tableNum].map((row, rowIndex) => (
+          {currentTable.map((row, rowIndex) => (
             <div className="flex" key={rowIndex}>
               {row.map((item, columnIndex) => (
                 <Slot

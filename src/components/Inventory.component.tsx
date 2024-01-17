@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Slot from "./Slot.component";
 import { useGlobal } from "@/context/Global/context";
 import { CACHE_VERSION, COLORS, HICONTRAST_COLORS } from "@/constants";
@@ -15,7 +15,16 @@ export default function Inventory({ guessCount }: { guessCount: number }) {
     options: { highContrast },
   } = useGlobal();
   const [givenIngredients, setGivenIngredients] = useState<string[]>([]);
-  const [isTableEmpty, setIsTableEmpty] = useState<boolean>(true);
+  // const [isTableEmpty, setIsTableEmpty] = useState<boolean>(true);
+  const isTableEmpty = useMemo(
+    () =>
+      craftingTables.length > 0 &&
+      craftingTables[craftingTables.length - 1].every((row) =>
+        row.every((slot) => slot === undefined || slot === null)
+      ),
+    [craftingTables]
+  );
+
   const [invBackgrounds, setInvBackgrounds] = useState<{
     [key: string]: Color;
   }>({});
@@ -29,21 +38,6 @@ export default function Inventory({ guessCount }: { guessCount: number }) {
     2: SUCCESS_COLOR,
     3: NEAR_SUCCESS_COLOR,
   };
-
-  useEffect(() => {
-    if (craftingTables.length > 0) {
-      for (let row of craftingTables[craftingTables.length - 1]) {
-        for (let slot of row) {
-          if (slot !== undefined && slot !== null) {
-            setIsTableEmpty(false);
-            return;
-          }
-        }
-      }
-
-      setIsTableEmpty(true);
-    }
-  }, [craftingTables]);
 
   useEffect(() => {
     if (givenIngredients.length > 0 && craftingTables.length > 0) {

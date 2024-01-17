@@ -97,51 +97,59 @@ export async function getServerSideProps(context: any) {
 
   try {
     // gets list of all users' number wins, in desc order
-    const winRecords = await prisma.game.groupBy({
-      by: ["user_id"],
-      _count: {
-        win: true,
-      },
-
-      where: {
-        win: 1,
-      },
-      orderBy: [
-        {
+    const [winRecords, gamesPlayed, user_attempt_wincounts] = await Promise.all(
+      [
+        prisma.game.groupBy({
+          by: ["user_id"],
           _count: {
-            win: "desc",
+            win: true,
           },
-        },
-        {
-          _avg: {
+
+          where: {
+            win: 1,
+          },
+          orderBy: [
+            {
+              _count: {
+                win: "desc",
+              },
+            },
+            {
+              _avg: {
+                attempts: "asc",
+              },
+            },
+          ],
+        }),
+        prisma.game.count({
+          where: {
+            user_id: userId,
+          },
+        }),
+        prisma.game.groupBy({
+          by: ["attempts"],
+          _count: {
+            win: true,
+          },
+          where: {
+            user_id: userId,
+            win: 1,
+          },
+          orderBy: {
             attempts: "asc",
           },
-        },
-      ],
-    });
+        }),
+      ]
+    );
+
+    // const winRecords = await ;
 
     // get number of games played by this user
-    const gamesPlayed = await prisma.game.count({
-      where: {
-        user_id: userId,
-      },
-    });
+    // const gamesPlayed = await ;
     data.gamesPlayed = gamesPlayed;
 
     // gets count of games with x turns that given user has won
-    const user_attempt_wincounts = await prisma.game.groupBy({
-      by: ["attempts"],
-      _count: {
-        win: true,
-      },
-      where: {
-        user_id: userId,
-        win: 1,
-      },
-      orderBy: {
-        attempts: "asc",
-      },
-    });
+    // const user_attempt_wincounts = await ;
 
     data.total_player_count = winRecords.length;
     let flatWinRecords = winRecords.map((record) => ({
