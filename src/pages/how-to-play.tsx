@@ -34,8 +34,10 @@ export default function HowToPlay() {
           Click below to start the game and test your true knowledge of
           Minecraft...Your reputation is on the line!
         </p>
-        <p className="text-center text-blue-700">
-          <Link href="/">Play game!</Link>
+        <p className="text-center">
+          <Link href="/" className="text-blue-700">
+            Play game!
+          </Link>
         </p>
       </div>
       <div className="inv-background">
@@ -57,10 +59,15 @@ export default function HowToPlay() {
           </a>
         </p>
         <p>
-          Hosted by <a href="https://zachmanson.com">Zach Manson</a>. If you are
-          reading this please{" "}
-          <a href="mailto:zachpmanson@gmail.com">email me</a> and tell me how
-          you found the site since I haven&apos;t a clue.
+          Hosted by{" "}
+          <a href="https://zachmanson.com" className="text-blue-700">
+            Zach Manson
+          </a>
+          . If you are reading this please{" "}
+          <a href="mailto:zachpmanson@gmail.com" className="text-blue-700">
+            email me
+          </a>{" "}
+          and tell me how you found the site since I haven&apos;t a clue.
         </p>
       </div>
     </main>
