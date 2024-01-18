@@ -10,25 +10,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model game {
-  id       Int      @id @default(autoincrement())
-  user_id  String
-  date     DateTime
-  win      Int
-  attempts Int?
-
-  @@unique([user_id, date])
+model user {
+  id             Int       @id @default(autoincrement())
+  user_id        String    @unique
+  last_game_date DateTime?
 }
 
-// model user {
-//   id             Int       @id @default(autoincrement())
-//   user_id        String    @unique
-//   last_game      DateTime?
-// }
+model game_count {
+  id         Int    @id @default(autoincrement())
+  user_id    String
+  attempts   Int
+  game_count Int
 
-// model game_counts {
-//   id          Int    @id @default(autoincrement())
-//   user_id     String
-//   attempts    Int
-//   games_count Int
-// }
+  @@unique([user_id, attempts])
+}

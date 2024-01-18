@@ -39,7 +39,6 @@ export default function Home() {
         },
         body: JSON.stringify({
           user_id: userId,
-          win: 1,
           attempts: craftingTables.length,
           date: new Date().toISOString(), // TODO make this based on the start time
         }),
@@ -53,8 +52,7 @@ export default function Home() {
         },
         body: JSON.stringify({
           user_id: userId,
-          win: 0,
-          attempts: craftingTables.length,
+          attempts: 11,
           date: new Date().toISOString(), // make this based on the start time
         }),
       }).then((res) => {});

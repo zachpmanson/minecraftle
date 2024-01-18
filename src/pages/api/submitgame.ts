@@ -5,9 +5,7 @@ import { z } from "zod";
 
 const schema = z.object({
   user_id: z.string().refine((s) => !Number.isNaN(parseFloat(s))),
-  win: z.number().min(0).max(1),
-  attempts: z.number().min(1).max(10).optional(),
-  //   date: z.date().max(new Date()), // must be in the past?
+  attempts: z.number().min(1).max(11),
   date: z
     .string()
     .datetime()
@@ -22,7 +20,7 @@ const schema = z.object({
       }
     ),
 });
-type Schema = z.infer<typeof schema>;
+type SubmitGameSchema = z.infer<typeof schema>;
 
 type Data = {
   success: boolean;
@@ -41,26 +39,44 @@ export default async function handler(
           error: response.error,
         });
       }
-      const { user_id, win, attempts, date } = req.body as Schema;
+      const { user_id, attempts, date } = req.body as SubmitGameSchema;
       const flatDate = new Date(date);
       flatDate.setHours(0, 0, 0, 0);
-      // TODO check date within last 3 days
+
       try {
-        await prisma.game.upsert({
-          where: {
-            user_id_date: {
+        await prisma.$transaction([
+          prisma.user.upsert({
+            where: {
               user_id: user_id.toString(),
-              date: flatDate,
             },
-          },
-          update: {},
-          create: {
-            user_id: user_id.toString(),
-            win: win,
-            attempts: attempts,
-            date: flatDate,
-          },
-        });
+            update: {
+              last_game_date: flatDate,
+            },
+            create: {
+              user_id: user_id.toString(),
+              last_game_date: flatDate,
+            },
+          }),
+
+          prisma.game_count.upsert({
+            where: {
+              user_id_attempts: {
+                user_id: user_id.toString(),
+                attempts: attempts,
+              },
+            },
+            update: {
+              game_count: {
+                increment: 1,
+              },
+            },
+            create: {
+              user_id: user_id.toString(),
+              attempts: attempts,
+              game_count: 1,
+            },
+          }),
+        ]);
       } catch (error: any) {
         return res.status(500).json({
           error: "Game record insertion failed",
