@@ -46,7 +46,7 @@ export default function Popup({
       summaryString += "\n";
     }
     console.log("summaryString", summaryString);
-    return summaryString;
+    return summaryString.trim();
   };
 
   const copyToClipboard = (str: string) => {

@@ -17,10 +17,17 @@ export default function Home() {
   const [popupVisible, setPopupVisible] = useState(false);
 
   const divRef = useRef<HTMLDivElement>(null);
+  const topRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     divRef?.current?.scrollIntoView({ behavior: "smooth" });
   }, [craftingTables.length]);
+
+  useEffect(() => {
+    if (popupVisible) {
+      topRef?.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [popupVisible]);
 
   useEffect(() => {
     if (random) {
@@ -63,6 +70,7 @@ export default function Home() {
 
   return (
     <div className={`flex max-w-lg flex-col items-center ${inter.className}`}>
+      <div ref={topRef}></div>
       <Cursor />
 
       {Object.keys(recipes).length > 0 ? (
