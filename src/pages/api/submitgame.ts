@@ -1,5 +1,6 @@
 import prisma from "@/lib/prisma";
 import { GenericApiError } from "@/types";
+import { Prisma } from "@prisma/client";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
 
@@ -78,6 +79,14 @@ export default async function handler(
           }),
         ]);
       } catch (error: any) {
+        console.error(error);
+        if (error instanceof Prisma.PrismaClientKnownRequestError) {
+          return res.status(500).json({
+            error: "Game record insertion failed",
+            details: error,
+          });
+        }
+
         return res.status(500).json({
           error: "Game record insertion failed",
         });

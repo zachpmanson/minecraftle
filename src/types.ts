@@ -1,6 +1,9 @@
 import { z } from "zod";
 
-export type GenericApiError = { error: string | z.ZodError<any> };
+export type GenericApiError = {
+  error: string | z.ZodError<any>;
+  details?: any;
+};
 
 export type TableItem = string | undefined | null | number;
 export type Row = [TableItem, TableItem, TableItem];
