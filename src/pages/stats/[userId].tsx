@@ -148,12 +148,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       FROM scoreboard
       WHERE user_id = ${userId}
         OR user_id IN (
-              SELECT user_id
-              FROM scoreboard
-              WHERE dense_rank_number = (SELECT dense_rank_number FROM user_rank) - 1
-                OR  dense_rank_number = (SELECT dense_rank_number FROM user_rank) + 1
-          );
-    `,
+            SELECT user_id
+            FROM scoreboard
+            WHERE dense_rank_number = (SELECT dense_rank_number FROM user_rank) - 1
+            LIMIT 1
+          )
+        OR user_id IN (
+            SELECT user_id
+            FROM scoreboard
+            WHERE dense_rank_number = (SELECT dense_rank_number FROM user_rank) + 1
+            LIMIT 1
+          );    `,
       prisma.user.count(),
     ]);
     console.log(userId, "results", results);
