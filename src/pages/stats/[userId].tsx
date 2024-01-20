@@ -1,40 +1,33 @@
 import prisma from "@/lib/prisma";
+import { ScoreboardRow } from "@/types";
 import { GetServerSideProps } from "next";
-
-type ScoreboardRow = {
-  user_id?: string;
-  dense_rank_number: number;
-  total_games: number;
-  total_win_attempts: number;
-  total_losses: number;
-  total_1: number;
-  total_2: number;
-  total_3: number;
-  total_4: number;
-  total_5: number;
-  total_6: number;
-  total_7: number;
-  total_8: number;
-  total_9: number;
-  total_10: number;
-};
+import { useRouter } from "next/router";
+import { useEffect, useMemo, useState } from "react";
 
 export default function Stats({
   liveUserScores, // actual user scores
-  localLeaderboard, // materialized view scoreboard position and neighbours
+  // localLeaderboard, // materialized view scoreboard position and neighbours
   totalPlayerCount,
 }: {
   liveUserScores: ScoreboardRow;
-  localLeaderboard: ScoreboardRow[];
+  // localLeaderboard: ScoreboardRow[];
   totalPlayerCount: number;
 }) {
-  const userRow = localLeaderboard.find((r) => r.user_id)!;
-  const upRow = localLeaderboard.find(
-    (r) => r.dense_rank_number === userRow.dense_rank_number - 1
-  );
-  const downRow = localLeaderboard.find(
-    (r) => r.dense_rank_number === userRow.dense_rank_number + 1
-  );
+  const router = useRouter();
+  const [localLeaderboard, setLocalLeaderboard] = useState<ScoreboardRow[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  console.log(localLeaderboard);
+  useEffect(() => {
+    const fetchLocalLeaderboard = async () => {
+      const res = await fetch(`/api/scoreboard/${router.query.userId}`);
+      const data = await res.json();
+      console.log(data);
+      setLocalLeaderboard(data.localLeaderboard);
+      setIsLoading(false);
+    };
+
+    fetchLocalLeaderboard();
+  }, []);
 
   const allAttempts = Object.keys(liveUserScores)
     .filter((key) => key.match(/^total_\d+$/))
@@ -51,6 +44,9 @@ export default function Stats({
   );
 
   const ranking = () => {
+    if (isLoading) {
+      return row("Global Rank", "Loading...");
+    }
     if (localLeaderboard.length === 0) {
       if (liveUserScores.total_games > 0) {
         return row("Global Rank", "Will be calculated soon!");
@@ -59,13 +55,14 @@ export default function Stats({
       }
     }
 
-    const userRow = localLeaderboard.find((r) => r.user_id)!;
-    const upRow = localLeaderboard.find(
+    const userRow = localLeaderboard?.find((r) => r.user_id)!;
+    const upRow = localLeaderboard?.find(
       (r) => r.dense_rank_number === userRow.dense_rank_number - 1
     );
-    const downRow = localLeaderboard.find(
+    const downRow = localLeaderboard?.find(
       (r) => r.dense_rank_number === userRow.dense_rank_number + 1
     );
+    console.log(upRow, "upRow");
 
     return (
       <>
@@ -154,8 +151,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   let totalPlayerCount: number;
 
   try {
-    [liveUserScores, results, totalPlayerCount] = await prisma.$transaction([
-      prisma.$queryRaw<ScoreboardRow[]>`
+    [liveUserScores, /* results,*/ totalPlayerCount] =
+      await prisma.$transaction([
+        prisma.$queryRaw<ScoreboardRow[]>`
         SELECT
           -1,
           user_id,
@@ -177,29 +175,29 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         FROM public.game_count
         WHERE user_id = ${userId} GROUP BY user_id;
       `,
-      prisma.$queryRaw<ScoreboardRow[]>`
-        WITH user_rank AS (
-          SELECT dense_rank_number FROM scoreboard WHERE user_id = ${userId}
-        )
-        
-        SELECT *
-        FROM scoreboard
-        WHERE user_id = ${userId}
-          OR user_id IN (
-              SELECT user_id
-              FROM scoreboard
-              WHERE dense_rank_number = (SELECT dense_rank_number FROM user_rank) - 1
-              LIMIT 1
-            )
-          OR user_id IN (
-              SELECT user_id
-              FROM scoreboard
-              WHERE dense_rank_number = (SELECT dense_rank_number FROM user_rank) + 1
-              LIMIT 1
-            );
-      `,
-      prisma.user.count(),
-    ]);
+        // prisma.$queryRaw<ScoreboardRow[]>`
+        //   WITH user_rank AS (
+        //     SELECT dense_rank_number FROM scoreboard WHERE user_id = ${userId}
+        //   )
+
+        //   SELECT *
+        //   FROM scoreboard
+        //   WHERE user_id = ${userId}
+        //     OR user_id IN (
+        //         SELECT user_id
+        //         FROM scoreboard
+        //         WHERE dense_rank_number = (SELECT dense_rank_number FROM user_rank) - 1
+        //         LIMIT 1
+        //       )
+        //     OR user_id IN (
+        //         SELECT user_id
+        //         FROM scoreboard
+        //         WHERE dense_rank_number = (SELECT dense_rank_number FROM user_rank) + 1
+        //         LIMIT 1
+        //       );
+        // `,
+        prisma.user.count(),
+      ]);
     console.log(userId, "results", results);
   } catch (e) {
     console.error(e);
