@@ -41,43 +41,63 @@ export default async function handler(
         });
       }
       const { user_id, attempts, date } = req.body as SubmitGameSchema;
-      const flatDate = new Date(date);
-      flatDate.setHours(0, 0, 0, 0);
+      const flatDate = new Date(date.slice(0, 10) + "T00:00:00.000Z");
+
+      console.log(user_id, attempts, flatDate);
 
       try {
-        await prisma.$transaction([
-          prisma.user.upsert({
-            where: {
-              user_id: user_id.toString(),
-            },
-            update: {
-              last_game_date: flatDate,
-            },
-            create: {
-              user_id: user_id.toString(),
-              last_game_date: flatDate,
-            },
-          }),
+        const user = await prisma.user.findUnique({
+          where: {
+            user_id: user_id,
+          },
+          select: {
+            last_game_date: true,
+          },
+        });
+        console.log(
+          user?.last_game_date,
+          flatDate,
+          user?.last_game_date?.getTime() === flatDate.getTime()
+        );
+        if (user?.last_game_date?.getTime() === flatDate.getTime()) {
+          return res.status(409).json({
+            error: "Already submitted a game today!",
+          });
+        } else {
+          await prisma.$transaction([
+            prisma.user.upsert({
+              where: {
+                user_id: user_id.toString(),
+              },
+              update: {
+                last_game_date: flatDate,
+              },
+              create: {
+                user_id: user_id.toString(),
+                last_game_date: flatDate,
+              },
+            }),
 
-          prisma.game_count.upsert({
-            where: {
-              user_id_attempts: {
+            prisma.game_count.upsert({
+              where: {
+                user_id_attempts: {
+                  user_id: user_id.toString(),
+                  attempts: attempts,
+                },
+              },
+              update: {
+                game_count: {
+                  increment: 1,
+                },
+              },
+              create: {
                 user_id: user_id.toString(),
                 attempts: attempts,
+                game_count: 1,
               },
-            },
-            update: {
-              game_count: {
-                increment: 1,
-              },
-            },
-            create: {
-              user_id: user_id.toString(),
-              attempts: attempts,
-              game_count: 1,
-            },
-          }),
-        ]);
+            }),
+          ]);
+        }
       } catch (error: any) {
         console.error(error);
         if (error instanceof Prisma.PrismaClientKnownRequestError) {
