@@ -17,9 +17,9 @@ WITH scores AS (
         SUM(CASE WHEN attempts = 9 THEN game_count ELSE 0 END) as total_9,
         SUM(CASE WHEN attempts = 10 THEN game_count ELSE 0 END) as total_10,
 
-        SUM(CASE WHEN attempts != 11 THEN attempts ELSE 0 END) as total_win_attempts
+        SUM(CASE WHEN attempts != 11 THEN game_count ELSE 0 END) as total_win_attempts
     FROM public.game_count gc
-    GROUP BY gc.user_id
+    GROUP BY gc.user_idz
 )
 
 SELECT
