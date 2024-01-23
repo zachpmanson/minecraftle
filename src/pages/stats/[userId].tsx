@@ -36,10 +36,10 @@ export default function Stats({
       count: liveUserScores[key as keyof ScoreboardRow] as number,
     }));
 
-  const row = (left: string, right: string) => (
+  const row = (left: string, right?: string) => (
     <tr className="odd:text-white even:text-gray-400">
-      <td>{left}</td>
-      <td className="text-right">{right}</td>
+      <td colSpan={right ? 1 : 2}>{left}</td>
+      {right && <td className="text-right">{right}</td>}
     </tr>
   );
 
@@ -64,6 +64,69 @@ export default function Stats({
     );
     console.log(upRow, "upRow");
 
+    let catchupMessage;
+    if (upRow) {
+      if (
+        upRow?.total_games -
+          upRow?.total_losses -
+          (userRow?.total_games - userRow?.total_losses) ===
+        0
+      ) {
+        catchupMessage = (
+          <>
+            {row("Player above you has the same score!")}
+
+            {row(
+              "You're behind by",
+              `${
+                userRow.total_win_attempts - upRow.total_win_attempts
+              } attempts`
+            )}
+          </>
+        );
+      } else {
+        catchupMessage = row(
+          "Wins behind",
+          (
+            upRow?.total_games -
+            upRow?.total_losses -
+            (userRow?.total_games - userRow?.total_losses)
+          ).toString()
+        );
+      }
+    }
+
+    let leadMessage;
+    if (downRow) {
+      if (
+        userRow?.total_games -
+          userRow?.total_losses -
+          (downRow?.total_games - downRow?.total_losses) ===
+        0
+      ) {
+        leadMessage = (
+          <>
+            {row("Player below you has the same score!")}
+            {row(
+              "You're ahead by",
+              `${
+                downRow.total_win_attempts - userRow.total_win_attempts
+              } attempts`
+            )}
+          </>
+        );
+      } else {
+        leadMessage = row(
+          "Wins ahead",
+          (
+            userRow?.total_games -
+            userRow?.total_losses -
+            (downRow?.total_games - downRow?.total_losses)
+          ).toString()
+        );
+      }
+    }
+
     return (
       <>
         {row(
@@ -72,16 +135,9 @@ export default function Stats({
             ? `${userRow?.dense_rank_number}/${totalPlayerCount}`
             : "N/A"
         )}
-        {upRow &&
-          row(
-            "Wins behind ",
-            (upRow?.total_games - upRow?.total_losses).toString()
-          )}
-        {downRow &&
-          row(
-            "Wins ahead",
-            (downRow?.total_games - downRow?.total_losses).toString()
-          )}
+
+        {upRow && catchupMessage}
+        {downRow && leadMessage}
       </>
     );
   };
