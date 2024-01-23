@@ -1,0 +1,48 @@
+WITH scores AS (	
+        SELECT
+          user_id,
+          SUM(game_count) AS total_games,
+          SUM(CASE WHEN attempts = 11 THEN game_count ELSE 0 END) as total_losses,
+      
+          SUM(CASE WHEN attempts = 1 THEN game_count ELSE 0 END) as total_1,
+          SUM(CASE WHEN attempts = 2 THEN game_count ELSE 0 END) as total_2,
+          SUM(CASE WHEN attempts = 3 THEN game_count ELSE 0 END) as total_3,
+          SUM(CASE WHEN attempts = 4 THEN game_count ELSE 0 END) as total_4,
+          SUM(CASE WHEN attempts = 5 THEN game_count ELSE 0 END) as total_5,
+          SUM(CASE WHEN attempts = 6 THEN game_count ELSE 0 END) as total_6,
+          SUM(CASE WHEN attempts = 7 THEN game_count ELSE 0 END) as total_7,
+          SUM(CASE WHEN attempts = 8 THEN game_count ELSE 0 END) as total_8,
+          SUM(CASE WHEN attempts = 9 THEN game_count ELSE 0 END) as total_9,
+          SUM(CASE WHEN attempts = 10 THEN game_count ELSE 0 END) as total_10,
+
+          SUM(CASE WHEN attempts != 11 THEN attempts ELSE 0 END) as total_win_attempts
+        FROM public.game_count
+        GROUP BY user_id
+      ),
+      scoreboard AS (
+        SELECT
+          DENSE_RANK() OVER (
+            ORDER BY (total_games - total_losses) DESC
+          ) dense_rank_number,
+          *
+        FROM scores
+      ),
+      user_rank AS (
+        SELECT dense_rank_number FROM scoreboard WHERE user_id = '17032533448130.3485657576066198'
+      )
+      
+      SELECT *
+      FROM scoreboard
+      WHERE user_id = '17032533448130.3485657576066198'
+        OR user_id IN (
+              SELECT user_id
+              FROM scoreboard
+              WHERE dense_rank_number = (SELECT dense_rank_number FROM user_rank) - 1
+              LIMIT 1
+          )
+        OR user_id IN (
+              SELECT user_id
+              FROM scoreboard
+              WHERE dense_rank_number = (SELECT dense_rank_number FROM user_rank) + 1
+              LIMIT 1
+          );

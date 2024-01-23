@@ -1,0 +1,26 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  id             Int       @id @default(autoincrement())
+  user_id        String    @unique
+  last_game_date DateTime?
+}
+
+model game_count {
+  id         Int    @id @default(autoincrement())
+  user_id    String
+  attempts   Int
+  game_count Int
+
+  @@unique([user_id, attempts])
+}
