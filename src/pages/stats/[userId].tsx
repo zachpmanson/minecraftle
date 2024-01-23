@@ -49,7 +49,10 @@ export default function Stats({
     }
     if (localLeaderboard.length === 0) {
       if (liveUserScores.total_games > 0) {
-        return row("Global Rank", "Will be calculated soon!");
+        return row(
+          "Global Rank",
+          `Will be calculated soon! (out of ${totalPlayerCount})`
+        );
       } else {
         return row("Global Rank", "Play a game to get ranked!");
       }
