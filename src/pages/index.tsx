@@ -32,30 +32,34 @@ export default function Home() {
   useEffect(() => {
     if (gameState === "won") {
       setPopupVisible(true);
-      fetch("/api/submitgame", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user_id: userId,
-          attempts: craftingTables.length,
-          date: new Date().toISOString(), // TODO make this based on the start time
-        }),
-      }).then(() => {});
+      if (!random) {
+        fetch("/api/submitgame", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user_id: userId,
+            attempts: craftingTables.length,
+            date: new Date().toISOString(), // TODO make this based on the start time
+          }),
+        }).then(() => {});
+      }
     } else if (gameState === "lost") {
       setPopupVisible(true);
-      fetch("/api/submitgame", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user_id: userId,
-          attempts: 11,
-          date: new Date().toISOString(), // make this based on the start time
-        }),
-      }).then((res) => {});
+      if (!random) {
+        fetch("/api/submitgame", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user_id: userId,
+            attempts: 11,
+            date: new Date().toISOString(), // make this based on the start time
+          }),
+        }).then((res) => {});
+      }
     }
   }, [gameState]);
 

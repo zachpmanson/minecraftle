@@ -171,6 +171,11 @@ export default function Stats({
 
             <tr className="h-4"></tr>
 
+            {row(
+              `Total attempts`,
+              liveUserScores.total_win_attempts.toString()
+            )}
+
             {Object.values(allAttempts).map((a) =>
               row(`Wins with ${a.attempts} attempts`, a.count.toString())
             )}
@@ -227,7 +232,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           SUM(CASE WHEN attempts = 9 THEN game_count ELSE 0 END) as total_9,
           SUM(CASE WHEN attempts = 10 THEN game_count ELSE 0 END) as total_10,
 
-          SUM(CASE WHEN attempts != 11 THEN attempts ELSE 0 END) as total_win_attempts
+          SUM(CASE WHEN attempts != 11 THEN game_count*attempts ELSE 0 END) as total_win_attempts
         FROM public.game_count
         WHERE user_id = ${userId} GROUP BY user_id;
       `,
