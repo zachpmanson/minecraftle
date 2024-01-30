@@ -64,7 +64,10 @@ export default function Home() {
   }, [gameState]);
 
   return (
-    <div className={`flex max-w-lg flex-col items-center ${inter.className}`}>
+    <div
+      className={`flex max-w-lg flex-col items-center ${inter.className}`}
+      style={{ margin: "auto" }}
+    >
       <Cursor />
 
       {Object.keys(recipes).length > 0 ? (
