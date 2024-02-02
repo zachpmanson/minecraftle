@@ -5,19 +5,19 @@ import { useState, useRef } from "react";
 
 export default function Layout({ children }: any) {
   const { setCursorItem, userId, setOptions, resetGame } = useGlobal();
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioToPlay = useRef<HTMLAudioElement>();
-  const playMusic = () => {
-    if (isPlaying) {
-      audioToPlay.current?.pause();
-    } else {
-      audioToPlay.current = new Audio(
-        "/audio/C418 - Aria Math (Minecraft Volume Beta).mp3"
-      );
-      audioToPlay.current.play();
-    }
-    setIsPlaying((o) => !o);
-  };
+  // const [isPlaying, setIsPlaying] = useState(false);
+  // const audioToPlay = useRef<HTMLAudioElement>();
+  // const playMusic = () => {
+  //   if (isPlaying) {
+  //     audioToPlay.current?.pause();
+  //   } else {
+  //     audioToPlay.current = new Audio(
+  //       "/audio/C418 - Aria Math (Minecraft Volume Beta).mp3"
+  //     );
+  //     audioToPlay.current.play();
+  //   }
+  //   setIsPlaying((o) => !o);
+  // };
   return (
     <div
       onClick={(e) => {
@@ -37,12 +37,12 @@ export default function Layout({ children }: any) {
                 <Link className="flex-1" href={`/stats/${userId.toString()}`}>
                   <MCButton>Stats</MCButton>
                 </Link>
-                <div className="flex flex-1 justify-normal gap-4">
-                  <div className="flex-1">
+                {/* <div className="flex flex-1 justify-normal gap-4"> */}
+                  {/* <div className="flex-1">
                     <MCButton onClick={playMusic}>
                       <div className="px-4">♫</div>
                     </MCButton>
-                  </div>
+                  </div> */}
                   <div className="flex-1">
                     <MCButton
                       onClick={() =>
@@ -54,7 +54,7 @@ export default function Layout({ children }: any) {
                       <div className="px-4">☼</div>
                     </MCButton>
                   </div>
-                </div>
+                {/* </div> */}
               </div>
               <div className="flex gap-4">
                 <Link className="flex-1" href="/">
