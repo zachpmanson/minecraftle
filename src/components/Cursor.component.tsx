@@ -14,12 +14,14 @@ export default function Cursor() {
     return document.removeEventListener("mousemove", (e) => {});
   }, []);
 
+  const backgroundItem = cursorItem ? `url(${cursorItem && items[cursorItem].icon})` : undefined;
+
   return (
     <div
       id="cursor"
       style={{
         ...cursorPosition,
-        backgroundImage: `url(${cursorItem && items[cursorItem].icon})`,
+        backgroundImage: backgroundItem,
       }}
     ></div>
   );

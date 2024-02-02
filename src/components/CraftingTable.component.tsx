@@ -29,7 +29,6 @@ export default function CraftingTable({
   const colorTable = colorTables[tableNum];
 
   const currentTable = craftingTables[tableNum];
-  console.log(currentTable);
 
   const [isDown, setIsDown] = useState(false); // TODO: remove this
   const [isDragging, setIsDragging] = useState(false);
