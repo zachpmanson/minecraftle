@@ -13,11 +13,13 @@ import {
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import seedrandom from "seedrandom";
 import { GlobalContextProps, GlobalContextProvider } from "./context";
+import { set } from "zod";
 
 const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [userId, setUserId] = useState<string>("");
   const [options, setOptions] = useState<Options>(DEFAULT_OPTIONS); // ["stick", "planks", "wood"
 
+  const [gameDate, setGameDate] = useState(new Date());
   const [gameState, setGameState] = useState<GameState>("inprogress");
   const [solution, setSolution] = useState<string>("stick");
   const [items, setItems] = useState<ItemMap>({});
@@ -66,7 +68,9 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
         ];
       setSolution(randomSolution);
     } else {
-      generateSetPuzzle();
+      const newDate = new Date();
+      setGameDate(newDate);
+      generateSetPuzzle(newDate);
     }
 
     setCursorItem(undefined);
@@ -133,11 +137,11 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
   }, [solutionRecipe]);
 
   useEffect(() => {
-    generateSetPuzzle();
+    generateSetPuzzle(gameDate);
   }, [recipes]);
 
-  const generateSetPuzzle = () => {
-    const random = seedrandom(new Date().toDateString());
+  const generateSetPuzzle = (date: Date) => {
+    const random = seedrandom(date.toDateString());
 
     const randomSolution =
       Object.keys(recipes)[Math.floor(random() * Object.keys(recipes).length)];
@@ -382,6 +386,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
       options,
       setOptions,
       resetGame,
+      gameDate,
     }),
     [
       userId,
@@ -401,6 +406,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
       options,
       setOptions,
       resetGame,
+      gameDate,
     ]
   );
 

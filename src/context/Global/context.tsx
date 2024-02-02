@@ -29,6 +29,7 @@ export type GlobalContextProps = {
   options: Options;
   setOptions: Dispatch<SetStateAction<Options>>;
   resetGame: (isRandom: boolean) => void;
+  gameDate: Date;
 };
 
 const GlobalContext = createContext<GlobalContextProps>({
@@ -53,6 +54,7 @@ const GlobalContext = createContext<GlobalContextProps>({
   options: DEFAULT_OPTIONS,
   setOptions: () => {},
   resetGame: () => {},
+  gameDate: new Date(),
 });
 
 export const GlobalContextProvider = GlobalContext.Provider;

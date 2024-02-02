@@ -13,7 +13,8 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const router = useRouter();
   const { random } = router.query;
-  const { craftingTables, gameState, userId, resetGame, recipes } = useGlobal();
+  const { craftingTables, gameState, userId, resetGame, recipes, gameDate } =
+    useGlobal();
   const [popupVisible, setPopupVisible] = useState(false);
 
   const divRef = useRef<HTMLDivElement>(null);
@@ -30,9 +31,13 @@ export default function Home() {
   }, [random]);
 
   useEffect(() => {
-    if (gameState === "won") {
-      setPopupVisible(true);
-      if (!random) {
+    if (gameState !== "inprogress") setPopupVisible(true);
+
+    if (
+      localStorage.getItem("lastGameDate") !== gameDate.toDateString() &&
+      !random
+    ) {
+      if (gameState === "won") {
         fetch("/api/submitgame", {
           method: "POST",
           headers: {
@@ -41,13 +46,14 @@ export default function Home() {
           body: JSON.stringify({
             user_id: userId,
             attempts: craftingTables.length,
-            date: new Date().toISOString(), // TODO make this based on the start time
+            date: gameDate.toISOString(), // TODO make this based on the start time
           }),
-        }).then(() => {});
-      }
-    } else if (gameState === "lost") {
-      setPopupVisible(true);
-      if (!random) {
+        }).then((res) => {
+          if (res.ok) {
+            localStorage.setItem("lastGameDate", gameDate.toDateString());
+          }
+        });
+      } else if (gameState === "lost") {
         fetch("/api/submitgame", {
           method: "POST",
           headers: {
@@ -56,15 +62,21 @@ export default function Home() {
           body: JSON.stringify({
             user_id: userId,
             attempts: 11,
-            date: new Date().toISOString(), // make this based on the start time
+            date: gameDate.toISOString(), // make this based on the start time
           }),
-        }).then((res) => {});
+        }).then((res) => {
+          if (res.ok) {
+            localStorage.setItem("lastGameDate", gameDate.toDateString());
+          }
+        });
       }
     }
   }, [gameState]);
 
   return (
-    <div className={`flex max-w-lg flex-col items-center m-auto ${inter.className}`}>
+    <div
+      className={`flex max-w-lg flex-col items-center m-auto ${inter.className}`}
+    >
       <Cursor />
 
       {Object.keys(recipes).length > 0 ? (

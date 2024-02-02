@@ -85,7 +85,6 @@ export default function CraftingTable({
         return newCraftingTables;
       });
       // setTimeout hack to prevent cursor item changing before mouse movement is registered
-
       setTimeout(() => setCursorItem(oldCraftingTableItem), 0);
     }
     const result = checkAllVariants(currentTable);
