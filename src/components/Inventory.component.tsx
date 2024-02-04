@@ -75,10 +75,10 @@ export default function Inventory({ guessCount }: { guessCount: number }) {
   };
 
   useEffect(() => {
-    JSON.parse(
+    let storedgivenIngredients = JSON.parse(
       localStorage.getItem(`givenIngredients_${CACHE_VERSION}`) ?? "[]"
     );
-    if (givenIngredients.length === 0) {
+    if (storedgivenIngredients.length === 0) {
       fetch(PUBLIC_DIR + "/data/given_ingredients.json")
         .then((response) => response.json())
         .then((obj) => {
@@ -88,6 +88,8 @@ export default function Inventory({ guessCount }: { guessCount: number }) {
             JSON.stringify(obj)
           );
         });
+    } else {
+      setGivenIngredients(storedgivenIngredients);
     }
   }, []);
 
