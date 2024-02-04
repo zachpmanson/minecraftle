@@ -64,6 +64,11 @@ export default function Popup({
     });
   };
 
+  // get name of solution item for label
+  const { items } = useGlobal();
+  const solutionName =
+    "minecraft:" + solution ? items["minecraft:" + solution]?.name : undefined;
+
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -94,6 +99,9 @@ export default function Popup({
                 <Dialog.Panel className="w-full max-w-sm transform overflow-hidden rounded-2xl inv-background text-left align-middle shadow-xl transition-all">
                   <div className="flex flex-col items-center gap-2">
                     <Slot item={`minecraft:${solution}`} clickable={false} />
+                    <Dialog.Description className="text-med font-medium leading-6 text-gray-900">
+                      {`Solution: ` + solutionName}
+                    </Dialog.Description>
                     <Dialog.Title
                       as="h3"
                       className="text-lg font-medium leading-6 text-gray-900"
