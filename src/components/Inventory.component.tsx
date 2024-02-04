@@ -1,7 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import Slot from "./Slot.component";
 import { useGlobal } from "@/context/Global/context";
-import { CACHE_VERSION, COLORS, HICONTRAST_COLORS } from "@/constants";
+import {
+  CACHE_VERSION,
+  COLORS,
+  HICONTRAST_COLORS,
+  PUBLIC_DIR,
+} from "@/constants";
 import MCButton from "./MCButton.component";
 import { Color } from "@/types";
 
@@ -12,6 +17,7 @@ export default function Inventory({ guessCount }: { guessCount: number }) {
     setCraftingTables,
     gameState,
     colorTables,
+    items,
     options: { highContrast },
   } = useGlobal();
   const [givenIngredients, setGivenIngredients] = useState<string[]>([]);
@@ -73,13 +79,13 @@ export default function Inventory({ guessCount }: { guessCount: number }) {
       localStorage.getItem(`givenIngredients_${CACHE_VERSION}`) ?? "[]"
     );
     if (givenIngredients.length === 0) {
-      fetch("/data/given_ingredients.json")
+      fetch(PUBLIC_DIR + "/data/given_ingredients.json")
         .then((response) => response.json())
         .then((obj) => {
           setGivenIngredients(obj);
           localStorage.setItem(
-            "givenIngredients",
-            JSON.stringify(givenIngredients)
+            `givenIngredients_${CACHE_VERSION}`,
+            JSON.stringify(obj)
           );
         });
     }
@@ -111,15 +117,16 @@ export default function Inventory({ guessCount }: { guessCount: number }) {
     >
       <h2>Crafting Ingredients</h2>
       <div className="flex flex-wrap">
-        {givenIngredients.map((ingredient, i) => (
-          <Slot
-            key={i}
-            item={ingredient}
-            onClick={() => setCursor(ingredient)}
-            backgroundColor={COLOR_MAP[invBackgrounds[ingredient] ?? 0]}
-            clickable
-          />
-        ))}
+        {Object.keys(items).length > 0 &&
+          givenIngredients.map((ingredient, i) => (
+            <Slot
+              key={i}
+              item={ingredient}
+              onClick={() => setCursor(ingredient)}
+              backgroundColor={COLOR_MAP[invBackgrounds[ingredient] ?? 0]}
+              clickable
+            />
+          ))}
       </div>
       <div className="flex w-full justify-between items-center">
         <div className="h-8">

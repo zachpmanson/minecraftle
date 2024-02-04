@@ -1,4 +1,4 @@
-import { CACHE_VERSION, DEFAULT_OPTIONS } from "@/constants";
+import { CACHE_VERSION, DEFAULT_OPTIONS, PUBLIC_DIR } from "@/constants";
 import { compareTables, getVariantsWithReflections } from "@/lib/recipe";
 import {
   ColorTable,
@@ -13,7 +13,6 @@ import {
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import seedrandom from "seedrandom";
 import { GlobalContextProps, GlobalContextProvider } from "./context";
-import { set } from "zod";
 
 const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const [userId, setUserId] = useState<string>("");
@@ -180,7 +179,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
     ) as ItemMap;
 
     if (Object.keys(itemMap).length === 0) {
-      fetch("/data/items.json", {
+      fetch(PUBLIC_DIR + "/data/items.json", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -201,7 +200,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
     ) as RecipeMap;
 
     if (Object.keys(recipeMap).length === 0) {
-      fetch("/data/recipes.json", {
+      fetch(PUBLIC_DIR + "/data/recipes.json", {
         headers: {
           "Content-Type": "application/json",
         },

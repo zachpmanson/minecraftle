@@ -13,8 +13,15 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const router = useRouter();
   const { random } = router.query;
-  const { craftingTables, gameState, userId, resetGame, recipes, gameDate } =
-    useGlobal();
+  const {
+    craftingTables,
+    gameState,
+    userId,
+    resetGame,
+    recipes,
+    gameDate,
+    items,
+  } = useGlobal();
   const [popupVisible, setPopupVisible] = useState(false);
 
   const divRef = useRef<HTMLDivElement>(null);
@@ -79,7 +86,7 @@ export default function Home() {
     >
       <Cursor />
 
-      {Object.keys(recipes).length > 0 ? (
+      {Object.keys(recipes).length > 0 && Object.keys(items).length > 0 ? (
         <div className="guesses" id="guesses">
           {craftingTables.map((table, index) => (
             <CraftingTable

@@ -14,3 +14,5 @@ export const CACHE_VERSION = "20231222_2";
 export const DEFAULT_OPTIONS = {
   highContrast: false,
 };
+
+export const PUBLIC_DIR = process.env.NEXT_PUBLIC_PUBLIC_DIR || "";
