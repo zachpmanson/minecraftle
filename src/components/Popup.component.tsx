@@ -20,6 +20,8 @@ export default function Popup({
     craftingTables,
     colorTables,
     userId,
+    recipes,
+    items,
     options: { highContrast },
     resetGame,
   } = useGlobal();
@@ -65,9 +67,7 @@ export default function Popup({
   };
 
   // get name of solution item for label
-  const { items } = useGlobal();
-  const solutionName =
-    "minecraft:" + solution ? items["minecraft:" + solution]?.name : undefined;
+  const solutionName = items[recipes[solution].output].name;
 
   return (
     <>
@@ -98,7 +98,7 @@ export default function Popup({
               >
                 <Dialog.Panel className="w-full max-w-sm transform overflow-hidden rounded-2xl inv-background text-left align-middle shadow-xl transition-all">
                   <div className="flex flex-col items-center gap-2">
-                    <Slot item={`minecraft:${solution}`} clickable={false} />
+                    <Slot item={recipes[solution].output} clickable={false} />
                     <Dialog.Description className="text-med font-medium leading-6 text-gray-900">
                       {`Solution: ` + solutionName}
                     </Dialog.Description>

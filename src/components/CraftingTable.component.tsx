@@ -22,6 +22,7 @@ export default function CraftingTable({
     colorTables,
     setColorTables,
     setGameState,
+    recipes,
     options: { highContrast },
   } = useGlobal();
 
@@ -111,7 +112,11 @@ export default function CraftingTable({
   };
 
   const processGuess = () => {
-    if (currentRecipe?.replace("minecraft:", "") === solution) {
+    console.log("processGuess", currentRecipe, solution);
+    if (
+      currentRecipe?.replace("minecraft:", "") ===
+      recipes[solution].output.replace("minecraft:", "")
+    ) {
       setColorTable([
         [2, 2, 2],
         [2, 2, 2],
