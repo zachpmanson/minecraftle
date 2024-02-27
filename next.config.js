@@ -21,6 +21,11 @@ const nextConfig = {
             value:
               "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
           },
+        ],
+      },
+      {
+        source: "/:path*",
+        headers: [
           {
             key: "X-Frame-Options",
             value: "SAMEORIGIN",
