@@ -166,9 +166,9 @@ export default function Stats({
             {row(
               "Win% ratio",
               (
-                ((liveUserScores.total_games - liveUserScores.total_losses) /
+                Math.round((((liveUserScores.total_games - liveUserScores.total_losses) /
                   liveUserScores.total_games) *
-                100
+                100) * 100) / 100
               ).toString() + "%"
             )}
 
