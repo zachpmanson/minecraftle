@@ -100,7 +100,7 @@ export default function Home() {
           ))}
         </div>
       ) : (
-        <div className="inv-background">
+        <div className="box inv-background">
           <LoadingSpinner />
         </div>
       )}

@@ -5,11 +5,15 @@ import { useEffect, useState } from "react";
 import Slot from "./Slot.component";
 
 export default function CraftingTable({
-  active,
-  tableNum,
+  solved = false,
+  active = true,
+  noBackground = false,
+  tableNum = 0,
 }: {
-  active: boolean;
-  tableNum: number;
+  solved?: boolean;
+  active?: boolean;
+  noBackground?: boolean;
+  tableNum?: number;
 }) {
   const {
     cursorItem,
@@ -17,6 +21,7 @@ export default function CraftingTable({
     setCraftingTables,
     craftingTables,
     checkAllVariants,
+    getFirstSolutionVariant,
     solution,
     trimVariants,
     colorTables,
@@ -27,9 +32,13 @@ export default function CraftingTable({
   } = useGlobal();
 
   const [currentRecipe, setCurrentRecipe] = useState<string | undefined>();
-  const colorTable = colorTables[tableNum];
 
-  const currentTable = craftingTables[tableNum];
+  const colorTable = solved ? [
+      [undefined, undefined, undefined],
+      [undefined, undefined, undefined],
+      [undefined, undefined, undefined],
+    ] : colorTables[tableNum];
+  const currentTable = solved ? getFirstSolutionVariant() : craftingTables[tableNum];
 
   const [isDown, setIsDown] = useState(false); // TODO: remove this
   const [isDragging, setIsDragging] = useState(false);
@@ -112,6 +121,8 @@ export default function CraftingTable({
   };
 
   const processGuess = () => {
+    if (solved) return;
+
     console.log("processGuess", currentRecipe, solution);
     if (
       currentRecipe?.replace("minecraft:", "") ===
@@ -163,7 +174,7 @@ export default function CraftingTable({
   return (
     <>
       <div
-        className="flex inv-background justify-between items-center w-[22rem]"
+        className={"flex box justify-between items-center w-[22rem]" + (noBackground ? "" : " inv-background")}
         onClick={(e: any) => e.stopPropagation()}
       >
         <div className="w-36 h-36 flex flex-wrap">
@@ -176,7 +187,7 @@ export default function CraftingTable({
                   backgroundColor={
                     COLOR_MAP[colorTable[rowIndex][columnIndex] ?? 0]
                   }
-                  clickable={active}
+                  clickable={!solved && active}
                   onMouseDown={() => onMouseDown(rowIndex, columnIndex)}
                   onMouseUp={() => onMouseUp(rowIndex, columnIndex)}
                   onMouseMove={() => onMouseMove(rowIndex, columnIndex)}
@@ -189,9 +200,9 @@ export default function CraftingTable({
         <p className="text-5xl m-4 text-slot-background">→</p>
         <div className="crafting-output">
           <Slot
-            item={currentRecipe}
+            item={solved ? recipes[solution].output : currentRecipe}
             backgroundColor={undefined}
-            clickable={active && !!currentRecipe}
+            clickable={!solved && active && !!currentRecipe}
             onClick={processGuess}
           />
         </div>

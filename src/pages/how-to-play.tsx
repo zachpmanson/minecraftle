@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function HowToPlay() {
   return (
     <main>
-      <div className="inv-background">
+      <div className="box inv-background">
         <h2 className="text-center">How To Play</h2>
         <p className="text-center font-bold">
           Your goal is to try to craft the secret item from the ingredients in
@@ -40,7 +40,7 @@ export default function HowToPlay() {
           </Link>
         </p>
       </div>
-      <div className="inv-background">
+      <div className="box inv-background">
         <h2>About</h2>
         <p>
           Originally created by Tamura Boog, Zach Manson, Harrison Oates, Ivan

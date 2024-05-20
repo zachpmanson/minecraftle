@@ -3,7 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import Link from "next/link";
 import { Fragment, useState } from "react";
 import MCButton from "./MCButton.component";
-import Slot from "./Slot.component";
+import CraftingTable from "@/components/CraftingTable.component";
 
 export default function Popup({
   isOpen,
@@ -96,9 +96,12 @@ export default function Popup({
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-sm transform overflow-hidden rounded-2xl inv-background text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-sm transform overflow-hidden rounded-2xl box inv-background text-left align-middle shadow-xl transition-all">
                   <div className="flex flex-col items-center gap-2">
-                    <Slot item={recipes[solution].output} clickable={false} />
+                    <CraftingTable
+                      solved
+                      noBackground
+                    />
                     <Dialog.Description className="text-med font-medium leading-6 text-gray-900">
                       {`Solution: ` + solutionName}
                     </Dialog.Description>
