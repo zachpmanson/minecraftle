@@ -26,7 +26,7 @@ export default function Layout({ children }: any) {
     >
       <div className="flex flex-col gap-4 max-w-xl m-auto">
         <header>
-          <h1 className="text-center m-0 p-2 text-5xl">MINECRAFTLE</h1>
+          <h1 className="text-center m-0 p-2 text-5xl">MINECRAFTLE'D</h1>
           <nav>
             <div className="flex flex-col gap-2">
               <div className="flex justify-evenly gap-4">
@@ -38,22 +38,22 @@ export default function Layout({ children }: any) {
                   <MCButton>Stats</MCButton>
                 </Link>
                 {/* <div className="flex flex-1 justify-normal gap-4"> */}
-                  {/* <div className="flex-1">
+                {/* <div className="flex-1">
                     <MCButton onClick={playMusic}>
                       <div className="px-4">♫</div>
                     </MCButton>
                   </div> */}
-                  <div className="flex-1">
-                    <MCButton
-                      onClick={() =>
-                        setOptions((o) => {
-                          return { ...o, highContrast: !o.highContrast };
-                        })
-                      }
-                    >
-                      <div className="px-4">☼</div>
-                    </MCButton>
-                  </div>
+                <div className="flex-1">
+                  <MCButton
+                    onClick={() =>
+                      setOptions((o) => {
+                        return { ...o, highContrast: !o.highContrast };
+                      })
+                    }
+                  >
+                    <div className="px-4">☼</div>
+                  </MCButton>
+                </div>
                 {/* </div> */}
               </div>
               <div className="flex gap-4">
