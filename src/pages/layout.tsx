@@ -26,7 +26,7 @@ export default function Layout({ children }: any) {
     >
       <div className="flex flex-col gap-4 max-w-xl m-auto">
         <header>
-          <h1 className="text-center m-0 p-2 text-5xl">MINECRAFTLE'D</h1>
+          <h1 className="text-center m-0 p-2 text-5xl">MINECRAFTLE&apos;D</h1>
           <nav>
             <div className="flex flex-col gap-2">
               <div className="flex justify-evenly gap-4">
