@@ -114,7 +114,7 @@ export default function Inventory({ guessCount }: { guessCount: number }) {
 
   return (
     <div
-      className="inv-background max-w-[21rem] flex flex-col items-center gap-3"
+      className="box inv-background max-w-[21rem] flex flex-col items-center gap-3"
       onClick={(e: any) => e.stopPropagation()}
     >
       <h2>Crafting Ingredients</h2>

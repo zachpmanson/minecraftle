@@ -233,6 +233,10 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
     return undefined;
   };
 
+  const getFirstSolutionVariant = (): Table => {
+    return remainingSolutionVariants[0];
+  };
+
   const trimVariants = (guess: Table) => {
     let [matchmaps, matchcounts] = checkRemainingSolutionVariants(guess);
     // find remaining variants, correctSlots only has green slots
@@ -379,6 +383,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
       setColorTables,
       recipes,
       checkAllVariants,
+      getFirstSolutionVariant,
       trimVariants,
       gameState,
       setGameState,
@@ -386,6 +391,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
       setOptions,
       resetGame,
       gameDate,
+      remainingSolutionVariants,
     }),
     [
       userId,
@@ -397,6 +403,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
       setCraftingTables,
       recipes,
       checkAllVariants,
+      getFirstSolutionVariant,
       trimVariants,
       colorTables,
       setColorTables,
@@ -406,6 +413,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
       setOptions,
       resetGame,
       gameDate,
+      remainingSolutionVariants,
     ]
   );
 
