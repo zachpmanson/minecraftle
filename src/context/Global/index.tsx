@@ -391,6 +391,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
       setOptions,
       resetGame,
       gameDate,
+      remainingSolutionVariants,
     }),
     [
       userId,
@@ -412,6 +413,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
       setOptions,
       resetGame,
       gameDate,
+      remainingSolutionVariants,
     ]
   );
 

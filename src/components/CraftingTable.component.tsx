@@ -21,24 +21,28 @@ export default function CraftingTable({
     setCraftingTables,
     craftingTables,
     checkAllVariants,
-    getFirstSolutionVariant,
     solution,
     trimVariants,
     colorTables,
     setColorTables,
     setGameState,
     recipes,
+    remainingSolutionVariants,
     options: { highContrast },
   } = useGlobal();
 
   const [currentRecipe, setCurrentRecipe] = useState<string | undefined>();
 
-  const colorTable = solved ? [
-      [undefined, undefined, undefined],
-      [undefined, undefined, undefined],
-      [undefined, undefined, undefined],
-    ] : colorTables[tableNum];
-  const currentTable = solved ? getFirstSolutionVariant() : craftingTables[tableNum];
+  const colorTable = solved
+    ? [
+        [undefined, undefined, undefined],
+        [undefined, undefined, undefined],
+        [undefined, undefined, undefined],
+      ]
+    : colorTables[tableNum];
+  const currentTable = solved
+    ? remainingSolutionVariants[0]
+    : craftingTables[tableNum];
 
   const [isDown, setIsDown] = useState(false); // TODO: remove this
   const [isDragging, setIsDragging] = useState(false);
@@ -174,7 +178,10 @@ export default function CraftingTable({
   return (
     <>
       <div
-        className={"flex box justify-between items-center w-[22rem]" + (noBackground ? "" : " inv-background")}
+        className={
+          "flex box justify-between items-center w-[22rem]" +
+          (noBackground ? "" : " inv-background")
+        }
         onClick={(e: any) => e.stopPropagation()}
       >
         <div className="w-36 h-36 flex flex-wrap">

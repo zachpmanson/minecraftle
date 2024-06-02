@@ -24,13 +24,13 @@ export type GlobalContextProps = {
   recipes: RecipeMap;
   trimVariants: (guess: Table) => MatchMap;
   checkAllVariants: (guess: Table) => string | undefined;
-  getFirstSolutionVariant: () => Table;
   gameState: GameState;
   setGameState: Dispatch<SetStateAction<GameState>>;
   options: Options;
   setOptions: Dispatch<SetStateAction<Options>>;
   resetGame: (isRandom: boolean) => void;
   gameDate: Date;
+  remainingSolutionVariants: Table[];
 };
 
 const GlobalContext = createContext<GlobalContextProps>({
@@ -50,13 +50,13 @@ const GlobalContext = createContext<GlobalContextProps>({
     [-1, -1, -1],
   ],
   checkAllVariants: () => undefined,
-  getFirstSolutionVariant: () => Table,
   gameState: "inprogress",
   setGameState: () => {},
   options: DEFAULT_OPTIONS,
   setOptions: () => {},
   resetGame: () => {},
   gameDate: new Date(),
+  remainingSolutionVariants: [],
 });
 
 export const GlobalContextProvider = GlobalContext.Provider;
