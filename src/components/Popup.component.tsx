@@ -47,7 +47,6 @@ export default function Popup({
       }
       summaryString += "\n";
     }
-    console.log("summaryString", summaryString);
     return summaryString.trim();
   };
 
@@ -98,10 +97,7 @@ export default function Popup({
               >
                 <Dialog.Panel className="w-full max-w-sm transform overflow-hidden rounded-2xl box inv-background text-left align-middle shadow-xl transition-all">
                   <div className="flex flex-col items-center gap-2">
-                    <CraftingTable
-                      solved
-                      noBackground
-                    />
+                    <CraftingTable solved noBackground />
                     <Dialog.Description className="text-med font-medium leading-6 text-gray-900">
                       {`Solution: ` + solutionName}
                     </Dialog.Description>
