@@ -43,8 +43,6 @@ export default async function handler(
       const { user_id, attempts, date } = req.body as SubmitGameSchema;
       const flatDate = new Date(date.slice(0, 10) + "T00:00:00.000Z");
 
-      console.log(user_id, attempts, flatDate);
-
       try {
         const user = await prisma.user.findUnique({
           where: {

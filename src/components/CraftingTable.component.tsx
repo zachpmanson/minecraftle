@@ -127,7 +127,6 @@ export default function CraftingTable({
   const processGuess = () => {
     if (solved) return;
 
-    console.log("processGuess", currentRecipe, solution);
     if (
       currentRecipe?.replace("minecraft:", "") ===
       recipes[solution].output.replace("minecraft:", "")
