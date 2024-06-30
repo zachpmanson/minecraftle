@@ -51,7 +51,7 @@ export default function Layout({ children }: any) {
                       })
                     }
                   >
-                    <div className="px-4">☼</div>
+                    <div className="px-4">Colourblind Mode</div>
                   </MCButton>
                 </div>
                 {/* </div> */}
