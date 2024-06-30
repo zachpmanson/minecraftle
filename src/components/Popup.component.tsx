@@ -24,11 +24,12 @@ export default function Popup({
     items,
     options: { highContrast },
     resetGame,
+    gameDate,
   } = useGlobal();
   const [copyButtonText, setCopyButtonText] = useState("Copy");
   console.log("highContrast", highContrast);
   const generateSummary = () => {
-    let summaryString = `Minecraftle ${new Date().toISOString().slice(0, 10)} ${
+    let summaryString = `Minecraftle ${new Date(gameDate.getTime() - gameDate.getTimezoneOffset() * 1000 * 60).toISOString().slice(0, 10)} ${
       craftingTables.length
     }/10\n`;
 
