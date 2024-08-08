@@ -1,8 +1,9 @@
+import Row from "@/components/StatRow.component";
 import prisma from "@/lib/prisma";
 import { ScoreboardRow } from "@/types";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Stats({
   liveUserScores, // actual user scores
@@ -152,10 +153,45 @@ export default function Stats({
         <table className="w-full">
           <tbody className="w-full">
             {ranking()}
-
             <tr className="h-4"></tr>
-
-            {row("Games played", liveUserScores.total_games.toString())}
+            <Row
+              left="Games played"
+              right={liveUserScores.total_games.toString()}
+            />
+            <Row
+              left="Games won"
+              right={liveUserScores.total_games.toString()}
+            />
+            ={" "}
+            <Row
+              left="Games lost"
+              right={liveUserScores.total_losses.toString()}
+            />
+            <Row
+              left="Win% ratio"
+              right={
+                (
+                  Math.round(
+                    ((liveUserScores.total_games -
+                      liveUserScores.total_losses) /
+                      liveUserScores.total_games) *
+                      100 *
+                      100
+                  ) / 100
+                ).toString() + "%"
+              }
+            />
+            <tr className="h-4"></tr>
+            <Row
+              left={`Total attempts`}
+              right={liveUserScores.total_win_attempts.toString()}
+            />
+            {Object.values(allAttempts).map((a) => (
+              <Row
+                left={`Wins with ${a.attempts} attempts`}
+                right={a.count.toString()}
+              />
+            ))}
             {row(
               "Games won",
               (
@@ -166,19 +202,19 @@ export default function Stats({
             {row(
               "Win% ratio",
               (
-                Math.round((((liveUserScores.total_games - liveUserScores.total_losses) /
-                  liveUserScores.total_games) *
-                100) * 100) / 100
+                Math.round(
+                  ((liveUserScores.total_games - liveUserScores.total_losses) /
+                    liveUserScores.total_games) *
+                    100 *
+                    100
+                ) / 100
               ).toString() + "%"
             )}
-
             <tr className="h-4"></tr>
-
             {row(
               `Total attempts`,
               liveUserScores.total_win_attempts.toString()
             )}
-
             {Object.values(allAttempts).map((a) =>
               row(`Wins with ${a.attempts} attempts`, a.count.toString())
             )}
