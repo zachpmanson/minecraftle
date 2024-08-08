@@ -10,12 +10,14 @@ export default function Stats({
   count_30,
   count_90,
   count_365,
+  count_all_time,
 }: {
   count_1: number;
   count_7: number;
   count_30: number;
   count_90: number;
   count_365: number;
+  count_all_time: number;
 }) {
   const router = useRouter();
 
@@ -26,11 +28,24 @@ export default function Stats({
         <table className="w-full">
           <tbody className="w-full">
             <tr className="h-4"></tr>
-            <Row left="Player in last day" right={count_1.toString()} />
-            <Row left="Player in last week" right={count_7.toString()} />
-            <Row left="Player in last 30 days" right={count_30.toString()} />
-            <Row left="Player in last 90 days" right={count_90.toString()} />
-            <Row left="Player in last 365 days" right={count_365.toString()} />
+            <Row left="Player in last day" right={count_1.toLocaleString()} />
+            <Row left="Player in last week" right={count_7.toLocaleString()} />
+            <Row
+              left="Player in last 30 days"
+              right={count_30.toLocaleString()}
+            />
+            <Row
+              left="Player in last 90 days"
+              right={count_90.toLocaleString()}
+            />
+            <Row
+              left="Player in last 365 days"
+              right={count_365.toLocaleString()}
+            />
+            <Row
+              left="Player in all time"
+              right={count_all_time.toLocaleString()}
+            />
           </tbody>
         </table>
       </div>
@@ -38,37 +53,18 @@ export default function Stats({
   );
 }
 
-const DEFAULT_SCOREBOARD_ROW: ScoreboardRow = {
-  user_id: "",
-  dense_rank_number: 0,
-  total_games: 0,
-  total_win_attempts: 0,
-  total_losses: 0,
-  total_1: 0,
-  total_2: 0,
-  total_3: 0,
-  total_4: 0,
-  total_5: 0,
-  total_6: 0,
-  total_7: 0,
-  total_8: 0,
-  total_9: 0,
-  total_10: 0,
-};
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { userId } = context.params as { userId: string };
-
   let count_1: number;
   let count_7: number;
   let count_30: number;
   let count_90: number;
   let count_365: number;
+  let count_all_time: number;
 
   const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
   try {
-    [count_1, count_7, count_30, count_90, count_365] =
+    [count_1, count_7, count_30, count_90, count_365, count_all_time] =
       await prisma.$transaction([
         prisma.user.count({
           where: {
@@ -105,6 +101,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             },
           },
         }),
+        prisma.user.count(),
       ]);
   } catch (e) {
     console.error(e);
@@ -123,6 +120,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       count_30,
       count_90,
       count_365,
+      count_all_time,
     },
   };
 };
