@@ -186,8 +186,9 @@ export default function Stats({
               left={`Total attempts`}
               right={liveUserScores.total_win_attempts.toString()}
             />
-            {Object.values(allAttempts).map((a) => (
+            {Object.values(allAttempts).map((a, i) => (
               <Row
+                key={i}
                 left={`Wins with ${a.attempts} attempts`}
                 right={a.count.toString()}
               />
