@@ -193,32 +193,6 @@ export default function Stats({
                 right={a.count.toString()}
               />
             ))}
-            {row(
-              "Games won",
-              (
-                liveUserScores.total_games - liveUserScores.total_losses
-              ).toString()
-            )}
-            {row("Games lost", liveUserScores.total_losses.toString())}
-            {row(
-              "Win% ratio",
-              (
-                Math.round(
-                  ((liveUserScores.total_games - liveUserScores.total_losses) /
-                    liveUserScores.total_games) *
-                    100 *
-                    100
-                ) / 100
-              ).toString() + "%"
-            )}
-            <tr className="h-4"></tr>
-            {row(
-              `Total attempts`,
-              liveUserScores.total_win_attempts.toString()
-            )}
-            {Object.values(allAttempts).map((a) =>
-              row(`Wins with ${a.attempts} attempts`, a.count.toString())
-            )}
           </tbody>
         </table>
       </div>
