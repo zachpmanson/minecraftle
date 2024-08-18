@@ -162,7 +162,6 @@ export default function Stats({
               left="Games won"
               right={liveUserScores.total_games.toString()}
             />
-            ={" "}
             <Row
               left="Games lost"
               right={liveUserScores.total_losses.toString()}
