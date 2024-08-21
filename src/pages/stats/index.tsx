@@ -1,8 +1,6 @@
 import Row from "@/components/StatRow.component";
 import prisma from "@/lib/prisma";
-import { ScoreboardRow } from "@/types";
 import { GetServerSideProps } from "next";
-import { useRouter } from "next/router";
 
 export default function Stats({
   count_1,
@@ -19,8 +17,6 @@ export default function Stats({
   count_365: number;
   count_all_time: number;
 }) {
-  const router = useRouter();
-
   return (
     <main className="flex flex-col items-center justify-center py-2 max-w-xl">
       <h2 className="text-2xl text-white p-2">Statistics</h2>
@@ -28,22 +24,22 @@ export default function Stats({
         <table className="w-full">
           <tbody className="w-full">
             <tr className="h-4"></tr>
-            <Row left="Player in last day" right={count_1.toLocaleString()} />
-            <Row left="Player in last week" right={count_7.toLocaleString()} />
+            <Row left="Players in last day" right={count_1.toLocaleString()} />
+            <Row left="Players in last week" right={count_7.toLocaleString()} />
             <Row
-              left="Player in last 30 days"
+              left="Players in last 30 days"
               right={count_30.toLocaleString()}
             />
             <Row
-              left="Player in last 90 days"
+              left="Players in last 90 days"
               right={count_90.toLocaleString()}
             />
             <Row
-              left="Player in last 365 days"
+              left="Players in last 365 days"
               right={count_365.toLocaleString()}
             />
             <Row
-              left="Player in all time"
+              left="Players all time"
               right={count_all_time.toLocaleString()}
             />
           </tbody>
