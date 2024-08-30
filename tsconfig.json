@@ -18,6 +18,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/lib/crafting.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/utils/crafting.js"],
   "exclude": ["node_modules"]
 }

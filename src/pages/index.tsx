@@ -5,6 +5,7 @@ import LoadingSpinner from "@/components/LoadingSpinner.component";
 import MCButton from "@/components/MCButton.component";
 import Popup from "@/components/Popup.component";
 import { useGlobal } from "@/context/Global/context";
+import { trpc } from "@/utils/trpc";
 import { Inter } from "next/font/google";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
@@ -23,6 +24,8 @@ export default function Home() {
     items,
   } = useGlobal();
   const [popupVisible, setPopupVisible] = useState(false);
+
+  const submitGame = trpc.game.submitGame.useMutation();
 
   const divRef = useRef<HTMLDivElement>(null);
 
@@ -44,39 +47,15 @@ export default function Home() {
       localStorage.getItem("lastGameDate") !== gameDate.toDateString() &&
       !random
     ) {
-      if (gameState === "won") {
-        fetch("/api/submitgame", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            user_id: userId,
-            attempts: craftingTables.length,
-            date: gameDate.toISOString(), // TODO make this based on the start time
-          }),
-        }).then((res) => {
-          if (res.ok) {
-            localStorage.setItem("lastGameDate", gameDate.toDateString());
-          }
+      submitGame
+        .mutateAsync({
+          user_id: userId,
+          attempts: gameState === "won" ? craftingTables.length : 11,
+          date: gameDate.toISOString(), // TODO make this based on the start time
+        })
+        .then((res) => {
+          localStorage.setItem("lastGameDate", gameDate.toDateString());
         });
-      } else if (gameState === "lost") {
-        fetch("/api/submitgame", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            user_id: userId,
-            attempts: 11,
-            date: gameDate.toISOString(), // make this based on the start time
-          }),
-        }).then((res) => {
-          if (res.ok) {
-            localStorage.setItem("lastGameDate", gameDate.toDateString());
-          }
-        });
-      }
     }
   }, [gameState]);
 

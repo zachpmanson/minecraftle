@@ -1,5 +1,5 @@
 import { CACHE_VERSION, DEFAULT_OPTIONS, PUBLIC_DIR } from "@/constants";
-import { compareTables, getVariantsWithReflections } from "@/lib/recipe";
+import { compareTables, getVariantsWithReflections } from "@/utils/recipe";
 import {
   ColorTable,
   GameState,

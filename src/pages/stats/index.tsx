@@ -1,5 +1,5 @@
 import Row from "@/components/StatRow.component";
-import prisma from "@/lib/prisma";
+import prisma from "@/utils/prisma";
 import { GetServerSideProps } from "next";
 
 export default function Stats({

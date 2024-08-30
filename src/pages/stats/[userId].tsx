@@ -1,34 +1,30 @@
 import Row from "@/components/StatRow.component";
-import prisma from "@/lib/prisma";
 import { ScoreboardRow } from "@/types";
+import prisma from "@/utils/prisma";
+import { trpc } from "@/utils/trpc";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useQueryState } from "nuqs";
 
 export default function Stats({
   liveUserScores, // actual user scores
-  // localLeaderboard, // materialized view scoreboard position and neighbours
   totalPlayerCount,
 }: {
   liveUserScores: ScoreboardRow;
-  // localLeaderboard: ScoreboardRow[];
   totalPlayerCount: number;
 }) {
   const router = useRouter();
-  const [localLeaderboard, setLocalLeaderboard] = useState<ScoreboardRow[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  console.log(localLeaderboard);
-  useEffect(() => {
-    const fetchLocalLeaderboard = async () => {
-      const res = await fetch(`/api/scoreboard/${router.query.userId}`);
-      const data = await res.json();
-      console.log(data);
-      setLocalLeaderboard(data.localLeaderboard);
-      setIsLoading(false);
-    };
+  const userId = router.query.userId as string;
 
-    fetchLocalLeaderboard();
-  }, []);
+  const { data, isLoading } = trpc.game.scoreboard.useQuery(
+    {
+      userId: userId ?? "",
+    },
+    {
+      enabled: !!userId,
+    }
+  );
+  const localLeaderboard = data?.localLeaderboard;
 
   const allAttempts = Object.keys(liveUserScores)
     .filter((key) => key.match(/^total_\d+$/))
@@ -45,7 +41,7 @@ export default function Stats({
   );
 
   const ranking = () => {
-    if (isLoading) {
+    if (!localLeaderboard || isLoading) {
       return row("Global Rank", "Loading...");
     }
     if (localLeaderboard.length === 0) {
