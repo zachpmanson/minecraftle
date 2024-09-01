@@ -64,12 +64,12 @@ export const gameRouter = createRouter({
           .refine(
             (date) => {
               const threeDaysAgo = new Date();
-              const oneDayFromNow = new Date();
+              const twoDayFromNow = new Date();
               threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
-              oneDayFromNow.setDate(oneDayFromNow.getDate() + 1);
+              twoDayFromNow.setDate(twoDayFromNow.getDate() + 2);
               return (
                 new Date(date) >= threeDaysAgo &&
-                new Date(date) <= oneDayFromNow
+                new Date(date) <= twoDayFromNow
               );
             },
             {
