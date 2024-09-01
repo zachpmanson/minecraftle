@@ -64,8 +64,13 @@ export const gameRouter = createRouter({
           .refine(
             (date) => {
               const threeDaysAgo = new Date();
+              const oneDayFromNow = new Date();
               threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
-              return new Date(date) >= threeDaysAgo;
+              oneDayFromNow.setDate(oneDayFromNow.getDate() + 1);
+              return (
+                new Date(date) >= threeDaysAgo &&
+                new Date(date) <= oneDayFromNow
+              );
             },
             {
               message: "Date must be within the last 3 days",
