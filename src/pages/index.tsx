@@ -41,7 +41,9 @@ export default function Home() {
   }, [random]);
 
   useEffect(() => {
-    if (gameState !== "inprogress") setPopupVisible(true);
+    if (gameState === "inprogress") return;
+
+    setPopupVisible(true);
 
     if (
       localStorage.getItem("lastGameDate") !== gameDate.toDateString() &&
