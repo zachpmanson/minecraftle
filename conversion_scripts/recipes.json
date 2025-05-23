@@ -2167,5 +2167,50 @@
                 "minecraft:stick"
             ]
         ]
+    },
+    "lead": {
+      "type": "minecraft:crafting_shaped",
+      "group": "",
+      "output": "minecraft:lead",
+      "input":  [
+          [
+            "minecraft:string", "minecraft:string", null
+          ], 
+          [
+            "minecraft:string", "minecraft:string", null
+          ], 
+          [
+            null, null, "minecraft:string"
+          ]
+        ]
+    },
+    "chiseled_bookshelf": {
+      "type": "minecraft:crafting_shaped",
+      "group": "",
+      "output": "minecraft:chiseled_bookshelf",
+      "input":  [
+          [
+            "minecraft:planks", "minecraft:planks", "minecraft:planks"
+          ],
+          [
+            "minecraft:oak_slab", "minecraft:oak_slab", "minecraft:oak_slab"
+          ], 
+          [
+            "minecraft:planks", "minecraft:planks", "minecraft:planks"
+          ]
+        ]
+    },
+    "white_harness": {
+      "type": "minecraft:crafting_shaped",
+      "group": "harness",
+      "output": "minecraft:white_harness",
+      "input":  [
+          [
+            "minecraft:leather", "minecraft:leather", "minecraft:leather"
+          ],
+          [
+            "minecraft:glass", "minecraft:white_wool", "minecraft:glass"
+          ]
+        ]
     }
 }
