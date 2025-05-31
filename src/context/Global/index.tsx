@@ -1,15 +1,6 @@
 import { CACHE_VERSION, DEFAULT_OPTIONS, PUBLIC_DIR } from "@/constants";
+import { ColorTable, GameState, ItemMap, MatchMap, Options, RecipeMap, Table, TableItem } from "@/types";
 import { compareTables, getVariantsWithReflections } from "@/utils/recipe";
-import {
-  ColorTable,
-  GameState,
-  ItemMap,
-  MatchMap,
-  Options,
-  RecipeMap,
-  Table,
-  TableItem,
-} from "@/types";
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import seedrandom from "seedrandom";
 import { GlobalContextProps, GlobalContextProvider } from "./context";
@@ -44,9 +35,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
     [key: string]: Table[];
   }>({});
   const [allSolutionVariants, setAllSolutionVariants] = useState<Table[]>([]);
-  const [remainingSolutionVariants, setRemainingSolutionVariants] = useState<
-    Table[]
-  >([]);
+  const [remainingSolutionVariants, setRemainingSolutionVariants] = useState<Table[]>([]);
   const [solution_n_items, setSolution_n_items] = useState<{
     [key: string]: number;
   }>({});
@@ -61,10 +50,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const resetGame = (isRandom: boolean) => {
     setGameState("inprogress");
     if (isRandom) {
-      const randomSolution =
-        Object.keys(recipes)[
-          Math.floor(Math.random() * Object.keys(recipes).length)
-        ];
+      const randomSolution = Object.keys(recipes)[Math.floor(Math.random() * Object.keys(recipes).length)];
       setSolution(randomSolution);
     } else {
       const newDate = new Date();
@@ -99,9 +85,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
       // load all item recipes with all variants
       let newAllRecipesAllVariants = { ...allRecipesAllVariants };
       for (let [key, value] of Object.entries(recipes)) {
-        newAllRecipesAllVariants[value.output] = getVariantsWithReflections(
-          value.input
-        );
+        newAllRecipesAllVariants[value.output] = getVariantsWithReflections(value.input);
       }
       setAllRecipesAllVariants(newAllRecipesAllVariants);
       if (solution) {
@@ -142,8 +126,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const generateSetPuzzle = (date: Date) => {
     const random = seedrandom(date.toDateString());
 
-    const randomSolution =
-      Object.keys(recipes)[Math.floor(random() * Object.keys(recipes).length)];
+    const randomSolution = Object.keys(recipes)[Math.floor(random() * Object.keys(recipes).length)];
     setSolution(randomSolution);
   };
 
@@ -163,9 +146,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
   }, [options]);
 
   const getOptions = () => {
-    const options = JSON.parse(
-      localStorage.getItem(`options`) ?? "{}"
-    ) as Options;
+    const options = JSON.parse(localStorage.getItem(`options`) ?? "{}") as Options;
     if (Object.keys(options).length === 0) {
       setOptions(DEFAULT_OPTIONS);
     } else {
@@ -174,14 +155,13 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const getItems = () => {
-    const itemMap = JSON.parse(
-      localStorage.getItem(`items_${CACHE_VERSION}`) ?? "{}"
-    ) as ItemMap;
+    const itemMap = JSON.parse(localStorage.getItem(`items_${CACHE_VERSION}`) ?? "{}") as ItemMap;
 
     if (Object.keys(itemMap).length === 0) {
       fetch(PUBLIC_DIR + "/data/items.json", {
         headers: {
           "Content-Type": "application/json",
+          "Cache-Control": "no-cache",
         },
       })
         .then((res) => res.json())
@@ -195,14 +175,13 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const getRecipes = () => {
-    const recipeMap = JSON.parse(
-      localStorage.getItem(`recipes_${CACHE_VERSION}`) ?? "{}"
-    ) as RecipeMap;
+    const recipeMap = JSON.parse(localStorage.getItem(`recipes_${CACHE_VERSION}`) ?? "{}") as RecipeMap;
 
     if (Object.keys(recipeMap).length === 0) {
       fetch(PUBLIC_DIR + "/data/recipes.json", {
         headers: {
           "Content-Type": "application/json",
+          "Cache-Control": "no-cache",
         },
       })
         .then((res) => res.json())
@@ -240,14 +219,9 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const trimVariants = (guess: Table) => {
     let [matchmaps, matchcounts] = checkRemainingSolutionVariants(guess);
     // find remaining variants, correctSlots only has green slots
-    let [remainingVariantsIndices, correctSlots] = findRemainingVariantsIndices(
-      matchmaps,
-      matchcounts
-    );
+    let [remainingVariantsIndices, correctSlots] = findRemainingVariantsIndices(matchmaps, matchcounts);
 
-    setRemainingSolutionVariants((old) =>
-      [...old].filter((_, i) => remainingVariantsIndices.includes(i))
-    );
+    setRemainingSolutionVariants((old) => [...old].filter((_, i) => remainingVariantsIndices.includes(i)));
 
     // add orange slots to correctSlots
     addOrangeSlots(guess, correctSlots);
@@ -255,9 +229,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
     return correctSlots;
   };
 
-  const checkRemainingSolutionVariants = (
-    guess: Table
-  ): [MatchMap[], number[]] => {
+  const checkRemainingSolutionVariants = (guess: Table): [MatchMap[], number[]] => {
     let matchmaps: MatchMap[] = [];
     let matchcounts: number[] = [];
 
@@ -279,18 +251,11 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
    * @param {Array} matchcounts
    * @returns
    */
-  function findRemainingVariantsIndices(
-    matchmaps: MatchMap[],
-    matchcounts: number[]
-  ): [number[], MatchMap] {
+  function findRemainingVariantsIndices(matchmaps: MatchMap[], matchcounts: number[]): [number[], MatchMap] {
     // Get index of max value in matchcounts
     let maxMatchesIndex = matchcounts.indexOf(Math.max(...matchcounts));
     // generate mask matchmap at this index for 2's
-    let [correctSlots, _, __] = compareTables(
-      matchmaps[maxMatchesIndex],
-      matchmaps[maxMatchesIndex],
-      2
-    );
+    let [correctSlots, _, __] = compareTables(matchmaps[maxMatchesIndex], matchmaps[maxMatchesIndex], 2);
 
     let remainingVariantsIndices: number[] = [];
 
@@ -298,10 +263,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
       // mask to only include 2's in matchmaps
       let matchDataToCompare = compareTables(matchmap, matchmap, 2);
       // compare masked
-      let correctSlotOverlapData = compareTables(
-        correctSlots,
-        matchDataToCompare[0]
-      );
+      let correctSlotOverlapData = compareTables(correctSlots, matchDataToCompare[0]);
 
       // if correctSlotOverlapData is full match
       if (correctSlotOverlapData[2]) {
@@ -359,10 +321,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
           continue;
         }
 
-        if (
-          correctSlots[i][j] !== 2 &&
-          n_unidentified_items[guess[i][j]!] > 0
-        ) {
+        if (correctSlots[i][j] !== 2 && n_unidentified_items[guess[i][j]!] > 0) {
           correctSlots[i][j] = 3;
           n_unidentified_items[guess[i][j]!]--;
         }
@@ -417,9 +376,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
     ]
   );
 
-  return (
-    <GlobalContextProvider value={value}>{children}</GlobalContextProvider>
-  );
+  return <GlobalContextProvider value={value}>{children}</GlobalContextProvider>;
 };
 
 export default GlobalProvider;
