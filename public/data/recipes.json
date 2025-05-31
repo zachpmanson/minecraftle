@@ -5,11 +5,7 @@
     "output": "minecraft:activator_rail",
     "input": [
       ["minecraft:iron_ingot", "minecraft:stick", "minecraft:iron_ingot"],
-      [
-        "minecraft:iron_ingot",
-        "minecraft:redstone_torch",
-        "minecraft:iron_ingot"
-      ],
+      ["minecraft:iron_ingot", "minecraft:redstone_torch", "minecraft:iron_ingot"],
       ["minecraft:iron_ingot", "minecraft:stick", "minecraft:iron_ingot"]
     ]
   },
@@ -75,11 +71,7 @@
     "type": "minecraft:crafting_shaped",
     "group": "",
     "output": "minecraft:chain",
-    "input": [
-      ["minecraft:iron_nugget"],
-      ["minecraft:iron_ingot"],
-      ["minecraft:iron_nugget"]
-    ]
+    "input": [["minecraft:iron_nugget"], ["minecraft:iron_ingot"], ["minecraft:iron_nugget"]]
   },
   "chest": {
     "type": "minecraft:crafting_shaped",
@@ -115,13 +107,7 @@
     "type": "minecraft:crafting_shaped",
     "group": "",
     "output": "minecraft:cobblestone_slab",
-    "input": [
-      [
-        "minecraft:cobblestone",
-        "minecraft:cobblestone",
-        "minecraft:cobblestone"
-      ]
-    ]
+    "input": [["minecraft:cobblestone", "minecraft:cobblestone", "minecraft:cobblestone"]]
   },
   "cobblestone_stairs": {
     "type": "minecraft:crafting_shaped",
@@ -130,11 +116,7 @@
     "input": [
       ["minecraft:cobblestone", null, null],
       ["minecraft:cobblestone", "minecraft:cobblestone", null],
-      [
-        "minecraft:cobblestone",
-        "minecraft:cobblestone",
-        "minecraft:cobblestone"
-      ]
+      ["minecraft:cobblestone", "minecraft:cobblestone", "minecraft:cobblestone"]
     ]
   },
   "cobblestone_wall": {
@@ -142,16 +124,8 @@
     "group": "",
     "output": "minecraft:cobblestone_wall",
     "input": [
-      [
-        "minecraft:cobblestone",
-        "minecraft:cobblestone",
-        "minecraft:cobblestone"
-      ],
-      [
-        "minecraft:cobblestone",
-        "minecraft:cobblestone",
-        "minecraft:cobblestone"
-      ]
+      ["minecraft:cobblestone", "minecraft:cobblestone", "minecraft:cobblestone"],
+      ["minecraft:cobblestone", "minecraft:cobblestone", "minecraft:cobblestone"]
     ]
   },
   "comparator": {
@@ -160,11 +134,7 @@
     "output": "minecraft:comparator",
     "input": [
       [null, "minecraft:redstone_torch", null],
-      [
-        "minecraft:redstone_torch",
-        "minecraft:quartz",
-        "minecraft:redstone_torch"
-      ],
+      ["minecraft:redstone_torch", "minecraft:quartz", "minecraft:redstone_torch"],
       ["minecraft:stone", "minecraft:stone", "minecraft:stone"]
     ]
   },
@@ -311,11 +281,7 @@
     "group": "",
     "output": "minecraft:dropper",
     "input": [
-      [
-        "minecraft:cobblestone",
-        "minecraft:cobblestone",
-        "minecraft:cobblestone"
-      ],
+      ["minecraft:cobblestone", "minecraft:cobblestone", "minecraft:cobblestone"],
       ["minecraft:cobblestone", null, "minecraft:cobblestone"],
       ["minecraft:cobblestone", "minecraft:redstone", "minecraft:cobblestone"]
     ]
@@ -335,17 +301,9 @@
     "group": "",
     "output": "minecraft:furnace",
     "input": [
-      [
-        "minecraft:cobblestone",
-        "minecraft:cobblestone",
-        "minecraft:cobblestone"
-      ],
+      ["minecraft:cobblestone", "minecraft:cobblestone", "minecraft:cobblestone"],
       ["minecraft:cobblestone", null, "minecraft:cobblestone"],
-      [
-        "minecraft:cobblestone",
-        "minecraft:cobblestone",
-        "minecraft:cobblestone"
-      ]
+      ["minecraft:cobblestone", "minecraft:cobblestone", "minecraft:cobblestone"]
     ]
   },
   "glass_bottle": {
@@ -438,21 +396,13 @@
     "type": "minecraft:crafting_shaped",
     "group": "",
     "output": "minecraft:golden_shovel",
-    "input": [
-      ["minecraft:gold_ingot"],
-      ["minecraft:stick"],
-      ["minecraft:stick"]
-    ]
+    "input": [["minecraft:gold_ingot"], ["minecraft:stick"], ["minecraft:stick"]]
   },
   "golden_sword": {
     "type": "minecraft:crafting_shaped",
     "group": "",
     "output": "minecraft:golden_sword",
-    "input": [
-      ["minecraft:gold_ingot"],
-      ["minecraft:gold_ingot"],
-      ["minecraft:stick"]
-    ]
+    "input": [["minecraft:gold_ingot"], ["minecraft:gold_ingot"], ["minecraft:stick"]]
   },
   "gold_block": {
     "type": "minecraft:crafting_shaped",
@@ -552,21 +502,9 @@
     "group": "iron_ingot",
     "output": "minecraft:iron_ingot",
     "input": [
-      [
-        "minecraft:iron_nugget",
-        "minecraft:iron_nugget",
-        "minecraft:iron_nugget"
-      ],
-      [
-        "minecraft:iron_nugget",
-        "minecraft:iron_nugget",
-        "minecraft:iron_nugget"
-      ],
-      [
-        "minecraft:iron_nugget",
-        "minecraft:iron_nugget",
-        "minecraft:iron_nugget"
-      ]
+      ["minecraft:iron_nugget", "minecraft:iron_nugget", "minecraft:iron_nugget"],
+      ["minecraft:iron_nugget", "minecraft:iron_nugget", "minecraft:iron_nugget"],
+      ["minecraft:iron_nugget", "minecraft:iron_nugget", "minecraft:iron_nugget"]
     ]
   },
   "iron_leggings": {
@@ -593,21 +531,13 @@
     "type": "minecraft:crafting_shaped",
     "group": "",
     "output": "minecraft:iron_shovel",
-    "input": [
-      ["minecraft:iron_ingot"],
-      ["minecraft:stick"],
-      ["minecraft:stick"]
-    ]
+    "input": [["minecraft:iron_ingot"], ["minecraft:stick"], ["minecraft:stick"]]
   },
   "iron_sword": {
     "type": "minecraft:crafting_shaped",
     "group": "",
     "output": "minecraft:iron_sword",
-    "input": [
-      ["minecraft:iron_ingot"],
-      ["minecraft:iron_ingot"],
-      ["minecraft:stick"]
-    ]
+    "input": [["minecraft:iron_ingot"], ["minecraft:iron_ingot"], ["minecraft:stick"]]
   },
   "iron_trapdoor": {
     "type": "minecraft:crafting_shaped",
@@ -828,17 +758,9 @@
     "group": "",
     "output": "minecraft:observer",
     "input": [
-      [
-        "minecraft:cobblestone",
-        "minecraft:cobblestone",
-        "minecraft:cobblestone"
-      ],
+      ["minecraft:cobblestone", "minecraft:cobblestone", "minecraft:cobblestone"],
       ["minecraft:redstone", "minecraft:redstone", "minecraft:quartz"],
-      [
-        "minecraft:cobblestone",
-        "minecraft:cobblestone",
-        "minecraft:cobblestone"
-      ]
+      ["minecraft:cobblestone", "minecraft:cobblestone", "minecraft:cobblestone"]
     ]
   },
   "painting": {
@@ -857,11 +779,7 @@
     "output": "minecraft:piston",
     "input": [
       ["minecraft:planks", "minecraft:planks", "minecraft:planks"],
-      [
-        "minecraft:cobblestone",
-        "minecraft:iron_ingot",
-        "minecraft:cobblestone"
-      ],
+      ["minecraft:cobblestone", "minecraft:iron_ingot", "minecraft:cobblestone"],
       ["minecraft:cobblestone", "minecraft:redstone", "minecraft:cobblestone"]
     ]
   },
@@ -915,11 +833,7 @@
     "group": "",
     "output": "minecraft:repeater",
     "input": [
-      [
-        "minecraft:redstone_torch",
-        "minecraft:redstone",
-        "minecraft:redstone_torch"
-      ],
+      ["minecraft:redstone_torch", "minecraft:redstone", "minecraft:redstone_torch"],
       ["minecraft:stone", "minecraft:stone", "minecraft:stone"]
     ]
   },
@@ -1001,11 +915,7 @@
     "group": "",
     "output": "minecraft:stone_pickaxe",
     "input": [
-      [
-        "minecraft:cobblestone",
-        "minecraft:cobblestone",
-        "minecraft:cobblestone"
-      ],
+      ["minecraft:cobblestone", "minecraft:cobblestone", "minecraft:cobblestone"],
       [null, "minecraft:stick", null],
       [null, "minecraft:stick", null]
     ]
@@ -1020,11 +930,7 @@
     "type": "minecraft:crafting_shaped",
     "group": "",
     "output": "minecraft:stone_shovel",
-    "input": [
-      ["minecraft:cobblestone"],
-      ["minecraft:stick"],
-      ["minecraft:stick"]
-    ]
+    "input": [["minecraft:cobblestone"], ["minecraft:stick"], ["minecraft:stick"]]
   },
   "stone_slab": {
     "type": "minecraft:crafting_shaped",
@@ -1046,11 +952,7 @@
     "type": "minecraft:crafting_shaped",
     "group": "",
     "output": "minecraft:stone_sword",
-    "input": [
-      ["minecraft:cobblestone"],
-      ["minecraft:cobblestone"],
-      ["minecraft:stick"]
-    ]
+    "input": [["minecraft:cobblestone"], ["minecraft:cobblestone"], ["minecraft:stick"]]
   },
   "torch": {
     "type": "minecraft:crafting_shaped",
@@ -1062,11 +964,7 @@
     "type": "minecraft:crafting_shaped",
     "group": "",
     "output": "minecraft:tripwire_hook",
-    "input": [
-      ["minecraft:iron_ingot"],
-      ["minecraft:stick"],
-      ["minecraft:planks"]
-    ]
+    "input": [["minecraft:iron_ingot"], ["minecraft:stick"], ["minecraft:planks"]]
   },
   "white_banner": {
     "type": "minecraft:crafting_shaped",
@@ -1143,5 +1041,34 @@
     "group": "",
     "output": "minecraft:wooden_sword",
     "input": [["minecraft:planks"], ["minecraft:planks"], ["minecraft:stick"]]
+  },
+  "lead": {
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:lead",
+    "input": [
+      ["minecraft:string", "minecraft:string", null],
+      ["minecraft:string", "minecraft:string", null],
+      [null, null, "minecraft:string"]
+    ]
+  },
+  "chiseled_bookshelf": {
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:chiseled_bookshelf",
+    "input": [
+      ["minecraft:planks", "minecraft:planks", "minecraft:planks"],
+      ["minecraft:oak_slab", "minecraft:oak_slab", "minecraft:oak_slab"],
+      ["minecraft:planks", "minecraft:planks", "minecraft:planks"]
+    ]
+  },
+  "white_harness": {
+    "type": "minecraft:crafting_shaped",
+    "group": "harness",
+    "output": "minecraft:white_harness",
+    "input": [
+      ["minecraft:leather", "minecraft:leather", "minecraft:leather"],
+      ["minecraft:glass", "minecraft:white_wool", "minecraft:glass"]
+    ]
   }
 }
