@@ -4,7 +4,6 @@ import prisma from "@/utils/prisma";
 import { trpc } from "@/utils/trpc";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import { useQueryState } from "nuqs";
 
 export default function Stats({
   liveUserScores, // actual user scores
@@ -33,108 +32,75 @@ export default function Stats({
       count: liveUserScores[key as keyof ScoreboardRow] as number,
     }));
 
-  const row = (left: string, right?: string) => (
-    <tr className="odd:text-white even:text-gray-400">
-      <td colSpan={right ? 1 : 2}>{left}</td>
-      {right && <td className="text-right">{right}</td>}
-    </tr>
-  );
-
   const ranking = () => {
     if (!localLeaderboard || isLoading) {
-      return row("Global Rank", "Loading...");
+      return <Row left="Global Rank" right="Loading..." />;
     }
     if (localLeaderboard.length === 0) {
       if (liveUserScores.total_games > 0) {
-        return row(
-          "Global Rank",
-          `Will be calculated soon! (out of ${totalPlayerCount})`
-        );
+        return <Row left="Global Rank" right={`Will be calculated soon! (out of ${totalPlayerCount})`} />;
       } else {
-        return row("Global Rank", "Play a game to get ranked!");
+        return <Row left="Global Rank" right="Play a game to get ranked!" />;
       }
     }
 
     const userRow = localLeaderboard?.find((r) => r.user_id)!;
-    const upRow = localLeaderboard?.find(
-      (r) => r.dense_rank_number === userRow.dense_rank_number - 1
-    );
-    const downRow = localLeaderboard?.find(
-      (r) => r.dense_rank_number === userRow.dense_rank_number + 1
-    );
+    const upRow = localLeaderboard?.find((r) => r.dense_rank_number === userRow.dense_rank_number - 1);
+    const downRow = localLeaderboard?.find((r) => r.dense_rank_number === userRow.dense_rank_number + 1);
     console.log(upRow, "upRow");
 
     let catchupMessage;
     if (upRow) {
-      if (
-        upRow?.total_games -
-          upRow?.total_losses -
-          (userRow?.total_games - userRow?.total_losses) ===
-        0
-      ) {
+      if (upRow?.total_games - upRow?.total_losses - (userRow?.total_games - userRow?.total_losses) === 0) {
         catchupMessage = (
           <>
-            {row("Player above you has the same score!")}
-
-            {row(
-              "You're behind by",
-              `${
-                userRow.total_win_attempts - upRow.total_win_attempts
-              } attempts`
-            )}
+            <Row left="Player above you has the same score!" />
+            <Row left="You're behind by" right={`${userRow.total_win_attempts - upRow.total_win_attempts} attempts`} />
           </>
         );
       } else {
-        catchupMessage = row(
-          "Wins behind",
-          (
-            upRow?.total_games -
-            upRow?.total_losses -
-            (userRow?.total_games - userRow?.total_losses)
-          ).toString()
+        catchupMessage = (
+          <Row
+            left="Wins behind"
+            right={(
+              upRow?.total_games -
+              upRow?.total_losses -
+              (userRow?.total_games - userRow?.total_losses)
+            ).toLocaleString()}
+          />
         );
       }
     }
 
     let leadMessage;
     if (downRow) {
-      if (
-        userRow?.total_games -
-          userRow?.total_losses -
-          (downRow?.total_games - downRow?.total_losses) ===
-        0
-      ) {
+      if (userRow?.total_games - userRow?.total_losses - (downRow?.total_games - downRow?.total_losses) === 0) {
         leadMessage = (
           <>
-            {row("Player below you has the same score!")}
-            {row(
-              "You're ahead by",
-              `${
-                downRow.total_win_attempts - userRow.total_win_attempts
-              } attempts`
-            )}
+            <Row left="Player below you has the same score!" />
+            <Row left="You're ahead by" right={`${downRow.total_win_attempts - userRow.total_win_attempts} attempts`} />
           </>
         );
       } else {
-        leadMessage = row(
-          "Wins ahead",
-          (
-            userRow?.total_games -
-            userRow?.total_losses -
-            (downRow?.total_games - downRow?.total_losses)
-          ).toString()
+        leadMessage = (
+          <Row
+            left="Wins ahead"
+            right={(
+              userRow?.total_games -
+              userRow?.total_losses -
+              (downRow?.total_games - downRow?.total_losses)
+            ).toLocaleString()}
+          />
         );
       }
     }
 
     return (
       <>
-        {row(
-          "Global Rank",
-          userRow?.dense_rank_number
-            ? `${userRow?.dense_rank_number}/${totalPlayerCount}`
-            : "N/A"
-        )}
+        <Row
+          left="Global Rank"
+          right={userRow?.dense_rank_number ? `${userRow?.dense_rank_number}/${totalPlayerCount}` : "N/A"}
+        />
 
         {upRow && catchupMessage}
         {downRow && leadMessage}
@@ -150,45 +116,25 @@ export default function Stats({
           <tbody className="w-full">
             {ranking()}
             <tr className="h-4"></tr>
-            <Row
-              left="Games played"
-              right={liveUserScores.total_games.toString()}
-            />
-            <Row
-              left="Games won"
-              right={(
-                liveUserScores.total_games - liveUserScores.total_losses
-              ).toString()}
-            />
-            <Row
-              left="Games lost"
-              right={liveUserScores.total_losses.toString()}
-            />
+            <Row left="Games played" right={liveUserScores.total_games.toLocaleString()} />
+            <Row left="Games won" right={(liveUserScores.total_games - liveUserScores.total_losses).toLocaleString()} />
+            <Row left="Games lost" right={liveUserScores.total_losses.toLocaleString()} />
             <Row
               left="Win% ratio"
               right={
                 (
                   Math.round(
-                    ((liveUserScores.total_games -
-                      liveUserScores.total_losses) /
-                      liveUserScores.total_games) *
+                    ((liveUserScores.total_games - liveUserScores.total_losses) / liveUserScores.total_games) *
                       100 *
                       100
                   ) / 100
-                ).toString() + "%"
+                ).toLocaleString() + "%"
               }
             />
             <tr className="h-4"></tr>
-            <Row
-              left={`Total attempts`}
-              right={liveUserScores.total_win_attempts.toString()}
-            />
+            <Row left={`Total attempts`} right={liveUserScores.total_win_attempts.toLocaleString()} />
             {Object.values(allAttempts).map((a, i) => (
-              <Row
-                key={i}
-                left={`Wins with ${a.attempts} attempts`}
-                right={a.count.toString()}
-              />
+              <Row key={i} left={`Wins with ${a.attempts} attempts`} right={a.count.toLocaleString()} />
             ))}
           </tbody>
         </table>
@@ -223,9 +169,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   let totalPlayerCount: number;
 
   try {
-    [liveUserScores, /* results,*/ totalPlayerCount] =
-      await prisma.$transaction([
-        prisma.$queryRaw<ScoreboardRow[]>`
+    [liveUserScores, /* results,*/ totalPlayerCount] = await prisma.$transaction([
+      prisma.$queryRaw<ScoreboardRow[]>`
         SELECT
           -1,
           user_id,
@@ -247,29 +192,29 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         FROM public.game_count
         WHERE user_id = ${userId} GROUP BY user_id;
       `,
-        // prisma.$queryRaw<ScoreboardRow[]>`
-        //   WITH user_rank AS (
-        //     SELECT dense_rank_number FROM scoreboard WHERE user_id = ${userId}
-        //   )
+      // prisma.$queryRaw<ScoreboardRow[]>`
+      //   WITH user_rank AS (
+      //     SELECT dense_rank_number FROM scoreboard WHERE user_id = ${userId}
+      //   )
 
-        //   SELECT *
-        //   FROM scoreboard
-        //   WHERE user_id = ${userId}
-        //     OR user_id IN (
-        //         SELECT user_id
-        //         FROM scoreboard
-        //         WHERE dense_rank_number = (SELECT dense_rank_number FROM user_rank) - 1
-        //         LIMIT 1
-        //       )
-        //     OR user_id IN (
-        //         SELECT user_id
-        //         FROM scoreboard
-        //         WHERE dense_rank_number = (SELECT dense_rank_number FROM user_rank) + 1
-        //         LIMIT 1
-        //       );
-        // `,
-        prisma.user.count(),
-      ]);
+      //   SELECT *
+      //   FROM scoreboard
+      //   WHERE user_id = ${userId}
+      //     OR user_id IN (
+      //         SELECT user_id
+      //         FROM scoreboard
+      //         WHERE dense_rank_number = (SELECT dense_rank_number FROM user_rank) - 1
+      //         LIMIT 1
+      //       )
+      //     OR user_id IN (
+      //         SELECT user_id
+      //         FROM scoreboard
+      //         WHERE dense_rank_number = (SELECT dense_rank_number FROM user_rank) + 1
+      //         LIMIT 1
+      //       );
+      // `,
+      prisma.user.count(),
+    ]);
     console.log(userId, "results", results);
   } catch (e) {
     console.error(e);
@@ -283,15 +228,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   // hack to make bigint work with JSON.stringify
   liveUserScores = JSON.parse(
-    JSON.stringify(liveUserScores, (_key, value) =>
-      typeof value === "bigint" ? Number(value) : value
-    )
+    JSON.stringify(liveUserScores, (_key, value) => (typeof value === "bigint" ? Number(value) : value))
   );
-  results = JSON.parse(
-    JSON.stringify(results, (_key, value) =>
-      typeof value === "bigint" ? Number(value) : value
-    )
-  );
+  results = JSON.parse(JSON.stringify(results, (_key, value) => (typeof value === "bigint" ? Number(value) : value)));
 
   return {
     props: {
