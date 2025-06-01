@@ -666,6 +666,16 @@
       ["minecraft:planks", "minecraft:planks", "minecraft:planks"]
     ]
   },
+  "netherreactor": {
+    "type": "minecraft:crafting_shaped",
+    "group": "",
+    "output": "minecraft:netherreactor",
+    "input": [
+      ["minecraft:iron_ingot", "minecraft:diamond", "minecraft:iron_ingot"],
+      ["minecraft:iron_ingot", "minecraft:diamond", "minecraft:iron_ingot"],
+      ["minecraft:iron_ingot", "minecraft:diamond", "minecraft:iron_ingot"]
+    ]
+  },
   "oak_boat": {
     "type": "minecraft:crafting_shaped",
     "group": "boat",
