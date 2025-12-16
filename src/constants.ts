@@ -9,7 +9,7 @@ export const HICONTRAST_COLORS = {
   SUCCESS_COLOR: "#f5793a",
   NEAR_SUCCESS_COLOR: "#85c0f9",
 };
-export const CACHE_VERSION = "20251215_";
+export const CACHE_VERSION = "20251215_1";
 
 export const DEFAULT_OPTIONS = {
   highContrast: false,
