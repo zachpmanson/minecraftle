@@ -1,14 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
-import Slot from "./Slot.component";
+import { CACHE_VERSION, COLORS, HICONTRAST_COLORS, PUBLIC_DIR } from "@/constants";
 import { useGlobal } from "@/context/Global/context";
-import {
-  CACHE_VERSION,
-  COLORS,
-  HICONTRAST_COLORS,
-  PUBLIC_DIR,
-} from "@/constants";
-import MCButton from "./MCButton.component";
 import { Color } from "@/types";
+import { useEffect, useMemo, useState } from "react";
+import MCButton from "./MCButton.component";
+import Slot from "./Slot.component";
 
 export default function Inventory({ guessCount }: { guessCount: number }) {
   const {
@@ -41,13 +36,9 @@ export default function Inventory({ guessCount }: { guessCount: number }) {
         for (let [tableNum, table] of colorTables.entries()) {
           for (let [r, row] of table.entries()) {
             for (let [c, slot] of row.entries()) {
-              if (
-                craftingTables[tableNum][r][c] !== undefined &&
-                craftingTables[tableNum][r][c] !== null
-              ) {
+              if (craftingTables[tableNum][r][c] !== undefined && craftingTables[tableNum][r][c] !== null) {
                 const newColor = colorTables[tableNum][r][c];
-                const existingColor =
-                  newInvBackgrounds[craftingTables[tableNum][r][c]!];
+                const existingColor = newInvBackgrounds[craftingTables[tableNum][r][c]!];
 
                 if (existingColor === 2 || newColor === 2) {
                   newInvBackgrounds[craftingTables[tableNum][r][c]!] = 2;
@@ -64,9 +55,7 @@ export default function Inventory({ guessCount }: { guessCount: number }) {
       }
     }, [givenIngredients, craftingTables, colorTables]) ?? {};
 
-  const { SUCCESS_COLOR, NEAR_SUCCESS_COLOR, WRONG_COLOR } = highContrast
-    ? HICONTRAST_COLORS
-    : COLORS;
+  const { SUCCESS_COLOR, NEAR_SUCCESS_COLOR, WRONG_COLOR } = highContrast ? HICONTRAST_COLORS : COLORS;
 
   const COLOR_MAP: { [key: number]: string | undefined } = {
     0: WRONG_COLOR,
@@ -75,18 +64,17 @@ export default function Inventory({ guessCount }: { guessCount: number }) {
   };
 
   useEffect(() => {
-    let storedgivenIngredients = JSON.parse(
-      localStorage.getItem(`givenIngredients_${CACHE_VERSION}`) ?? "[]"
-    );
+    let storedgivenIngredients = JSON.parse(localStorage.getItem(`givenIngredients_${CACHE_VERSION}`) ?? "[]");
     if (storedgivenIngredients.length === 0) {
-      fetch(PUBLIC_DIR + "/data/given_ingredients.json")
+      fetch(PUBLIC_DIR + "/data/given_ingredients.json", {
+        headers: {
+          "Cache-Control": "no-cache",
+        },
+      })
         .then((response) => response.json())
         .then((obj) => {
           setGivenIngredients(obj);
-          localStorage.setItem(
-            `givenIngredients_${CACHE_VERSION}`,
-            JSON.stringify(obj)
-          );
+          localStorage.setItem(`givenIngredients_${CACHE_VERSION}`, JSON.stringify(obj));
         });
     } else {
       setGivenIngredients(storedgivenIngredients);
@@ -132,9 +120,7 @@ export default function Inventory({ guessCount }: { guessCount: number }) {
       </div>
       <div className="flex w-full justify-between items-center">
         <div className="h-8">
-          {gameState === "inprogress" && !isTableEmpty && (
-            <MCButton onClick={clearLastTable}>Clear</MCButton>
-          )}
+          {gameState === "inprogress" && !isTableEmpty && <MCButton onClick={clearLastTable}>Clear</MCButton>}
         </div>
         <p>Guess {guessCount}/10</p>
       </div>

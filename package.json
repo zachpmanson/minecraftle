@@ -9,7 +9,7 @@
     "lint": "next lint",
     "generate": "prisma generate",
     "migrate": "prisma migrate deploy",
-    "postinstall": "npm run generate"
+    "postinstall": "pnpm generate"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.19",

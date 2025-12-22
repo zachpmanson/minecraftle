@@ -2212,5 +2212,35 @@
             "minecraft:glass", "minecraft:white_wool", "minecraft:glass"
           ]
         ]
+    },
+    "bundle": {
+      "type": "minecraft:crafting_shaped",
+        "group": "",
+        "output": "minecraft:bundle",
+        "input": [
+            [
+                "minecraft:string"
+            ],
+            [
+                "minecraft:leather"
+            ]
+        ]
+    },
+    "saddle": {
+      "type": "minecraft:crafting_shaped",
+        "group": "",
+        "output": "minecraft:saddle",
+        "input": [
+            [
+                null,
+                "minecraft:leather",
+                null
+            ],
+            [
+                "minecraft:leather",
+                "minecraft:iron_ingot",
+                "minecraft:leather"
+            ]
+        ]
     }
 }

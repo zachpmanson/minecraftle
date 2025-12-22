@@ -1,7 +1,6 @@
 import MCButton from "@/components/MCButton.component";
 import { useGlobal } from "@/context/Global/context";
 import Link from "next/link";
-import { useState, useRef } from "react";
 
 export default function Layout({ children }: any) {
   const { setCursorItem, userId, setOptions, resetGame } = useGlobal();
@@ -51,7 +50,7 @@ export default function Layout({ children }: any) {
                       })
                     }
                   >
-                    <div className="px-4">☼</div>
+                    <div className="px-4">High Contrast</div>
                   </MCButton>
                 </div>
                 {/* </div> */}

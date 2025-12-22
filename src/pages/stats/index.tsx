@@ -24,24 +24,12 @@ export default function Stats({
         <table className="w-full">
           <tbody className="w-full">
             <tr className="h-4"></tr>
-            <Row left="Players in last day" right={count_1.toLocaleString()} />
-            <Row left="Players in last week" right={count_7.toLocaleString()} />
-            <Row
-              left="Players in last 30 days"
-              right={count_30.toLocaleString()}
-            />
-            <Row
-              left="Players in last 90 days"
-              right={count_90.toLocaleString()}
-            />
-            <Row
-              left="Players in last 365 days"
-              right={count_365.toLocaleString()}
-            />
-            <Row
-              left="Players all time"
-              right={count_all_time.toLocaleString()}
-            />
+            <Row left="Players in last day" right={count_1?.toLocaleString()} />
+            <Row left="Players in last week" right={count_7?.toLocaleString()} />
+            <Row left="Players in last 30 days" right={count_30?.toLocaleString()} />
+            <Row left="Players in last 90 days" right={count_90?.toLocaleString()} />
+            <Row left="Players in last 365 days" right={count_365?.toLocaleString()} />
+            <Row left="Players all time" right={count_all_time?.toLocaleString()} />
           </tbody>
         </table>
       </div>
@@ -60,45 +48,44 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
   try {
-    [count_1, count_7, count_30, count_90, count_365, count_all_time] =
-      await prisma.$transaction([
-        prisma.user.count({
-          where: {
-            last_game_date: {
-              gte: new Date(Date.now() - 1 * MS_PER_DAY),
-            },
+    [count_1, count_7, count_30, count_90, count_365, count_all_time] = await prisma.$transaction([
+      prisma.user.count({
+        where: {
+          last_game_date: {
+            gte: new Date(Date.now() - 1 * MS_PER_DAY),
           },
-        }),
-        prisma.user.count({
-          where: {
-            last_game_date: {
-              gte: new Date(Date.now() - 7 * MS_PER_DAY),
-            },
+        },
+      }),
+      prisma.user.count({
+        where: {
+          last_game_date: {
+            gte: new Date(Date.now() - 7 * MS_PER_DAY),
           },
-        }),
-        prisma.user.count({
-          where: {
-            last_game_date: {
-              gte: new Date(Date.now() - 30 * MS_PER_DAY),
-            },
+        },
+      }),
+      prisma.user.count({
+        where: {
+          last_game_date: {
+            gte: new Date(Date.now() - 30 * MS_PER_DAY),
           },
-        }),
-        prisma.user.count({
-          where: {
-            last_game_date: {
-              gte: new Date(Date.now() - 90 * MS_PER_DAY),
-            },
+        },
+      }),
+      prisma.user.count({
+        where: {
+          last_game_date: {
+            gte: new Date(Date.now() - 90 * MS_PER_DAY),
           },
-        }),
-        prisma.user.count({
-          where: {
-            last_game_date: {
-              gte: new Date(Date.now() - 365 * MS_PER_DAY),
-            },
+        },
+      }),
+      prisma.user.count({
+        where: {
+          last_game_date: {
+            gte: new Date(Date.now() - 365 * MS_PER_DAY),
           },
-        }),
-        prisma.user.count(),
-      ]);
+        },
+      }),
+      prisma.user.count(),
+    ]);
   } catch (e) {
     console.error(e);
     return {
