@@ -1,18 +1,10 @@
 import { DEFAULT_OPTIONS } from "@/constants";
-import {
-  ColorTable,
-  GameState,
-  ItemMap,
-  MatchMap,
-  Options,
-  RecipeMap,
-  Table,
-  TableItem,
-} from "@/types";
+import { ColorTable, GameState, ItemMap, MatchMap, Options, RecipeMap, Table, TableItem } from "@/types";
 import { Dispatch, SetStateAction, createContext, useContext } from "react";
 
 export type GlobalContextProps = {
   userId: string;
+  setUserId: Dispatch<SetStateAction<string>>;
   solution: string;
   items: ItemMap;
   cursorItem: TableItem;
@@ -35,6 +27,7 @@ export type GlobalContextProps = {
 
 const GlobalContext = createContext<GlobalContextProps>({
   userId: "",
+  setUserId: () => {},
   solution: "stick",
   items: {},
   cursorItem: undefined,

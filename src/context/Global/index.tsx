@@ -69,7 +69,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
             [undefined, undefined, undefined],
           ],
         ]),
-      250
+      250,
     );
     setColorTables([
       [
@@ -332,6 +332,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const value: GlobalContextProps = useMemo(
     () => ({
       userId,
+      setUserId,
       solution,
       items,
       cursorItem,
@@ -354,6 +355,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
     }),
     [
       userId,
+      setUserId,
       solution,
       items,
       cursorItem,
@@ -373,7 +375,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
       resetGame,
       gameDate,
       remainingSolutionVariants,
-    ]
+    ],
   );
 
   return <GlobalContextProvider value={value}>{children}</GlobalContextProvider>;
