@@ -2,7 +2,7 @@
 
 A daily puzzle game fusing Wordle and Minecraft crafting recipes built with Next.js.
 
-[Play Minecraftle!](https://minecraftle.zachmanson.com)
+[Play Minecraftle](https://minecraftle.zachmanson.com)
 
 ## Setting Up
 
