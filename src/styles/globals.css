@@ -148,6 +148,38 @@ header {
   background-repeat: no-repeat;
 }
 
+/* Scrolling marquee */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee > * {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee-scroll 12s linear infinite;
+}
+
+.marquee:hover > * {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee > * {
+    animation: none;
+    padding-left: 0;
+  }
+}
+
 #cursor {
   position: absolute;
   transform: translate(-50%, -50%);

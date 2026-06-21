@@ -14,15 +14,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const router = useRouter();
   const { random } = router.query;
-  const {
-    craftingTables,
-    gameState,
-    userId,
-    resetGame,
-    recipes,
-    gameDate,
-    items,
-  } = useGlobal();
+  const { craftingTables, gameState, userId, resetGame, recipes, gameDate, items } = useGlobal();
   const [popupVisible, setPopupVisible] = useState(false);
 
   const submitGame = trpc.game.submitGame.useMutation();
@@ -45,10 +37,7 @@ export default function Home() {
 
     setPopupVisible(true);
 
-    if (
-      localStorage.getItem("lastGameDate") !== gameDate.toDateString() &&
-      !random
-    ) {
+    if (localStorage.getItem("lastGameDate") !== gameDate.toDateString() && !random) {
       submitGame
         .mutateAsync({
           user_id: userId,
@@ -62,10 +51,13 @@ export default function Home() {
   }, [gameState]);
 
   return (
-    <div
-      className={`flex max-w-lg flex-col items-center m-auto ${inter.className}`}
-    >
+    <div className={`flex max-w-lg flex-col items-center m-auto ${inter.className}`}>
       <Cursor />
+      <div className="inv-background py-3 pl-1">
+        <div className="marquee">
+          <p>New recipes added from Minecraft 1.26.2!</p>
+        </div>
+      </div>
 
       {Object.keys(recipes).length > 0 && Object.keys(items).length > 0 ? (
         <div className="guesses" id="guesses">
@@ -73,10 +65,7 @@ export default function Home() {
             <CraftingTable
               key={index}
               tableNum={index}
-              active={
-                index === craftingTables.length - 1 &&
-                gameState === "inprogress"
-              }
+              active={index === craftingTables.length - 1 && gameState === "inprogress"}
             />
           ))}
         </div>
@@ -97,9 +86,7 @@ export default function Home() {
           }}
         />
       )}
-      {gameState !== "inprogress" && (
-        <MCButton onClick={() => setPopupVisible(true)}>Show Summary</MCButton>
-      )}
+      {gameState !== "inprogress" && <MCButton onClick={() => setPopupVisible(true)}>Show Summary</MCButton>}
     </div>
   );
 }
