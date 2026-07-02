@@ -10,9 +10,9 @@ let
     version = "0.1.0";
     src = ../.;
     fetcherVersion = 3;
-    # Bootstrap: set to pkgs.lib.fakeHash, run `nix build`, paste the hash
-    # from the error. Re-run whenever pnpm-lock.yaml changes.
-    hash = pkgs.lib.fakeHash;
+    # Re-derive whenever pnpm-lock.yaml changes: set to pkgs.lib.fakeHash,
+    # run `nix build`, and paste the hash from the error.
+    hash = "sha256-jsZvykQYkC4IY1jjXQxZuLpbijnMNiJ3TBQuc1WBXQM=";
   };
 in
 
