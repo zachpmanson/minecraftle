@@ -33,11 +33,12 @@ Re-run this whenever `pnpm-lock.yaml` changes.
 
 ## Prisma version alignment (highest-risk item)
 
-`@prisma/client` / `prisma` are pinned to **5.22.0** in `pnpm-lock.yaml`, so the
-package uses `prisma-engines_5`. If a `nix build` / runtime error reports an
-engine-version mismatch, check `nix eval nixpkgs#prisma-engines_5.version` and,
-if it drifts off the 5.x line you need, pin `nixpkgs` in `flake.nix` to a commit
-where it matches (or add an overlay overriding `prisma-engines_5`).
+Prisma requires `prisma-engines` and `prisma`/`@prisma/client` to be at the
+**exact** same version. `@prisma/client` / `prisma` are pinned (no caret) to
+**6.19.3** in `package.json`/`pnpm-lock.yaml`, which is exactly what
+`prisma-engines_6` ships in nixos-26.05 (`nix eval nixpkgs#prisma-engines_6.version`).
+If you bump the Prisma dependency, keep it pinned exact and bump the nixpkgs
+channel (and the `prisma-engines_N` attribute) to a version that matches.
 
 ## Deploy (`configuration.nix`)
 

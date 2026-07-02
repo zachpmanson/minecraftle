@@ -1,9 +1,9 @@
 { pkgs ? import <nixpkgs> {} }:
 
 let
-  # Prisma engines must match @prisma/client / prisma from pnpm-lock.yaml (5.22.0).
-  # nixos-26.05 exposes versioned attrs; prisma-engines_5 tracks the 5.x line.
-  prisma-engines = pkgs.prisma-engines_5;
+  # Prisma engines must match @prisma/client / prisma from pnpm-lock.yaml exactly.
+  # Both are pinned to 6.19.3, which is what prisma-engines_6 ships in nixos-26.05.
+  prisma-engines = pkgs.prisma-engines_6;
 
   pnpmDeps = pkgs.fetchPnpmDeps {
     pname = "minecraftle";

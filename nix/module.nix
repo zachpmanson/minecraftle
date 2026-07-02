@@ -56,8 +56,8 @@ in {
       before = [ "minecraftle.service" ];
 
       environment = {
-        PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines_5}/lib/libquery_engine.node";
-        PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines_5}/bin/schema-engine";
+        PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines_6}/lib/libquery_engine.node";
+        PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines_6}/bin/schema-engine";
       };
 
       serviceConfig = {
@@ -84,7 +84,7 @@ in {
         PORT = toString cfg.port;
         HOSTNAME = cfg.hostname;
         NODE_ENV = "production";
-        PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines_5}/lib/libquery_engine.node";
+        PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines_6}/lib/libquery_engine.node";
       };
 
       serviceConfig = {

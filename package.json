@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.19",
-    "@prisma/client": "^5.22.0",
+    "@prisma/client": "6.19.3",
     "@tanstack/react-query": "^5.101.2",
     "@trpc/client": "11.0.0-rc.819",
     "@trpc/next": "11.0.0-rc.819",
@@ -21,7 +21,7 @@
     "@trpc/server": "11.0.0-rc.819",
     "next": "^16.2.9",
     "nuqs": "^1.20.0",
-    "prisma": "^5.22.0",
+    "prisma": "6.19.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "seedrandom": "^3.0.5",
