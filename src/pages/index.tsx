@@ -6,10 +6,8 @@ import MCButton from "@/components/MCButton.component";
 import Popup from "@/components/Popup.component";
 import { useGlobal } from "@/context/Global/context";
 import { trpc } from "@/utils/trpc";
-import { Inter } from "next/font/google";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const router = useRouter();
@@ -51,7 +49,7 @@ export default function Home() {
   }, [gameState]);
 
   return (
-    <div className={`flex max-w-lg flex-col items-center m-auto ${inter.className}`}>
+    <div className="flex max-w-lg flex-col items-center m-auto">
       <Cursor />
       <div className="inv-background py-3 pl-1">
         <div className="marquee">
