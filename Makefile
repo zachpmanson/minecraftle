@@ -15,5 +15,5 @@ clean:
 format:
 	pnpm lint
 
-deploy: build
-	rsync -r --delete .next/ minecraftle:/
+deploy:
+	ssh minecraftle
