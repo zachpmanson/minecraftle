@@ -219,7 +219,7 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
   const trimVariants = (guess: Table) => {
     let [matchmaps, matchcounts] = checkRemainingSolutionVariants(guess);
     // find remaining variants, correctSlots only has green slots
-    let [remainingVariantsIndices, correctSlots] = findRemainingVariantsIndices(matchmaps, matchcounts);
+    let [remainingVariantsIndices, correctSlots] = findRemainingVariantsIndices(matchmaps, matchcounts, guess);
 
     setRemainingSolutionVariants((old) => [...old].filter((_, i) => remainingVariantsIndices.includes(i)));
 
@@ -249,11 +249,37 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
    * keeps variants with matching correct slots as the chosen one.
    * @param {Array} matchmaps
    * @param {Array} matchcounts
+   * @param {Array} guess
    * @returns
    */
-  function findRemainingVariantsIndices(matchmaps: MatchMap[], matchcounts: number[]): [number[], MatchMap] {
+  function findRemainingVariantsIndices(matchmaps: MatchMap[], matchcounts: number[], guess: Table): [number[], MatchMap] {
     // Get index of max value in matchcounts
-    let maxMatchesIndex = matchcounts.indexOf(Math.max(...matchcounts));
+    let maxMatches = Math.max(...matchcounts);
+    let maxMatchesIndex = matchcounts.indexOf(maxMatches);
+
+    // Resolve ties by preferring variants that match the guess's occupied slots
+    if (matchcounts.length > 1 && matchcounts.filter(c => c === maxMatches).length > 1) {
+      let bestIndex = maxMatchesIndex;
+      let bestOverlap = -1;
+      for (let i = 0; i < matchcounts.length; i++) {
+        if (matchcounts[i] === maxMatches) {
+          let overlap = 0;
+          for (let r = 0; r < 3; r++) {
+            for (let c = 0; c < 3; c++) {
+              if (matchmaps[i][r][c] === 2 && guess[r][c] !== undefined && guess[r][c] !== null) {
+                overlap++;
+              }
+            }
+          }
+          if (overlap > bestOverlap) {
+            bestOverlap = overlap;
+            bestIndex = i;
+          }
+        }
+      }
+      maxMatchesIndex = bestIndex;
+    }
+
     // generate mask matchmap at this index for 2's
     let [correctSlots, _, __] = compareTables(matchmaps[maxMatchesIndex], matchmaps[maxMatchesIndex], 2);
 
