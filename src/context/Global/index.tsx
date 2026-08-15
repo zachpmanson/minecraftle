@@ -130,6 +130,66 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
     setSolution(randomSolution);
   };
 
+  // Dev/test hook: lets you force the puzzle's correct answer from the JS
+  // console via `window.minecraftle` (e.g. to interactively test hint
+  // behaviour with specific recipes).
+  useEffect(() => {
+    const emptyTable = (): Table => [
+      [undefined, undefined, undefined],
+      [undefined, undefined, undefined],
+      [undefined, undefined, undefined],
+    ];
+    const emptyColors = (): ColorTable => [
+      [undefined, undefined, undefined],
+      [undefined, undefined, undefined],
+      [undefined, undefined, undefined],
+    ];
+
+    const api = {
+      /** Set the solution to a known recipe key, e.g. setSolution("stick"). */
+      setSolution: (name: string) => {
+        if (!recipes[name]) {
+          console.warn(`[minecraftle] unknown recipe key "${name}". Keys:`, Object.keys(recipes));
+          return;
+        }
+        setGameState("inprogress");
+        setSolution(name);
+        setCursorItem(undefined);
+        setCraftingTables([emptyTable()]);
+        setColorTables([emptyColors()]);
+        console.log(`[minecraftle] solution set to "${name}"`, recipes[name].input);
+      },
+      /** Set a custom solution recipe (grid of item ids), e.g.
+       *  setCustomSolution([["minecraft:planks"],["minecraft:planks"]]).
+       *  Note: the win check compares against recipes[solution].output, so a
+       *  custom answer won't trigger the "won" screen — it's for testing
+       *  hint colours.
+       */
+      setCustomSolution: (input: (string | null)[][]) => {
+        if (!Array.isArray(input) || input.length === 0) {
+          console.warn("[minecraftle] setCustomSolution expects a non-empty array of rows");
+          return;
+        }
+        setGameState("inprogress");
+        setSolutionRecipe(input);
+        setCursorItem(undefined);
+        setCraftingTables([emptyTable()]);
+        setColorTables([emptyColors()]);
+        console.log("[minecraftle] custom solution set:", input);
+      },
+      reset: (isRandom: boolean = false) => resetGame(isRandom),
+      getState: () => ({
+        solution,
+        solutionVariantsLeft: remainingSolutionVariants.length,
+      }),
+    };
+
+    (window as unknown as { minecraftle?: typeof api }).minecraftle = api;
+    return () => {
+      delete (window as unknown as { minecraftle?: typeof api }).minecraftle;
+    };
+  }, [recipes, solution, remainingSolutionVariants, resetGame]);
+
   const getUserId = () => {
     let user_id = localStorage.getItem("user_id");
 
