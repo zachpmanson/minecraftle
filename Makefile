@@ -1,4 +1,4 @@
-.PHONY: dev build typecheck clean format deploy
+.PHONY: dev build typecheck test clean format deploy
 
 dev:
 	pnpm dev --turbo
@@ -8,6 +8,9 @@ build:
 
 typecheck:
 	tsc --noEmit
+
+test:
+	node --test $$(find test -name '*.test.*' 2>/dev/null)
 
 clean:
 	rm -rf .next
