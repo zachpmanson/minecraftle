@@ -1,6 +1,7 @@
 import { CACHE_VERSION, DEFAULT_OPTIONS, PUBLIC_DIR } from "@/constants";
 import { ColorTable, GameState, ItemMap, MatchMap, Options, RecipeMap, Table, TableItem } from "@/types";
 import { compareTables, getVariantsWithReflections } from "@/utils/recipe";
+import { resolveGuess } from "@/utils/crafting";
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import seedrandom from "seedrandom";
 import { GlobalContextProps, GlobalContextProvider } from "./context";
@@ -277,117 +278,13 @@ const GlobalProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const trimVariants = (guess: Table) => {
-    let [matchmaps, matchcounts] = checkRemainingSolutionVariants(guess);
-    // find remaining variants, correctSlots only has green slots
-    let [remainingVariantsIndices, correctSlots] = findRemainingVariantsIndices(matchmaps, matchcounts);
+    // pure crafting resolver: trims the variant pool + computes green/orange
+    const { remaining, colors } = resolveGuess(solutionRecipe, remainingSolutionVariants, guess);
 
-    setRemainingSolutionVariants((old) => [...old].filter((_, i) => remainingVariantsIndices.includes(i)));
+    setRemainingSolutionVariants(remaining);
 
-    // add orange slots to correctSlots
-    addOrangeSlots(guess, correctSlots);
-
-    return correctSlots;
+    return colors;
   };
-
-  const checkRemainingSolutionVariants = (guess: Table): [MatchMap[], number[]] => {
-    let matchmaps: MatchMap[] = [];
-    let matchcounts: number[] = [];
-
-    for (let variant of remainingSolutionVariants) {
-      let matchData = compareTables(variant, guess);
-
-      matchmaps.push(matchData[0]);
-      matchcounts.push(matchData[1]);
-    }
-
-    return [matchmaps, matchcounts];
-  };
-
-  /**
-   * Determines which variants in remainingVariants will stay.  Chooses variant
-   * with highest number of matches.  If multiple of these, picks one and only
-   * keeps variants with matching correct slots as the chosen one.
-   * @param {Array} matchmaps
-   * @param {Array} matchcounts
-   * @returns
-   */
-  function findRemainingVariantsIndices(matchmaps: MatchMap[], matchcounts: number[]): [number[], MatchMap] {
-    // Get index of max value in matchcounts
-    let maxMatchesIndex = matchcounts.indexOf(Math.max(...matchcounts));
-    // generate mask matchmap at this index for 2's
-    let [correctSlots, _, __] = compareTables(matchmaps[maxMatchesIndex], matchmaps[maxMatchesIndex], 2);
-
-    let remainingVariantsIndices: number[] = [];
-
-    for (let [i, matchmap] of matchmaps.entries()) {
-      // mask to only include 2's in matchmaps
-      let matchDataToCompare = compareTables(matchmap, matchmap, 2);
-      // compare masked
-      let correctSlotOverlapData = compareTables(correctSlots, matchDataToCompare[0]);
-
-      // if correctSlotOverlapData is full match
-      if (correctSlotOverlapData[2]) {
-        remainingVariantsIndices.push(i);
-      }
-    }
-
-    return [remainingVariantsIndices, correctSlots];
-  }
-
-  /**
-   * Adds orange slots to a given table.  Requires all correctSlots to already be
-   * filled in.
-   * @param {Array} guess
-   * @param {Array} correctSlots
-   */
-  function addOrangeSlots(guess: Table, correctSlots: MatchMap) {
-    let n_items: { [key: string]: number } = {};
-    // first pass initiliases all item dict entries to 0
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
-        if (guess[i][j] === null || guess[i][j] === undefined) {
-          continue;
-        }
-
-        if (n_items[guess[i][j]!] === undefined) {
-          n_items[guess[i][j]!] = 0;
-        }
-      }
-    }
-
-    // Second pass counts how many of each item are correct
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
-        if (guess[i][j] === null || guess[i][j] === undefined) {
-          continue;
-        }
-
-        if (correctSlots[i][j] === 2) {
-          n_items[guess[i][j]!]++;
-        }
-      }
-    }
-
-    // finds how many of each item are left to be identified
-    let n_unidentified_items = { ...solution_n_items };
-    for (let name of Object.keys(n_unidentified_items)) {
-      n_unidentified_items[name] -= n_items[name];
-    }
-
-    // final pass marks (at most n) orange slots for each item in n_unidentified_items
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
-        if (guess[i][j] === null || guess[i][j] === undefined) {
-          continue;
-        }
-
-        if (correctSlots[i][j] !== 2 && n_unidentified_items[guess[i][j]!] > 0) {
-          correctSlots[i][j] = 3;
-          n_unidentified_items[guess[i][j]!]--;
-        }
-      }
-    }
-  }
 
   const value: GlobalContextProps = useMemo(
     () => ({
