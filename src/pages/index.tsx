@@ -51,11 +51,11 @@ export default function Home() {
   return (
     <div className="flex max-w-lg flex-col items-center m-auto">
       <Cursor />
-      <div className="inv-background py-3 pl-1">
+      {/* <div className="inv-background py-3 pl-1">
         <div className="marquee">
           <p>New recipes added from Minecraft 1.26.2!</p>
         </div>
-      </div>
+      </div> */}
 
       {Object.keys(recipes).length > 0 && Object.keys(items).length > 0 ? (
         <div className="guesses" id="guesses">
