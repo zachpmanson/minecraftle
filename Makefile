@@ -10,7 +10,7 @@ typecheck:
 	tsc --noEmit
 
 test:
-	node --test $$(find test -name '*.test.*' 2>/dev/null)
+	node --import tsx --test $$(find test -name '*.test.*' 2>/dev/null)
 
 clean:
 	rm -rf .next
