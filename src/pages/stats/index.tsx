@@ -3,6 +3,7 @@ import prisma from "@/utils/prisma";
 import { GetServerSideProps } from "next";
 
 export default function Stats({
+  unavailable,
   count_1,
   count_7,
   count_30,
@@ -10,6 +11,7 @@ export default function Stats({
   count_365,
   count_all_time,
 }: {
+  unavailable?: boolean;
   count_1: number;
   count_7: number;
   count_30: number;
@@ -17,6 +19,17 @@ export default function Stats({
   count_365: number;
   count_all_time: number;
 }) {
+    if (unavailable) {
+      return (
+        <main className="flex flex-col items-center justify-center py-2 max-w-xl">
+          <h2 className="text-2xl text-white p-2">Stats temporarily unavailable</h2>
+          <p className="w-full bg-transparent-black p-4 text-white text-center">
+            Our stats are in a chunk that hasn&apos;t loaded yet. Try again shortly.
+          </p>
+        </main>
+      );
+  }
+
   return (
     <main className="flex flex-col items-center justify-center py-2 max-w-xl">
       <h2 className="text-2xl text-white p-2">Statistics</h2>
@@ -88,12 +101,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     ]);
   } catch (e) {
     console.error(e);
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
+    context.res.statusCode = 503;
+    return { props: {unavailable: true} };
   }
 
   return {

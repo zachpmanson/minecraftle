@@ -6,12 +6,24 @@ import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 
 export default function Stats({
+  unavailable,
   liveUserScores, // actual user scores
   totalPlayerCount,
 }: {
+  unavailable?: boolean;
   liveUserScores: ScoreboardRow;
   totalPlayerCount: number;
 }) {
+    if (unavailable) {
+      return (
+        <main className="flex flex-col items-center justify-center py-2 max-w-xl">
+          <h2 className="text-2xl text-white p-2">Stats temporarily unavailable</h2>
+          <p className="w-full bg-transparent-black p-4 text-white text-center">
+            Our stats are in a chunk that hasn&apos;t loaded yet. Try again shortly.
+          </p>
+        </main>
+      );
+  }
   const router = useRouter();
   const userId = router.query.userId as string;
 
@@ -20,7 +32,7 @@ export default function Stats({
       userId: userId ?? "",
     },
     {
-      enabled: !!userId,
+      enabled: !!userId && !unavailable,
     }
   );
   const localLeaderboard = data?.localLeaderboard;
@@ -218,12 +230,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     console.log(userId, "results", results);
   } catch (e) {
     console.error(e);
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
+    context.res.statusCode = 503;
+    return { props: {unavailable: true} };
   }
 
   // hack to make bigint work with JSON.stringify
